@@ -1,129 +1,96 @@
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  margin: 0;
-  background: #efe4d6;
-  color: #4a3b2c;
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
+  background: #f3eee7;
+  color: #3e3e3e;
 }
 
 /* HERO */
 .hero {
-  background: url("class.jpg") center / cover no-repeat;
-  padding: 120px 20px 90px;
   position: relative;
-}
-
-.hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(239, 228, 214, 0.75);
-}
-
-.hero-content {
-  position: relative;
-  max-width: 900px;
-  margin: auto;
-  background: #f8f1e8;
-  padding: 40px 50px;
   text-align: center;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
 
-.hero h1 {
-  font-family: "Playfair Display", serif;
-  letter-spacing: 2px;
-  margin-bottom: 12px;
+.hero-img {
+  width: 100%;
+  max-height: 520px;
+  object-fit: cover;
 }
 
-.hero p {
+.hero-text {
+  background: #efe4d6;
+  padding: 28px;
+}
+
+.hero-text h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 42px;
+  color: #5b4636;
+}
+
+.hero-text p {
+  margin-top: 10px;
   font-style: italic;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* TIMELINE */
-.timeline {
-  max-width: 1100px;
+/* MEMORIES */
+.memories {
+  max-width: 1000px;
   margin: 80px auto;
-  position: relative;
-  padding: 0 20px;
-}
-
-.timeline::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  width: 2px;
-  background: #c9b9a5;
-}
-
-/* ITEM */
-.timeline-item {
   display: flex;
-  align-items: center;
-  margin-bottom: 90px;
-  position: relative;
+  flex-direction: column;
+  gap: 70px;
 }
 
-.timeline-item:nth-child(even) {
+/* CARD */
+.card {
+  display: flex;
+  background: #efe4d6;
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  align-items: center;
+  gap: 22px;
+}
+
+/* lệch trái phải */
+.card.left {
+  align-self: flex-start;
+}
+
+.card.right {
+  align-self: flex-end;
   flex-direction: row-reverse;
 }
 
-/* IMAGE – kiểu ảnh dán giấy */
-.timeline-image img {
-  width: 380px;
-  background: #fff;
-  padding: 8px;
-  border-radius: 6px;
-  box-shadow: 0 12px 25px rgba(0,0,0,0.35);
-  filter: sepia(15%);
+.card img {
+  width: 260px;
+  height: 170px;
+  object-fit: cover;
+  border-radius: 10px;
 }
 
-/* CONTENT – giấy ghi chú */
-.timeline-content {
-  background: #faf3ea;
-  max-width: 420px;
-  padding: 28px 32px;
-  margin: 0 40px;
-  box-shadow: 0 8px 22px rgba(0,0,0,0.3);
+.card .text h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  color: #5b4636;
 }
 
-.timeline-content h2 {
-  font-family: "Playfair Display", serif;
-  margin-top: 0;
+.card .text p {
+  margin: 10px 0;
+  font-size: 15px;
 }
 
-.timeline-content p {
-  margin: 10px 0 14px;
-}
-
-.timeline-content a {
+.card .text a {
   text-decoration: none;
-  color: #6b4e2e;
-  font-style: italic;
-}
-
-/* RESPONSIVE */
-@media (max-width: 900px) {
-  .timeline::before {
-    left: 20px;
-  }
-
-  .timeline-item,
-  .timeline-item:nth-child(even) {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .timeline-image img {
-    width: 100%;
-  }
-
-  .timeline-content {
-    margin: 20px 0 0;
-  }
+  color: #8b6f4e;
+  font-weight: 500;
 }
