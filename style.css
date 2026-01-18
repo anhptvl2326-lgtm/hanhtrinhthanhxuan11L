@@ -4,37 +4,36 @@
 
 body {
   margin: 0;
-  background: #f4efe8 url("https://www.transparenttextures.com/patterns/paper-fibers.png");
+  background: #f4efe8;
   font-family: 'Inter', sans-serif;
   color: #3a3a3a;
 }
 
-/* HERO PAPER */
-.hero-paper {
+/* HERO */
+.hero {
   max-width: 900px;
-  margin: 70px auto 120px;
+  margin: 60px auto 120px;
   background: #fff;
   padding: 25px;
-  box-shadow: 0 25px 50px rgba(0,0,0,0.15);
   text-align: center;
   position: relative;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.15);
 }
 
 .hero-img {
   width: 100%;
-  border-radius: 3px;
 }
 
-.hero-paper h1 {
+.hero h1 {
   font-family: 'Playfair Display', serif;
   margin-top: 25px;
   font-size: 40px;
+  color: #5b4636;
 }
 
-.handwrite {
-  font-family: 'Dancing Script', cursive;
-  font-size: 20px;
-  color: #8b6f4e;
+.hero p {
+  font-style: italic;
+  color: #7a6a58;
 }
 
 /* WASHI TAPE */
@@ -43,8 +42,8 @@ body {
   top: -14px;
   left: 50%;
   width: 120px;
-  height: 32px;
-  background: rgba(200,180,140,0.7);
+  height: 30px;
+  background: rgba(210,190,150,0.7);
   transform: translateX(-50%) rotate(-3deg);
 }
 
@@ -54,63 +53,53 @@ body {
   margin: auto;
   display: flex;
   flex-direction: column;
-  gap: 110px;
+  gap: 120px;
 }
 
-/* CARD */
-.card {
+/* PAPER */
+.paper {
   background: #fff;
-  padding: 28px;
-  display: flex;
-  gap: 35px;
+  padding: 30px;
+  width: 720px;
   position: relative;
   box-shadow: 0 18px 40px rgba(0,0,0,0.14);
-  transition: 0.5s ease;
 }
 
-.card:hover {
-  transform: translateY(-8px) rotate(0.4deg);
+.paper.left {
+  margin-right: auto;
+  transform: rotate(-1deg);
 }
 
-/* IMAGE */
-.card img {
-  width: 360px;
-  height: 240px;
-  object-fit: cover;
-  transform: rotate(-2deg);
-  box-shadow: 0 12px 25px rgba(0,0,0,0.25);
+.paper.right {
+  margin-left: auto;
+  transform: rotate(1deg);
 }
 
-/* CONTENT */
-.content h2 {
+.paper img {
+  width: 100%;
+  margin-bottom: 18px;
+}
+
+.paper h2 {
   font-family: 'Playfair Display', serif;
-  font-size: 22px;
+  font-size: 24px;
+  color: #5b4636;
 }
 
-.content p {
-  font-size: 15px;
+.paper p {
   color: #555;
 }
 
-.content a {
+.paper a {
+  color: #8b6f4e;
   text-decoration: none;
-  color: #8b5e3c;
   font-weight: 500;
 }
 
-/* LEFT RIGHT */
-.card.right {
-  flex-direction: row-reverse;
-}
-
-.card.right img {
-  transform: rotate(2deg);
-}
-
-/* PAPER CLIP */
+/* CLIP */
 .clip {
   position: absolute;
-  top: -14px;
+  top: -18px;
   left: 30px;
   width: 26px;
   height: 40px;
@@ -126,6 +115,7 @@ body {
   right: -20px;
   width: 60px;
   height: 60px;
-  background: url("https://i.pinimg.com/736x/1e/48/55/1e4855b1dcf3eec1b9d00b8b2c9dbd60.jpg") center/cover no-repeat;
+  background: url("https://i.pinimg.com/736x/1e/48/55/1e4855b1dcf3eec1b9d00b8b2c9dbd60.jpg")
+    center/cover no-repeat;
   opacity: 0.85;
 }
