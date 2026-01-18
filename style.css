@@ -4,63 +4,72 @@
 
 body {
   margin: 0;
-  background: #f3efe9;
+  background: #f4efe8 url("https://www.transparenttextures.com/patterns/paper-fibers.png");
   font-family: 'Inter', sans-serif;
   color: #3a3a3a;
 }
 
-/* HERO */
-.hero {
-  max-width: 980px;
-  margin: 60px auto 100px;
+/* HERO PAPER */
+.hero-paper {
+  max-width: 900px;
+  margin: 70px auto 120px;
   background: #fff;
-  padding: 22px;
-  box-shadow: 0 18px 40px rgba(0,0,0,0.12);
-}
-
-.hero img {
-  width: 100%;
-  border-radius: 4px;
-}
-
-.hero-text {
+  padding: 25px;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.15);
   text-align: center;
-  padding: 28px 20px 10px;
+  position: relative;
 }
 
-.hero-text h1 {
+.hero-img {
+  width: 100%;
+  border-radius: 3px;
+}
+
+.hero-paper h1 {
   font-family: 'Playfair Display', serif;
+  margin-top: 25px;
   font-size: 40px;
-  letter-spacing: 1px;
 }
 
-.hero-text p {
-  font-size: 15px;
-  color: #666;
-  font-style: italic;
+.handwrite {
+  font-family: 'Dancing Script', cursive;
+  font-size: 20px;
+  color: #8b6f4e;
 }
 
-/* EVENTS */
-.events {
+/* WASHI TAPE */
+.tape {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  width: 120px;
+  height: 32px;
+  background: rgba(200,180,140,0.7);
+  transform: translateX(-50%) rotate(-3deg);
+}
+
+/* SCRAPBOOK */
+.scrapbook {
   max-width: 1100px;
-  margin: 0 auto 120px;
+  margin: auto;
   display: flex;
   flex-direction: column;
-  gap: 90px;
+  gap: 110px;
 }
 
 /* CARD */
 .card {
-  display: flex;
-  gap: 40px;
   background: #fff;
-  padding: 30px;
-  box-shadow: 0 14px 35px rgba(0,0,0,0.12);
-  transition: 0.4s ease;
+  padding: 28px;
+  display: flex;
+  gap: 35px;
+  position: relative;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.14);
+  transition: 0.5s ease;
 }
 
 .card:hover {
-  transform: translateY(-6px) rotate(0.3deg);
+  transform: translateY(-8px) rotate(0.4deg);
 }
 
 /* IMAGE */
@@ -68,35 +77,55 @@ body {
   width: 360px;
   height: 240px;
   object-fit: cover;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
   transform: rotate(-2deg);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.25);
 }
 
-/* TEXT */
-.text h2 {
+/* CONTENT */
+.content h2 {
   font-family: 'Playfair Display', serif;
   font-size: 22px;
-  margin-bottom: 10px;
 }
 
-.text p {
+.content p {
   font-size: 15px;
   color: #555;
 }
 
-.text a {
-  display: inline-block;
-  margin-top: 10px;
+.content a {
   text-decoration: none;
   color: #8b5e3c;
-  font-size: 14px;
+  font-weight: 500;
 }
 
-/* LEFT - RIGHT */
+/* LEFT RIGHT */
 .card.right {
   flex-direction: row-reverse;
 }
 
 .card.right img {
   transform: rotate(2deg);
+}
+
+/* PAPER CLIP */
+.clip {
+  position: absolute;
+  top: -14px;
+  left: 30px;
+  width: 26px;
+  height: 40px;
+  border: 3px solid #777;
+  border-bottom: none;
+  border-radius: 12px;
+}
+
+/* FLOWER */
+.flower {
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  width: 60px;
+  height: 60px;
+  background: url("https://i.pinimg.com/736x/1e/48/55/1e4855b1dcf3eec1b9d00b8b2c9dbd60.jpg") center/cover no-repeat;
+  opacity: 0.85;
 }
