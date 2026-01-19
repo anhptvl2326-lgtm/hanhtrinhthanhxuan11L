@@ -118,6 +118,54 @@
   .timeline-item.right .timeline-content {
   transform: rotate(1deg);
   }
+
+  .title-paper {
+  max-width: 900px;
+  margin: -120px auto 80px;
+  padding: 40px 60px;
+  background: url("https://i.pinimg.com/1200x/7c/ab/6f/7cab6f9a3c3e88f9f4cde6aefcbd94dd.jpg")
+              center / cover no-repeat;
+
+  text-align: center;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+  position: relative;
+}
+
+.title-paper h1 {
+  font-family: "Playfair Display", serif;
+  font-size: 36px;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+}
+
+.title-paper p {
+  font-style: italic;
+  font-size: 15px;
+  color: #5a4b3c;
+}
+
+/* Hoa trang trí */
+.title-paper::before,
+.title-paper::after {
+  content: "";
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.title-paper::before {
+  background-image: url("https://i.pinimg.com/736x/9c/93/54/9c9354d0a0db5f15a3f97c3c79d1f0cb.jpg");
+  left: -60px;
+  top: -40px;
+}
+
+.title-paper::after {
+  background-image: url("https://i.pinimg.com/736x/6f/72/cc/6f72ccffb61cfd2b7c28c8a0c4c0e18a.jpg");
+  right: -60px;
+  bottom: -40px;
+}
  }
   </style>
 </head>
@@ -128,6 +176,14 @@
     <div class="hero-photo">
       <img src="8d852473-63f7-435f-b2b0-c2261579b5be.png" alt="Ảnh tập thể lớp 11L">
     </div>
+
+    <div class="title-paper">
+  <h1>HÀNH TRÌNH THANH XUÂN 11L</h1>
+  <p>
+    Chúng ta đã cùng nhau đi qua những năm tháng đẹp đẽ ấy,
+    để rồi nhận ra những điều bình dị nhất lại là điều đáng nhớ nhất.
+  </p>
+</div>
 
    <div class="timeline">
 
