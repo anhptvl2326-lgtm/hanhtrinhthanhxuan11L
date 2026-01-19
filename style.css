@@ -4,98 +4,94 @@
 
 body {
   margin: 0;
-  background: #eee3d6;
-  font-family: "Georgia", serif;
-  color: #4a3b2c;
+  background: #e9dfd3;
+  font-family: 'Inter', sans-serif;
 }
 
-.wrapper {
-  max-width: 1000px;
-  margin: auto;
-  padding: 40px 20px;
-}
-
-/* ẢNH LỚP */
-.class-photo img {
-  width: 100%;
-  border-radius: 6px;
-  box-shadow: 0 12px 25px rgba(0,0,0,0.3);
-  filter: sepia(15%);
+/* NỀN SCRAPBOOK */
+.scrapbook {
+  position: relative;
+  width: 1200px;
+  height: 2400px;
+  margin: 0 auto;
+  background: url("background.jpg") no-repeat center top;
+  background-size: cover;
 }
 
 /* TIÊU ĐỀ */
 .title {
-  background: #f7efe6;
-  max-width: 720px;
-  margin: -45px auto 60px;
-  padding: 30px 40px;
+  position: absolute;
+  top: 280px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
   text-align: center;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+  font-family: 'Playfair Display', serif;
+  color: #4b3526;
 }
 
 .title h1 {
-  margin: 0;
-  letter-spacing: 2px;
+  font-size: 42px;
+  margin-bottom: 12px;
 }
 
 .title p {
-  margin-top: 10px;
+  font-size: 16px;
   font-style: italic;
 }
 
-/* TIMELINE */
-.timeline {
-  position: relative;
-}
-
-.timeline::before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background: #c7b8a6;
-}
-
-/* ITEM */
+/* ITEM CHUNG */
 .item {
-  display: flex;
-  align-items: center;
-  margin-bottom: 70px;
+  position: absolute;
+  width: 420px;
+  color: #4b3526;
 }
 
-.item.left {
-  flex-direction: row;
+.item h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  margin-bottom: 8px;
 }
 
-.item.right {
-  flex-direction: row-reverse;
+.item p {
+  font-size: 14px;
+  margin-bottom: 6px;
 }
 
-.item img {
-  width: 260px;
-  background: #fff;
-  padding: 6px;
-  border-radius: 6px;
-  box-shadow: 0 10px 22px rgba(0,0,0,0.3);
+.item a {
+  font-size: 14px;
+  text-decoration: none;
+  color: #4b3526;
+  border-bottom: 1px solid #4b3526;
 }
 
-/* TEXT BOX */
-.text {
-  background: #faf3ea;
-  max-width: 360px;
-  padding: 22px 28px;
-  margin: 0 30px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+/* CANH TỪNG ITEM – THEO ẢNH */
+.item-2010 {
+  top: 520px;
+  left: 620px;
 }
 
-.text h3 {
-  margin-top: 0;
+.item-1911 {
+  top: 760px;
+  left: 180px;
 }
 
-.text span {
-  display: inline-block;
-  margin-top: 10px;
-  font-style: italic;
+.item-2011 {
+  top: 1020px;
+  left: 620px;
+}
+
+.item-giaidieu {
+  top: 1320px;
+  left: 180px;
+}
+
+.item-dalat {
+  top: 1580px;
+  left: 620px;
+}
+
+.item-hungvuong {
+  top: 1860px;
+  left: 180px;
 }
