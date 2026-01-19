@@ -9,6 +9,28 @@ body {
   color: #3a3a3a;
 }
 
+.scrapbook {
+  position: relative;
+}
+
+.scrapbook::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 2px;
+  height: 100%;
+  background: repeating-linear-gradient(
+    to bottom,
+    #cbb89d,
+    #cbb89d 6px,
+    transparent 6px,
+    transparent 14px
+  );
+  transform: translateX(-50%);
+}
+
+
 /* HERO PAPER */
 .hero-paper {
   max-width: 900px;
@@ -68,6 +90,23 @@ body {
   transition: 0.5s ease;
 }
 
+.card {
+  background: #fffdf8;
+  border-radius: 6px;
+  width: 85%;
+}
+
+.card.left {
+  align-self: flex-start;
+  margin-left: 40px;
+}
+
+.card.right {
+  align-self: flex-end;
+  margin-right: 40px;
+}
+
+
 .card:hover {
   transform: translateY(-8px) rotate(0.4deg);
 }
@@ -110,13 +149,14 @@ body {
 /* PAPER CLIP */
 .clip {
   position: absolute;
-  top: -14px;
-  left: 30px;
-  width: 26px;
-  height: 40px;
-  border: 3px solid #777;
-  border-bottom: none;
-  border-radius: 12px;
+  top: -22px;
+  left: 40px;
+  width: 30px;
+  height: 50px;
+  border: 3px solid #888;
+  border-radius: 16px;
+  background: #f4f1ec;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
 }
 
 /* FLOWER */
@@ -130,3 +170,7 @@ body {
   opacity: 0.85;
 }
 
+.flower {
+  opacity: 0.6;
+  transform: rotate(-8deg);
+}
