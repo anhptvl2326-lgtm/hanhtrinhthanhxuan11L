@@ -9,10 +9,6 @@ body {
   color: #3a3a3a;
 }
 
-.timeline::before {
-  background: #c9b8a5;
-}
-
 /* HERO PAPER */
 .hero-paper {
   max-width: 900px;
