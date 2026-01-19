@@ -37,28 +37,6 @@ body {
   color: #8b6f4e;
 }
 
-/* TIMELINE */
-.timeline {
-  position: relative;
-}
-
-.timeline::before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  width: 2px;
-  height: 100%;
-  background: repeating-linear-gradient(
-    to bottom,
-    #c9b8a3 0px,
-    #c9b8a3 6px,
-    transparent 6px,
-    transparent 14px
-  );
-  transform: translateX(-50%);
-  opacity: 0.6;
-}
-
 /* WASHI TAPE */
 .tape {
   position: absolute;
