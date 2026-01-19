@@ -4,37 +4,97 @@
 
 body {
   margin: 0;
-  background: #e7dfd3;
+  background: #e9dfd3;
   font-family: 'Inter', sans-serif;
-  color: #4b3f35;
 }
 
-/* PAGE */
-.page {
-  max-width: 1100px;
-  margin: auto;
-  padding: 60px 20px;
-  background: url("https://www.transparenttextures.com/patterns/paper-fibers.png");
+/* NỀN SCRAPBOOK */
+.scrapbook {
+  position: relative;
+  width: 1200px;
+  height: 2400px;
+  margin: 0 auto;
+  background: url("background.jpg") no-repeat center top;
+  background-size: cover;
 }
 
-/* HEADER */
-.header {
+/* TIÊU ĐỀ */
+.title {
+  position: absolute;
+  top: 280px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
   text-align: center;
-  margin-bottom: 80px;
+  font-family: 'Playfair Display', serif;
+  color: #4b3526;
 }
 
-.class-photo {
-  width: 100%;
-  border-radius: 6px;
-  filter: sepia(0.25) contrast(0.95);
+.title h1 {
+  font-size: 42px;
+  margin-bottom: 12px;
 }
 
-.title-paper {
-  margin: -60px auto 0;
-  max-width: 700px;
-  background: #f4ebdf;
-  padding: 30px;
-  border-radius: 8px;
+.title p {
+  font-size: 16px;
+  font-style: italic;
+}
+
+/* ITEM CHUNG */
+.item {
+  position: absolute;
+  width: 420px;
+  color: #4b3526;
+}
+
+.item h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.item p {
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+.item a {
+  font-size: 14px;
+  text-decoration: none;
+  color: #4b3526;
+  border-bottom: 1px solid #4b3526;
+}
+
+/* CANH TỪNG ITEM – THEO ẢNH */
+.item-2010 {
+  top: 520px;
+  left: 620px;
+}
+
+.item-1911 {
+  top: 760px;
+  left: 180px;
+}
+
+.item-2011 {
+  top: 1020px;
+  left: 620px;
+}
+
+.item-giaidieu {
+  top: 1320px;
+  left: 180px;
+}
+
+.item-dalat {
+  top: 1580px;
+  left: 620px;
+}
+
+.item-hungvuong {
+  top: 1860px;
+  left: 180px;
+}  border-radius: 8px;
   box-shadow: 0 6px 15px rgba(0,0,0,.15);
 }
 
