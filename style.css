@@ -46,6 +46,8 @@ body {
   height: 32px;
   background: rgba(200,180,140,0.7);
   transform: translateX(-50%) rotate(-3deg);
+  font-family: 'Playfair Display', serif;
+  color: #4b3526;
 }
 
 /* SCRAPBOOK */
