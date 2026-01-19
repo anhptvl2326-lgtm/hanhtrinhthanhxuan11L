@@ -4,94 +4,101 @@
 
 body {
   margin: 0;
-  background: #e9dfd3;
   font-family: 'Inter', sans-serif;
+  background: #f3efe9;
+  color: #3a3a3a;
 }
 
-/* NỀN SCRAPBOOK */
-.scrapbook {
+/* HERO */
+.hero {
   position: relative;
-  width: 1200px;
-  height: 2400px;
-  margin: 0 auto;
-  background: url("background.jpg") no-repeat center top;
-  background-size: cover;
+  max-width: 1100px;
+  margin: 60px auto 120px;
+  padding: 20px;
 }
 
-/* TIÊU ĐỀ */
-.title {
-  position: absolute;
-  top: 280px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 70%;
-  text-align: center;
+.hero-img {
+  width: 100%;
+  border-radius: 10px;
+  filter: sepia(15%);
+}
+
+.hero-title {
+  margin-top: -60px;
+  background: #f6f1e8;
+  padding: 30px 40px;
+  border-radius: 6px;
+  width: fit-content;
+}
+
+.hero-title h1 {
   font-family: 'Playfair Display', serif;
-  color: #4b3526;
+  font-size: 36px;
+  margin: 0;
 }
 
-.title h1 {
-  font-size: 42px;
+.hero-title p {
+  margin-top: 8px;
+  font-style: italic;
+  max-width: 700px;
+}
+
+/* TIMELINE */
+.timeline {
+  position: relative;
+  max-width: 1000px;
+  margin: auto;
+  padding-bottom: 100px;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: #cbbba8;
+}
+
+/* CARD */
+.card {
+  width: 46%;
+  background: #f8f3eb;
+  padding: 18px;
+  border-radius: 6px;
+  margin-bottom: 80px;
+  position: relative;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.card img {
+  width: 100%;
+  border-radius: 4px;
   margin-bottom: 12px;
 }
 
-.title p {
-  font-size: 16px;
-  font-style: italic;
-}
-
-/* ITEM CHUNG */
-.item {
-  position: absolute;
-  width: 420px;
-  color: #4b3526;
-}
-
-.item h2 {
+.card .text h3 {
   font-family: 'Playfair Display', serif;
-  font-size: 20px;
-  margin-bottom: 8px;
+  margin: 0;
+  font-size: 22px;
 }
 
-.item p {
-  font-size: 14px;
-  margin-bottom: 6px;
+.card .text p {
+  margin: 8px 0;
 }
 
-.item a {
-  font-size: 14px;
+.card .text a {
   text-decoration: none;
-  color: #4b3526;
-  border-bottom: 1px solid #4b3526;
+  color: #8b6f4e;
+  font-weight: 500;
 }
 
-/* CANH TỪNG ITEM – THEO ẢNH */
-.item-2010 {
-  top: 520px;
-  left: 620px;
+/* POSITION */
+.left {
+  margin-left: 0;
 }
 
-.item-1911 {
-  top: 760px;
-  left: 180px;
-}
-
-.item-2011 {
-  top: 1020px;
-  left: 620px;
-}
-
-.item-giaidieu {
-  top: 1320px;
-  left: 180px;
-}
-
-.item-dalat {
-  top: 1580px;
-  left: 620px;
-}
-
-.item-hungvuong {
-  top: 1860px;
-  left: 180px;
+.right {
+  margin-left: 54%;
 }
