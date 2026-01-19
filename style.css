@@ -4,390 +4,116 @@
 
 body {
   margin: 0;
-  background: #e9dfd3;
   font-family: 'Inter', sans-serif;
+  background: #d9cfc0;
 }
 
-/* NỀN SCRAPBOOK */
-.scrapbook {
-  position: relative;
-  width: 1200px;
-  height: 2400px;
-  margin: 0 auto;
-  background: url("background.jpg") no-repeat center top;
+/* NỀN GIẤY */
+.paper {
+  min-height: 100vh;
+  background: url("https://i.pinimg.com/1200x/7a/ab/56/7aab56b9c6bb8cfe6d0c0a5df2d9b8a1.jpg");
   background-size: cover;
+  padding: 80px 0 200px;
+  position: relative;
 }
 
-/* TIÊU ĐỀ */
-.title {
-  position: absolute;
-  top: 280px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 70%;
+/* HEADER */
+.header {
+  width: 900px;
+  margin: auto;
   text-align: center;
-  font-family: 'Playfair Display', serif;
-  color: #4b3526;
+  position: relative;
 }
 
-.title h1 {
-  font-size: 42px;
-  margin-bottom: 12px;
+.class-photo {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
 }
 
-.title p {
-  font-size: 16px;
-  font-style: italic;
-}
-
-/* ITEM CHUNG */
-.item {
-  position: absolute;
-  width: 420px;
-  color: #4b3526;
-}
-
-.item h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 20px;
-  margin-bottom: 8px;
-}
-
-.item p {
-  font-size: 14px;
-  margin-bottom: 6px;
-}
-
-.item a {
-  font-size: 14px;
-  text-decoration: none;
-  color: #4b3526;
-  border-bottom: 1px solid #4b3526;
-}
-
-/* CANH TỪNG ITEM – THEO ẢNH */
-.item-2010 {
-  top: 520px;
-  left: 620px;
-}
-
-.item-1911 {
-  top: 760px;
-  left: 180px;
-}
-
-.item-2011 {
-  top: 1020px;
-  left: 620px;
-}
-
-.item-giaidieu {
-  top: 1320px;
-  left: 180px;
-}
-
-.item-dalat {
-  top: 1580px;
-  left: 620px;
-}
-
-.item-hungvuong {
-  top: 1860px;
-  left: 180px;
-}  border-radius: 8px;
-  box-shadow: 0 6px 15px rgba(0,0,0,.15);
+.title-paper {
+  background: #f7f1e8;
+  margin: -40px auto 80px;
+  padding: 30px 40px;
+  width: 80%;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
 }
 
 .title-paper h1 {
   font-family: 'Playfair Display', serif;
-  letter-spacing: 2px;
-}
-
-/* TIMELINE */
-.timeline {
-  position: relative;
-}
-
-.line {
-  position: absolute;
-  left: 50%;
-  top: 0;
-  bottom: 0;
-  border-left: 2px dashed rgba(120,100,80,.4);
-}
-
-/* EVENT */
-.event {
-  display: flex;
-  align-items: center;
-  margin: 70px 0;
-  gap: 30px;
-}
-
-.event.left {
-  justify-content: flex-start;
-}
-
-.event.right {
-  justify-content: flex-end;
-}
-
-.card {
-  width: 380px;
-  background: #f6ede2;
-  padding: 25px;
-  border-radius: 8px;
-  box-shadow: 0 5px 12px rgba(0,0,0,.15);
-  position: relative;
-}
-
-.card h3 {
-  font-family: 'Playfair Display', serif;
-  margin-top: 0;
-}
-
-.card a {
-  text-decoration: none;
-  color: #7a5a3a;
-  font-weight: 500;
-}
-
-/* PHOTO */
-.photo {
-  width: 280px;
-  background: #fff;
-  padding: 10px;
-  border-radius: 6px;
-  box-shadow: 0 6px 12px rgba(0,0,0,.2);
-  transform: rotate(-1.5deg);
-}
-
-.photo img {
-  width: 100%;
-  display: block;
-  filter: sepia(0.2) contrast(0.95);
-}
-
-/* TAPE */
-.taped::before {
-  content: "";
-  position: absolute;
-  top: -12px;
-  left: 50%;
-  width: 70px;
-  height: 20px;
-  background: rgba(230,220,200,.7);
-  transform: translateX(-50%) rotate(-2deg);
-}
-
-/* CLIP */
-.clipped::before {
-  content: "📎";
-  position: absolute;
-  top: -18px;
-  right: 10px;
-  font-size: 22px;
-}.timeline::before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background: #b9a98f;
-}
-
-/* ITEM */
-.item {
-  position: relative;
-  margin-bottom: 120px;
-}
-
-.item.left .paper {
-  margin-left: 0;
-  transform: rotate(-1.2deg);
-}
-
-.item.right .paper {
-  margin-left: auto;
-  transform: rotate(1.2deg);
-}
-
-/* DOT */
-.dot {
-  position: absolute;
-  left: 50%;
-  top: 40px;
-  width: 14px;
-  height: 14px;
-  background: #4b3a2a;
-  border-radius: 50%;
-  transform: translateX(-50%);
-}
-
-/* PAPER */
-.paper {
-  width: 60%;
-  background: #fffaf0;
-  border: 1px solid #d6c7ad;
-  padding: 18px;
-  display: flex;
-  gap: 18px;
-  box-shadow: 0 8px 22px rgba(0,0,0,0.15);
-  position: relative;
-}
-
-/* IMAGE */
-.paper img {
-  width: 45%;
-  object-fit: cover;
-  filter: sepia(25%);
-}
-
-/* TEXT */
-.text {
-  width: 55%;
-}
-
-.text h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 22px;
-  margin: 0 0 10px;
-  color: #4b3a2a;
-}
-
-.text p {
   margin: 0;
-  font-size: 15px;
-  color: #5c4c3c;
+  font-size: 40px;
+  color: #4b382a;
 }
 
-/* DECOR */
-.tape {
-  position: absolute;
-  top: -12px;
-  left: 30px;
-  width: 90px;
-  height: 26px;
-  background: rgba(210,190,150,0.6);
-  transform: rotate(-3deg);
-}
-
-.clip {
-  position: absolute;
-  top: -22px;
-  right: 20px;
-  width: 26px;
-  height: 36px;
-  border: 2px solid #777;
-  border-radius: 6px;
-}
-
-.flower {
-  position: absolute;
-  bottom: -24px;
-  right: -24px;
-  width: 60px;
-  height: 60px;
-  background: url("https://pngimg.com/uploads/flower/flower_PNG54769.png") center/contain no-repeat;
-  opacity: 0.7;
-}  font-size: 38px;
-  color: #5b4636;
-}
-
-.hero-text p {
-  font-size: 16px;
+.title-paper p {
   margin-top: 10px;
   font-style: italic;
 }
 
-/* SCRAPBOOK CARDS */
-.timeline {
-  width: 100%;
+/* ĐƯỜNG CHẤM */
+.line {
+  position: absolute;
+  top: 500px;
+  bottom: 100px;
+  left: 50%;
+  width: 3px;
+  background: repeating-linear-gradient(
+    to bottom,
+    #8b7a66,
+    #8b7a66 8px,
+    transparent 8px,
+    transparent 18px
+  );
 }
 
+/* CARD CHUNG */
 .card {
-  width: 60%;
-  background: rgba(255,255,255,0.95);
-  padding: 24px;
-  margin: 40px 0;
-  box-shadow: 0 8px 28px rgba(0,0,0,0.18);
+  width: 420px;
+  background: #fbf7f0;
+  padding: 20px;
   position: relative;
-  border: 1px solid #d9cab0;
-}
-
-.left {
-  margin-left: 0;
-  transform: rotate(-1.2deg);
-}
-
-.right {
-  margin-left: auto;
-  transform: rotate(1.2deg);
-}
-
-.card img {
-  width: 100%;
-  border-radius: 4px;
-  filter: sepia(22%);
-  margin-bottom: 14px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.18);
+  margin-bottom: 120px;
 }
 
 .card h2 {
   font-family: 'Playfair Display', serif;
-  font-size: 24px;
-  margin: 0 0 10px;
-  color: #5b4636;
+  font-size: 22px;
+  margin: 15px 0 8px;
+  color: #4b382a;
 }
 
 .card p {
+  margin: 0;
   font-size: 15px;
-  margin: 0 0 8px;
 }
 
-.card a {
-  text-decoration: none;
-  color: #7a5f41;
-  font-size: 14px;
-  font-weight: 500;
+/* ẢNH TRONG CARD */
+.photo {
+  width: 100%;
+  border-radius: 6px;
 }
 
-/* DECOR ELEMENTS */
-.decor {
+/* TRÁI / PHẢI */
+.left {
+  margin-left: calc(50% - 520px);
+  transform: rotate(-1.5deg);
+}
+
+.right {
+  margin-left: calc(50% + 100px);
+  transform: rotate(1.5deg);
+}
+
+/* BĂNG DÁN */
+.card::before {
+  content: "";
   position: absolute;
-  background-repeat: no-repeat;
-  background-size: contain;
-}
-
-.clip {
-  top: -18px;
-  right: 18px;
-  width: 28px;
-  height: 40px;
-  background: url("https://pngset.com/download-free-png-tshop") no-repeat center/contain; /* paper clip PNG */ :contentReference[oaicite:2]{index=2}
-}
-
-.tape {
-  top: -10px;
-  left: 18px;
+  top: -12px;
+  left: 50%;
   width: 80px;
-  height: 24px;
-  background: url("https://www.pngkit.com/png/detail/257-2575675_free-digital-flower-scrapbooking-embellishment-blumen-clip-art.png") no-repeat center/contain; /* washi / tape PNG */ :contentReference[oaicite:3]{index=3}
-  opacity: 0.8;
-}
-
-.flower {
-  bottom: -22px;
-  right: -22px;
-  width: 68px;
-  height: 68px;
-  background: url("https://www.clipartmax.com/png/small/234-2340661_free-scrap-flower-png-flower-scrapbooking-embellishment-illustration.png") no-repeat center/contain; /* scrapbook flower PNG */ :contentReference[oaicite:4]{index=4}
-}
-
-.floral2 {
-  bottom: -18px;
-  left: -18px;
-  width: 60px;
-  height: 60px;
-  background: url("https://www.pngkey.com/png/detail/339-3391671_vintage-scrapbooking-wildflower-clip-art-of-flower-vintage.png") no-repeat center/contain; /* floral PNG */ :contentReference[oaicite:5]{index=5}
+  height: 28px;
+  background: rgba(220,200,160,0.8);
+  transform: translateX(-50%) rotate(-2deg);
 }
