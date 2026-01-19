@@ -4,91 +4,99 @@
 
 body {
   margin: 0;
+  background: #f3efe9;
   font-family: 'Inter', sans-serif;
-  background: #f6f2ec;
   color: #3a3a3a;
 }
 
 /* HERO */
 .hero {
-  max-width: 1000px;
-  margin: 60px auto;
+  max-width: 980px;
+  margin: 60px auto 100px;
   background: #fff;
-  padding: 20px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  padding: 22px;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.12);
 }
 
-.hero-img {
+.hero img {
   width: 100%;
   border-radius: 4px;
 }
 
 .hero-text {
   text-align: center;
-  padding: 30px 20px 10px;
+  padding: 28px 20px 10px;
 }
 
 .hero-text h1 {
   font-family: 'Playfair Display', serif;
-  font-size: 38px;
+  font-size: 40px;
   letter-spacing: 1px;
-  margin-bottom: 10px;
 }
 
 .hero-text p {
   font-size: 15px;
   color: #666;
+  font-style: italic;
 }
 
-/* TIMELINE */
-.timeline {
+/* EVENTS */
+.events {
   max-width: 1100px;
-  margin: 80px auto;
+  margin: 0 auto 120px;
   display: flex;
   flex-direction: column;
-  gap: 80px;
+  gap: 90px;
 }
 
-/* EVENT */
-.event {
+/* CARD */
+.card {
   display: flex;
-  align-items: center;
   gap: 40px;
   background: #fff;
-  padding: 25px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.07);
+  padding: 30px;
+  box-shadow: 0 14px 35px rgba(0,0,0,0.12);
+  transition: 0.4s ease;
 }
 
-.event img {
+.card:hover {
+  transform: translateY(-6px) rotate(0.3deg);
+}
+
+/* IMAGE */
+.card img {
   width: 360px;
-  height: 230px;
+  height: 240px;
   object-fit: cover;
-  border-radius: 4px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  transform: rotate(-2deg);
 }
 
-.event-text {
-  max-width: 500px;
-}
-
-.event-text h2 {
+/* TEXT */
+.text h2 {
   font-family: 'Playfair Display', serif;
   font-size: 22px;
   margin-bottom: 10px;
 }
 
-.event-text p {
+.text p {
   font-size: 15px;
-  margin-bottom: 12px;
   color: #555;
 }
 
-.event-text a {
+.text a {
+  display: inline-block;
+  margin-top: 10px;
   text-decoration: none;
   color: #8b5e3c;
   font-size: 14px;
 }
 
 /* LEFT - RIGHT */
-.event.right {
+.card.right {
   flex-direction: row-reverse;
+}
+
+.card.right img {
+  transform: rotate(2deg);
 }
