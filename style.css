@@ -130,13 +130,3 @@ body {
   opacity: 0.85;
 }
 
-.flower {
-  position: absolute;
-  z-index: 5;
-}
-
-.flower img {
-  width: 120px;
-  pointer-events: none;
-}
-
