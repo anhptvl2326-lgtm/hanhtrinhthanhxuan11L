@@ -3,236 +3,65 @@
 <head>
   <meta charset="UTF-8" />
   <title>Hành trình thanh xuân 11L</title>
+  <link rel="stylesheet" href="style.css" />
 
-  <!-- GOOGLE FONTS -->
+  <!-- Font giống scrapbook -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
-
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      background: #f5f1eb;
-      color: #3a3a3a;
-      font-family: 'Cormorant Garamond', serif;
-      line-height: 1.7;
-    }
-
-    /* ===== HERO ===== */
-    .hero {
-      padding: 80px 20px 120px;
-      text-align: center;
-    }
-
-    .hero-photo {
-      max-width: 1100px;
-      margin: 0 auto;
-      background: #fbf7f2;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 18px 40px rgba(0,0,0,0.15);
-    }
-
-    .hero-photo img {
-      width: 100%;
-      border-radius: 8px;
-      display: block;
-    }
-
-    .hero-title {
-      max-width: 900px;
-      margin: -60px auto 0;
-      background: #fbf7f2;
-      padding: 30px 40px;
-      border-radius: 10px;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.12);
-    }
-
-    .hero-title h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 44px;
-      margin: 0;
-      color: #5b4636;
-      letter-spacing: 1px;
-    }
-
-    .hero-title p {
-      margin-top: 10px;
-      font-style: italic;
-      opacity: 0.85;
-    }
-
-    /* ===== TIMELINE ===== */
-    .timeline {
-      position: relative;
-      max-width: 1000px;
-      margin: 120px auto;
-      padding: 0 20px;
-    }
-
-    .timeline::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 50%;
-      width: 2px;
-      background: repeating-linear-gradient(
-        to bottom,
-        #c9b8a5,
-        #c9b8a5 6px,
-        transparent 6px,
-        transparent 14px
-      );
-      transform: translateX(-50%);
-    }
-
-    /* ===== ITEM ===== */
-    .timeline-item {
-    display: flex;
-    margin: 120px 0;
-    position: relative;
-  }
-
-  .timeline-item.left {
-  justify-content: flex-start;
-  }
-
-  .timeline-item.right {
-  justify-content: flex-end;
-  }
-
-  .timeline-content {
-  width: 520px;
-  background: url("https://i.pinimg.com/1200x/f5/ea/b9/f5eab9c4d2df91c5a7d6c34e8e0db5fa.jpg")
-              center / cover no-repeat;
-  padding: 30px;
-  box-shadow: 0 12px 25px rgba(0,0,0,0.25);
-  transform: rotate(-1deg);
-  }
-
-  .timeline-item.right .timeline-content {
-  transform: rotate(1deg);
-  }
-
-  .title-paper {
-  max-width: 900px;
-  margin: -120px auto 80px;
-  padding: 40px 60px;
-  background: url("https://i.pinimg.com/1200x/7c/ab/6f/7cab6f9a3c3e88f9f4cde6aefcbd94dd.jpg")
-              center / cover no-repeat;
-
-  text-align: center;
-  box-shadow: 0 15px 30px rgba(0,0,0,0.25);
-  position: relative;
-}
-
-.title-paper h1 {
-  font-family: "Playfair Display", serif;
-  font-size: 36px;
-  letter-spacing: 2px;
-  margin-bottom: 12px;
-}
-
-.title-paper p {
-  font-style: italic;
-  font-size: 15px;
-  color: #5a4b3c;
-}
-
-/* Hoa trang trí */
-.title-paper::before,
-.title-paper::after {
-  content: "";
-  position: absolute;
-  width: 120px;
-  height: 120px;
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
-.title-paper::before {
-  background-image: url("https://i.pinimg.com/736x/9c/93/54/9c9354d0a0db5f15a3f97c3c79d1f0cb.jpg");
-  left: -60px;
-  top: -40px;
-}
-
-.title-paper::after {
-  background-image: url("https://i.pinimg.com/736x/6f/72/cc/6f72ccffb61cfd2b7c28c8a0c4c0e18a.jpg");
-  right: -60px;
-  bottom: -40px;
-}
- }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 </head>
+
 <body>
+  <div class="scrapbook">
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-photo">
-      <img src="8d852473-63f7-435f-b2b0-c2261579b5be.png" alt="Ảnh tập thể lớp 11L">
+    <!-- TIÊU ĐỀ -->
+    <div class="title">
+      <h1>HÀNH TRÌNH THANH XUÂN 11L</h1>
+      <p>Chúng ta đã cùng nhau đi qua những ngày tháng tuổi đẹp, để lại biết bao kỷ niệm khó quên</p>
     </div>
 
-    <div class="title-paper">
-  <h1>HÀNH TRÌNH THANH XUÂN 11L</h1>
-  <p>
-    Chúng ta đã cùng nhau đi qua những năm tháng đẹp đẽ ấy,
-    để rồi nhận ra những điều bình dị nhất lại là điều đáng nhớ nhất.
-  </p>
-</div>
-
-   <div class="timeline">
-
-  <div class="timeline-item left">
-    <div class="timeline-content">
+    <!-- 20/10 -->
+    <div class="item item-2010">
       <h2>20/10 – Ngày Phụ nữ Việt Nam</h2>
-      <p>Tôn vinh vẻ đẹp dịu dàng và yêu thương.</p>
+      <p>Một ngày tôn vinh phái đẹp của 11L</p>
+      <a href="2010.html">Xem chi tiết →</a>
     </div>
-  </div>
 
-  <div class="timeline-item right">
-    <div class="timeline-content">
+    <!-- 19/11 -->
+    <div class="item item-1911">
       <h2>19/11 – Ngày Quốc tế Đàn Ông</h2>
-      <p>Những chàng trai của tập thể 11L.</p>
+      <p>Phong độ, vui vẻ và khó quên</p>
+      <a href="1911.html">Xem chi tiết →</a>
     </div>
-  </div>
 
-  <div class="timeline-item left">
-    <div class="timeline-content">
+    <!-- 20/11 -->
+    <div class="item item-2011">
       <h2>20/11 – Ngày Nhà giáo Việt Nam</h2>
-      <p>Tri ân người lái đò thầm lặng.</p>
+      <p>Tri ân thầy cô với tất cả tấm lòng</p>
+      <a href="2011.html">Xem chi tiết →</a>
     </div>
-  </div>
 
-  <!-- PHẦN BẠN BẢO BỊ THIẾU – ĐÃ THÊM -->
-  <div class="timeline-item right">
-    <div class="timeline-content">
-      <h2>Giai điệu tuổi hồng & Nét đẹp thanh lịch</h2>
-      <p>Nơi tài năng, bản lĩnh và sự tự tin tỏa sáng.</p>
+    <!-- Giai điệu -->
+    <div class="item item-giaidieu">
+      <h2>Giai điệu tuổi hồng<br>& nét đẹp Thanh lịch</h2>
+      <p>Khoảnh khắc tỏa sáng không thể nào quên</p>
+      <a href="giaidieu.html">Xem chi tiết →</a>
     </div>
-  </div>
 
-  <div class="timeline-item left">
-    <div class="timeline-content">
-      <h2>Chuyến tham quan trải nghiệm tại Đà Lạt</h2>
-      <p>Những ngày học mà chơi – chơi mà học.</p>
+    <!-- Đà Lạt -->
+    <div class="item item-dalat">
+      <h2>Chuyến đi Đà Lạt</h2>
+      <p>Chuyến đi thanh xuân đầy trải nghiệm</p>
+      <a href="dalat.html">Xem chi tiết →</a>
     </div>
-  </div>
 
-  <div class="timeline-item right">
-    <div class="timeline-content">
+    <!-- Giỗ tổ -->
+    <div class="item item-hungvuong">
       <h2>Giỗ Tổ Hùng Vương</h2>
-      <p>Gói bánh chưng – hướng về cội nguồn dân tộc.</p>
+      <p>Gói bánh chưng – Hướng về cội nguồn</p>
+      <a href="banhchung.html">Xem chi tiết →</a>
     </div>
+
   </div>
-
-</div>
-
-  </section>
-
 </body>
 </html>
