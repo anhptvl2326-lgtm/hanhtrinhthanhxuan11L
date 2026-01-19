@@ -4,37 +4,141 @@
 
 body {
   margin: 0;
-  font-family: 'Cormorant Garamond', serif;
-  background: url("https://pngtree.com/free-backgrounds-vectors/vintage-paper") center/cover no-repeat;
-  /* bạn có thể tải nền giấy thật tại trang có textures giấy cổ và dùng link ở trên làm background */ :contentReference[oaicite:1]{index=1}
-  color: #3b3028;
-  padding: 20px;
+  background: #f3efe7;
+  font-family: 'Inter', sans-serif;
 }
 
-/* HERO */
-.hero {
+.page {
+  max-width: 1100px;
+  margin: auto;
+  padding: 60px 20px;
+  background: url("https://www.transparenttextures.com/patterns/paper-fibers.png");
+}
+
+h1 {
   text-align: center;
-  margin-bottom: 60px;
-}
-
-.hero-img {
-  width: 100%;
-  border-radius: 6px;
-  filter: sepia(20%);
-}
-
-.hero-text {
-  background: rgba(255,255,255,0.9);
-  display: inline-block;
-  padding: 24px 36px;
-  margin-top: -40px;
-  box-shadow: 0 8px 22px rgba(0,0,0,0.17);
-}
-
-.hero-text h1 {
   font-family: 'Playfair Display', serif;
+  font-size: 42px;
+  color: #4b3a2a;
+}
+
+.subtitle {
+  text-align: center;
+  font-style: italic;
+  margin-bottom: 80px;
+  color: #6b5b4a;
+}
+
+/* TIMELINE LINE */
+.timeline {
+  position: relative;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: #b9a98f;
+}
+
+/* ITEM */
+.item {
+  position: relative;
+  margin-bottom: 120px;
+}
+
+.item.left .paper {
+  margin-left: 0;
+  transform: rotate(-1.2deg);
+}
+
+.item.right .paper {
+  margin-left: auto;
+  transform: rotate(1.2deg);
+}
+
+/* DOT */
+.dot {
+  position: absolute;
+  left: 50%;
+  top: 40px;
+  width: 14px;
+  height: 14px;
+  background: #4b3a2a;
+  border-radius: 50%;
+  transform: translateX(-50%);
+}
+
+/* PAPER */
+.paper {
+  width: 60%;
+  background: #fffaf0;
+  border: 1px solid #d6c7ad;
+  padding: 18px;
+  display: flex;
+  gap: 18px;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.15);
+  position: relative;
+}
+
+/* IMAGE */
+.paper img {
+  width: 45%;
+  object-fit: cover;
+  filter: sepia(25%);
+}
+
+/* TEXT */
+.text {
+  width: 55%;
+}
+
+.text h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  margin: 0 0 10px;
+  color: #4b3a2a;
+}
+
+.text p {
   margin: 0;
-  font-size: 38px;
+  font-size: 15px;
+  color: #5c4c3c;
+}
+
+/* DECOR */
+.tape {
+  position: absolute;
+  top: -12px;
+  left: 30px;
+  width: 90px;
+  height: 26px;
+  background: rgba(210,190,150,0.6);
+  transform: rotate(-3deg);
+}
+
+.clip {
+  position: absolute;
+  top: -22px;
+  right: 20px;
+  width: 26px;
+  height: 36px;
+  border: 2px solid #777;
+  border-radius: 6px;
+}
+
+.flower {
+  position: absolute;
+  bottom: -24px;
+  right: -24px;
+  width: 60px;
+  height: 60px;
+  background: url("https://pngimg.com/uploads/flower/flower_PNG54769.png") center/contain no-repeat;
+  opacity: 0.7;
+}  font-size: 38px;
   color: #5b4636;
 }
 
