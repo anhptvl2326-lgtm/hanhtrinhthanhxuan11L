@@ -129,3 +129,14 @@ body {
   background: url("https://i.pinimg.com/736x/1e/48/55/1e4855b1dcf3eec1b9d00b8b2c9dbd60.jpg") center/cover no-repeat;
   opacity: 0.85;
 }
+
+.flower {
+  position: absolute;
+  z-index: 5;
+}
+
+.flower img {
+  width: 120px;
+  pointer-events: none;
+}
+
