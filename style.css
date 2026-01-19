@@ -4,48 +4,43 @@
 
 body {
   margin: 0;
+  background: #eee3d6;
   font-family: "Georgia", serif;
-  background: #efe6dc;
-  color: #4a3f35;
+  color: #4a3b2c;
 }
 
-/* PAGE */
-.page {
+.wrapper {
   max-width: 1000px;
   margin: auto;
   padding: 40px 20px;
 }
 
-/* HERO */
-.hero {
-  text-align: center;
-  margin-bottom: 60px;
-}
-
-.class-photo {
+/* ẢNH LỚP */
+.class-photo img {
   width: 100%;
   border-radius: 6px;
-  filter: sepia(20%);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.3);
+  filter: sepia(15%);
 }
 
-.title-box {
-  background: #f8f1e7;
-  margin: -40px auto 0;
-  padding: 25px 40px;
+/* TIÊU ĐỀ */
+.title {
+  background: #f7efe6;
   max-width: 720px;
-  border-radius: 4px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+  margin: -45px auto 60px;
+  padding: 30px 40px;
+  text-align: center;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
 }
 
-.title-box h1 {
+.title h1 {
   margin: 0;
   letter-spacing: 2px;
 }
 
-.title-box p {
-  font-style: italic;
+.title p {
   margin-top: 10px;
+  font-style: italic;
 }
 
 /* TIMELINE */
@@ -60,47 +55,46 @@ body {
   top: 0;
   bottom: 0;
   width: 2px;
-  background: #c5b7a6;
+  background: #c7b8a6;
 }
 
-/* EVENT */
-.event {
+/* ITEM */
+.item {
   display: flex;
   align-items: center;
-  margin-bottom: 60px;
-  position: relative;
+  margin-bottom: 70px;
 }
 
-.event.left {
+.item.left {
   flex-direction: row;
 }
 
-.event.right {
+.item.right {
   flex-direction: row-reverse;
 }
 
-.event img {
+.item img {
   width: 260px;
-  border-radius: 6px;
-  box-shadow: 0 8px 18px rgba(0,0,0,0.25);
   background: #fff;
   padding: 6px;
+  border-radius: 6px;
+  box-shadow: 0 10px 22px rgba(0,0,0,0.3);
 }
 
-.content {
-  background: #f9f3ea;
-  padding: 20px 25px;
+/* TEXT BOX */
+.text {
+  background: #faf3ea;
   max-width: 360px;
+  padding: 22px 28px;
   margin: 0 30px;
-  border-radius: 4px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
 }
 
-.content h3 {
+.text h3 {
   margin-top: 0;
 }
 
-.content span {
+.text span {
   display: inline-block;
   margin-top: 10px;
   font-style: italic;
