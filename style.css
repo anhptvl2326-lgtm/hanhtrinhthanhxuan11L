@@ -1,212 +1,52 @@
-* {
-  box-sizing: border-box;
-}
+/* ============================= RESET + BASE ============================= */
 
-body {
-  margin: 0;
-  background: #f4efe8
-    url("https://www.transparenttextures.com/patterns/paper-fibers.png");
-  font-family: "Inter", sans-serif;
-  color: #3a3a3a;
-}
+{ box-sizing: border-box; margin: 0; padding: 0; }
 
-/* ================= HERO ================= */
 
-.hero-paper {
-  max-width: 900px;
-  margin: 70px auto 120px;
-  background: #fffdf8;
-  padding: 25px;
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
-  text-align: center;
-  position: relative;
-}
+body { font-family: "Inter", sans-serif; background: #f3ede4 url("https://www.transparenttextures.com/patterns/paper.png"); color: #6b5a4a; }
 
-.hero-img {
-  width: 100%;
-  border-radius: 4px;
-}
+/* ============================= TIMELINE WRAPPER ============================= / .timeline { max-width: 1200px; margin: 80px auto; display: flex; flex-direction: column; gap: 90px; / khoảng cách CHUẨN giữa các card */ position: relative; }
 
-.hero-paper h1 {
-  font-family: "Playfair Display", serif;
-  margin-top: 25px;
-  font-size: 40px;
-  letter-spacing: 1px;
-}
+/* trục dọc giữa */ .timeline::before { content: ""; position: absolute; top: 0; bottom: 0; left: 50%; transform: translateX(-50%); width: 2px; background: repeating-linear-gradient( to bottom, #d6b27c, #d6b27c 6px, transparent 6px, transparent 14px ); }
 
-.handwrite {
-  font-family: "Dancing Script", cursive;
-  font-size: 20px;
-  color: #8b6f4e;
-}
+/* ============================= CARD CHUNG ============================= */ .card { width: 100%; display: flex; justify-content: space-between; position: relative; }
 
-/* WASHI TAPE */
-.tape {
-  position: absolute;
-  top: -14px;
-  left: 50%;
-  width: 130px;
-  height: 34px;
-  background: rgba(200, 180, 140, 0.75);
-  transform: translateX(-50%) rotate(-3deg);
-}
+.card.left { flex-direction: row; }
 
-/* ================= SCRAPBOOK ================= */
+.card.right { flex-direction: row-reverse; }
 
-.scrapbook {
-  max-width: 1100px;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 120px;
-}
+/* ============================= GIẤY ============================= */ .paper { width: 820px; background: #fff7eb url("https://www.transparenttextures.com/patterns/cream-paper.png"); border-radius: 6px; box-shadow: 0 18px 40px rgba(0,0,0,0.18); display: flex; gap: 32px; padding: 28px; position: relative; transition: transform 0.4s ease, box-shadow 0.4s ease; }
 
-/* ================= CARD ================= */
+/* HOVER */ .paper:hover { transform: translateY(-8px) rotate(-0.3deg); box-shadow: 0 28px 60px rgba(0,0,0,0.25); }
 
-.card {
-  position: relative;
-  background: #fffdf8;
-  padding: 30px;
-  width: 85%;
-  display: flex;
-  gap: 35px;
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.14);
-  border-radius: 6px;
-  transition: 0.4s ease;
-}
+/* ============================= KẸP GIẤY VÀNG ============================= */ .paper::before { content: ""; position: absolute; top: -20px; left: 42px; width: 28px; height: 44px; border: 3px solid #d4af37; border-bottom: none; border-radius: 12px 12px 0 0; transform: rotate(-6deg); }
 
-.card:hover {
-  transform: translateY(-6px) rotate(0.3deg);
-}
+/* ============================= ĐƯỜNG CHỈ MAY NỐI RA NGOÀI ============================= */ .paper::after { content: ""; position: absolute; top: 60px; width: 220px; height: 240px; background-image: repeating-linear-gradient( to bottom, #d6b27c, #d6b27c 6px, transparent 6px, transparent 14px ); }
 
-/* LEFT / RIGHT */
-.card.left {
-  align-self: flex-start;
-  margin-left: 40px;
-}
+.card.left .paper::after { right: -220px; }
 
-.card.right {
-  align-self: flex-end;
-  margin-right: 40px;
-  flex-direction: row-reverse;
-}
+.card.right .paper::after { left: -220px; }
 
-/* ================= IMAGE (KHÔNG CẮT CHỮ) ================= */
+/* ============================= ẢNH ============================= / .paper img { width: 450px; height: 400px; object-fit: cover; / KHÔNG CẮT CHỮ */ background: #fff; padding: 12px; box-shadow: 0 10px 20px rgba(0,0,0,0.15); transition: transform 0.4s ease; }
 
-.card img {
-  width: 320px;
-  height: auto;
-  object-fit: contain;
-  background: #fff;
-  padding: 6px;
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
-  transform: rotate(-2deg);
-}
+.paper:hover img { transform: scale(1.04); }
 
-.card.right img {
-  transform: rotate(2deg);
-}
+/* ============================= NỘI DUNG ============================= */ .content { display: flex; flex-direction: column; justify-content: center; }
 
-/* ================= CONTENT ================= */
+.content h2 { font-family: "Playfair Display", serif; font-size: 26px; color: #7a3f1d; margin-bottom: 12px; }
 
-.content h2 {
-  font-family: "Playfair Display", serif;
-  font-size: 22px;
-  margin-top: 0;
-}
+.content p { font-size: 18px; line-height: 1.6; margin-bottom: 18px; }
 
-.content p {
-  font-size: 15px;
-  color: #555;
-}
+.content a { font-size: 17px; color: #b25a2a; font-weight: 500; text-decoration: none; transition: color 0.3s ease; }
 
-.content a {
-  text-decoration: none;
-  color: #8b5e3c;
-  font-weight: 500;
-}
+.content a:hover { color: #7a3f1d; }
 
-/* ================= PAPER CLIP ================= */
+/* ============================= RESPONSIVE – MOBILE ============================= */ @media (max-width: 900px) { .timeline::before { display: none; }
 
-.clip {
-  position: absolute;
-  top: -22px;
-  left: 40px;
-  width: 30px;
-  height: 50px;
-  border: 3px solid #888;
-  border-radius: 16px;
-  background: #f4f1ec;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-}
+.card { flex-direction: column; align-items: center; }
 
-/* ================= FLOWER (HIỆN RÕ) ================= */
+.paper { width: 100%; flex-direction: column; }
 
-.flower {
-  position: absolute;
-  bottom: -12px;
-  right: 120px;
-  width: 90px;
-  height: 90px;
-  background: url("https://i.pinimg.com/736x/1e/48/55/1e4855b1dcf3eec1b9d00b8b2c9dbd60.jpg")
-    center/cover no-repeat;
-  opacity: 0.85;
-  pointer-events: none;
-}
+.paper::after { display: none; /* mobile bỏ đường chỉ */ }
 
-.card.left .flower {
-  right: auto;
-  left: 120px;
-}
-
-/* ================= DOTTED TIMELINE (ĐÚNG ẢNH MẪU) ================= */
-
-.card::before {
-  content: "";
-  position: absolute;
-  width: 160px;
-  height: 140px;
-  border: 2px dashed #cbb89d;
-  border-radius: 20px;
-  opacity: 0.65;
-}
-
-/* Card trái */
-.card.left::before {
-  right: -80px;
-  top: 40px;
-  border-left: none;
-  border-bottom: none;
-}
-
-/* Card phải */
-.card.right::before {
-  left: -80px;
-  top: 40px;
-  border-right: none;
-  border-bottom: none;
-}
-
-/* ================= RESPONSIVE ================= */
-
-@media (max-width: 768px) {
-  .card,
-  .card.right {
-    flex-direction: column;
-    width: 92%;
-    margin: auto;
-  }
-
-  .card::before {
-    display: none;
-  }
-
-  .card img {
-    width: 100%;
-    transform: none;
-  }
-
-  .flower {
-    display: none;
-  }
-  }
+.paper img { width: 100%; height: auto; } }
