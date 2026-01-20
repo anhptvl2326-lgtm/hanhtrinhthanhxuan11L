@@ -1,24 +1,21 @@
-/* RESET */
 * {
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  background: #f4efe8
-    url("https://www.transparenttextures.com/patterns/paper-fibers.png");
-  font-family: "Inter", sans-serif;
+  background: #f4efe8 url("https://www.transparenttextures.com/patterns/paper-fibers.png");
+  font-family: 'Inter', sans-serif;
   color: #3a3a3a;
 }
 
-/* ================= HERO ================= */
-
+/* ===== HERO ===== */
 .hero-paper {
   max-width: 900px;
   margin: 70px auto 100px;
   background: #fff;
-  padding: 26px;
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+  padding: 25px;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.15);
   text-align: center;
   position: relative;
 }
@@ -29,50 +26,49 @@ body {
 }
 
 .hero-paper h1 {
-  font-family: "Playfair Display", serif;
-  margin-top: 24px;
+  font-family: 'Playfair Display', serif;
+  margin-top: 25px;
   font-size: 40px;
+  color: #6b4b2a;
 }
 
 .handwrite {
-  font-family: "Dancing Script", cursive;
+  font-family: 'Dancing Script', cursive;
   font-size: 20px;
   color: #8b6f4e;
 }
 
-/* WASHI TAPE */
 .tape {
   position: absolute;
   top: -14px;
   left: 50%;
-  width: 130px;
-  height: 34px;
-  background: rgba(200, 180, 140, 0.75);
+  width: 120px;
+  height: 32px;
+  background: rgba(200,180,140,0.7);
   transform: translateX(-50%) rotate(-3deg);
 }
 
-/* ================= SCRAPBOOK ================= */
-
+/* ===== SCRAPBOOK ===== */
 .scrapbook {
   max-width: 1100px;
   margin: auto;
   display: flex;
   flex-direction: column;
-  gap: 36px; /* khoảng cách giống hình mẫu */
+  gap: 70px; /* xích card lại gần */
   position: relative;
 }
 
-/* ================= CARD ================= */
-
+/* ===== CARD ===== */
 .card {
   position: relative;
-  width: 82%; /* card trái & phải dài bằng nhau */
-  background: #fdf8f1;
-  border-radius: 6px;
-  padding: 20px;
+  background: #fffdf8;
+  padding: 22px 26px;
   display: flex;
-  gap: 18px;
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+  gap: 28px;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.14);
+  border-radius: 6px;
+  width: fit-content; /* 👈 NGẮN VỪA NỘI DUNG */
+  max-width: 720px;
 }
 
 .card.left {
@@ -84,98 +80,102 @@ body {
   flex-direction: row-reverse;
 }
 
-/* ================= IMAGE ================= */
+.card:hover {
+  transform: translateY(-6px);
+  transition: 0.4s ease;
+}
 
+/* ===== IMAGE ===== */
 .card img {
-  width: 170px;
-  height: 110px;
+  width: 300px;
+  height: 200px;
   object-fit: cover;
-  border-radius: 4px;
+  box-shadow: 0 12px 25px rgba(0,0,0,0.25);
   position: relative;
+  z-index: 2;
 }
 
-/* ================= CONTENT ================= */
-
-.content h2 {
-  font-family: "Playfair Display", serif;
-  font-size: 20px;
-  margin: 4px 0 6px;
-  color: #7b4f2c;
+.card.left img {
+  transform: rotate(-2deg);
 }
 
-.content p {
-  font-size: 14px;
-  color: #555;
-  margin: 0 0 8px;
+.card.right img {
+  transform: rotate(2deg);
 }
 
-.content a {
-  font-size: 14px;
-  text-decoration: none;
-  color: #8b5e3c;
-  font-weight: 500;
-}
-
-/* ================= CLIP (ĐÚNG VỊ TRÍ ẢNH MẪU) ================= */
-
+/* ===== CLIP (ĐÚNG CHỖ BẠN KHOANH) ===== */
 .clip {
   position: absolute;
-  top: -16px;
+  top: -14px;
   width: 26px;
   height: 44px;
   border: 3px solid #d6b24c;
   border-radius: 14px;
   background: #fffdf6;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.25);
   z-index: 5;
 }
 
-/* clip nằm trên ảnh */
 .card.left .clip {
-  left: 36px;
+  left: 140px; /* nằm trên ảnh */
 }
 
 .card.right .clip {
-  right: 36px;
+  right: 140px;
 }
 
-/* ================= ĐƯỜNG ĐỨT (NỐI NGOÀI CÙNG) ================= */
+/* ===== CONTENT ===== */
+.content h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  color: #7a4a25;
+  margin: 0 0 8px;
+}
 
+.content p {
+  font-size: 15px;
+  color: #555;
+  margin: 0 0 10px;
+}
+
+.content a {
+  text-decoration: none;
+  color: #8b5e3c;
+  font-weight: 500;
+}
+
+/* ===== FLOWER ===== */
+.flower {
+  position: absolute;
+  bottom: -18px;
+  right: -18px;
+  width: 56px;
+  height: 56px;
+  background: url("https://i.pinimg.com/736x/1e/48/55/1e4855b1dcf3eec1b9d00b8b2c9dbd60.jpg")
+    center/cover no-repeat;
+  opacity: 0.6;
+  transform: rotate(-8deg);
+}
+
+/* ===== ĐƯỜNG ĐỨT NỐI 2 CARD ===== */
 .card::after {
   content: "";
   position: absolute;
   top: 50%;
   width: 90px;
   height: 70px;
-  border: 2px dashed #c9b08a;
+  border: 2px dashed #cbb89d;
   border-radius: 40px;
-  transform: translateY(-50%);
 }
 
-/* card trái nối sang phải */
 .card.left::after {
   right: -100px;
   border-left: none;
   border-bottom: none;
 }
 
-/* card phải nối sang trái */
 .card.right::after {
   left: -100px;
   border-right: none;
   border-bottom: none;
-}
-
-/* ================= FLOWER ================= */
-
-.flower {
-  position: absolute;
-  bottom: -18px;
-  right: -18px;
-  width: 60px;
-  height: 60px;
-  background: url("https://i.pinimg.com/736x/1e/48/55/1e4855b1dcf3eec1b9d00b8b2c9dbd60.jpg")
-    center/cover no-repeat;
-  opacity: 0.6;
-  transform: rotate(-8deg);
-}
+  }
