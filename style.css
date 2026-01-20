@@ -3,50 +3,52 @@
 { box-sizing: border-box; margin: 0; padding: 0; }
 
 
-body { font-family: "Inter", sans-serif; background: #f3ede4 url("https://www.transparenttextures.com/patterns/paper.png"); color: #6b5a4a; }
+body { font-family: "Inter", sans-serif; background: #f1ece3 url("https://www.transparenttextures.com/patterns/paper-fibers.png"); color: #6b4e3d; }
 
-/* ============================= TIMELINE WRAPPER ============================= / .timeline { max-width: 1200px; margin: 80px auto; display: flex; flex-direction: column; gap: 90px; / khoảng cách CHUẨN giữa các card */ position: relative; }
+/* ============================= TIMELINE WRAPPER ============================= / .timeline { max-width: 1200px; margin: 90px auto 120px; display: flex; flex-direction: column; gap: 100px; / GIỐNG HÌNH MẪU */ position: relative; }
 
-/* trục dọc giữa */ .timeline::before { content: ""; position: absolute; top: 0; bottom: 0; left: 50%; transform: translateX(-50%); width: 2px; background: repeating-linear-gradient( to bottom, #d6b27c, #d6b27c 6px, transparent 6px, transparent 14px ); }
+/* TRỤC DỌC ĐỨT KHÚC CHÍNH / .timeline::before { content: ""; position: absolute; top: 0; bottom: 0; left: 50%; transform: translateX(-50%); width: 3px; / RÕ HƠN */ background: repeating-linear-gradient( to bottom, #caa56a, #caa56a 10px, transparent 10px, transparent 22px ); }
 
-/* ============================= CARD CHUNG ============================= */ .card { width: 100%; display: flex; justify-content: space-between; position: relative; }
+/* ============================= CARD ============================= */ .card { width: 100%; display: flex; position: relative; }
 
-.card.left { flex-direction: row; }
+.card.left { justify-content: flex-start; }
 
-.card.right { flex-direction: row-reverse; }
+.card.right { justify-content: flex-end; }
 
-/* ============================= GIẤY ============================= */ .paper { width: 820px; background: #fff7eb url("https://www.transparenttextures.com/patterns/cream-paper.png"); border-radius: 6px; box-shadow: 0 18px 40px rgba(0,0,0,0.18); display: flex; gap: 32px; padding: 28px; position: relative; transition: transform 0.4s ease, box-shadow 0.4s ease; }
+/* ============================= GIẤY SCRAPBOOK ============================= */ .paper { width: 860px; background: #fffaf1 url("https://www.transparenttextures.com/patterns/cream-paper.png"); border-radius: 8px; padding: 30px 34px; display: flex; gap: 34px; position: relative; box-shadow: 0 22px 45px rgba(0,0,0,0.18); transition: transform 0.45s ease, box-shadow 0.45s ease; }
 
-/* HOVER */ .paper:hover { transform: translateY(-8px) rotate(-0.3deg); box-shadow: 0 28px 60px rgba(0,0,0,0.25); }
+.paper:hover { transform: translateY(-10px) rotate(-0.4deg); box-shadow: 0 34px 70px rgba(0,0,0,0.28); }
 
-/* ============================= KẸP GIẤY VÀNG ============================= */ .paper::before { content: ""; position: absolute; top: -20px; left: 42px; width: 28px; height: 44px; border: 3px solid #d4af37; border-bottom: none; border-radius: 12px 12px 0 0; transform: rotate(-6deg); }
+/* ============================= KẸP GIẤY VÀNG ============================= */ .paper::before { content: ""; position: absolute; top: -22px; left: 56px; width: 30px; height: 48px; border: 4px solid #d4af37; border-bottom: none; border-radius: 14px 14px 0 0; background: transparent; transform: rotate(-6deg); }
 
-/* ============================= ĐƯỜNG CHỈ MAY NỐI RA NGOÀI ============================= */ .paper::after { content: ""; position: absolute; top: 60px; width: 220px; height: 240px; background-image: repeating-linear-gradient( to bottom, #d6b27c, #d6b27c 6px, transparent 6px, transparent 14px ); }
+/* ============================= ĐƯỜNG CHỈ MAY NỐI CARD ============================= */ .paper::after { content: ""; position: absolute; top: 50%; transform: translateY(-50%); width: 240px; height: 320px; background: repeating-linear-gradient( to bottom, #caa56a, #caa56a 10px, transparent 10px, transparent 22px ); }
 
-.card.left .paper::after { right: -220px; }
+.card.left .paper::after { right: -240px; }
 
-.card.right .paper::after { left: -220px; }
+.card.right .paper::after { left: -240px; }
 
-/* ============================= ẢNH ============================= / .paper img { width: 450px; height: 400px; object-fit: cover; / KHÔNG CẮT CHỮ */ background: #fff; padding: 12px; box-shadow: 0 10px 20px rgba(0,0,0,0.15); transition: transform 0.4s ease; }
+/* ============================= HOA TRANG TRÍ (GIỐNG MẪU) ============================= */ .paper .flower { position: absolute; bottom: -18px; right: -18px; width: 120px; height: 90px; background: url("https://i.pinimg.com/736x/1e/48/55/1e4855b1dcf3eec1b9d00b8b2c9dbd60.jpg") center/cover no-repeat; opacity: 0.85; }
 
-.paper:hover img { transform: scale(1.04); }
+/* ============================= ẢNH (GIỮ NGUYÊN TỈ LỆ THEO MẪU) ============================= / .paper img { max-width: 360px; / KHÔNG ÉP SỐ */ height: auto; background: #fff; padding: 12px; box-shadow: 0 14px 28px rgba(0,0,0,0.18); transition: transform 0.4s ease; }
 
-/* ============================= NỘI DUNG ============================= */ .content { display: flex; flex-direction: column; justify-content: center; }
+.paper:hover img { transform: scale(1.05); }
 
-.content h2 { font-family: "Playfair Display", serif; font-size: 26px; color: #7a3f1d; margin-bottom: 12px; }
+/* ============================= NỘI DUNG ============================= */ .content { flex: 1; display: flex; flex-direction: column; justify-content: center; }
 
-.content p { font-size: 18px; line-height: 1.6; margin-bottom: 18px; }
+.content h2 { font-family: "Playfair Display", serif; font-size: 28px; /* TO HƠN */ color: #7a3f1d; margin-bottom: 14px; }
 
-.content a { font-size: 17px; color: #b25a2a; font-weight: 500; text-decoration: none; transition: color 0.3s ease; }
+.content p { font-size: 18px; line-height: 1.65; margin-bottom: 20px; }
 
-.content a:hover { color: #7a3f1d; }
+.content a { font-size: 18px; color: #b25a2a; font-weight: 500; text-decoration: none; position: relative; }
+
+.content a::after { content: "→"; margin-left: 6px; }
 
 /* ============================= RESPONSIVE – MOBILE ============================= */ @media (max-width: 900px) { .timeline::before { display: none; }
 
-.card { flex-direction: column; align-items: center; }
+.card { justify-content: center; }
 
 .paper { width: 100%; flex-direction: column; }
 
-.paper::after { display: none; /* mobile bỏ đường chỉ */ }
+.paper::after { display: none; }
 
-.paper img { width: 100%; height: auto; } }
+.paper img { max-width: 100%; } }
