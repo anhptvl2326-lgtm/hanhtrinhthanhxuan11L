@@ -1,49 +1,47 @@
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
 body {
+  margin: 0;
   font-family: "Georgia", serif;
-  background: #f6f1ea;
-  color: #3a3a3a;
+  background: #f4efe7;
+  color: #3b2f2f;
 }
 
 /* TIMELINE */
 .timeline {
-  position: relative;
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 80px auto;
-  padding: 40px 0;
+  padding: 60px 0;
+  position: relative;
 }
 
-/* ĐƯỜNG DỨT RÕ */
+/* ĐƯỜNG NÉT ĐỨT */
 .timeline::before {
   content: "";
   position: absolute;
-  top: 0;
   left: 50%;
-  width: 5px;
+  top: 0;
+  width: 4px;
   height: 100%;
   background: repeating-linear-gradient(
     to bottom,
-    #d9b96e 0,
-    #d9b96e 16px,
-    transparent 16px,
-    transparent 32px
+    #d1b36c 0px,
+    #d1b36c 14px,
+    transparent 14px,
+    transparent 28px
   );
   transform: translateX(-50%);
 }
 
 /* ITEM */
 .timeline-item {
-  position: relative;
   width: 50%;
-  padding: 50px 70px;
+  padding: 40px 70px;
+  position: relative;
 }
 
-/* SO LE */
 .timeline-item.left {
   left: 0;
   text-align: right;
@@ -56,76 +54,94 @@ body {
 
 /* CARD */
 .card {
-  background: #fffdfa;
-  border-radius: 20px;
-  padding: 18px;
-  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.15);
-  transition: 0.35s ease;
+  background: #fff7ec;
+  border-radius: 18px;
+  padding: 20px 22px;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.18);
+  position: relative;
 }
 
-/* HOVER */
-.card:hover {
-  transform: translateY(-12px);
-  box-shadow: 0 22px 55px rgba(0, 0, 0, 0.22);
+/* HOA MỜ */
+.card::after {
+  content: "";
+  position: absolute;
+  right: 14px;
+  bottom: 10px;
+  width: 90px;
+  height: 90px;
+  background: url("hoa.png") center/contain no-repeat;
+  opacity: 0.35;
+  pointer-events: none;
 }
 
-/* IMAGE */
-.card img {
-  width: 100%;
-  height: auto;
-  border-radius: 16px;
-  transition: transform 0.4s ease;
-}
-
-.card:hover img {
-  transform: scale(1.06);
-}
-
-/* DOT */
+/* MÓC TREO */
 .timeline-item::before {
   content: "";
   position: absolute;
-  top: 70px;
-  width: 20px;
-  height: 20px;
-  background: #d9b96e;
-  border-radius: 50%;
+  top: 52px;
+  width: 26px;
+  height: 34px;
+  background: url("hook.png") center/contain no-repeat;
   z-index: 5;
 }
 
 .timeline-item.left::before {
-  right: -10px;
+  right: -13px;
 }
 
 .timeline-item.right::before {
-  left: -10px;
+  left: -13px;
+}
+
+/* ẢNH */
+.card img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 14px;
 }
 
 /* TEXT */
 .card h3 {
-  font-size: 21px;
+  font-size: 22px;
   margin: 14px 0 6px;
+  color: #7a3d1c;
 }
 
 .card p {
   font-size: 15px;
-  color: #555;
+  line-height: 1.6;
+  color: #5a4a42;
+}
+
+.card a {
+  display: inline-block;
+  margin-top: 10px;
+  color: #a85c2d;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* HOVER NHẸ */
+.card:hover {
+  transform: translateY(-6px);
+  transition: 0.3s ease;
 }
 
 /* MOBILE */
 @media (max-width: 768px) {
   .timeline::before {
-    left: 22px;
+    left: 20px;
   }
 
   .timeline-item {
     width: 100%;
     left: 0;
-    padding: 40px 20px 40px 70px;
+    padding: 30px 20px 30px 70px;
     text-align: left;
   }
 
   .timeline-item::before {
-    left: 12px;
+    left: 6px;
   }
 }
