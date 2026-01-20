@@ -62,19 +62,22 @@ body {
 }
 
 /* ==== ĐƯỜNG BO CONG NỐI CÁC MỤC ==== */
-.scrapbook::before {
+.card::before {
   content: "";
   position: absolute;
-  top: 40px;
-  left: 50%;
-  width: 460px;
-  height: calc(100% - 80px);
+  top: 50%;
+  width: 60px;
+  height: 60px;
   border: 2px dashed #c9b08a;
-  border-left: none;
-  border-right: none;
-  border-radius: 120px;
-  transform: translateX(-50%);
-  opacity: 0.9;
+  border-radius: 50%;
+}
+
+.card.left::before {
+  right: -70px;
+}
+
+.card.right::before {
+  left: -70px;
 }
 
 /* ================= CARD ================= */
@@ -95,14 +98,16 @@ body {
   transform: translateY(-6px) rotate(0.3deg);
 }
 
+/* CARD TRÁI – DÀI HƠN (VỪA TIÊU ĐỀ) */
 .card.left {
+  width: 84%;
   align-self: flex-start;
-  margin-left: 10px;
 }
 
+/* CARD PHẢI – NGẮN HƠN (NHƯ MẪU) */
 .card.right {
+  width: 68%;
   align-self: flex-end;
-  margin-right: 10px;
   flex-direction: row-reverse;
 }
 
