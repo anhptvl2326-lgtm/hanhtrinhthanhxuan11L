@@ -2,157 +2,146 @@
   box-sizing: border-box;
 }
 
-/* ===== BODY ===== */
 body {
   margin: 0;
-  background: #f4efe8 url("https://www.transparenttextures.com/patterns/paper-fibers.png");
-  font-family: 'Inter', sans-serif;
-  color: #3a3a3a;
+  font-family: "Georgia", serif;
+  background: #f4efe7;
+  color: #3b2f2f;
 }
 
-/* ===== HERO ===== */
-.hero-paper {
-  max-width: 900px;
-  margin: 70px auto 100px;
-  background: #fff;
-  padding: 25px;
-  box-shadow: 0 25px 50px rgba(0,0,0,0.15);
-  text-align: center;
+/* TIMELINE */
+.timeline {
+  max-width: 1200px;
+  margin: 80px auto;
+  padding: 60px 0;
   position: relative;
 }
 
-.hero-img {
-  width: 100%;
-  border-radius: 4px;
-}
-
-.hero-paper h1 {
-  font-family: 'Playfair Display', serif;
-  margin-top: 25px;
-  font-size: 40px;
-  color: #6b4b2a;
-}
-
-.handwrite {
-  font-family: 'Dancing Script', cursive;
-  font-size: 21px;
-  color: #8b6f4e;
-}
-
-/* WASHI TAPE */
-.tape {
+/* ĐƯỜNG NÉT ĐỨT */
+.timeline::before {
+  content: "";
   position: absolute;
-  top: -14px;
   left: 50%;
-  width: 120px;
-  height: 32px;
-  background: rgba(200,180,140,0.7);
-  transform: translateX(-50%) rotate(-3deg);
-}
-
-/* ===== SCRAPBOOK ===== */
-.scrapbook {
-  max-width: 1100px;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 65px;
-  position: relative;
-}
-
-/* ===== SVG TIMELINE ===== */
-.timeline-svg {
-  position: absolute;
   top: 0;
-  left: 50%;
-  width: 1100px;
-  height: 1800px;
+  width: 4px;
+  height: 100%;
+  background: repeating-linear-gradient(
+    to bottom,
+    #d1b36c 0px,
+    #d1b36c 14px,
+    transparent 14px,
+    transparent 28px
+  );
   transform: translateX(-50%);
-  z-index: 0;
+}
+
+/* ITEM */
+.timeline-item {
+  width: 50%;
+  padding: 40px 70px;
+  position: relative;
+}
+
+.timeline-item.left {
+  left: 0;
+  text-align: right;
+}
+
+.timeline-item.right {
+  left: 50%;
+  text-align: left;
+}
+
+/* CARD */
+.card {
+  background: #fff7ec;
+  border-radius: 18px;
+  padding: 20px 22px;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.18);
+  position: relative;
+}
+
+/* HOA MỜ */
+.card::after {
+  content: "";
+  position: absolute;
+  right: 14px;
+  bottom: 10px;
+  width: 90px;
+  height: 90px;
+  background: url("hoa.png") center/contain no-repeat;
+  opacity: 0.35;
   pointer-events: none;
 }
 
-/* ===== CARD ===== */
-.card {
-  position: relative;
-  z-index: 2;
-  background: #fffdf8;
-  padding: 22px 26px;
-  display: flex;
-  gap: 26px;
-  box-shadow: 0 18px 40px rgba(0,0,0,0.14);
-  border-radius: 6px;
-  width: fit-content;
-  max-width: 740px;
-}
-
-.card.left {
-  align-self: flex-start;
-}
-
-.card.right {
-  align-self: flex-end;
-  flex-direction: row-reverse;
-}
-
-/* ===== IMAGE (THẲNG) ===== */
-.card img {
-  width: 300px;
-  height: 200px;
-  object-fit: cover;
-  box-shadow: 0 12px 25px rgba(0,0,0,0.25);
-}
-
-/* ===== CLIP ===== */
-.clip {
+/* MÓC TREO */
+.timeline-item::before {
+  content: "";
   position: absolute;
-  top: -14px;
+  top: 52px;
   width: 26px;
-  height: 44px;
-  border: 3px solid #d6b24c;
-  border-radius: 14px;
-  background: #fffdf6;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.25);
+  height: 34px;
+  background: url("hook.png") center/contain no-repeat;
   z-index: 5;
 }
 
-.card.left .clip {
-  left: 140px;
+.timeline-item.left::before {
+  right: -13px;
 }
 
-.card.right .clip {
-  right: 140px;
+.timeline-item.right::before {
+  left: -13px;
 }
 
-/* ===== CONTENT ===== */
-.content h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 24px;
-  color: #7a4a25;
-  margin: 0 0 10px;
+/* ẢNH */
+.card img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 14px;
 }
 
-.content p {
-  font-size: 16px;
-  color: #555;
-  margin: 0 0 12px;
+/* TEXT */
+.card h3 {
+  font-size: 22px;
+  margin: 14px 0 6px;
+  color: #7a3d1c;
 }
 
-.content a {
-  font-size: 15.5px;
+.card p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #5a4a42;
+}
+
+.card a {
+  display: inline-block;
+  margin-top: 10px;
+  color: #a85c2d;
   text-decoration: none;
-  color: #8b5e3c;
-  font-weight: 500;
+  font-weight: bold;
 }
 
-/* ===== FLOWER ===== */
-.flower {
-  position: absolute;
-  bottom: -18px;
-  right: -18px;
-  width: 56px;
-  height: 56px;
-  background: url("https://i.pinimg.com/736x/1e/48/55/1e4855b1dcf3eec1b9d00b8b2c9dbd60.jpg")
-    center/cover no-repeat;
-  opacity: 0.6;
+/* HOVER NHẸ */
+.card:hover {
+  transform: translateY(-6px);
+  transition: 0.3s ease;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .timeline::before {
+    left: 20px;
+  }
+
+  .timeline-item {
+    width: 100%;
+    left: 0;
+    padding: 30px 20px 30px 70px;
+    text-align: left;
+  }
+
+  .timeline-item::before {
+    left: 6px;
+  }
 }
