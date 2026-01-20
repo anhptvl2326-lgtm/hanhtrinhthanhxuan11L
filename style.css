@@ -4,148 +4,169 @@
 
 body {
   margin: 0;
-  font-family: "Georgia", serif;
-  background: #f4efe7;
-  color: #3b2f2f;
+  background: #f4efe8 url("https://www.transparenttextures.com/patterns/paper-fibers.png");
+  font-family: 'Inter', sans-serif;
+  color: #3b332c;
 }
 
-/* TIMELINE */
-.timeline {
-  max-width: 1200px;
-  margin: 80px auto;
-  padding: 60px 0;
+/* ========== HERO ========== */
+.hero-paper {
+  max-width: 900px;
+  margin: 70px auto 120px;
+  background: #fff;
+  padding: 25px;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+  text-align: center;
   position: relative;
 }
 
-/* ĐƯỜNG NÉT ĐỨT */
-.timeline::before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 0;
-  width: 4px;
-  height: 100%;
-  background: repeating-linear-gradient(
-    to bottom,
-    #d1b36c 0px,
-    #d1b36c 14px,
-    transparent 14px,
-    transparent 28px
-  );
-  transform: translateX(-50%);
-}
-
-/* ITEM */
-.timeline-item {
-  width: 50%;
-  padding: 40px 70px;
-  position: relative;
-}
-
-.timeline-item.left {
-  left: 0;
-  text-align: right;
-}
-
-.timeline-item.right {
-  left: 50%;
-  text-align: left;
-}
-
-/* CARD */
-.card {
-  background: #fff7ec;
-  border-radius: 18px;
-  padding: 20px 22px;
-  box-shadow: 0 12px 28px rgba(0,0,0,0.18);
-  position: relative;
-}
-
-/* HOA MỜ */
-.card::after {
-  content: "";
-  position: absolute;
-  right: 14px;
-  bottom: 10px;
-  width: 90px;
-  height: 90px;
-  background: url("hoa.png") center/contain no-repeat;
-  opacity: 0.35;
-  pointer-events: none;
-}
-
-/* MÓC TREO */
-.timeline-item::before {
-  content: "";
-  position: absolute;
-  top: 52px;
-  width: 26px;
-  height: 34px;
-  background: url("hook.png") center/contain no-repeat;
-  z-index: 5;
-}
-
-.timeline-item.left::before {
-  right: -13px;
-}
-
-.timeline-item.right::before {
-  left: -13px;
-}
-
-/* ẢNH */
-.card img {
+.hero-img {
   width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 14px;
+  border-radius: 4px;
 }
 
-/* TEXT */
-.card h3 {
+.hero-paper h1 {
+  font-family: 'Playfair Display', serif;
+  margin-top: 25px;
+  font-size: 42px;
+  color: #5b4632;
+}
+
+.handwrite {
+  font-family: 'Dancing Script', cursive;
   font-size: 22px;
-  margin: 14px 0 6px;
-  color: #7a3d1c;
+  color: #9b7b55;
 }
 
-.card p {
-  font-size: 15px;
-  line-height: 1.6;
-  color: #5a4a42;
+/* Washi tape */
+.tape {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  width: 120px;
+  height: 32px;
+  background: rgba(210,180,120,0.75);
+  transform: translateX(-50%) rotate(-3deg);
 }
 
-.card a {
-  display: inline-block;
-  margin-top: 10px;
-  color: #a85c2d;
+/* ========== TIMELINE ========== */
+.scrapbook {
+  max-width: 1100px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 90px;
+  position: relative;
+}
+
+/* ========== CARD ========== */
+.card {
+  background: #fffdf8;
+  width: 82%;
+  padding: 30px;
+  display: flex;
+  gap: 35px;
+  position: relative;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.14);
+  border-radius: 6px;
+}
+
+.card.left {
+  align-self: flex-start;
+  margin-left: 40px;
+}
+
+.card.right {
+  align-self: flex-end;
+  margin-right: 40px;
+  flex-direction: row-reverse;
+}
+
+/* ========== IMAGE ========== */
+.card img {
+  width: 360px;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 3px;
+  box-shadow: 0 12px 25px rgba(0,0,0,0.22);
+}
+
+/* ========== CONTENT ========== */
+.content h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #5b4632;
+}
+
+.content p {
+  font-size: 16px;
+  color: #5f5a55;
+  margin-bottom: 12px;
+}
+
+.content a {
   text-decoration: none;
-  font-weight: bold;
+  color: #9b6a3a;
+  font-weight: 500;
 }
 
-/* HOVER NHẸ */
-.card:hover {
-  transform: translateY(-6px);
-  transition: 0.3s ease;
+/* ========== CLIP (VÀNG – GIỮA ẢNH) ========== */
+.clip {
+  position: absolute;
+  top: -22px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 32px;
+  height: 52px;
+  border: 3px solid #c9a24d;
+  border-radius: 16px;
+  background: #fff6d6;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.25);
+  z-index: 3;
 }
 
-.card:hover {
-  transform: translateY(-8px) rotate(0.4deg);
+/* ========== FLOWER ========== */
+.flower {
+  position: absolute;
+  bottom: -18px;
+  right: -18px;
+  width: 60px;
+  height: 60px;
+  background: url("https://i.pinimg.com/736x/1e/48/55/1e4855b1dcf3eec1b9d00b8b2c9dbd60.jpg")
+    center/cover no-repeat;
+  opacity: 0.6;
 }
 
-/* MOBILE */
-@media (max-width: 768px) {
-  .timeline::before {
-    left: 20px;
-  }
+/* ========== ĐƯỜNG ĐỨT NỐI CARD ========== */
 
-  .timeline-item {
-    width: 100%;
-    left: 0;
-    padding: 30px 20px 30px 70px;
-    text-align: left;
-  }
+/* Card TRÁI → nối từ MÉP PHẢI sang CLIP card sau */
+.card.left::after {
+  content: "";
+  position: absolute;
+  right: -60px;
+  top: 50%;
+  width: 60px;
+  height: 120px;
+  border-right: 3px dashed #c7b08a;
+  border-bottom: 3px dashed #c7b08a;
+  border-radius: 0 0 24px 0;
+}
 
-  .timeline-item::before {
-    left: 6px;
-  }
+/* Card PHẢI → nối từ MÉP TRÁI sang CLIP card sau */
+.card.right::after {
+  content: "";
+  position: absolute;
+  left: -60px;
+  top: 50%;
+  width: 60px;
+  height: 120px;
+  border-left: 3px dashed #c7b08a;
+  border-bottom: 3px dashed #c7b08a;
+  border-radius: 0 0 0 24px;
+}
+
+/* Card cuối không vẽ đường */
+.card:last-child::after {
+  display: none;
 }
