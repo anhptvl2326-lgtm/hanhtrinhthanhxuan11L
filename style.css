@@ -2,17 +2,18 @@
   box-sizing: border-box;
 }
 
+/* ===== BODY ===== */
 body {
   margin: 0;
   background: #f4efe8 url("https://www.transparenttextures.com/patterns/paper-fibers.png");
   font-family: 'Inter', sans-serif;
-  color: #3b332c;
+  color: #3a3a3a;
 }
 
-/* ========== HERO ========== */
+/* ===== HERO ===== */
 .hero-paper {
   max-width: 900px;
-  margin: 70px auto 120px;
+  margin: 70px auto 100px;
   background: #fff;
   padding: 25px;
   box-shadow: 0 25px 50px rgba(0,0,0,0.15);
@@ -28,145 +29,130 @@ body {
 .hero-paper h1 {
   font-family: 'Playfair Display', serif;
   margin-top: 25px;
-  font-size: 42px;
-  color: #5b4632;
+  font-size: 40px;
+  color: #6b4b2a;
 }
 
 .handwrite {
   font-family: 'Dancing Script', cursive;
-  font-size: 22px;
-  color: #9b7b55;
+  font-size: 21px;
+  color: #8b6f4e;
 }
 
-/* Washi tape */
+/* WASHI TAPE */
 .tape {
   position: absolute;
   top: -14px;
   left: 50%;
   width: 120px;
   height: 32px;
-  background: rgba(210,180,120,0.75);
+  background: rgba(200,180,140,0.7);
   transform: translateX(-50%) rotate(-3deg);
 }
 
-/* ========== TIMELINE ========== */
+/* ===== SCRAPBOOK ===== */
 .scrapbook {
   max-width: 1100px;
   margin: auto;
   display: flex;
   flex-direction: column;
-  gap: 90px;
+  gap: 65px;
   position: relative;
 }
 
-/* ========== CARD ========== */
+/* ===== SVG TIMELINE ===== */
+.timeline-svg {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 1100px;
+  height: 1800px;
+  transform: translateX(-50%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ===== CARD ===== */
 .card {
-  background: #fffdf8;
-  width: 82%;
-  padding: 30px;
-  display: flex;
-  gap: 35px;
   position: relative;
+  z-index: 2;
+  background: #fffdf8;
+  padding: 22px 26px;
+  display: flex;
+  gap: 26px;
   box-shadow: 0 18px 40px rgba(0,0,0,0.14);
   border-radius: 6px;
+  width: fit-content;
+  max-width: 740px;
 }
 
 .card.left {
   align-self: flex-start;
-  margin-left: 40px;
 }
 
 .card.right {
   align-self: flex-end;
-  margin-right: 40px;
   flex-direction: row-reverse;
 }
 
-/* ========== IMAGE ========== */
+/* ===== IMAGE (THẲNG) ===== */
 .card img {
-  width: 360px;
-  height: 240px;
+  width: 300px;
+  height: 200px;
   object-fit: cover;
-  border-radius: 3px;
-  box-shadow: 0 12px 25px rgba(0,0,0,0.22);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.25);
 }
 
-/* ========== CONTENT ========== */
+/* ===== CLIP ===== */
+.clip {
+  position: absolute;
+  top: -14px;
+  width: 26px;
+  height: 44px;
+  border: 3px solid #d6b24c;
+  border-radius: 14px;
+  background: #fffdf6;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.25);
+  z-index: 5;
+}
+
+.card.left .clip {
+  left: 140px;
+}
+
+.card.right .clip {
+  right: 140px;
+}
+
+/* ===== CONTENT ===== */
 .content h2 {
   font-family: 'Playfair Display', serif;
   font-size: 24px;
-  margin-bottom: 10px;
-  color: #5b4632;
+  color: #7a4a25;
+  margin: 0 0 10px;
 }
 
 .content p {
   font-size: 16px;
-  color: #5f5a55;
-  margin-bottom: 12px;
+  color: #555;
+  margin: 0 0 12px;
 }
 
 .content a {
+  font-size: 15.5px;
   text-decoration: none;
-  color: #9b6a3a;
+  color: #8b5e3c;
   font-weight: 500;
 }
 
-/* ========== CLIP (VÀNG – GIỮA ẢNH) ========== */
-.clip {
-  position: absolute;
-  top: -22px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 32px;
-  height: 52px;
-  border: 3px solid #c9a24d;
-  border-radius: 16px;
-  background: #fff6d6;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.25);
-  z-index: 3;
-}
-
-/* ========== FLOWER ========== */
+/* ===== FLOWER ===== */
 .flower {
   position: absolute;
   bottom: -18px;
   right: -18px;
-  width: 60px;
-  height: 60px;
+  width: 56px;
+  height: 56px;
   background: url("https://i.pinimg.com/736x/1e/48/55/1e4855b1dcf3eec1b9d00b8b2c9dbd60.jpg")
     center/cover no-repeat;
   opacity: 0.6;
-}
-
-/* ========== ĐƯỜNG ĐỨT NỐI CARD ========== */
-
-/* Card TRÁI → nối từ MÉP PHẢI sang CLIP card sau */
-.card.left::after {
-  content: "";
-  position: absolute;
-  right: -60px;
-  top: 50%;
-  width: 60px;
-  height: 120px;
-  border-right: 3px dashed #c7b08a;
-  border-bottom: 3px dashed #c7b08a;
-  border-radius: 0 0 24px 0;
-}
-
-/* Card PHẢI → nối từ MÉP TRÁI sang CLIP card sau */
-.card.right::after {
-  content: "";
-  position: absolute;
-  left: -60px;
-  top: 50%;
-  width: 60px;
-  height: 120px;
-  border-left: 3px dashed #c7b08a;
-  border-bottom: 3px dashed #c7b08a;
-  border-radius: 0 0 0 24px;
-}
-
-/* Card cuối không vẽ đường */
-.card:last-child::after {
-  display: none;
 }
