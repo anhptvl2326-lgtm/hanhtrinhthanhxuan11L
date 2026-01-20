@@ -1,52 +1,54 @@
+/* RESET */
 * {
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  background: #f4efe8 url("https://www.transparenttextures.com/patterns/paper-fibers.png");
-  font-family: 'Inter', sans-serif;
-  color: #4a3a2a;
+  background: #f4efe8
+    url("https://www.transparenttextures.com/patterns/paper-fibers.png");
+  font-family: "Inter", sans-serif;
+  color: #3a3a3a;
 }
 
 /* ================= HERO ================= */
 
 .hero-paper {
   max-width: 900px;
-  margin: 70px auto 120px;
+  margin: 70px auto 100px;
   background: #fff;
-  padding: 25px;
-  box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+  padding: 26px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
   text-align: center;
   position: relative;
 }
 
+.hero-img {
+  width: 100%;
+  border-radius: 4px;
+}
+
+.hero-paper h1 {
+  font-family: "Playfair Display", serif;
+  margin-top: 24px;
+  font-size: 40px;
+}
+
+.handwrite {
+  font-family: "Dancing Script", cursive;
+  font-size: 20px;
+  color: #8b6f4e;
+}
+
+/* WASHI TAPE */
 .tape {
   position: absolute;
   top: -14px;
   left: 50%;
-  width: 120px;
-  height: 32px;
-  background: rgba(200,180,140,0.7);
+  width: 130px;
+  height: 34px;
+  background: rgba(200, 180, 140, 0.75);
   transform: translateX(-50%) rotate(-3deg);
-}
-
-.hero-img {
-  width: 100%;
-  border-radius: 3px;
-}
-
-.hero-paper h1 {
-  font-family: 'Playfair Display', serif;
-  margin-top: 25px;
-  font-size: 40px;
-  color: #6b4a2d;
-}
-
-.handwrite {
-  font-family: 'Dancing Script', cursive;
-  font-size: 20px;
-  color: #9a7a55;
 }
 
 /* ================= SCRAPBOOK ================= */
@@ -56,111 +58,112 @@ body {
   margin: auto;
   display: flex;
   flex-direction: column;
-  gap: 120px;
+  gap: 36px; /* khoảng cách giống hình mẫu */
   position: relative;
-  padding-bottom: 120px;
-}
-
-/* ==== ĐƯỜNG BO CONG NỐI CÁC MỤC ==== */
-.card::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  width: 60px;
-  height: 60px;
-  border: 2px dashed #c9b08a;
-  border-radius: 50%;
-}
-
-.card.left::before {
-  right: -70px;
-}
-
-.card.right::before {
-  left: -70px;
 }
 
 /* ================= CARD ================= */
 
 .card {
-  background: #fffdf8;
-  padding: 26px 30px;
-  display: flex;
-  gap: 30px;
-  width: 72%;
   position: relative;
-  box-shadow: 0 18px 40px rgba(0,0,0,0.14);
-  transition: 0.4s ease;
+  width: 82%; /* card trái & phải dài bằng nhau */
+  background: #fdf8f1;
   border-radius: 6px;
+  padding: 20px;
+  display: flex;
+  gap: 18px;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
 }
 
-.card:hover {
-  transform: translateY(-6px) rotate(0.3deg);
-}
-
-/* CARD TRÁI – DÀI HƠN (VỪA TIÊU ĐỀ) */
 .card.left {
-  width: 84%;
   align-self: flex-start;
 }
 
-/* CARD PHẢI – NGẮN HƠN (NHƯ MẪU) */
 .card.right {
-  width: 68%;
   align-self: flex-end;
   flex-direction: row-reverse;
-}
-
-/* ================= CLIP VÀNG ================= */
-
-.clip {
-  position: absolute;
-  top: 12px;                 /* nằm trên ảnh */
-  left: 50%;
-  transform: translateX(-50%);
-  width: 26px;
-  height: 44px;
-  border: 3px solid #d6b24c;
-  border-radius: 14px;
-  background: #fffdf6;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.25);
-  z-index: 4;
 }
 
 /* ================= IMAGE ================= */
 
 .card img {
-  width: 320px;
-  height: 210px;
+  width: 170px;
+  height: 110px;
   object-fit: cover;
-  transform: rotate(-1.2deg);
-  box-shadow: 0 10px 22px rgba(0,0,0,0.25);
-  border-radius: 3px;
-}
-
-.card.right img {
-  transform: rotate(1.2deg);
+  border-radius: 4px;
+  position: relative;
 }
 
 /* ================= CONTENT ================= */
 
 .content h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 22px;
-  color: #7a4e2d;
-  margin-top: 0;
+  font-family: "Playfair Display", serif;
+  font-size: 20px;
+  margin: 4px 0 6px;
+  color: #7b4f2c;
 }
 
 .content p {
-  font-size: 15px;
-  color: #6a5a4a;
-  line-height: 1.6;
+  font-size: 14px;
+  color: #555;
+  margin: 0 0 8px;
 }
 
 .content a {
+  font-size: 14px;
   text-decoration: none;
-  color: #b07a3c;
+  color: #8b5e3c;
   font-weight: 500;
+}
+
+/* ================= CLIP (ĐÚNG VỊ TRÍ ẢNH MẪU) ================= */
+
+.clip {
+  position: absolute;
+  top: -16px;
+  width: 26px;
+  height: 44px;
+  border: 3px solid #d6b24c;
+  border-radius: 14px;
+  background: #fffdf6;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.25);
+  z-index: 5;
+}
+
+/* clip nằm trên ảnh */
+.card.left .clip {
+  left: 36px;
+}
+
+.card.right .clip {
+  right: 36px;
+}
+
+/* ================= ĐƯỜNG ĐỨT (NỐI NGOÀI CÙNG) ================= */
+
+.card::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 90px;
+  height: 70px;
+  border: 2px dashed #c9b08a;
+  border-radius: 40px;
+  transform: translateY(-50%);
+}
+
+/* card trái nối sang phải */
+.card.left::after {
+  right: -100px;
+  border-left: none;
+  border-bottom: none;
+}
+
+/* card phải nối sang trái */
+.card.right::after {
+  left: -100px;
+  border-right: none;
+  border-bottom: none;
 }
 
 /* ================= FLOWER ================= */
@@ -169,9 +172,10 @@ body {
   position: absolute;
   bottom: -18px;
   right: -18px;
-  width: 58px;
-  height: 58px;
-  background: url("https://i.pinimg.com/736x/1e/48/55/1e4855b1dcf3eec1b9d00b8b2c9dbd60.jpg") center/cover no-repeat;
+  width: 60px;
+  height: 60px;
+  background: url("https://i.pinimg.com/736x/1e/48/55/1e4855b1dcf3eec1b9d00b8b2c9dbd60.jpg")
+    center/cover no-repeat;
   opacity: 0.6;
   transform: rotate(-8deg);
 }
