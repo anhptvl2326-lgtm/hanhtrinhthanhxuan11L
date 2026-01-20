@@ -1,222 +1,131 @@
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  margin: 0;
-  background: #f3efe8 url("https://www.transparenttextures.com/patterns/paper-fibers.png");
-  font-family: 'Inter', sans-serif;
-  color: #4a3a2a;
+  font-family: "Georgia", serif;
+  background: #f6f1ea;
+  color: #3a3a3a;
 }
 
-/* ================= HERO ================= */
-.hero-paper {
-  max-width: 980px;
-  margin: 80px auto 140px;
-  background: #fff;
-  padding: 26px;
-  text-align: center;
+/* TIMELINE */
+.timeline {
   position: relative;
-  box-shadow: 0 25px 60px rgba(0,0,0,0.18);
+  max-width: 1100px;
+  margin: 80px auto;
+  padding: 40px 0;
 }
 
-.hero-paper img {
-  width: 100%;
-  display: block;
-}
-
-.hero-paper h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: 42px;
-  margin: 22px 0 8px;
-  color: #5a3d23;
-}
-
-.handwrite {
-  font-family: 'Dancing Script', cursive;
-  font-size: 20px;
-  color: #8b6f4e;
-}
-
-/* tape */
-.tape {
-  position: absolute;
-  top: -16px;
-  left: 50%;
-  width: 130px;
-  height: 34px;
-  background: rgba(205,180,135,0.75);
-  transform: translateX(-50%) rotate(-3deg);
-}
-
-/* ================= TIMELINE ================= */
-.scrapbook {
-  max-width: 1200px;
-  margin: auto;
-  position: relative;
-  padding-bottom: 120px;
-}
-
-/* đường đứt trục giữa */
-.scrapbook::before {
+/* ĐƯỜNG DỨT RÕ */
+.timeline::before {
   content: "";
   position: absolute;
-  top: -80px;
-  bottom: 0;
+  top: 0;
   left: 50%;
-  width: 4px;
+  width: 5px;
+  height: 100%;
   background: repeating-linear-gradient(
     to bottom,
-    #c6a875,
-    #c6a875 10px,
-    transparent 10px,
-    transparent 20px
+    #d9b96e 0,
+    #d9b96e 16px,
+    transparent 16px,
+    transparent 32px
   );
   transform: translateX(-50%);
 }
 
-/* ================= CARD ================= */
-.card {
-  width: 100%;
-  display: flex;
-  margin: 120px 0;
+/* ITEM */
+.timeline-item {
   position: relative;
+  width: 50%;
+  padding: 50px 70px;
 }
 
-.card.left {
-  justify-content: flex-start;
+/* SO LE */
+.timeline-item.left {
+  left: 0;
+  text-align: right;
 }
 
-.card.right {
-  justify-content: flex-end;
-}
-
-/* đường nối card → trục */
-.card::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  width: 90px;
-  height: 4px;
-  background: repeating-linear-gradient(
-    to right,
-    #c6a875,
-    #c6a875 10px,
-    transparent 10px,
-    transparent 20px
-  );
-}
-
-.card.left::before {
-  right: 50%;
-}
-
-.card.right::before {
+.timeline-item.right {
   left: 50%;
+  text-align: left;
 }
 
-/* ================= PAPER ================= */
-.paper {
-  width: 720px;
-  background: #fff;
-  padding: 26px;
-  display: flex;
-  gap: 30px;
-  position: relative;
-  box-shadow: 0 22px 50px rgba(0,0,0,0.18);
-  transition: 0.45s ease;
+/* CARD */
+.card {
+  background: #fffdfa;
+  border-radius: 20px;
+  padding: 18px;
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.15);
+  transition: 0.35s ease;
 }
 
-.card.right .paper {
-  flex-direction: row-reverse;
+/* HOVER */
+.card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 22px 55px rgba(0, 0, 0, 0.22);
 }
 
-.paper:hover {
-  transform: translateY(-10px) rotate(0.4deg);
+/* IMAGE */
+.card img {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  transition: transform 0.4s ease;
 }
 
-/* ================= IMAGE ================= */
-.paper img {
-  max-width: 320px;
-  background: #fff;
-  padding: 12px;
-  box-shadow: 0 15px 30px rgba(0,0,0,0.25);
-  transition: 0.45s ease;
+.card:hover img {
+  transform: scale(1.06);
 }
 
-.paper:hover img {
-  transform: scale(1.05);
-}
-
-/* ================= CONTENT ================= */
-.content h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 26px;
-  margin: 0 0 10px;
-  color: #5a3d23;
-}
-
-.content p {
-  font-size: 16px;
-  line-height: 1.6;
-  color: #6a5846;
-}
-
-.content a {
-  display: inline-block;
-  margin-top: 12px;
-  text-decoration: none;
-  color: #8b5e3c;
-  font-weight: 500;
-}
-
-/* ================= PAPER CLIP ================= */
-.paper::before {
+/* DOT */
+.timeline-item::before {
   content: "";
   position: absolute;
-  top: -18px;
-  left: 40px;
-  width: 24px;
-  height: 42px;
-  border: 4px solid #d2b15c;
-  border-bottom: none;
-  border-radius: 14px;
-  transform: rotate(-6deg);
+  top: 70px;
+  width: 20px;
+  height: 20px;
+  background: #d9b96e;
+  border-radius: 50%;
+  z-index: 5;
 }
 
-/* ================= FLOWER ================= */
-.flower {
-  position: absolute;
-  bottom: -26px;
-  right: -26px;
-  width: 90px;
-  height: 90px;
-  background: url("https://i.pinimg.com/736x/1e/48/55/1e4855b1dcf3eec1b9d00b8b2c9dbd60.jpg")
-    center/cover no-repeat;
-  opacity: 0.75;
+.timeline-item.left::before {
+  right: -10px;
 }
 
-/* ================= MOBILE ================= */
-@media (max-width: 900px) {
-  .scrapbook::before {
-    display: none;
+.timeline-item.right::before {
+  left: -10px;
+}
+
+/* TEXT */
+.card h3 {
+  font-size: 21px;
+  margin: 14px 0 6px;
+}
+
+.card p {
+  font-size: 15px;
+  color: #555;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .timeline::before {
+    left: 22px;
   }
 
-  .card {
-    justify-content: center;
-    margin: 80px 0;
+  .timeline-item {
+    width: 100%;
+    left: 0;
+    padding: 40px 20px 40px 70px;
+    text-align: left;
   }
 
-  .card::before {
-    display: none;
-  }
-
-  .paper {
-    flex-direction: column;
-    width: 92%;
-  }
-
-  .paper img {
-    max-width: 100%;
+  .timeline-item::before {
+    left: 12px;
   }
 }
