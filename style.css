@@ -95,6 +95,12 @@ body {
   flex-direction: row-reverse;
 }
 
+.card:hover {
+
+transform: translateY(-8px) rotate(0.4deg);
+
+}
+
 /* ===== IMAGE (THẲNG) ===== */
 .card img {
   width: 300px;
