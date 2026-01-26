@@ -1,242 +1,341 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8">
-<title>Thanh xuân 11L – Đà Lạt</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thanh xuân 11L – Chuyến tham quan Đà Lạt</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Libre+Baskerville&display=swap" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-<style>
-:root{
-  --bg:#f4efe8;
-  --paper:#fbf8f3;
-  --green:#4f6b4a;
-  --text:#3a3a3a;
-}
+  <style>
+    :root{
+      --green:#3f5f4f;
+      --green-dark:#2f473b;
+      --paper:#f6f2ec;
+      --text:#2b2b2b;
+      --muted:#6b7d73;
+    }
 
-*{box-sizing:border-box}
-body{
-  margin:0;
-  font-family:'Libre Baskerville',serif;
-  background:var(--bg);
-  color:var(--text);
-}
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:Inter, sans-serif;
+      background:var(--paper);
+      color:var(--text);
+      line-height:1.8;
+    }
 
-/* HERO */
-.hero{
-  height:95vh;
-  background:url("hero.jpg") center/cover no-repeat;
-  position:relative;
-}
-.hero::after{
-  content:"";
-  position:absolute;inset:0;
-  background:linear-gradient(to bottom,rgba(0,0,0,.15),rgba(0,0,0,.45));
-}
-.hero-content{
-  position:absolute;
-  bottom:80px;
-  width:100%;
-  text-align:center;
-  color:#fff;
-}
-.hero h1{
-  font-family:'Playfair Display',serif;
-  font-size:64px;
-  margin:0;
-  letter-spacing:2px;
-}
-.hero p{
-  font-size:18px;
-  margin:12px 0 30px;
-  opacity:.95;
-}
-.hero button{
-  background:var(--green);
-  color:#fff;
-  border:none;
-  padding:14px 36px;
-  border-radius:30px;
-  font-size:16px;
-  cursor:pointer;
-}
+    /* ===== HERO ===== */
+    header{
+      min-height:100vh;
+      background:url('https://images.unsplash.com/photo-1501785888041-af3ef285b470') center/cover no-repeat;
+      position:relative;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+    }
+    header::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:rgba(0,0,0,.55);
+    }
+    .hero{
+      position:relative;
+      max-width:900px;
+      padding:40px;
+      color:white;
+      animation:fadeUp 1.2s ease;
+    }
+    .hero h1{
+      font-family:'Playfair Display', serif;
+      font-size:3.2rem;
+      letter-spacing:1px;
+    }
+    .hero h2{
+      margin-top:14px;
+      font-weight:400;
+      font-size:1.2rem;
+      opacity:.95;
+    }
+    .hero p{
+      margin:30px auto;
+      max-width:720px;
+      font-size:1rem;
+      opacity:.95;
+    }
 
-/* SECTION */
-.section{
-  max-width:1200px;
-  margin:0 auto;
-  padding:80px 24px;
-}
+    .btn{
+      display:inline-block;
+      padding:14px 36px;
+      border-radius:30px;
+      background:var(--green);
+      color:white;
+      text-decoration:none;
+      font-weight:500;
+      transition:.3s;
+    }
+    .btn:hover{background:var(--green-dark)}
 
-/* TITLE */
-.section h2{
-  font-family:'Playfair Display',serif;
-  text-align:center;
-  font-size:36px;
-  margin-bottom:20px;
-}
-.section .desc{
-  max-width:900px;
-  margin:0 auto 60px;
-  text-align:center;
-  line-height:1.8;
-}
+    @keyframes fadeUp{
+      from{opacity:0;transform:translateY(40px)}
+      to{opacity:1;transform:none}
+    }
 
-/* TABS */
-.tabs{
-  display:flex;
-  justify-content:center;
-  gap:24px;
-  margin-bottom:40px;
-}
-.tab{
-  background:#e8e2d8;
-  padding:12px 32px;
-  border-radius:20px;
-  cursor:pointer;
-}
-.tab.active{
-  background:var(--green);
-  color:#fff;
-}
+    /* ===== SECTION ===== */
+    section{padding:90px 10%}
 
-/* DAY CONTENT */
-.day{
-  display:none;
-  animation:fade .4s ease;
-}
-.day.active{display:block}
+    .paper{
+      background:rgba(255,255,255,.85);
+      border-radius:26px;
+      padding:70px;
+      box-shadow:0 20px 40px rgba(0,0,0,.08);
+    }
 
-/* CARD */
-.card{
-  background:var(--paper);
-  border-radius:22px;
-  padding:32px;
-  display:grid;
-  grid-template-columns:420px 1fr;
-  gap:32px;
-  box-shadow:0 20px 50px rgba(0,0,0,.08);
-}
+    h3{
+      font-family:'Playfair Display', serif;
+      font-size:2.3rem;
+      color:var(--green-dark);
+      text-align:center;
+      margin-bottom:26px;
+    }
 
-.card img{
-  width:100%;
-  border-radius:18px;
-}
+    .text-block{
+      max-width:900px;
+      margin:0 auto 60px;
+      text-align:center;
+    }
 
-/* DETAIL */
-.detail h3{
-  font-family:'Playfair Display',serif;
-  font-size:24px;
-  margin:0 0 12px;
-}
-.detail ul{
-  padding-left:18px;
-  line-height:1.9;
-}
+    .text-block h4{
+      font-family:'Playfair Display', serif;
+      font-size:1.6rem;
+      color:var(--green-dark);
+      margin-bottom:16px;
+    }
 
-/* COLLAPSE */
-.block{
-  margin-top:24px;
-}
-.block-header{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  cursor:pointer;
-}
-.block-header strong{
-  font-size:18px;
-}
-.block-content{
-  display:none;
-  margin-top:10px;
-  padding-left:28px;
-}
-.block.open .block-content{display:block}
+    /* ===== IMAGE PLACEHOLDER + ANIMATION ===== */
+    .img-wrap{
+      margin:30px auto;
+      border-radius:22px;
+      overflow:hidden;
+      max-width:900px;
+    }
 
-@keyframes fade{
-  from{opacity:0;transform:translateY(10px)}
-  to{opacity:1;transform:none}
-}
-</style>
+    .img-wrap img{
+      width:100%;
+      animation:slowZoom 14s ease-in-out infinite;
+      display:block;
+    }
+
+    @keyframes slowZoom{
+      0%{transform:scale(1)}
+      50%{transform:scale(1.08)}
+      100%{transform:scale(1)}
+    }
+
+    /* ===== TABS ===== */
+    .tabs{
+      display:flex;
+      justify-content:center;
+      gap:14px;
+      margin:50px 0 40px;
+      flex-wrap:wrap;
+    }
+    .tab{
+      padding:12px 28px;
+      border-radius:22px;
+      background:#e4ece7;
+      color:var(--green-dark);
+      font-weight:500;
+      cursor:pointer;
+      transition:.3s;
+    }
+    .tab.active{
+      background:var(--green);
+      color:white;
+    }
+    .tab:hover{transform:translateY(-3px)}
+
+    .day-content{display:none;animation:fadeUp .7s ease}
+    .day-content.active{display:block}
+
+    .day{
+      display:grid;
+      grid-template-columns:1fr 2fr;
+      gap:36px;
+      align-items:center;
+      margin-bottom:40px;
+    }
+
+    .img-box{
+      height:200px;
+      border-radius:20px;
+      background:#d9e1db;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:var(--muted);
+      font-style:italic;
+    }
+
+    .content h5{
+      color:var(--green-dark);
+      font-size:1.15rem;
+      margin-bottom:12px;
+    }
+
+    .content ul{padding-left:20px}
+    .content li{margin-bottom:8px}
+
+    /* ===== SCROLL REVEAL ===== */
+    .reveal{
+      opacity:0;
+      transform:translateY(50px);
+      transition:1s ease;
+    }
+    .reveal.active{
+      opacity:1;
+      transform:none;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media(max-width:900px){
+      section{padding:70px 6%}
+      .paper{padding:45px}
+      .day{grid-template-columns:1fr}
+      .hero h1{font-size:2.4rem}
+    }
+  </style>
 </head>
 
 <body>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-content">
+<header>
+  <div class="hero">
     <h1>THANH XUÂN 11L</h1>
-    <p>Sau hành trình – một thanh xuân đáng nhớ</p>
-    <button onclick="document.getElementById('journey').scrollIntoView({behavior:'smooth'})">
-      Khám phá hành trình
-    </button>
+    <h2>DẤU ẤN KHÓ QUÊN CỦA TẬP THỂ LỚP 11L</h2>
+    <p>
+      Đà Lạt là nơi sương sớm giăng nhẹ trên những triền đồi, nơi rừng thông thì thầm trong gió
+      và nhịp sống chậm rãi mở ra những khoảng lặng bình yên giữa bộn bề thường nhật.
+    </p>
+    <a href="#gioithieu" class="btn">Khám phá hành trình</a>
   </div>
-</section>
+</header>
 
-<!-- JOURNEY -->
-<section class="section" id="journey">
-  <h2>HÀNH TRÌNH CỦA KỶ NIỆM VÀ HOÀI BÃO</h2>
-  <p class="desc">
-    Chuyến tham quan học tập Đà Lạt là một trong sáu hành trình đẹp nhất của thanh xuân 11L,
-    nơi những trải nghiệm quý giá, bài học thực tế và ký ức tập thể cùng nhau thắp sáng ước mơ tuổi trẻ.
-  </p>
+<section id="gioithieu">
+  <div class="paper">
 
-  <!-- TABS -->
-  <div class="tabs">
-    <div class="tab active" onclick="showDay(1)">Ngày 01</div>
-    <div class="tab" onclick="showDay(2)">Ngày 02</div>
-    <div class="tab" onclick="showDay(3)">Ngày 03</div>
-  </div>
+    <div class="text-block reveal">
+      <h4>DẤU ẤN KHÓ QUÊN CỦA TẬP THỂ LỚP 11L</h4>
+      <p>
+        Không chỉ mang vẻ đẹp thơ mộng đặc trưng của thành phố cao nguyên,
+        Đà Lạt còn là vùng đất giàu giá trị văn hóa, lịch sử và giáo dục.
+        Chính vì thế, chuyến tham quan học tập tại Đà Lạt của tập thể lớp 11L
+        không đơn thuần là một chuyến đi xa, mà còn là hành trình trải nghiệm,
+        khám phá, gắn kết và lưu giữ những dấu ấn thanh xuân đáng nhớ của tuổi học trò.
+      </p>
+    </div>
 
-  <!-- DAY 1 -->
-  <div class="day active" id="day1">
-    <div class="card">
-      <img src="day1.jpg" alt="">
-      <div class="detail">
+    <div class="img-wrap reveal">
+      <img src="https://images.unsplash.com/photo-1541417904950-b855846fe074" alt="Đà Lạt">
+    </div>
 
-        <div class="block open">
-          <div class="block-header" onclick="toggle(this)">
-            <strong>⏰ Khởi hành & khám phá Đà Lạt</strong>
-          </div>
-          <div class="block-content">
-            <ul>
-              <li>Khởi hành đến thành phố Đà Lạt</li>
-              <li>Tham quan các điểm học tập theo kế hoạch</li>
-              <li>Làm quen không gian cao nguyên & sinh hoạt tập thể</li>
-            </ul>
-          </div>
+    <div class="text-block reveal">
+      <h4>🌱 Ý NGHĨA CỦA CHUYẾN THAM QUAN HỌC TẬP</h4>
+      <p>
+        Trong suốt hành trình, lớp 11L đã có cơ hội tham quan nhiều địa điểm mang
+        giá trị giáo dục, văn hóa và lịch sử. Mỗi điểm đến đều mở ra những bài học
+        thực tế sinh động, giúp học sinh mở rộng hiểu biết, gắn kiến thức sách vở
+        với đời sống, đồng thời bồi đắp ý thức trân trọng thiên nhiên và truyền thống dân tộc.
+      </p>
+      <p>
+        Bên cạnh đó, chuyến đi còn là dịp để các thành viên trong lớp thêm gắn bó,
+        sẻ chia và thấu hiểu nhau hơn qua từng hoạt động tập thể và những khoảnh khắc
+        giản dị nhưng đầy ý nghĩa.
+      </p>
+    </div>
+
+    <h3 id="hanhtrinh">📍 HÀNH TRÌNH THAM QUAN – HỌC TẬP</h3>
+
+    <div class="tabs">
+      <div class="tab active" data-day="day1">Ngày 01</div>
+      <div class="tab" data-day="day2">Ngày 02</div>
+      <div class="tab" data-day="day3">Ngày 03</div>
+    </div>
+
+    <div id="day1" class="day-content active">
+      <div class="day">
+        <div class="img-box">Ảnh Trên xe / Đà Lạt</div>
+        <div class="content">
+          <h5>Khởi hành – Làm quen với thành phố cao nguyên</h5>
+          <ul>
+            <li>Di chuyển từ Bình Dương đến Đà Lạt.</li>
+            <li>Tham quan Trường Đại học Đà Lạt.</li>
+            <li>Thưởng thức buffet rau buổi tối.</li>
+          </ul>
         </div>
-
-        <div class="block">
-          <div class="block-header" onclick="toggle(this)">
-            <strong>📍 Lịch sử & văn hóa</strong>
-          </div>
-          <div class="block-content">
-            <ul>
-              <li>Nhà lao Thiếu nhi Đà Lạt</li>
-              <li>Nhà thờ Domaine de Marie</li>
-              <li>Tìm hiểu giá trị lịch sử – văn hóa</li>
-            </ul>
-          </div>
-        </div>
-
       </div>
     </div>
-  </div>
 
+    <div id="day2" class="day-content">
+      <div class="day">
+        <div class="img-box">Ảnh Cầu Gỗ – Puppy Farm</div>
+        <div class="content">
+          <h5>Trải nghiệm – Học tập – Gắn kết</h5>
+          <ul>
+            <li>Săn mây Cầu Gỗ.</li>
+            <li>Tham quan Puppy Farm.</li>
+            <li>Nhà lao thiếu nhi & Nhà thờ Domaine de Marie.</li>
+            <li>Gala và tham quan chợ Đà Lạt.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div id="day3" class="day-content">
+      <div class="day">
+        <div class="img-box">Ảnh Dinh III – Bảo Đại</div>
+        <div class="content">
+          <h5>Tạm biệt Đà Lạt</h5>
+          <ul>
+            <li>Buffet sáng – trả phòng.</li>
+            <li>Tham quan Dinh III – Dinh Bảo Đại.</li>
+            <li>Khởi hành về Bình Dương.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </section>
 
 <script>
-function showDay(n){
-  document.querySelectorAll('.day').forEach(d=>d.classList.remove('active'));
-  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
-  document.getElementById('day'+n).classList.add('active');
-  document.querySelectorAll('.tab')[n-1].classList.add('active');
-}
-function toggle(el){
-  el.parentElement.classList.toggle('open');
-}
+  // Tabs
+  const tabs = document.querySelectorAll('.tab');
+  const contents = document.querySelectorAll('.day-content');
+
+  tabs.forEach(tab=>{
+    tab.addEventListener('click',()=>{
+      tabs.forEach(t=>t.classList.remove('active'));
+      contents.forEach(c=>c.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById(tab.dataset.day).classList.add('active');
+    });
+  });
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  window.addEventListener('scroll', ()=>{
+    reveals.forEach(el=>{
+      if(el.getBoundingClientRect().top < window.innerHeight - 120){
+        el.classList.add('active');
+      }
+    });
+  });
 </script>
 
 </body>
