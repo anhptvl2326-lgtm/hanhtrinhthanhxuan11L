@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Hành trình Đà Lạt – Thanh xuân 11L</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: "Palatino Linotype", Georgia, serif;
+  background: #f4efe9;
+  color: #3b3b3b;
+  line-height: 1.7;
+}
+
+/* HERO */
+.hero {
+  height: 85vh;
+  background: url("dalat-hero.jpg") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-box {
+  background: rgba(255,255,255,0.78);
+  padding: 60px 80px;
+  text-align: center;
+  max-width: 900px;
+}
+
+.hero-box h1 {
+  font-size: 46px;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+}
+
+.hero-box p {
+  font-size: 18px;
+}
+
+/* CONTENT */
+.container {
+  max-width: 1000px;
+  margin: 80px auto;
+  padding: 0 30px;
+}
+
+.intro {
+  font-size: 18px;
+  margin-bottom: 60px;
+}
+
+/* DAY BLOCK */
+.day {
+  border-top: 1px solid #cfc6bc;
+  padding: 25px 0;
+}
+
+.day-title {
+  font-size: 28px;
+  cursor: pointer;
+  position: relative;
+}
+
+.day-title::after {
+  content: "+";
+  position: absolute;
+  right: 0;
+  font-size: 30px;
+}
+
+.day.active .day-title::after {
+  content: "–";
+}
+
+.day-content {
+  display: none;
+  padding-top: 20px;
+  font-size: 17px;
+}
+
+.day.active .day-content {
+  display: block;
+}
+
+/* FOOT */
+.end {
+  margin-top: 80px;
+  font-style: italic;
+  text-align: center;
+  font-size: 18px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-box">
+    <h1>HÀNH TRÌNH TRẢI NGHIỆM – ĐÀ LẠT</h1>
+    <p>Nơi lưu giữ những kỷ niệm đẹp của thanh xuân lớp 11L</p>
+  </div>
+</section>
+
+<!-- CONTENT -->
+<div class="container">
+
+  <div class="intro">
+    Chuyến tham quan, trải nghiệm tại Đà Lạt không chỉ là một hành trình học tập
+    mà còn là khoảng thời gian để tập thể lớp 11L cùng nhau gắn kết, sẻ chia
+    và lưu giữ những kỷ niệm đẹp của tuổi học trò.
+  </div>
+
+  <!-- DAY 1 -->
+  <div class="day">
+    <div class="day-title">Ngày 01 – Khởi hành & khám phá</div>
+    <div class="day-content">
+      <p>
+        Chuyến xe bắt đầu lăn bánh, mang theo sự háo hức, mong chờ của cả lớp.
+        Trên suốt hành trình, những tiếng cười nói rộn ràng đã xua tan mệt mỏi.
+      </p>
+      <p>
+        Khi đặt chân đến Đà Lạt, chúng tôi bắt đầu khám phá thành phố ngàn hoa
+        với những địa điểm nổi tiếng và không khí se lạnh đặc trưng.
+      </p>
+    </div>
+  </div>
+
+  <!-- DAY 2 -->
+  <div class="day">
+    <div class="day-title">Ngày 02 – Trải nghiệm & gắn kết</div>
+    <div class="day-content">
+      <p>
+        Ngày thứ hai là khoảng thời gian đáng nhớ nhất với nhiều hoạt động trải nghiệm,
+        tham quan và vui chơi tập thể.
+      </p>
+      <p>
+        Mỗi địa điểm đi qua đều để lại những ấn tượng riêng, góp phần làm nên
+        một bức tranh thanh xuân rực rỡ của lớp 11L.
+      </p>
+    </div>
+  </div>
+
+  <!-- DAY 3 -->
+  <div class="day">
+    <div class="day-title">Ngày 03 – Tạm biệt Đà Lạt</div>
+    <div class="day-content">
+      <p>
+        Chuyến đi khép lại trong sự luyến tiếc. Đà Lạt để lại trong lòng mỗi người
+        những cảm xúc khó quên.
+      </p>
+      <p>
+        Dù phải nói lời chia tay, nhưng những kỷ niệm đẹp của chuyến đi
+        sẽ mãi là một phần của thanh xuân lớp 11L.
+      </p>
+    </div>
+  </div>
+
+  <div class="end">
+    Đà Lạt – nơi lưu dấu thanh xuân, nơi những kỷ niệm tuổi học trò mãi còn nguyên vẹn.
+  </div>
+
+</div>
+
+<script>
+document.querySelectorAll(".day-title").forEach(title => {
+  title.addEventListener("click", () => {
+    title.parentElement.classList.toggle("active");
+  });
+});
+</script>
+
+</body>
+</html>
