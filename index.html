@@ -1,94 +1,243 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <title>Hành trình thanh xuân 11L</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>Thanh xuân 11L – Đà Lạt</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@400;500&family=Dancing+Script:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Libre+Baskerville&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#f4efe8;
+  --paper:#fbf8f3;
+  --green:#4f6b4a;
+  --text:#3a3a3a;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:'Libre Baskerville',serif;
+  background:var(--bg);
+  color:var(--text);
+}
+
+/* HERO */
+.hero{
+  height:95vh;
+  background:url("hero.jpg") center/cover no-repeat;
+  position:relative;
+}
+.hero::after{
+  content:"";
+  position:absolute;inset:0;
+  background:linear-gradient(to bottom,rgba(0,0,0,.15),rgba(0,0,0,.45));
+}
+.hero-content{
+  position:absolute;
+  bottom:80px;
+  width:100%;
+  text-align:center;
+  color:#fff;
+}
+.hero h1{
+  font-family:'Playfair Display',serif;
+  font-size:64px;
+  margin:0;
+  letter-spacing:2px;
+}
+.hero p{
+  font-size:18px;
+  margin:12px 0 30px;
+  opacity:.95;
+}
+.hero button{
+  background:var(--green);
+  color:#fff;
+  border:none;
+  padding:14px 36px;
+  border-radius:30px;
+  font-size:16px;
+  cursor:pointer;
+}
+
+/* SECTION */
+.section{
+  max-width:1200px;
+  margin:0 auto;
+  padding:80px 24px;
+}
+
+/* TITLE */
+.section h2{
+  font-family:'Playfair Display',serif;
+  text-align:center;
+  font-size:36px;
+  margin-bottom:20px;
+}
+.section .desc{
+  max-width:900px;
+  margin:0 auto 60px;
+  text-align:center;
+  line-height:1.8;
+}
+
+/* TABS */
+.tabs{
+  display:flex;
+  justify-content:center;
+  gap:24px;
+  margin-bottom:40px;
+}
+.tab{
+  background:#e8e2d8;
+  padding:12px 32px;
+  border-radius:20px;
+  cursor:pointer;
+}
+.tab.active{
+  background:var(--green);
+  color:#fff;
+}
+
+/* DAY CONTENT */
+.day{
+  display:none;
+  animation:fade .4s ease;
+}
+.day.active{display:block}
+
+/* CARD */
+.card{
+  background:var(--paper);
+  border-radius:22px;
+  padding:32px;
+  display:grid;
+  grid-template-columns:420px 1fr;
+  gap:32px;
+  box-shadow:0 20px 50px rgba(0,0,0,.08);
+}
+
+.card img{
+  width:100%;
+  border-radius:18px;
+}
+
+/* DETAIL */
+.detail h3{
+  font-family:'Playfair Display',serif;
+  font-size:24px;
+  margin:0 0 12px;
+}
+.detail ul{
+  padding-left:18px;
+  line-height:1.9;
+}
+
+/* COLLAPSE */
+.block{
+  margin-top:24px;
+}
+.block-header{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  cursor:pointer;
+}
+.block-header strong{
+  font-size:18px;
+}
+.block-content{
+  display:none;
+  margin-top:10px;
+  padding-left:28px;
+}
+.block.open .block-content{display:block}
+
+@keyframes fade{
+  from{opacity:0;transform:translateY(10px)}
+  to{opacity:1;transform:none}
+}
+</style>
 </head>
+
 <body>
 
 <!-- HERO -->
-<section class="hero-paper">
-  <div class="tape"></div>
-  <img src="2.jpg" class="hero-img">
-  <h1>HÀNH TRÌNH THANH XUÂN 11L</h1>
-  <p class="handwrite">Chúng ta đã cùng nhau đi qua những năm tháng tuổi đẹp, để lại biết bao kỷ niệm khó quên.</p>
+<section class="hero">
+  <div class="hero-content">
+    <h1>THANH XUÂN 11L</h1>
+    <p>Sau hành trình – một thanh xuân đáng nhớ</p>
+    <button onclick="document.getElementById('journey').scrollIntoView({behavior:'smooth'})">
+      Khám phá hành trình
+    </button>
+  </div>
 </section>
 
-<!-- TIMELINE -->
-<section class="scrapbook">
+<!-- JOURNEY -->
+<section class="section" id="journey">
+  <h2>HÀNH TRÌNH CỦA KỶ NIỆM VÀ HOÀI BÃO</h2>
+  <p class="desc">
+    Chuyến tham quan học tập Đà Lạt là một trong sáu hành trình đẹp nhất của thanh xuân 11L,
+    nơi những trải nghiệm quý giá, bài học thực tế và ký ức tập thể cùng nhau thắp sáng ước mơ tuổi trẻ.
+  </p>
 
-  <div class="card left">
-    <span class="clip"></span>
-    <img src="https://i.pinimg.com/736x/d4/df/86/d4df8639db305ebf2f5c13f80948a7e9.jpg">
-    <div class="content">
-      <h2>20/10 – Ngày Phụ nữ Việt Nam</h2>
-      <p>Tôn vinh vẻ đẹp và giá trị người phụ nữ.</p>
-      <a href="2010.html">Xem chi tiết →</a>
-    </div>
-    <span class="flower"></span>
+  <!-- TABS -->
+  <div class="tabs">
+    <div class="tab active" onclick="showDay(1)">Ngày 01</div>
+    <div class="tab" onclick="showDay(2)">Ngày 02</div>
+    <div class="tab" onclick="showDay(3)">Ngày 03</div>
   </div>
 
-  <div class="card right">
-    <span class="clip"></span>
-    <img src="https://i.pinimg.com/1200x/9c/6e/e3/9c6ee364adec29617dc8897ded2c2a4e.jpg">
-    <div class="content">
-      <h2>19/11 – Ngày Quốc tế Đàn Ông</h2>
-      <p>Những chàng trai của tập thể.</p>
-      <a href="1911.html">Xem chi tiết →</a>
-    </div>
-    <span class="flower"></span>
-  </div>
+  <!-- DAY 1 -->
+  <div class="day active" id="day1">
+    <div class="card">
+      <img src="day1.jpg" alt="">
+      <div class="detail">
 
-  <div class="card left">
-    <span class="clip"></span>
-    <img src="https://i.pinimg.com/1200x/86/3f/aa/863faa9771ab4908ba2782959193b87d.jpg">
-    <div class="content">
-      <h2>20/11 – Ngày Nhà giáo Việt Nam</h2>
-      <p>Tri ân người lái đò thầm lặng.</p>
-      <a href="2011.html">Xem chi tiết →</a>
-    </div>
-    <span class="flower"></span>
-  </div>
+        <div class="block open">
+          <div class="block-header" onclick="toggle(this)">
+            <strong>⏰ Khởi hành & khám phá Đà Lạt</strong>
+          </div>
+          <div class="block-content">
+            <ul>
+              <li>Khởi hành đến thành phố Đà Lạt</li>
+              <li>Tham quan các điểm học tập theo kế hoạch</li>
+              <li>Làm quen không gian cao nguyên & sinh hoạt tập thể</li>
+            </ul>
+          </div>
+        </div>
 
-  <div class="card right">
-    <span class="clip"></span>
-    <img src="https://i.pinimg.com/1200x/e7/5b/07/e75b073cedf58a19adbf5f735b652370.jpg">
-    <div class="content">
-      <h2>Giai điệu tuổi hồng & Thanh lịch</h2>
-      <p>Nơi tài năng và sự tự tin được tỏa sáng.</p>
-      <a href="giaidieu.html">Xem chi tiết →</a>
-    </div>
-    <span class="flower"></span>
-  </div>
+        <div class="block">
+          <div class="block-header" onclick="toggle(this)">
+            <strong>📍 Lịch sử & văn hóa</strong>
+          </div>
+          <div class="block-content">
+            <ul>
+              <li>Nhà lao Thiếu nhi Đà Lạt</li>
+              <li>Nhà thờ Domaine de Marie</li>
+              <li>Tìm hiểu giá trị lịch sử – văn hóa</li>
+            </ul>
+          </div>
+        </div>
 
-  <div class="card left">
-    <span class="clip"></span>
-    <img src="thanh-pho-da-lat.jpg">
-    <div class="content">
-      <h2>Chuyến tham quan Đà Lạt</h2>
-      <p>Học mà chơi – Chơi mà học.</p>
-      <a href="dalat.html">Xem chi tiết →</a>
+      </div>
     </div>
-    <span class="flower"></span>
-  </div>
-
-  <div class="card right">
-    <span class="clip"></span>
-    <img src="https://i.pinimg.com/736x/f4/e9/8e/f4e98ef659aabaf602bccaf0a29a4aa2.jpg">
-    <div class="content">
-      <h2>Giỗ Tổ Hùng Vương</h2>
-      <p>Hướng về cội nguồn – Gìn giữ hồn Việt.</p>
-      <a href="banhchung.html">Xem chi tiết →</a>
-    </div>
-    <span class="flower"></span>
   </div>
 
 </section>
+
+<script>
+function showDay(n){
+  document.querySelectorAll('.day').forEach(d=>d.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('day'+n).classList.add('active');
+  document.querySelectorAll('.tab')[n-1].classList.add('active');
+}
+function toggle(el){
+  el.parentElement.classList.toggle('open');
+}
+</script>
 
 </body>
 </html>
