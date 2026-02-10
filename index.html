@@ -31,7 +31,7 @@ body{
     url("nen.png") center/cover repeat fixed;
 }
 
-/* ===== HERO ===== */
+/* HERO */
 
 header{
   min-height:100vh;
@@ -64,7 +64,6 @@ header{
 .hero h2{
   margin-top:14px;
   font-size:1.3rem;
-  font-weight:500;
 }
 
 .hero p{
@@ -89,7 +88,7 @@ header{
   transform:translateY(-2px);
 }
 
-/* ===== SECTION ===== */
+/* SECTION */
 
 section{padding:90px 10%}
 
@@ -116,7 +115,7 @@ h3{
   color:#444;
 }
 
-/* ===== CARD GỐC ===== */
+/* CARD */
 
 .card{
   display:grid;
@@ -154,7 +153,7 @@ h3{
   font-size:1.25rem;
 }
 
-/* ===== CARD XANH: ẢNH TRÊN - CHỮ DƯỚI ===== */
+/* CARD DỌC */
 
 .paper:not(.journey) .card{
   grid-template-columns:1fr;
@@ -164,11 +163,7 @@ h3{
   text-align:justify;
 }
 
-.paper:not(.journey) .card h4{
-  text-align:left;
-}
-
-/* ===== TABS ===== */
+/* TABS */
 
 .tabs{
   display:flex;
@@ -193,8 +188,6 @@ h3{
   color:#fff;
 }
 
-.tab:hover{transform:translateY(-2px)}
-
 .day-content{display:none;animation:fade .5s ease}
 .day-content.active{display:block}
 
@@ -203,7 +196,7 @@ h3{
   to{opacity:1;transform:none}
 }
 
-/* ===== JOURNEY (GIỮ NGUYÊN) ===== */
+/* JOURNEY */
 
 .journey .card{
   grid-template-columns:1.2fr 1fr;
@@ -218,11 +211,7 @@ h3{
   border-radius:22px;
 }
 
-.journey .card h4{
-  font-size:1.4rem;
-}
-
-/* ===== QUOTE ===== */
+/* QUOTE */
 
 .quote{
   background:linear-gradient(135deg,#eaf3fb,#ffffff);
@@ -235,28 +224,22 @@ h3{
   box-shadow:var(--shadow);
 }
 
-/* ===== FOOTER ===== */
+/* FOOTER */
 
 footer{
   background:var(--blue-dark);
   color:#fff;
   text-align:center;
   padding:65px 20px;
-  letter-spacing:.5px;
 }
 
-/* ===== RESPONSIVE ===== */
+/* RESPONSIVE */
 
 @media(max-width:900px){
-
   section{padding:70px 6%}
-
   .card{grid-template-columns:1fr}
-
   .paper{padding:40px}
-
   .hero h1{font-size:2.4rem}
-
   h3{font-size:2rem}
 }
 </style>
@@ -272,6 +255,9 @@ footer{
 <p>
 Có những miền đất ta chỉ ghé qua một lần trong đời,
 nhưng lại ở lại rất lâu trong ký ức.
+Có những chuyến đi tưởng chừng ngắn ngủi,
+nhưng khi ngoảnh lại, mới chợt nhận ra:
+đó là một phần tuổi trẻ đã lặng lẽ khép lại.
 </p>
 
 <a href="#story" class="btn">Bắt đầu hành trình</a>
@@ -286,35 +272,34 @@ nhưng lại ở lại rất lâu trong ký ức.
 
 <h3>Miền ký ức mở ra</h3>
 
-<p class="intro">Đà Lạt của lớp 11L là một miền như thế.</p>
+<div class="card">
+<img src="images/tongthe.jpg">
+<div>
+<p>Đà Lạt của lớp 11L là một miền như thế.</p>
+</div>
+</div>
 
 <div class="card">
-
-<img src="images/tongthe.jpg">
-
+<img src="images/tapthe.jpg">
 <div>
-<h4>Đà Lạt mộng mơ</h4>
 <p>
 Đó là nơi sương sớm giăng mờ trên những triền đồi,
 nơi rừng thông thì thầm trong gió,
-nơi nhịp sống chậm rãi mở ra những khoảng lặng.
+nơi nhịp sống chậm rãi mở ra những khoảng lặng hiếm hoi
+giữa những ngày học tập vội vã.
 </p>
 </div>
-
 </div>
 
 <div class="card">
-
-<img src="images/tapthe.jpg">
-
+<img src="images/foot.jpg">
 <div>
-<h4>Dấu chân thanh xuân</h4>
 <p>
-Lớp 11L đã đặt dấu chân mình lên miền đất ấy
-bằng tất cả háo hức và khát khao khám phá.
+Và trong một khoảnh khắc rất đẹp của tuổi học trò,
+lớp 11L đã đặt dấu chân mình lên miền đất ấy
+bằng tất cả sự háo hức và khát khao khám phá.
 </p>
 </div>
-
 </div>
 
 </div>
@@ -323,38 +308,37 @@ bằng tất cả háo hức và khát khao khám phá.
 
 <div class="paper">
 
-<h3>🌱 Ý nghĩa chuyến đi</h3>
-
-<p class="intro">
-Giữa áp lực học tập,
-chuyến đi là khoảng thở dịu dàng.
-</p>
+<h3>🌱 Ý nghĩa của một chuyến đi</h3>
 
 <div class="card">
-
-<img src="images/lenxe.jpg">
-
+<img src="images/sinhhoat.jpg">
 <div>
-<h4>Trang sách sống động</h4>
 <p>
-Mỗi điểm đến là một bài học ngoài giáo trình.
+Giữa những tiết học nối tiếp nhau,
+giữa những bài kiểm tra và áp lực vô hình,
+chuyến đi Đà Lạt đến như một khoảng thở dịu dàng.
 </p>
 </div>
-
 </div>
 
 <div class="card">
-
-<img src="images/anduong.jpg">
-
+<img src="images/book.jpg">
 <div>
-<h4>Kết nối tuổi mười bảy</h4>
 <p>
-Chuyến đi kết nối những tâm hồn tuổi trẻ
-bằng kỷ niệm đẹp.
+Mỗi điểm đến đều là một trang sách sống động.
+Mỗi bước chân đều mở ra một bài học không nằm trong giáo trình.
 </p>
 </div>
+</div>
 
+<div class="card">
+<img src="images/connect.jpg">
+<div>
+<p>
+Quan trọng hơn cả,
+chuyến đi là sợi dây vô hình kết nối những tâm hồn tuổi mười bảy.
+</p>
+</div>
 </div>
 
 </div>
@@ -363,7 +347,7 @@ bằng kỷ niệm đẹp.
 
 <div class="paper journey">
 
-<h3>📍 Hành trình ba ngày</h3>
+<h3>📍 Hành trình ba ngày – Một miền ký ức</h3>
 
 <div class="tabs">
 <div class="tab active" data-day="day1">Ngày 01</div>
@@ -374,14 +358,11 @@ bằng kỷ niệm đẹp.
 <div id="day1" class="day-content active">
 
 <div class="card">
-
 <img src="images/lenxe.jpg">
-
 <div>
-<h4>Khởi hành</h4>
-<p>Sau chặng đường dài, lớp 11L bắt đầu hành trình.</p>
+<h4>Khởi hành – Chạm ngõ cao nguyên</h4>
+<p>Sau chặng đường dài từ Bình Dương, lớp 11L bắt đầu hành trình.</p>
 </div>
-
 </div>
 
 </div>
@@ -390,8 +371,41 @@ bằng kỷ niệm đẹp.
 <div id="day3" class="day-content"></div>
 
 <div class="quote">
-“Ở đó, chúng tôi học cách sống chậm,
-trân trọng hiện tại và giữ gìn điều quý giá.”
+“Ở đó, chúng tôi đã cùng nhau học cách sống chậm,
+học cách lắng nghe và trân trọng hiện tại.”
+</div>
+
+</div>
+
+<!-- KẾT -->
+
+<div class="paper">
+
+<h3>🌸 Đà Lạt – Miền ký ức của 11L</h3>
+
+<div class="card">
+<img src="images/final.jpg">
+<div>
+<p>
+Chuyến tham quan học tập tại Đà Lạt không chỉ mang đến kiến thức
+mà còn đánh dấu hành trình trưởng thành.
+</p>
+</div>
+</div>
+
+<div class="card">
+<img src="images/memory.jpg">
+<div>
+<p>
+Nhiều năm sau,
+Đà Lạt vẫn còn ở lại trong ký ức tuổi học trò.
+</p>
+</div>
+</div>
+
+<div class="quote">
+“Bởi đó không chỉ là một chuyến đi,
+đó là một phần thanh xuân mang tên 11L.”
 </div>
 
 </div>
