@@ -3,2100 +3,1193 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Album Ký Ức: Đà Lạt 11L</title>
-
+<title>Nhật Ký Đà Lạt · Lớp 11L</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Dancing+Script:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
 <style>
+/* ══════════════════════════════════════════════
+   DESIGN TOKENS
+   Palette: Warm ivory · Deep moss · Muted sky
+══════════════════════════════════════════════ */
 :root {
-    --sepia-dark: #6b4423;
-    --sepia-brown: #8b6f47;
-    --beige: #d4b896;
-    --beige-light: #e8d7c3;
-    --ivory: #faf6f0;
-    --cream: #f5ede1;
-    --vintage-gold: #c9a961;
-    --text-dark: #3e2b1f;
-    --shadow-soft: 0 8px 32px rgba(107, 68, 35, 0.12);
-    --shadow-lift: 0 20px 60px rgba(107, 68, 35, 0.18);
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-/* VINTAGE PAPER TEXTURE BACKGROUND */
-body {
-    font-family: 'EB Garamond', 'Cormorant Garamond', serif;
-    line-height: 1.85;
-    color: var(--text-dark);
-    background: 
-        repeating-linear-gradient(
-            0deg,
-            transparent,
-            transparent 2px,
-            rgba(107, 68, 35, 0.015) 2px,
-            rgba(107, 68, 35, 0.015) 4px
-        ),
-        linear-gradient(135deg, #fdfbf7 0%, #f9f5ed 50%, #f5ede1 100%);
-    background-attachment: fixed;
-    position: relative;
-    overflow-x: hidden;
-}
-
-/* VINTAGE PAPER GRAIN */
-body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: 
-        radial-gradient(circle at 25% 35%, rgba(201, 169, 97, 0.03), transparent 45%),
-        radial-gradient(circle at 75% 65%, rgba(139, 111, 71, 0.03), transparent 45%);
-    pointer-events: none;
-    z-index: 0;
-    animation: grain-shift 12s ease-in-out infinite alternate;
-}
-
-/* FLOATING VINTAGE PARTICLES */
-body::after {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: 
-        radial-gradient(1px 1px at 18% 28%, rgba(201, 169, 97, 0.25), transparent),
-        radial-gradient(1px 1px at 38% 58%, rgba(139, 111, 71, 0.2), transparent),
-        radial-gradient(1.5px 1.5px at 68% 18%, rgba(212, 184, 150, 0.3), transparent),
-        radial-gradient(1px 1px at 88% 78%, rgba(201, 169, 97, 0.25), transparent),
-        radial-gradient(1px 1px at 28% 88%, rgba(139, 111, 71, 0.2), transparent),
-        radial-gradient(1.5px 1.5px at 78% 48%, rgba(212, 184, 150, 0.3), transparent);
-    background-size: 100% 100%;
-    animation: particles-float 25s linear infinite;
-    pointer-events: none;
-    opacity: 0.5;
-    z-index: 0;
-}
-
-@keyframes grain-shift {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.75; }
-}
-
-@keyframes particles-float {
-    from { transform: translateY(0) translateX(0); }
-    to { transform: translateY(-120px) translateX(60px); }
-}
-
-/* PAGE BOOKMARK */
-.page-bookmark {
-    position: fixed;
-    top: 0;
-    right: 8%;
-    width: 60px;
-    height: 100px;
-    background: linear-gradient(135deg, var(--vintage-gold), var(--beige));
-    clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%);
-    box-shadow: 
-        0 4px 20px rgba(107, 68, 35, 0.3),
-        inset 0 1px 0 rgba(255, 255, 255, 0.4);
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    color: var(--sepia-dark);
-    cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    animation: bookmark-sway 6s ease-in-out infinite;
-}
-
-@keyframes bookmark-sway {
-    0%, 100% { transform: rotate(0deg) translateY(0); }
-    50% { transform: rotate(2deg) translateY(5px); }
-}
-
-.page-bookmark:hover {
-    transform: translateY(10px) scale(1.05);
-    box-shadow: 
-        0 8px 30px rgba(107, 68, 35, 0.4),
-        inset 0 1px 0 rgba(255, 255, 255, 0.5);
-}
-
-/* HERO SECTION */
-.hero-wrapper {
-    position: relative;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    background: 
-        linear-gradient(135deg, rgba(107, 68, 35, 0.88), rgba(139, 111, 71, 0.78)),
-        url('images/hero.jpg') center/cover no-repeat fixed;
-    box-shadow: inset 0 0 200px rgba(62, 43, 31, 0.3);
-}
-
-/* VINTAGE VIGNETTE */
-.hero-wrapper::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse at center, transparent 35%, rgba(62, 43, 31, 0.65) 100%);
-    animation: vignette-pulse 10s ease-in-out infinite;
-}
-
-/* LIGHT RAYS */
-.hero-wrapper::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: 
-        linear-gradient(45deg, transparent 40%, rgba(201, 169, 97, 0.08) 50%, transparent 60%),
-        linear-gradient(-45deg, transparent 40%, rgba(212, 184, 150, 0.08) 50%, transparent 60%);
-    background-size: 200% 200%;
-    animation: light-rays 12s linear infinite;
-    opacity: 0.6;
-}
-
-@keyframes vignette-pulse {
-    0%, 100% { opacity: 0.85; }
-    50% { opacity: 1; }
-}
-
-@keyframes light-rays {
-    from { background-position: 0% 0%, 100% 100%; }
-    to { background-position: 100% 100%, 0% 0%; }
-}
-
-.hero {
-    position: relative;
-    z-index: 2;
-    max-width: 1000px;
-    padding: 80px 50px;
-    text-align: center;
-    color: var(--ivory);
-}
-
-.hero-icon {
-    font-size: 5rem;
-    margin-bottom: 30px;
-    display: inline-block;
-    animation: icon-vintage-float 5s ease-in-out infinite;
-    filter: drop-shadow(0 6px 25px rgba(201, 169, 97, 0.9)) 
-            drop-shadow(0 0 50px rgba(255, 255, 255, 0.5))
-            sepia(0.25);
-}
-
-@keyframes icon-vintage-float {
-    0%, 100% { 
-        transform: translateY(0) rotate(-3deg) scale(1);
-        filter: drop-shadow(0 6px 25px rgba(201, 169, 97, 0.9)) 
-                drop-shadow(0 0 50px rgba(255, 255, 255, 0.5))
-                sepia(0.25);
-    }
-    50% { 
-        transform: translateY(-25px) rotate(3deg) scale(1.08);
-        filter: drop-shadow(0 8px 35px rgba(201, 169, 97, 1)) 
-                drop-shadow(0 0 60px rgba(255, 255, 255, 0.6))
-                sepia(0.3);
-    }
-}
-
-.hero h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 4.8rem;
-    font-weight: 800;
-    letter-spacing: 0.03em;
-    line-height: 1.2;
-    margin-bottom: 28px;
-    animation: fadeInUp 1.4s ease 0.2s backwards;
-    text-shadow: 
-        0 5px 25px rgba(0, 0, 0, 0.6),
-        0 2px 6px rgba(107, 68, 35, 0.9);
-    position: relative;
-}
-
-.hero h1::after {
-    content: '';
-    position: absolute;
-    bottom: -15px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 130px;
-    height: 3px;
-    background: linear-gradient(90deg, transparent, var(--vintage-gold), transparent);
-    animation: line-expand 2.5s ease-in-out infinite;
-}
-
-@keyframes line-expand {
-    0%, 100% {
-        width: 130px;
-        opacity: 0.7;
-    }
-    50% {
-        width: 180px;
-        opacity: 1;
-    }
-}
-
-.hero h2 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.75rem;
-    font-style: italic;
-    font-weight: 500;
-    margin-bottom: 38px;
-    opacity: 0.96;
-    animation: fadeInUp 1.4s ease 0.4s backwards;
-    letter-spacing: 0.04em;
-    text-shadow: 0 3px 12px rgba(0, 0, 0, 0.5);
-}
-
-.hero-quote {
-    max-width: 750px;
-    margin: 0 auto 55px;
-    font-size: 1.2rem;
-    line-height: 2;
-    opacity: 0.93;
-    animation: fadeInUp 1.4s ease 0.6s backwards;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
-    font-family: 'EB Garamond', serif;
-}
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(60px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.btn-explore {
-    display: inline-flex;
-    align-items: center;
-    gap: 14px;
-    padding: 20px 48px;
-    background: linear-gradient(135deg, var(--vintage-gold), var(--beige));
-    color: var(--sepia-dark);
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 1.1rem;
-    border-radius: 50px;
-    box-shadow: 
-        0 14px 38px rgba(107, 68, 35, 0.45),
-        0 0 25px rgba(201, 169, 97, 0.35),
-        inset 0 2px 0 rgba(255, 255, 255, 0.6),
-        inset 0 -2px 0 rgba(107, 68, 35, 0.25);
-    transition: all 0.45s cubic-bezier(0.4, 0, 0.2, 1);
-    animation: fadeInUp 1.4s ease 0.8s backwards, btn-glow 3.5s ease-in-out infinite;
-    letter-spacing: 0.06em;
-    position: relative;
-    overflow: hidden;
-    font-family: 'Playfair Display', serif;
-    border: 3px solid rgba(201, 169, 97, 0.4);
-}
-
-.btn-explore::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.45);
-    transform: translate(-50%, -50%);
-    transition: width 0.7s ease, height 0.7s ease;
-}
-
-.btn-explore:hover::before {
-    width: 450px;
-    height: 450px;
-}
-
-.btn-explore:hover {
-    transform: translateY(-5px) scale(1.03);
-    box-shadow: 
-        0 24px 56px rgba(107, 68, 35, 0.55),
-        0 0 45px rgba(201, 169, 97, 0.55),
-        inset 0 2px 0 rgba(255, 255, 255, 0.75),
-        inset 0 -2px 0 rgba(107, 68, 35, 0.35);
-    border-color: rgba(201, 169, 97, 0.7);
-}
-
-@keyframes btn-glow {
-    0%, 100% {
-        box-shadow: 
-            0 14px 38px rgba(107, 68, 35, 0.45),
-            0 0 25px rgba(201, 169, 97, 0.35),
-            inset 0 2px 0 rgba(255, 255, 255, 0.6),
-            inset 0 -2px 0 rgba(107, 68, 35, 0.25);
-    }
-    50% {
-        box-shadow: 
-            0 14px 38px rgba(107, 68, 35, 0.65),
-            0 0 40px rgba(201, 169, 97, 0.55),
-            inset 0 2px 0 rgba(255, 255, 255, 0.7),
-            inset 0 -2px 0 rgba(107, 68, 35, 0.35);
-    }
-}
-
-.btn-explore span {
-    position: relative;
-    z-index: 1;
-}
-
-.btn-explore::after {
-    content: '↓';
-    font-size: 1.4rem;
-    transition: transform 0.35s ease;
-    position: relative;
-    z-index: 1;
-}
-
-.btn-explore:hover::after {
-    transform: translateY(5px);
-}
-
-/* SCROLL INDICATOR */
-.scroll-hint {
-    position: absolute;
-    bottom: 45px;
-    left: 50%;
-    transform: translateX(-50%);
-    color: rgba(255, 255, 255, 0.85);
-    font-size: 0.95rem;
-    animation: bounce-vintage 2.5s infinite;
-    text-shadow: 0 3px 10px rgba(0, 0, 0, 0.6);
-    font-family: 'Cormorant Garamond', serif;
-    letter-spacing: 0.05em;
-}
-
-@keyframes bounce-vintage {
-    0%, 100% { transform: translateX(-50%) translateY(0); }
-    50% { transform: translateX(-50%) translateY(15px); }
-}
-
-/* SECTION STYLES */
-section {
-    padding: 130px 8%;
-    position: relative;
-    z-index: 1;
-}
-
-.section-container {
-    max-width: 1400px;
-    margin: 0 auto;
-}
-
-/* VINTAGE PAPER CARDS */
-.paper {
-    background: 
-        repeating-linear-gradient(
-            0deg,
-            transparent,
-            transparent 2px,
-            rgba(139, 111, 71, 0.025) 2px,
-            rgba(139, 111, 71, 0.025) 4px
-        ),
-        linear-gradient(135deg, rgba(253, 251, 247, 0.98), rgba(249, 245, 237, 0.96));
-    backdrop-filter: blur(12px);
-    border-radius: 24px;
-    padding: 90px 80px;
-    margin-bottom: 110px;
-    box-shadow: 
-        var(--shadow-lift),
-        inset 0 0 120px rgba(212, 184, 150, 0.08),
-        0 0 0 1px rgba(139, 111, 71, 0.15);
-    border: 4px solid rgba(212, 184, 150, 0.35);
-    position: relative;
-    overflow: hidden;
-    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* VINTAGE CORNER DECORATIONS */
-.paper::before {
-    content: '';
-    position: absolute;
-    top: -3px;
-    left: -3px;
-    right: -3px;
-    bottom: -3px;
-    background: 
-        linear-gradient(45deg, var(--vintage-gold) 0%, transparent 18%),
-        linear-gradient(135deg, transparent 82%, var(--vintage-gold) 100%),
-        linear-gradient(-45deg, var(--vintage-gold) 0%, transparent 18%),
-        linear-gradient(-135deg, transparent 82%, var(--vintage-gold) 100%);
-    opacity: 0.25;
-    border-radius: 24px;
-    pointer-events: none;
-    animation: corner-shine 5s ease-in-out infinite;
-}
-
-.paper::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: 
-        radial-gradient(circle at 22% 32%, rgba(201, 169, 97, 0.06), transparent 52%),
-        radial-gradient(circle at 78% 68%, rgba(212, 184, 150, 0.06), transparent 52%);
-    animation: paper-shimmer 6s ease-in-out infinite;
-    pointer-events: none;
-    border-radius: 24px;
-}
-
-@keyframes corner-shine {
-    0%, 100% { opacity: 0.25; }
-    50% { opacity: 0.45; }
-}
-
-@keyframes paper-shimmer {
-    0%, 100% { opacity: 0.5; }
-    50% { opacity: 0.85; }
-}
-
-.paper:hover {
-    transform: translateY(-8px);
-    box-shadow: 
-        0 28px 80px rgba(107, 68, 35, 0.28),
-        inset 0 0 140px rgba(212, 184, 150, 0.12),
-        0 0 0 1px rgba(139, 111, 71, 0.25);
-    border-color: rgba(212, 184, 150, 0.55);
-}
-
-.section-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 3.5rem;
-    font-weight: 800;
-    color: var(--sepia-dark);
-    text-align: center;
-    margin-bottom: 28px;
-    letter-spacing: 0.025em;
-    position: relative;
-    display: inline-block;
-    width: 100%;
-    text-shadow: 0 3px 25px rgba(107, 68, 35, 0.12);
-    animation: title-vintage-glow 5s ease-in-out infinite;
-}
-
-.section-title::after {
-    content: '';
-    position: absolute;
-    bottom: -16px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 110px;
-    height: 4px;
-    background: linear-gradient(90deg, transparent, var(--vintage-gold), var(--beige), transparent);
-    box-shadow: 0 3px 18px rgba(201, 169, 97, 0.35);
-    animation: title-line-pulse 3.5s ease-in-out infinite;
-}
-
-@keyframes title-vintage-glow {
-    0%, 100% {
-        text-shadow: 0 3px 25px rgba(107, 68, 35, 0.12);
-    }
-    50% {
-        text-shadow: 0 3px 35px rgba(201, 169, 97, 0.25);
-    }
-}
-
-@keyframes title-line-pulse {
-    0%, 100% {
-        width: 110px;
-        box-shadow: 0 3px 18px rgba(201, 169, 97, 0.35);
-    }
-    50% {
-        width: 160px;
-        box-shadow: 0 3px 28px rgba(201, 169, 97, 0.55);
-    }
-}
-
-.section-intro {
-    text-align: center;
-    max-width: 850px;
-    margin: 38px auto 70px;
-    font-size: 1.25rem;
-    color: var(--sepia-brown);
-    line-height: 2;
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    position: relative;
-    z-index: 1;
-    font-weight: 500;
-}
-
-/* STORY CARDS - VINTAGE PHOTO STYLE */
-.story-grid {
-    display: grid;
-    gap: 55px;
-    margin-top: 70px;
-}
-
-.story-card {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: center;
-    padding: 50px;
-    background: 
-        repeating-linear-gradient(
-            90deg,
-            transparent,
-            transparent 2px,
-            rgba(139, 111, 71, 0.015) 2px,
-            rgba(139, 111, 71, 0.015) 4px
-        ),
-        linear-gradient(135deg, rgba(238, 221, 201, 0.6), rgba(253, 251, 247, 0.4));
-    border-radius: 20px;
-    transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
-    border: 3px solid rgba(212, 184, 150, 0.25);
-    position: relative;
-    overflow: hidden;
-    box-shadow: 
-        0 10px 38px rgba(107, 68, 35, 0.1),
-        inset 0 0 70px rgba(201, 169, 97, 0.04);
-}
-
-.story-card:nth-child(even) {
-    grid-template-columns: 1fr 1fr;
-}
-
-.story-card:nth-child(even) .story-image {
-    order: 2;
-}
-
-.story-card:nth-child(even) .story-text {
-    order: 1;
-}
-
-/* ROTATING VINTAGE LIGHT */
-.story-card::before {
-    content: '';
-    position: absolute;
-    top: -100%;
-    left: -100%;
-    width: 300%;
-    height: 300%;
-    background: conic-gradient(
-        from 0deg,
-        transparent,
-        rgba(201, 169, 97, 0.08),
-        transparent 60deg
-    );
-    animation: rotate-vintage-light 10s linear infinite;
-    opacity: 0;
-    transition: opacity 0.7s ease;
-}
-
-.story-card:hover::before {
-    opacity: 1;
-}
-
-/* VINTAGE DUST PARTICLES */
-.story-card::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: 
-        radial-gradient(1px 1px at 22% 32%, rgba(201, 169, 97, 0.25), transparent),
-        radial-gradient(1px 1px at 62% 72%, rgba(139, 111, 71, 0.18), transparent),
-        radial-gradient(1.5px 1.5px at 82% 22%, rgba(212, 184, 150, 0.3), transparent),
-        radial-gradient(1px 1px at 42% 82%, rgba(201, 169, 97, 0.25), transparent);
-    opacity: 0;
-    transition: opacity 0.7s ease;
-    animation: dust-float 7s ease-in-out infinite;
-}
-
-.story-card:hover::after {
-    opacity: 1;
-}
-
-@keyframes rotate-vintage-light {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-
-@keyframes dust-float {
-    0%, 100% {
-        transform: translateY(0);
-        opacity: 0.6;
-    }
-    50% {
-        transform: translateY(-25px);
-        opacity: 1;
-    }
-}
-
-.story-card:hover {
-    transform: translateY(-12px) rotate(0.3deg);
-    box-shadow: 
-        0 24px 70px rgba(107, 68, 35, 0.18),
-        inset 0 0 90px rgba(201, 169, 97, 0.08),
-        0 0 0 1px rgba(201, 169, 97, 0.35);
-    border-color: rgba(212, 184, 150, 0.45);
-}
-
-/* VINTAGE PHOTO FRAME */
-.story-image {
-    position: relative;
-    border-radius: 10px;
-    overflow: hidden;
-    aspect-ratio: 4/3;
-    box-shadow: 
-        0 10px 38px rgba(107, 68, 35, 0.22),
-        inset 0 0 0 10px rgba(253, 251, 247, 0.85),
-        inset 0 0 0 12px rgba(212, 184, 150, 0.35);
-    border: 4px solid var(--beige-light);
-}
-
-.story-image::before {
-    content: '';
-    position: absolute;
-    inset: -5px;
-    background: linear-gradient(45deg, var(--vintage-gold), var(--beige), var(--vintage-gold));
-    background-size: 300% 300%;
-    border-radius: 10px;
-    z-index: -1;
-    opacity: 0;
-    animation: vintage-border-glow 5s linear infinite;
-    transition: opacity 0.7s ease;
-}
-
-.story-card:hover .story-image::before {
-    opacity: 0.5;
-}
-
-@keyframes vintage-border-glow {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-}
-
-.story-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: all 0.9s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-    z-index: 1;
-    filter: sepia(0.06) contrast(1.04) brightness(1.02);
-}
-
-.story-card:hover .story-image img {
-    transform: scale(1.1) rotate(-0.8deg);
-    filter: sepia(0.12) contrast(1.08) brightness(1.03);
-}
-
-.story-text {
-    font-size: 1.2rem;
-    line-height: 2;
-    color: var(--text-dark);
-    font-family: 'EB Garamond', serif;
-    position: relative;
-    z-index: 1;
-}
-
-.story-text p {
-    margin-bottom: 18px;
-}
-
-/* JOURNEY TABS - VINTAGE STYLE */
-.journey-tabs {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin: 60px 0;
-    flex-wrap: wrap;
-}
-
-.journey-tab {
-    padding: 18px 42px;
-    background: linear-gradient(135deg, rgba(238, 221, 201, 0.75), rgba(249, 245, 237, 0.55));
-    color: var(--sepia-brown);
-    border: 3px solid rgba(212, 184, 150, 0.35);
-    border-radius: 50px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.45s ease;
-    font-size: 1.1rem;
-    letter-spacing: 0.04em;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 
-        0 5px 20px rgba(107, 68, 35, 0.08),
-        inset 0 2px 0 rgba(255, 255, 255, 0.55);
-    font-family: 'Playfair Display', serif;
-}
-
-.journey-tab::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(45deg, transparent, rgba(201, 169, 97, 0.25), transparent);
-    transform: translateX(-100%);
-    transition: transform 0.7s ease;
-}
-
-.journey-tab:hover::before {
-    transform: translateX(100%);
-}
-
-.journey-tab:hover {
-    border-color: var(--vintage-gold);
-    transform: translateY(-4px);
-    box-shadow: 
-        0 10px 28px rgba(107, 68, 35, 0.15),
-        inset 0 2px 0 rgba(255, 255, 255, 0.65);
-}
-
-.journey-tab.active {
-    background: linear-gradient(135deg, var(--sepia-dark), var(--sepia-brown));
-    color: var(--ivory);
-    border-color: var(--sepia-brown);
-    box-shadow: 
-        0 12px 35px rgba(107, 68, 35, 0.35),
-        0 0 35px rgba(201, 169, 97, 0.35),
-        inset 0 2px 0 rgba(255, 255, 255, 0.25);
-    animation: tab-vintage-glow 3.5s ease-in-out infinite;
-}
-
-@keyframes tab-vintage-glow {
-    0%, 100% {
-        box-shadow: 
-            0 12px 35px rgba(107, 68, 35, 0.35),
-            0 0 35px rgba(201, 169, 97, 0.35),
-            inset 0 2px 0 rgba(255, 255, 255, 0.25);
-    }
-    50% {
-        box-shadow: 
-            0 12px 35px rgba(107, 68, 35, 0.55),
-            0 0 45px rgba(201, 169, 97, 0.55),
-            inset 0 2px 0 rgba(255, 255, 255, 0.35);
-    }
-}
-
-.day-content {
-    display: none;
-    animation: fadeInContent 0.9s ease;
-}
-
-.day-content.active {
-    display: block;
-}
-
-@keyframes fadeInContent {
-    from {
-        opacity: 0;
-        transform: translateY(35px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* JOURNEY CARDS - VINTAGE POSTCARD STYLE */
-.journey-card {
-    display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    gap: 60px;
-    padding: 55px;
-    background: 
-        repeating-linear-gradient(
-            45deg,
-            transparent,
-            transparent 12px,
-            rgba(139, 111, 71, 0.015) 12px,
-            rgba(139, 111, 71, 0.015) 24px
-        ),
-        linear-gradient(135deg, rgba(249, 245, 237, 0.96), rgba(238, 221, 201, 0.75));
-    border-radius: 22px;
-    margin-bottom: 48px;
-    align-items: center;
-    transition: all 0.7s ease;
-    border: 3px solid rgba(212, 184, 150, 0.35);
-    position: relative;
-    overflow: hidden;
-    box-shadow: 
-        0 14px 48px rgba(107, 68, 35, 0.13),
-        inset 0 0 90px rgba(201, 169, 97, 0.04);
-}
-
-/* ROTATING SEPIA LIGHT */
-.journey-card::before {
-    content: '';
-    position: absolute;
-    top: -150%;
-    left: -150%;
-    width: 400%;
-    height: 400%;
-    background: conic-gradient(
-        from 0deg,
-        transparent,
-        rgba(201, 169, 97, 0.1),
-        transparent 45deg
-    );
-    animation: rotate-sepia-glow 12s linear infinite;
-    opacity: 0;
-    transition: opacity 0.7s ease;
-}
-
-.journey-card:hover::before {
-    opacity: 1;
-}
-
-/* VINTAGE SPOTLIGHT */
-.journey-card::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    background: radial-gradient(circle, rgba(201, 169, 97, 0.12), transparent 70%);
-    transform: translate(-50%, -50%);
-    transition: all 0.9s ease;
-    border-radius: 50%;
-}
-
-.journey-card:hover::after {
-    width: 750px;
-    height: 750px;
-}
-
-@keyframes rotate-sepia-glow {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-
-.journey-card:hover {
-    transform: translateX(12px) rotate(-0.4deg);
-    box-shadow: 
-        0 24px 70px rgba(107, 68, 35, 0.22),
-        inset 0 0 110px rgba(201, 169, 97, 0.08),
-        0 0 0 1px rgba(201, 169, 97, 0.45);
-    border-color: rgba(212, 184, 150, 0.55);
-}
-
-/* VINTAGE STAMP STYLE IMAGE */
-.journey-image {
-    position: relative;
-    border-radius: 14px;
-    overflow: hidden;
-    aspect-ratio: 3/2;
-    box-shadow: 
-        0 14px 48px rgba(107, 68, 35, 0.22),
-        inset 0 0 0 12px rgba(253, 251, 247, 0.92),
-        inset 0 0 0 14px rgba(212, 184, 150, 0.45);
-    border: 5px solid var(--beige-light);
-}
-
-/* PERFORATED STAMP EDGE EFFECT */
-.journey-image::before {
-    content: '';
-    position: absolute;
-    inset: -7px;
-    background: 
-        repeating-linear-gradient(
-            0deg,
-            var(--vintage-gold) 0px,
-            var(--vintage-gold) 2px,
-            transparent 2px,
-            transparent 10px
-        ),
-        repeating-linear-gradient(
-            90deg,
-            var(--beige) 0px,
-            var(--beige) 2px,
-            transparent 2px,
-            transparent 10px
-        );
-    border-radius: 14px;
-    z-index: -1;
-    opacity: 0;
-    animation: stamp-perforation 6s linear infinite;
-    transition: opacity 0.7s ease;
-}
-
-.journey-card:hover .journey-image::before {
-    opacity: 0.65;
-}
-
-@keyframes stamp-perforation {
-    0%, 100% { background-position: 0% 0%, 0% 0%; }
-    50% { background-position: 100% 100%, 100% 100%; }
-}
-
-.journey-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: all 0.9s ease;
-    cursor: pointer;
-    filter: sepia(0.08) contrast(1.04);
-}
-
-.journey-card:hover .journey-image img {
-    transform: scale(1.08) rotate(0.8deg);
-    filter: sepia(0.16) contrast(1.09);
-}
-
-.journey-text {
-    position: relative;
-    z-index: 1;
-}
-
-.journey-text h4 {
-    font-family: 'Playfair Display', serif;
-    font-size: 2rem;
-    color: var(--sepia-dark);
-    margin-bottom: 20px;
-    font-weight: 700;
-    position: relative;
-    z-index: 1;
-    letter-spacing: 0.02em;
-}
-
-.journey-text p {
-    font-size: 1.15rem;
-    line-height: 1.95;
-    color: var(--text-dark);
-    font-family: 'EB Garamond', serif;
-    position: relative;
-    z-index: 1;
-}
-
-/* MEANING CARDS - VINTAGE MEDALLION STYLE */
-.meaning-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-    gap: 48px;
-    margin-top: 70px;
-}
-
-.meaning-card {
-    background: 
-        radial-gradient(circle at center, rgba(253, 251, 247, 0.98), rgba(238, 221, 201, 0.65)),
-        repeating-linear-gradient(
-            45deg,
-            transparent,
-            transparent 6px,
-            rgba(139, 111, 71, 0.015) 6px,
-            rgba(139, 111, 71, 0.015) 12px
-        );
-    padding: 55px 48px;
-    border-radius: 50%;
-    text-align: center;
-    transition: all 0.7s ease;
-    border: 4px solid rgba(212, 184, 150, 0.35);
-    position: relative;
-    overflow: hidden;
-    box-shadow: 
-        0 14px 48px rgba(107, 68, 35, 0.13),
-        inset 0 0 70px rgba(201, 169, 97, 0.08);
-    aspect-ratio: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-/* ROTATING ORNAMENTAL BORDER */
-.meaning-card::before {
-    content: '';
-    position: absolute;
-    inset: -4px;
-    background: conic-gradient(
-        from 0deg,
-        var(--vintage-gold),
-        var(--beige),
-        var(--vintage-gold),
-        var(--beige),
-        var(--vintage-gold)
-    );
-    border-radius: 50%;
-    z-index: -1;
-    opacity: 0;
-    animation: rotate-medallion 7s linear infinite;
-    transition: opacity 0.6s ease;
-}
-
-.meaning-card:hover::before {
-    opacity: 0.55;
-}
-
-/* RADIAL GLOW PULSE */
-.meaning-card::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at center, rgba(201, 169, 97, 0.18), transparent 70%);
-    border-radius: 50%;
-    opacity: 0;
-    transition: opacity 0.6s ease;
-    animation: radial-pulse 2.5s ease-in-out infinite;
-}
-
-.meaning-card:hover::after {
-    opacity: 1;
-}
-
-@keyframes rotate-medallion {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-
-@keyframes radial-pulse {
-    0%, 100% {
-        transform: scale(0.92);
-        opacity: 0.25;
-    }
-    50% {
-        transform: scale(1.08);
-        opacity: 0.55;
-    }
-}
-
-.meaning-card:hover {
-    transform: translateY(-18px) scale(1.04) rotate(4deg);
-    box-shadow: 
-        0 28px 80px rgba(107, 68, 35, 0.23),
-        inset 0 0 90px rgba(201, 169, 97, 0.13),
-        0 0 0 1px rgba(201, 169, 97, 0.55);
-    border-color: rgba(212, 184, 150, 0.65);
-}
-
-.meaning-icon {
-    font-size: 4rem;
-    margin-bottom: 28px;
-    display: inline-block;
-    filter: drop-shadow(0 5px 15px rgba(107, 68, 35, 0.28)) sepia(0.18);
-    animation: icon-vintage-bounce 5s ease-in-out infinite;
-    position: relative;
-    z-index: 1;
-}
-
-.meaning-card:hover .meaning-icon {
-    animation: icon-vintage-spin 1.8s ease-in-out infinite;
-}
-
-@keyframes icon-vintage-bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-15px); }
-}
-
-@keyframes icon-vintage-spin {
-    0%, 100% {
-        transform: rotate(0deg) scale(1);
-        filter: drop-shadow(0 5px 15px rgba(107, 68, 35, 0.28)) sepia(0.18);
-    }
-    50% {
-        transform: rotate(18deg) scale(1.18);
-        filter: drop-shadow(0 8px 25px rgba(201, 169, 97, 0.65)) sepia(0.35);
-    }
-}
-
-.meaning-card h4 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.75rem;
-    color: var(--sepia-dark);
-    margin-bottom: 20px;
-    font-weight: 700;
-    position: relative;
-    z-index: 1;
-}
-
-.meaning-card p {
-    font-size: 1.1rem;
-    line-height: 1.9;
-    color: var(--text-dark);
-    position: relative;
-    z-index: 1;
-    font-family: 'EB Garamond', serif;
-}
-
-/* QUOTE SECTION - VINTAGE MANUSCRIPT */
-.quote-block {
-    background: 
-        repeating-linear-gradient(
-            0deg,
-            rgba(253, 251, 247, 0.96),
-            rgba(253, 251, 247, 0.96) 32px,
-            rgba(238, 221, 201, 0.25) 32px,
-            rgba(238, 221, 201, 0.25) 33px
-        );
-    padding: 70px 90px;
-    border-radius: 24px;
-    margin: 70px 0;
-    text-align: center;
-    position: relative;
-    border-left: 10px solid var(--vintage-gold);
-    border-right: 10px solid var(--beige);
-    box-shadow: 
-        0 18px 55px rgba(107, 68, 35, 0.18),
-        inset 0 0 90px rgba(201, 169, 97, 0.08);
-    overflow: hidden;
-}
-
-/* VINTAGE MANUSCRIPT ORNAMENT */
-.quote-block::before {
-    content: '"';
-    position: absolute;
-    top: 15px;
-    left: 35px;
-    font-size: 11rem;
-    font-family: 'Playfair Display', serif;
-    color: var(--beige);
-    opacity: 0.2;
-    line-height: 1;
-    animation: quote-ornament-pulse 5s ease-in-out infinite;
-    font-style: italic;
-}
-
-/* FLOATING VINTAGE PARTICLES */
-.quote-block::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: 
-        radial-gradient(2px 2px at 18% 28%, rgba(201, 169, 97, 0.35), transparent),
-        radial-gradient(1px 1px at 88% 78%, rgba(139, 111, 71, 0.25), transparent),
-        radial-gradient(2px 2px at 52% 52%, rgba(212, 184, 150, 0.35), transparent);
-    animation: quote-particles 9s ease-in-out infinite;
-}
-
-@keyframes quote-ornament-pulse {
-    0%, 100% {
-        opacity: 0.2;
-        transform: scale(1) rotate(-6deg);
-    }
-    50% {
-        opacity: 0.35;
-        transform: scale(1.06) rotate(-4deg);
-    }
-}
-
-@keyframes quote-particles {
-    0%, 100% {
-        opacity: 0.25;
-        transform: translateY(0);
-    }
-    50% {
-        opacity: 0.55;
-        transform: translateY(-12px);
-    }
-}
-
-.quote-text {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.75rem;
-    font-style: italic;
-    color: var(--sepia-dark);
-    line-height: 1.9;
-    position: relative;
-    z-index: 1;
-    text-shadow: 0 3px 18px rgba(107, 68, 35, 0.08);
-    font-weight: 500;
-}
-
-/* FINAL SECTION - VINTAGE ALBUM PAGES */
-.final-grid {
-    display: grid;
-    gap: 70px;
-    margin-top: 70px;
-}
-
-.final-card {
-    display: grid;
-    grid-template-columns: 1fr 1.2fr;
-    gap: 70px;
-    align-items: center;
-    padding: 60px;
-    background: 
-        repeating-linear-gradient(
-            0deg,
-            rgba(253, 251, 247, 0.96),
-            rgba(253, 251, 247, 0.96) 28px,
-            rgba(238, 221, 201, 0.35) 28px,
-            rgba(238, 221, 201, 0.35) 29px
-        );
-    border-radius: 20px;
-    transition: all 0.7s ease;
-    border: 4px solid rgba(212, 184, 150, 0.35);
-    position: relative;
-    overflow: hidden;
-    box-shadow: 
-        0 18px 58px rgba(107, 68, 35, 0.18),
-        inset 0 0 110px rgba(201, 169, 97, 0.06);
-}
-
-.final-card:nth-child(even) {
-    grid-template-columns: 1.2fr 1fr;
-}
-
-.final-card:nth-child(even) .final-image {
-    order: 2;
-}
-
-.final-card:nth-child(even) .final-text {
-    order: 1;
-}
-
-/* VINTAGE PAGE CORNER CURL */
-.final-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 0 70px 70px 0;
-    border-color: transparent rgba(201, 169, 97, 0.25) transparent transparent;
-    opacity: 0;
-    transition: all 0.6s ease;
-    filter: drop-shadow(-3px 3px 5px rgba(107, 68, 35, 0.25));
-}
-
-.final-card:hover::before {
-    opacity: 1;
-    border-width: 0 90px 90px 0;
-}
-
-/* VINTAGE ALBUM SPINE EFFECT */
-.final-card::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 24px;
-    background: 
-        repeating-linear-gradient(
-            0deg,
-            var(--sepia-brown),
-            var(--sepia-brown) 12px,
-            var(--beige) 12px,
-            var(--beige) 24px
-        );
-    opacity: 0.25;
-    box-shadow: inset -3px 0 10px rgba(107, 68, 35, 0.35);
-}
-
-.final-card:hover {
-    transform: scale(1.03) rotate(-0.4deg);
-    box-shadow: 
-        0 28px 80px rgba(107, 68, 35, 0.25),
-        inset 0 0 130px rgba(201, 169, 97, 0.1),
-        0 0 0 1px rgba(201, 169, 97, 0.45);
-    border-color: rgba(212, 184, 150, 0.55);
-}
-
-/* VINTAGE POLAROID STYLE */
-.final-image {
-    border-radius: 10px;
-    overflow: hidden;
-    aspect-ratio: 4/3;
-    box-shadow: 
-        0 22px 58px rgba(107, 68, 35, 0.28),
-        inset 0 0 0 14px rgba(253, 251, 247, 0.96),
-        inset 0 0 0 16px rgba(212, 184, 150, 0.55);
-    border: 5px solid var(--beige-light);
-    position: relative;
-    background: var(--ivory);
-}
-
-/* PHOTO CORNER MOUNTS */
-.final-image::before {
-    content: '';
-    position: absolute;
-    inset: 10px;
-    background: 
-        linear-gradient(45deg, var(--vintage-gold) 0%, transparent 22%),
-        linear-gradient(135deg, transparent 78%, var(--vintage-gold) 100%),
-        linear-gradient(-45deg, var(--vintage-gold) 0%, transparent 22%),
-        linear-gradient(-135deg, transparent 78%, var(--vintage-gold) 100%);
-    opacity: 0.35;
-    pointer-events: none;
-    z-index: 2;
-    animation: photo-corners-shine 3.5s ease-in-out infinite;
-}
-
-@keyframes photo-corners-shine {
-    0%, 100% { opacity: 0.35; }
-    50% { opacity: 0.65; }
-}
-
-.final-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: all 0.9s ease;
-    filter: sepia(0.1) contrast(1.06);
-}
-
-.final-card:hover .final-image img {
-    transform: scale(1.12);
-    filter: sepia(0.16) contrast(1.1);
-}
-
-.final-text {
-    position: relative;
-    z-index: 1;
-}
-
-.final-text p {
-    font-size: 1.25rem;
-    line-height: 2;
-    color: var(--text-dark);
-    font-family: 'EB Garamond', serif;
-    margin-bottom: 24px;
-    position: relative;
-    z-index: 1;
-}
-
-/* FOOTER - VINTAGE LEATHER BOUND */
-footer {
-    background: 
-        repeating-linear-gradient(
-            90deg,
-            var(--sepia-dark),
-            var(--sepia-dark) 3px,
-            var(--sepia-brown) 3px,
-            var(--sepia-brown) 6px
-        ),
-        linear-gradient(135deg, var(--sepia-dark), var(--sepia-brown));
-    color: var(--ivory);
-    text-align: center;
-    padding: 90px 50px;
-    position: relative;
-    overflow: hidden;
-    box-shadow: inset 0 5px 25px rgba(0, 0, 0, 0.45);
-}
-
-/* VINTAGE LEATHER TEXTURE */
-footer::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: 
-        radial-gradient(ellipse at 22% 32%, rgba(201, 169, 97, 0.13), transparent 52%),
-        radial-gradient(ellipse at 78% 68%, rgba(212, 184, 150, 0.13), transparent 52%);
-    animation: leather-shimmer 7s ease-in-out infinite;
-}
-
-/* EMBOSSED ORNAMENTS */
-footer::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: 
-        radial-gradient(2px 2px at 28% 38%, rgba(201, 169, 97, 0.35), transparent),
-        radial-gradient(2px 2px at 78% 68%, rgba(201, 169, 97, 0.35), transparent),
-        radial-gradient(3px 3px at 52% 22%, rgba(212, 184, 150, 0.45), transparent),
-        radial-gradient(2px 2px at 18% 78%, rgba(201, 169, 97, 0.35), transparent),
-        radial-gradient(2px 2px at 88% 28%, rgba(201, 169, 97, 0.35), transparent);
-    animation: emboss-glow 9s ease-in-out infinite;
-    opacity: 0.55;
-}
-
-@keyframes leather-shimmer {
-    0%, 100% { opacity: 0.35; }
-    50% { opacity: 0.65; }
-}
-
-@keyframes emboss-glow {
-    0%, 100% { opacity: 0.55; }
-    50% { opacity: 0.85; }
-}
-
-.footer-content {
-    position: relative;
-    z-index: 1;
-}
-
-.footer-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.8rem;
-    margin-bottom: 20px;
-    font-weight: 800;
-    letter-spacing: 0.06em;
-    text-shadow: 0 3px 12px rgba(0, 0, 0, 0.6);
-    animation: footer-title-glow 5s ease-in-out infinite;
-}
-
-@keyframes footer-title-glow {
-    0%, 100% {
-        text-shadow: 0 3px 12px rgba(0, 0, 0, 0.6);
-    }
-    50% {
-        text-shadow: 0 3px 24px rgba(201, 169, 97, 0.65);
-    }
-}
-
-.footer-subtitle {
-    font-size: 1.3rem;
-    opacity: 0.92;
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-}
-
-/* IMAGE MODAL - VINTAGE LIGHTBOX */
-.image-modal {
-    position: fixed;
-    inset: 0;
-    background: rgba(62, 43, 31, 0.97);
-    backdrop-filter: blur(14px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.6s ease;
-    z-index: 9999;
-    cursor: pointer;
-}
-
-/* VINTAGE VIGNETTE */
-.image-modal::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse at center, transparent 28%, rgba(107, 68, 35, 0.85) 100%);
-    animation: modal-vignette 3.5s ease-in-out infinite;
-}
-
-/* FLOATING DUST IN LIGHT */
-.image-modal::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: 
-        radial-gradient(2px 2px at 22% 32%, rgba(201, 169, 97, 0.55), transparent),
-        radial-gradient(1px 1px at 62% 72%, rgba(212, 184, 150, 0.35), transparent),
-        radial-gradient(2px 2px at 82% 22%, rgba(201, 169, 97, 0.45), transparent),
-        radial-gradient(1px 1px at 42% 82%, rgba(212, 184, 150, 0.35), transparent),
-        radial-gradient(2px 2px at 18% 62%, rgba(201, 169, 97, 0.55), transparent);
-    animation: modal-dust-float 14s linear infinite;
-}
-
-@keyframes modal-vignette {
-    0%, 100% { opacity: 0.65; }
-    50% { opacity: 1; }
-}
-
-@keyframes modal-dust-float {
-    from { transform: translateY(0) translateX(0); }
-    to { transform: translateY(-90px) translateX(45px); }
-}
-
-.image-modal.active {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-.image-modal img {
-    max-width: 94%;
-    max-height: 94%;
-    border-radius: 14px;
-    box-shadow: 
-        0 36px 90px rgba(0, 0, 0, 0.85),
-        inset 0 0 0 14px rgba(253, 251, 247, 0.92),
-        inset 0 0 0 16px rgba(212, 184, 150, 0.55);
-    animation: zoomInVintage 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    border: 5px solid var(--beige-light);
-    filter: sepia(0.08);
-    position: relative;
-    z-index: 1;
-}
-
-@keyframes zoomInVintage {
-    from {
-        transform: scale(0.75) rotate(-2deg);
-        opacity: 0;
-    }
-    to {
-        transform: scale(1) rotate(0deg);
-        opacity: 1;
-    }
-}
-
-.modal-close {
-    position: absolute;
-    top: 38px;
-    right: 38px;
-    width: 58px;
-    height: 58px;
-    border-radius: 50%;
-    background: rgba(253, 251, 247, 0.25);
-    backdrop-filter: blur(12px);
-    border: 4px solid rgba(212, 184, 150, 0.45);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2rem;
-    color: var(--ivory);
-    cursor: pointer;
-    transition: all 0.35s ease;
-    box-shadow: 0 5px 24px rgba(107, 68, 35, 0.45);
-    z-index: 2;
-}
-
-.modal-close:hover {
-    background: rgba(201, 169, 97, 0.45);
-    transform: rotate(90deg) scale(1.12);
-    border-color: rgba(201, 169, 97, 0.75);
-}
-
-/* PROGRESS INDICATOR */
-.progress-bar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 4px;
-    background: linear-gradient(90deg, var(--vintage-gold), var(--beige));
-    box-shadow: 0 2px 10px rgba(201, 169, 97, 0.5);
-    z-index: 1000;
-    transform-origin: left;
-    transition: transform 0.1s ease-out;
-}
-
-/* RESPONSIVE */
-@media (max-width: 1024px) {
-    .hero h1 {
-        font-size: 3.8rem;
-    }
-    
-    .section-title {
-        font-size: 2.8rem;
-    }
-    
-    .paper {
-        padding: 70px 60px;
-    }
-    
-    .page-bookmark {
-        right: 5%;
-    }
-}
-
-@media (max-width: 968px) {
-    .hero h1 {
-        font-size: 3.2rem;
-    }
-    
-    .section-title {
-        font-size: 2.5rem;
-    }
-    
-    .story-card,
-    .journey-card,
-    .final-card {
-        grid-template-columns: 1fr !important;
-        gap: 38px;
-    }
-    
-    .story-card:nth-child(even) .story-image,
-    .final-card:nth-child(even) .final-image {
-        order: 0;
-    }
-    
-    .story-card:nth-child(even) .story-text,
-    .final-card:nth-child(even) .final-text {
-        order: 0;
-    }
-    
-    .paper {
-        padding: 55px 45px;
-    }
-    
-    .quote-block {
-        padding: 50px 40px;
-    }
-    
-    .meaning-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .meaning-card {
-        border-radius: 28px;
-        aspect-ratio: auto;
-        padding: 45px 40px;
-    }
-    
-    .page-bookmark {
-        width: 50px;
-        height: 85px;
-    }
-}
-
-@media (max-width: 640px) {
-    .hero {
-        padding: 60px 35px;
-    }
-    
-    .hero h1 {
-        font-size: 2.5rem;
-    }
-    
-    .hero h2 {
-        font-size: 1.4rem;
-    }
-    
-    .hero-quote {
-        font-size: 1.05rem;
-    }
-    
-    section {
-        padding: 90px 5%;
-    }
-    
-    .paper {
-        padding: 45px 32px;
-        margin-bottom: 70px;
-    }
-    
-    .journey-tabs {
-        flex-direction: column;
-        gap: 14px;
-    }
-    
-    .journey-tab {
-        width: 100%;
-        text-align: center;
-    }
-    
-    .quote-block {
-        padding: 40px 28px;
-    }
-    
-    .section-title {
-        font-size: 2.2rem;
-    }
-    
-    .page-bookmark {
-        display: none;
-    }
-}
-
-/* LOADING ANIMATION */
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-body {
-    animation: fadeIn 0.8s ease;
-}
-
-/* SCROLL REVEAL ANIMATION */
-.reveal {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.9s ease, transform 0.9s ease;
-}
-
-.reveal.active {
-    opacity: 1;
-    transform: translateY(0);
+  /* Moss greens — deep & refined */
+  --g9:#162c1e; --g8:#1c3826; --g7:#24482e; --g6:#305c3a;
+  --g5:#3e7249; --g4:#568c62; --g3:#7aaa88; --g2:#aeceba; --g1:#d8ecdf;
+
+  /* Muted sky blues */
+  --b9:#182c42; --b7:#244868; --b5:#3870a0; --b3:#6aa0c8; --b1:#b8d8ec;
+
+  /* Warm ivory / aged paper */
+  --paper: #faf7f0;  --paper2: #f4f0e6;  --paper3: #ede8dc;
+  --rule:  rgba(40,80,50,.055);
+
+  /* Gold brass */
+  --au1:#7a5818; --au2:#a07828; --au3:#c8a040; --au4:#e0c070;
+
+  /* Text hierarchy */
+  --tx0:#0e1e14; --tx1:#1e3826; --tx2:#2c5038; --tx3:#4a7258;
+  --tx4:#6a9070; --tx5:#8aaa90;
+
+  /* Shadows */
+  --sh1:0 2px 10px rgba(14,30,20,.07);
+  --sh2:0 8px 30px rgba(14,30,20,.12);
+  --sh3:0 20px 60px rgba(14,30,20,.18);
+  --sh4:0 36px 90px rgba(14,30,20,.24);
+  --sh5:0 60px 140px rgba(14,30,20,.32);
+}
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+
+/* ══════════════════════════════════════════════
+   BODY — warm alpine sky
+══════════════════════════════════════════════ */
+body{
+  font-family:'EB Garamond',serif;
+  background:
+    radial-gradient(ellipse 130% 70% at 50% -8%,  #9ed4f0 0%, transparent 50%),
+    radial-gradient(ellipse 65%  50% at 2%   58%,  #b0dac4 0%, transparent 48%),
+    radial-gradient(ellipse 65%  50% at 98%  72%,  #b8d8ee 0%, transparent 48%),
+    linear-gradient(168deg, #c8e6f4 0%, #cae8d6 22%, #d6f0e2 50%, #e2f4ea 74%, #eef8f2 100%);
+  background-attachment:fixed;
+  min-height:100vh;
+  overflow-x:hidden;
+}
+
+/* ══════════════════════════════════════════════
+   AMBIENT CLOUD LAYER
+══════════════════════════════════════════════ */
+.sky-layer{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
+.cl{
+  position:absolute;border-radius:50%;pointer-events:none;
+  background:radial-gradient(ellipse 54% 58% at 50% 50%,
+    rgba(255,255,255,.88),rgba(255,255,255,.36) 56%,transparent);
+}
+.c1{width:580px;height:168px;top:5%; left:-600px; opacity:.84;animation:dft1 65s linear infinite;}
+.c2{width:420px;height:120px;top:19%;right:-440px;opacity:.68;animation:dft2 52s linear infinite;}
+.c3{width:510px;height:150px;top:12%;left:18%;   opacity:.44;animation:bob1 42s ease-in-out infinite;}
+.c4{width:340px;height:100px;top:42%;right:11%;  opacity:.34;animation:bob2 48s ease-in-out infinite;}
+.c5{width:290px;height:86px; top:68%;left:7%;    opacity:.24;animation:bob1 60s ease-in-out infinite;}
+.c6{width:370px;height:110px;top:80%;right:19%;  opacity:.18;animation:bob2 46s ease-in-out infinite;}
+@keyframes dft1{from{transform:translateX(0)}to{transform:translateX(calc(100vw + 580px))}}
+@keyframes dft2{from{transform:translateX(0)}to{transform:translateX(calc(-100vw - 420px))}}
+@keyframes bob1{0%,100%{transform:translate(0,0);opacity:.44;}50%{transform:translate(48px,-26px);opacity:.60;}}
+@keyframes bob2{0%,100%{transform:translate(0,0);opacity:.34;}50%{transform:translate(-40px,-20px);opacity:.50;}}
+
+/* ══════════════════════════════════════════════
+   PINE SVG SILHOUETTES
+══════════════════════════════════════════════ */
+.pine-side{position:fixed;bottom:0;pointer-events:none;z-index:0;}
+.pine-side.pl{left:0;}.pine-side.pr{right:0;transform:scaleX(-1);}
+
+/* ══════════════════════════════════════════════
+   LOADER
+══════════════════════════════════════════════ */
+.loader{
+  position:fixed;inset:0;
+  background:linear-gradient(145deg,var(--g8),var(--b9));
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;
+  z-index:99999;opacity:0;pointer-events:none;transition:opacity .4s;
+}
+.loader.on{opacity:1;pointer-events:auto;}
+.lring{width:58px;height:58px;border:3px solid rgba(170,206,186,.2);border-top-color:var(--g3);border-radius:50%;animation:spin .88s linear infinite;}
+.ltxt{font-family:'Dancing Script',cursive;font-size:1.22rem;color:rgba(255,255,255,.60);letter-spacing:.04em;}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ══════════════════════════════════════════════
+   COVER — premium leather diary
+══════════════════════════════════════════════ */
+#cover{
+  min-height:100vh;display:flex;align-items:center;justify-content:center;
+  padding:40px 20px;position:relative;z-index:10;
+}
+.book-wrap{max-width:840px;width:100%;position:relative;}
+
+.book-spine{
+  position:absolute;left:-22px;top:8px;bottom:8px;width:22px;
+  background:linear-gradient(180deg,#070d08 0%,#0d1a0e 28%,#111e12 55%,#0d1a0e 82%,#070d08 100%);
+  border-radius:3px 0 0 3px;
+  box-shadow:-3px 0 10px rgba(0,0,0,.55);
+}
+.book-spine::after{
+  content:'ĐÀ LẠT · 11L';
+  position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%) rotate(-90deg);
+  font-family:'Playfair Display',serif;font-size:.58rem;letter-spacing:.24em;
+  color:rgba(192,152,60,.62);white-space:nowrap;
+}
+.book-edge{
+  position:absolute;right:-10px;top:6px;bottom:6px;width:10px;
+  background:repeating-linear-gradient(0deg,#ede4d0 0px,#ede4d0 1px,#ddd4bc 1px,#ddd4bc 2px);
+  border-radius:0 2px 2px 0;box-shadow:3px 0 8px rgba(0,0,0,.16);
+}
+
+/* book face */
+.book-face{
+  background:linear-gradient(158deg,
+    #1c3e28 0%, #204830 25%, #265038 52%, #1a3822 75%, #122a1a 100%);
+  border-radius:3px 22px 22px 3px;
+  padding:70px 82px 64px;
+  position:relative;overflow:hidden;
+  box-shadow:var(--sh5);
+  border:1.5px solid rgba(122,170,136,.18);
+  animation:bookRise 1.8s cubic-bezier(.16,.84,.44,1) both;
+  transform-style:preserve-3d;
+  transition:transform .58s cubic-bezier(.16,.84,.44,1);
+}
+@keyframes bookRise{
+  from{opacity:0;transform:translateY(80px) rotateX(-14deg) scale(.92);}
+  to  {opacity:1;transform:translateY(0)    rotateX(0)      scale(1);}
+}
+
+/* embossed gold frame */
+.book-face::before{
+  content:'';position:absolute;inset:22px;
+  border:1px solid rgba(192,152,60,.28);
+  border-radius:2px 18px 18px 2px;pointer-events:none;
+  animation:frmGl 5.5s ease-in-out infinite;
+}
+@keyframes frmGl{
+  0%,100%{opacity:.45;box-shadow:inset 0 0 0 4px rgba(192,152,60,.04);}
+  50%    {opacity:.90;box-shadow:inset 0 0 0 4px rgba(192,152,60,.12),inset 0 0 24px rgba(192,152,60,.05);}
+}
+/* leather grain */
+.book-face::after{
+  content:'';position:absolute;inset:0;
+  background:
+    repeating-linear-gradient(47deg,transparent,transparent 2px,rgba(0,0,0,.018) 2px,rgba(0,0,0,.018) 4px),
+    radial-gradient(ellipse at 20% 24%,rgba(255,255,255,.052),transparent 46%),
+    radial-gradient(ellipse at 80% 76%,rgba(0,0,0,.065),transparent 46%);
+  border-radius:3px 22px 22px 3px;pointer-events:none;
+}
+
+/* ribbon bookmark */
+.ribbon{
+  position:absolute;top:0;right:17%;width:44px;height:148px;
+  background:linear-gradient(180deg,#c84430 0%,#a02818 100%);
+  clip-path:polygon(0 0,100% 0,100% 79%,50% 100%,0 79%);
+  box-shadow:0 8px 28px rgba(160,40,24,.40),inset -2px 0 4px rgba(0,0,0,.12);
+  z-index:3;animation:ribSw 8s ease-in-out infinite;
+}
+@keyframes ribSw{0%,100%{transform:rotate(0) translateY(0);}35%{transform:rotate(2deg) translateY(3px);}70%{transform:rotate(-1.8deg) translateY(2px);}}
+
+/* ── Cover inner content ── */
+.cov-inner{position:relative;z-index:2;text-align:center;color:#fff;}
+
+.cov-badge{
+  display:inline-flex;align-items:center;gap:10px;
+  background:rgba(122,170,136,.14);border:1px solid rgba(122,170,136,.34);
+  color:var(--g2);padding:7px 24px;border-radius:50px;
+  font-size:.77rem;font-family:'Playfair Display',serif;letter-spacing:.20em;
+  margin-bottom:30px;animation:fU 1.2s ease .12s both;
+}
+.cov-emblem{
+  font-size:5.6rem;display:inline-block;margin-bottom:20px;
+  animation:embF 5.5s ease-in-out infinite, fU 1.2s ease .30s both;
+  filter:drop-shadow(0 6px 28px rgba(80,192,230,.38)) drop-shadow(0 0 52px rgba(122,170,136,.28));
+}
+@keyframes embF{0%,100%{transform:translateY(0) rotate(-3.5deg) scale(1);}50%{transform:translateY(-20px) rotate(3.5deg) scale(1.09);}}
+
+.cov-title{
+  font-family:'Playfair Display',serif;font-size:3.7rem;font-weight:800;
+  letter-spacing:.06em;line-height:1.1;margin-bottom:8px;
+  text-shadow:0 0 44px rgba(80,195,232,.40),0 3px 20px rgba(0,0,0,.60);
+  animation:fU 1.2s ease .48s both, tGl 5s ease-in-out infinite;
+}
+@keyframes tGl{
+  0%,100%{text-shadow:0 0 44px rgba(80,195,232,.40),0 3px 20px rgba(0,0,0,.60);}
+  50%    {text-shadow:0 0 64px rgba(140,222,150,.52),0 3px 24px rgba(0,0,0,.68);}
+}
+.cov-sub{
+  font-family:'Dancing Script',cursive;font-size:1.85rem;
+  color:rgba(158,226,176,.86);margin-bottom:32px;
+  text-shadow:0 2px 14px rgba(0,0,0,.38);
+  animation:fU 1.2s ease .66s both;
+}
+.cov-quote{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:1.1rem;line-height:2;color:rgba(255,255,255,.68);
+  max-width:560px;margin:0 auto 48px;
+  animation:fU 1.2s ease .82s both;
+}
+.open-btn{
+  display:inline-flex;align-items:center;gap:12px;padding:18px 54px;
+  background:linear-gradient(130deg,var(--g5) 0%,var(--b7) 100%);
+  color:#fff;font-family:'Playfair Display',serif;font-weight:700;
+  font-size:1.05rem;letter-spacing:.06em;border-radius:50px;
+  border:1.5px solid rgba(255,255,255,.16);cursor:pointer;
+  position:relative;overflow:hidden;
+  box-shadow:0 12px 38px rgba(36,72,104,.36),0 4px 14px rgba(62,114,73,.30);
+  transition:all .44s cubic-bezier(.16,.84,.44,1);
+  animation:fU 1.2s ease 1.0s both, oGl 3.5s ease-in-out infinite;
+}
+.open-btn::before{content:'';position:absolute;inset:0;
+  background:linear-gradient(45deg,transparent 30%,rgba(255,255,255,.26) 50%,transparent 70%);
+  transform:translateX(-100%);transition:transform .7s;}
+.open-btn:hover::before{transform:translateX(100%);}
+.open-btn:hover{transform:translateY(-5px) scale(1.04);
+  box-shadow:0 22px 54px rgba(36,72,104,.50),0 0 40px rgba(62,114,73,.34);}
+@keyframes oGl{0%,100%{box-shadow:0 12px 38px rgba(36,72,104,.36),0 4px 14px rgba(62,114,73,.30);}50%{box-shadow:0 12px 46px rgba(36,72,104,.54),0 0 36px rgba(62,114,73,.40);}}
+@keyframes fU{from{opacity:0;transform:translateY(36px);}to{opacity:1;transform:translateY(0);}}
+
+/* ══════════════════════════════════════════════
+   FIREFLY PARTICLES (cover only)
+══════════════════════════════════════════════ */
+.firefly-wrap{
+  position:absolute;inset:0;pointer-events:none;z-index:1;overflow:hidden;
+}
+.ff{
+  position:absolute;border-radius:50%;pointer-events:none;
+  animation:ffRise var(--dur) var(--del) ease-in-out infinite;
+  opacity:0;
+}
+@keyframes ffRise{
+  0%  {opacity:0;transform:translateY(0)   translateX(0)     scale(1);}
+  20% {opacity:.8;}
+  80% {opacity:.4;}
+  100%{opacity:0;transform:translateY(-110px) translateX(var(--dx)) scale(.3);}
+}
+
+/* ══════════════════════════════════════════════
+   DIARY WRAPPER
+══════════════════════════════════════════════ */
+#diary{
+  display:none;max-width:1130px;margin:0 auto;
+  padding:50px 24px 100px;position:relative;z-index:10;
+}
+#diary.open{display:block;animation:dOpen .88s cubic-bezier(.16,.84,.44,1) both;}
+@keyframes dOpen{from{opacity:0;transform:translateY(48px);}to{opacity:1;transform:translateY(0);}}
+
+/* progress dots */
+.prog{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:40px;}
+.pdot{
+  width:8px;height:8px;border-radius:50%;cursor:pointer;
+  background:rgba(48,92,58,.20);border:1.5px solid rgba(48,92,58,.28);
+  transition:all .32s ease;
+}
+.pdot.on{width:28px;border-radius:4px;
+  background:linear-gradient(90deg,var(--g5),var(--b5));
+  border-color:transparent;box-shadow:0 2px 10px rgba(48,92,58,.28);}
+.pdot:hover:not(.on){background:rgba(48,92,58,.38);transform:scale(1.3);}
+
+/* ══════════════════════════════════════════════
+   PAGE SHEET
+══════════════════════════════════════════════ */
+.diary-pg{display:none;position:relative;}
+.diary-pg.on{
+  display:block;
+  animation:pgTurn .62s cubic-bezier(.16,.84,.44,1) both;
+}
+@keyframes pgTurn{
+  from{opacity:0;transform:perspective(1400px) rotateY(-16deg) translateX(-22px);}
+  to  {opacity:1;transform:perspective(1400px) rotateY(0)      translateX(0);}
+}
+
+.sheet{
+  background:
+    repeating-linear-gradient(0deg,transparent,transparent 29px,var(--rule) 29px,var(--rule) 30px),
+    linear-gradient(158deg,var(--paper) 0%,var(--paper2) 45%,#f2f8ee 78%,#edf5e8 100%);
+  border-radius:3px 22px 22px 3px;
+  position:relative;overflow:hidden;
+  box-shadow:var(--sh5),14px 0 0 rgba(14,30,20,.05),
+    inset 3px 0 0 rgba(48,92,58,.04),inset 0 1px 0 rgba(255,255,255,.95);
+  border-left:62px solid var(--paper3);
+  border-right:1px solid #ddd4c0;
+}
+/* margin red line */
+.sheet::before{content:'';position:absolute;left:-46px;top:0;bottom:0;
+  width:1.5px;background:rgba(180,60,60,.14);}
+/* top shimmer */
+.sheet::after{content:'';position:absolute;top:0;left:7%;right:7%;height:2px;
+  background:linear-gradient(90deg,transparent,rgba(48,92,58,.26),rgba(56,112,160,.20),transparent);
+  animation:topSh 5s ease-in-out infinite;}
+@keyframes topSh{0%,100%{opacity:.35;left:7%;right:7%;}50%{opacity:.72;left:2%;right:2%;}}
+
+.ring-holes{position:absolute;left:-48px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:52px;}
+.rhole{width:12px;height:12px;border-radius:50%;
+  background:rgba(14,30,20,.12);box-shadow:inset 0 1px 4px rgba(0,0,0,.16),0 1px 2px rgba(255,255,255,.4);}
+
+.pg-num{position:absolute;bottom:24px;right:42px;
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.16rem;
+  color:var(--tx3);opacity:.34;letter-spacing:.04em;}
+
+.pg-body{padding:62px 70px 50px;}
+
+/* ── FLOATING LEAF (pg 1 & 3) ── */
+.leaf-layer{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:1;}
+.lf{
+  position:absolute;font-size:var(--lsz);pointer-events:none;
+  animation:lfDrift var(--ldur) var(--ldel) ease-in-out infinite;
+  opacity:0;
+}
+@keyframes lfDrift{
+  0%  {opacity:0;transform:translateY(20px)  translateX(0)   rotate(0deg)   scale(1);}
+  18% {opacity:.55;}
+  82% {opacity:.28;}
+  100%{opacity:0;transform:translateY(-130px) translateX(var(--lx)) rotate(200deg) scale(.3);}
+}
+
+/* ══════════════════════════════════════════════
+   PAGE NAVIGATION
+══════════════════════════════════════════════ */
+.pg-nav{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:28px 0 0;margin-top:34px;
+  border-top:1px solid rgba(48,92,58,.10);
+}
+.nbtn{
+  display:inline-flex;align-items:center;gap:10px;padding:12px 30px;
+  font-family:'Playfair Display',serif;font-weight:600;font-size:.9rem;letter-spacing:.04em;
+  border-radius:50px;border:1.5px solid rgba(48,92,58,.22);
+  background:rgba(255,255,255,.58);color:var(--tx2);
+  cursor:pointer;position:relative;overflow:hidden;backdrop-filter:blur(8px);
+  box-shadow:var(--sh1);transition:all .34s cubic-bezier(.16,.84,.44,1);
+}
+.nbtn::before{content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(48,92,58,.08),rgba(56,112,160,.06));
+  opacity:0;transition:opacity .3s;}
+.nbtn:hover::before{opacity:1;}
+.nbtn:hover{border-color:rgba(48,92,58,.44);transform:translateY(-3px);box-shadow:var(--sh2);}
+.nbtn:disabled{opacity:.18;pointer-events:none;}
+.nbtn.cta{
+  background:linear-gradient(130deg,var(--g6),var(--b7));color:#fff;border-color:transparent;
+  box-shadow:0 10px 30px rgba(36,72,104,.26);}
+.nbtn.cta:hover{box-shadow:0 14px 40px rgba(36,72,104,.42),0 0 22px rgba(62,114,73,.22);}
+.nmid{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.02rem;color:var(--tx4);opacity:.50;letter-spacing:.04em;}
+
+/* ══════════════════════════════════════════════
+   SECTION HEADING
+══════════════════════════════════════════════ */
+.pg-h{
+  font-family:'Playfair Display',serif;font-size:2.55rem;font-weight:700;
+  color:var(--g9);text-align:center;margin-bottom:10px;
+  position:relative;display:inline-block;width:100%;
+}
+.pg-h::after{content:'';position:absolute;bottom:-13px;left:50%;transform:translateX(-50%);
+  width:110px;height:2.5px;
+  background:linear-gradient(90deg,transparent,var(--g5),var(--b5),transparent);
+  border-radius:2px;animation:rPls 3.5s ease-in-out infinite;}
+@keyframes rPls{0%,100%{width:110px;opacity:.60;}50%{width:152px;opacity:1;}}
+
+/* gradient text on pg1 & pg3 headings */
+.grad-h{
+  background:linear-gradient(118deg,var(--g7) 0%,var(--g5) 45%,var(--b7) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+
+.pg-intro{
+  text-align:center;max-width:700px;margin:28px auto 46px;
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:1.18rem;line-height:1.95;color:var(--tx3);
+}
+
+/* ══════════════════════════════════════════════
+   STORY PAIRS (image + text)
+══════════════════════════════════════════════ */
+.spair{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center;margin-bottom:36px;}
+.spair.flip{direction:rtl;}.spair.flip>*{direction:ltr;}
+
+.simg{
+  border-radius:14px;overflow:hidden;aspect-ratio:4/3;
+  position:relative;background:var(--paper3);cursor:pointer;
+  box-shadow:var(--sh3),0 0 0 8px rgba(255,255,255,.82),0 0 0 10px rgba(86,140,98,.14);
+}
+.simg img{width:100%;height:100%;object-fit:cover;
+  transition:transform .78s cubic-bezier(.16,.84,.44,1),filter .5s;
+  filter:saturate(1.04) contrast(1.02);}
+.simg:hover img{transform:scale(1.08);filter:saturate(1.15) contrast(1.04);}
+.simg::after{content:'';position:absolute;inset:0;
+  background:linear-gradient(145deg,rgba(255,255,255,.09),transparent 40%,rgba(14,30,20,.05));
+  pointer-events:none;}
+.simg::before{content:'';position:absolute;inset:-2px;
+  background:linear-gradient(45deg,var(--g5),var(--b5),var(--g3));
+  background-size:300% 300%;border-radius:14px;z-index:-1;
+  opacity:0;animation:bAn 4s linear infinite;transition:opacity .5s;}
+.spair:hover .simg::before{opacity:.52;}
+@keyframes bAn{0%,100%{background-position:0% 50%;}50%{background-position:100% 50%;}}
+
+.stxt{font-size:1.12rem;line-height:2;color:var(--tx1);}
+.stxt p{margin-bottom:14px;}.stxt p:last-child{margin-bottom:0;}
+.stxt .lead{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.22rem;color:var(--tx0);margin-bottom:18px;}
+
+/* ══════════════════════════════════════════════
+   MEANING CIRCLES
+══════════════════════════════════════════════ */
+.mrow{display:grid;grid-template-columns:repeat(3,1fr);gap:38px;margin:44px 0;}
+.mcard{
+  background:radial-gradient(circle at 38% 32%,rgba(255,255,255,.97),rgba(220,240,226,.88));
+  padding:46px 28px;border-radius:50%;aspect-ratio:1;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+  border:2px solid rgba(86,140,98,.28);box-shadow:var(--sh2);
+  transition:all .58s cubic-bezier(.16,.84,.44,1);position:relative;overflow:hidden;
+}
+.mcard::before{content:'';position:absolute;inset:-3px;
+  background:conic-gradient(from 0deg,var(--g5),var(--b5),var(--g3),var(--b3),var(--g4),var(--g5));
+  border-radius:50%;z-index:-1;opacity:0;animation:cRot 6s linear infinite;transition:opacity .5s;}
+.mcard:hover::before{opacity:.65;}
+@keyframes cRot{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+.mcard::after{content:'';position:absolute;inset:0;
+  background:radial-gradient(circle at center,rgba(86,140,98,.16),transparent 65%);
+  border-radius:50%;opacity:0;animation:rPul 3s ease-in-out infinite;transition:opacity .5s;}
+.mcard:hover::after{opacity:1;}
+@keyframes rPul{0%,100%{transform:scale(.82);}50%{transform:scale(1.18);}}
+.mcard:hover{transform:translateY(-16px) scale(1.04) rotate(3.5deg);
+  box-shadow:var(--sh4),0 0 44px rgba(86,140,98,.20),0 0 26px rgba(56,112,160,.14);}
+.mico{font-size:3.5rem;margin-bottom:18px;
+  filter:drop-shadow(0 3px 12px rgba(14,30,20,.14));
+  animation:icBob 4.5s ease-in-out infinite;position:relative;z-index:1;}
+.mcard:nth-child(2) .mico{animation-delay:1s;}.mcard:nth-child(3) .mico{animation-delay:2s;}
+@keyframes icBob{0%,100%{transform:translateY(0);}50%{transform:translateY(-11px);}}
+.mcard:hover .mico{animation:icSp 1.2s ease-in-out;}
+@keyframes icSp{0%,100%{transform:rotate(0) scale(1);}50%{transform:rotate(18deg) scale(1.22);}}
+.mcard h4{font-family:'Playfair Display',serif;font-size:1.28rem;color:var(--g9);margin-bottom:10px;font-weight:700;position:relative;z-index:1;}
+.mcard p{font-family:'Cormorant Garamond',serif;font-size:.98rem;line-height:1.76;color:var(--tx3);position:relative;z-index:1;}
+
+/* ══════════════════════════════════════════════
+   QUOTE BLOCK
+══════════════════════════════════════════════ */
+.qblock{
+  background:
+    repeating-linear-gradient(0deg,transparent,transparent 29px,rgba(56,112,160,.06) 29px,rgba(56,112,160,.06) 30px),
+    linear-gradient(148deg,rgba(176,216,238,.26),rgba(180,228,196,.18));
+  border-left:5px solid var(--b5);border-right:5px solid var(--g4);
+  border-radius:16px;padding:44px 58px;margin:42px 0;
+  text-align:center;position:relative;overflow:hidden;
+  box-shadow:var(--sh2),inset 0 0 48px rgba(86,140,98,.05);
+}
+.qblock::before{content:'"';position:absolute;top:-18px;left:18px;
+  font-size:9rem;line-height:1;font-family:'Playfair Display',serif;
+  color:var(--b1);opacity:.26;animation:qFl 5.5s ease-in-out infinite;}
+@keyframes qFl{0%,100%{opacity:.26;transform:rotate(-4deg) scale(1);}50%{opacity:.44;transform:rotate(-2deg) scale(1.04);}}
+.qtxt{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.48rem;
+  color:var(--g9);line-height:1.88;position:relative;z-index:1;}
+
+/* highlighted callout */
+.callout{
+  padding:18px 28px;margin:26px 0;
+  background:rgba(200,230,210,.30);
+  border-left:4px solid var(--g4);border-radius:0 12px 12px 0;
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:1.22rem;line-height:1.7;color:var(--tx0);
+}
+
+/* ══════════════════════════════════════════════
+   DAY TABS + ALBUM
+══════════════════════════════════════════════ */
+.dtabs{display:flex;gap:12px;justify-content:center;margin-bottom:34px;flex-wrap:wrap;}
+.dtab{
+  padding:11px 28px;background:rgba(255,255,255,.60);color:var(--tx2);
+  border:1.5px solid rgba(48,92,58,.18);border-radius:50px;
+  font-family:'Playfair Display',serif;font-weight:600;font-size:.89rem;
+  cursor:pointer;position:relative;overflow:hidden;
+  backdrop-filter:blur(8px);box-shadow:var(--sh1);
+  transition:all .34s cubic-bezier(.16,.84,.44,1);
+}
+.dtab::after{content:'';position:absolute;inset:0;
+  background:linear-gradient(45deg,transparent,rgba(86,140,98,.18),transparent);
+  transform:translateX(-100%);transition:transform .55s;}
+.dtab:hover::after{transform:translateX(100%);}
+.dtab:hover{border-color:var(--b5);transform:translateY(-3px);}
+.dtab.on{
+  background:linear-gradient(130deg,var(--g7),var(--g5));color:#fff;border-color:transparent;
+  box-shadow:0 10px 28px rgba(36,72,45,.36),0 0 24px rgba(86,140,98,.18);
+  animation:tabPl 3s ease-in-out infinite;
+}
+@keyframes tabPl{
+  0%,100%{box-shadow:0 10px 28px rgba(36,72,45,.36),0 0 24px rgba(86,140,98,.18);}
+  50%    {box-shadow:0 10px 36px rgba(36,72,45,.56),0 0 38px rgba(86,140,98,.38);}
+}
+.dpanel{display:none;}
+.dpanel.show{display:block;animation:panIn .56s cubic-bezier(.16,.84,.44,1) both;}
+@keyframes panIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+
+/* album scroll */
+.awrap{position:relative;margin-bottom:28px;}
+.atrack{
+  display:flex;gap:22px;overflow-x:auto;padding:18px 12px 32px;
+  scroll-snap-type:x mandatory;scrollbar-width:thin;
+  scrollbar-color:rgba(86,140,98,.32) transparent;cursor:grab;
+}
+.atrack:active{cursor:grabbing;}
+.atrack::-webkit-scrollbar{height:4px;}
+.atrack::-webkit-scrollbar-thumb{background:rgba(86,140,98,.30);border-radius:2px;}
+.aarr{
+  position:absolute;top:50%;transform:translateY(-56%);
+  width:40px;height:40px;background:rgba(255,255,255,.84);
+  border:1.5px solid rgba(86,140,98,.22);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.1rem;color:var(--g7);cursor:pointer;z-index:9;
+  box-shadow:var(--sh1);backdrop-filter:blur(8px);user-select:none;
+  transition:all .3s;
+}
+.aarr:hover{background:rgba(158,206,172,.26);border-color:rgba(86,140,98,.48);transform:translateY(-56%) scale(1.1);}
+.aarr.ap{left:4px;}.aarr.an{right:4px;}
+
+/* polaroid */
+.pola{
+  flex:0 0 auto;background:#fff;padding:12px 12px 50px;
+  box-shadow:0 8px 28px rgba(14,30,20,.13),0 0 0 .5px rgba(0,0,0,.04);
+  border-radius:2px;cursor:pointer;position:relative;
+  transition:all .50s cubic-bezier(.16,.84,.44,1);scroll-snap-align:start;
+}
+/* tape strip */
+.pola::before{content:'';position:absolute;top:-9px;left:50%;
+  transform:translateX(-50%) rotate(-1.5deg);
+  width:62px;height:18px;background:rgba(184,220,240,.65);
+  border:1px solid rgba(128,202,228,.42);border-radius:2px;
+  box-shadow:0 1px 5px rgba(0,0,0,.06);}
+.pola:nth-child(1){transform:rotate(-2.2deg);}
+.pola:nth-child(2){transform:rotate( 1.9deg);}
+.pola:nth-child(3){transform:rotate(-1.6deg);}
+.pola:nth-child(4){transform:rotate( 2.4deg);}
+.pola:hover{
+  transform:rotate(0) scale(1.07) translateY(-12px) !important;
+  box-shadow:0 20px 52px rgba(14,30,20,.22),0 0 0 2px rgba(86,140,98,.28);z-index:20;
+}
+.pola img{width:198px;height:174px;object-fit:cover;display:block;border-radius:1px;
+  filter:saturate(1.04) contrast(1.02);transition:filter .5s;}
+.pola.wide img{width:255px;height:193px;}
+.pola:hover img{filter:saturate(1.15) contrast(1.05);}
+.pcap{position:absolute;bottom:11px;left:0;right:0;text-align:center;
+  font-family:'Dancing Script',cursive;font-size:1.03rem;color:var(--g7);padding:0 10px;}
+
+/* diary note */
+.dnote{
+  padding:24px 32px;
+  background:linear-gradient(135deg,rgba(178,222,192,.22),rgba(162,204,226,.14));
+  border-left:4px solid var(--b5);border-radius:0 14px 14px 0;
+  margin-bottom:16px;position:relative;overflow:hidden;
+  transition:all .42s ease;
+}
+.dnote::before{content:'✦';position:absolute;left:-11px;top:14px;
+  font-size:1.1rem;color:var(--b5);animation:stTw 3.2s ease-in-out infinite;}
+@keyframes stTw{0%,100%{opacity:.38;transform:scale(1) rotate(0);}50%{opacity:1;transform:scale(1.5) rotate(24deg);}}
+.dnote:hover{transform:translateX(8px);border-left-color:var(--g5);}
+.nlbl{font-family:'Dancing Script',cursive;font-size:1.04rem;color:var(--g6);margin-bottom:8px;display:block;}
+.ntxt{font-size:1.1rem;line-height:1.88;color:var(--tx1);}
+
+/* ══════════════════════════════════════════════
+   CLOSING CARDS
+══════════════════════════════════════════════ */
+.cgrid{display:grid;gap:42px;margin:40px 0;}
+.ccard{
+  display:grid;grid-template-columns:1fr 1.15fr;gap:44px;align-items:center;
+  padding:40px;background:rgba(255,255,255,.52);backdrop-filter:blur(10px);
+  border-radius:20px;border:1.5px solid rgba(86,140,98,.12);
+  box-shadow:var(--sh2);transition:all .52s cubic-bezier(.16,.84,.44,1);
+  position:relative;overflow:hidden;
+}
+.ccard.flip{grid-template-columns:1.15fr 1fr;}
+.ccard.flip .ci{order:2;}.ccard.flip .ct{order:1;}
+.ccard::after{content:'';position:absolute;top:0;right:0;
+  width:0;height:0;border-style:solid;border-width:0;
+  border-color:transparent rgba(86,140,98,.20) transparent transparent;
+  transition:border-width .4s,opacity .4s;opacity:0;}
+.ccard:hover::after{border-width:0 64px 64px 0;opacity:1;}
+.ccard:hover{transform:scale(1.016) rotate(-.3deg);box-shadow:var(--sh4);border-color:rgba(86,140,98,.28);}
+.ci{border-radius:13px;overflow:hidden;aspect-ratio:4/3;
+  box-shadow:var(--sh3),0 0 0 9px #fff,0 0 0 11px rgba(86,140,98,.16);
+  border:2.5px solid rgba(86,140,98,.32);background:var(--paper3);}
+.ci img{width:100%;height:100%;object-fit:cover;cursor:pointer;
+  transition:all .74s cubic-bezier(.16,.84,.44,1);filter:saturate(1.04);}
+.ccard:hover .ci img{transform:scale(1.09);filter:saturate(1.14);}
+.ct p{font-size:1.11rem;line-height:1.96;color:var(--tx1);margin-bottom:14px;}
+.ct p:last-child{margin-bottom:0;}
+
+/* ── decorative ── */
+.dclouds{text-align:center;font-size:1.45rem;letter-spacing:18px;opacity:.28;margin:14px 0;animation:dcWv 8s ease-in-out infinite;}
+@keyframes dcWv{0%,100%{transform:translateY(0);opacity:.26;}50%{transform:translateY(-7px);opacity:.46;}}
+.rdiv{display:flex;align-items:center;gap:16px;margin:40px 0;opacity:.30;}
+.rdiv::before,.rdiv::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--b5),transparent);}
+.sig{text-align:center;font-family:'Dancing Script',cursive;font-size:2.65rem;color:var(--g5);opacity:.62;margin-bottom:36px;}
+
+/* ══════════════════════════════════════════════
+   IMAGE MODAL
+══════════════════════════════════════════════ */
+.imgmodal{
+  position:fixed;inset:0;background:rgba(8,20,12,.96);backdrop-filter:blur(20px);
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;transition:opacity .44s;z-index:99998;cursor:pointer;
+}
+.imgmodal::before{content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at center,transparent 26%,rgba(4,8,6,.66) 100%);}
+.imgmodal.open{opacity:1;pointer-events:auto;}
+.imgmodal img{
+  max-width:90%;max-height:90%;border-radius:10px;cursor:default;
+  box-shadow:0 36px 90px rgba(0,0,0,.68),0 0 0 12px #fff,0 0 0 14px rgba(86,140,98,.30);
+  animation:mOp .44s cubic-bezier(.16,.84,.44,1) both;position:relative;z-index:1;
+  filter:saturate(1.05);}
+@keyframes mOp{from{opacity:0;transform:scale(.72) rotate(-3deg);}to{opacity:1;transform:scale(1) rotate(0);}}
+.mcls{position:absolute;top:26px;right:26px;width:50px;height:50px;border-radius:50%;
+  background:rgba(255,255,255,.11);border:2px solid rgba(122,170,136,.44);
+  display:flex;align-items:center;justify-content:center;font-size:1.7rem;color:#fff;
+  cursor:pointer;transition:all .3s;backdrop-filter:blur(10px);z-index:2;}
+.mcls:hover{background:rgba(86,140,98,.34);transform:rotate(90deg) scale(1.1);}
+
+/* scroll-to-top */
+.stb{position:fixed;bottom:34px;right:34px;width:50px;height:50px;
+  background:linear-gradient(135deg,var(--g5),var(--b7));border:2px solid rgba(255,255,255,.34);
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:1.35rem;color:#fff;cursor:pointer;box-shadow:var(--sh2);
+  transition:all .32s;z-index:200;opacity:0;pointer-events:none;}
+.stb.vis{opacity:1;pointer-events:auto;}
+.stb:hover{transform:translateY(-5px) scale(1.1);box-shadow:var(--sh3);}
+
+/* ══════════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════════ */
+@media(max-width:920px){
+  .book-face{padding:52px 44px;}
+  .cov-title{font-size:2.72rem;}
+  .pg-body{padding:46px 36px;}
+  .pg-h{font-size:2.08rem;}
+  .spair{grid-template-columns:1fr;gap:24px;}
+  .spair.flip{direction:ltr;}
+  .mrow{grid-template-columns:1fr;}
+  .mcard{border-radius:20px;aspect-ratio:auto;}
+  .ccard{grid-template-columns:1fr!important;gap:24px;}
+  .ccard.flip .ci,.ccard.flip .ct{order:0;}
+  .sheet{border-left:30px solid var(--paper3);}
+  .ring-holes{left:-24px;}
+}
+@media(max-width:600px){
+  .book-face{padding:44px 28px;border-radius:3px 16px 16px 3px;}
+  .cov-title{font-size:2.08rem;} .cov-sub{font-size:1.52rem;}
+  .pg-body{padding:34px 20px;} .pg-h{font-size:1.82rem;}
+  .dtabs{flex-direction:column;gap:10px;} .dtab{text-align:center;}
+  .pola img{width:165px;height:148px;} .pola.wide img{width:214px;height:170px;}
+  .qtxt{font-size:1.2rem;} .qblock{padding:32px 20px;}
+  .pg-nav{flex-direction:column;gap:14px;text-align:center;}
+  .book-spine{display:none;}
 }
 </style>
 </head>
 <body>
 
-<!-- PROGRESS BAR -->
-<div class="progress-bar" id="progressBar"></div>
-
-<!-- PAGE BOOKMARK -->
-<div class="page-bookmark" title="Quay về đầu trang" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
-    📖
+<!-- ── ATMOSPHERE ── -->
+<div class="sky-layer" aria-hidden="true">
+  <div class="cl c1"></div><div class="cl c2"></div>
+  <div class="cl c3"></div><div class="cl c4"></div>
+  <div class="cl c5"></div><div class="cl c6"></div>
 </div>
 
-<!-- HERO -->
-<div class="hero-wrapper">
-    <div class="hero">
-        <div class="hero-icon">🌿</div>
-        <h1>CHUYẾN THAM QUAN HỌC TẬP ĐÀ LẠT</h1>
-        <h2>Dấu ấn không phai trong miền ký ức lớp 11L</h2>
-        <p class="hero-quote">
-            Có những miền đất ta chỉ ghé qua một lần trong đời, nhưng lại ở lại rất lâu trong ký ức.<br>
-            Có những chuyến đi tưởng chừng ngắn ngủi, nhưng khi ngoảnh lại, mới chợt nhận ra: đó là một phần tuổi trẻ đã lặng lẽ khép lại.
+<!-- pine silhouettes -->
+<svg class="pine-side pl" width="190" height="670" viewBox="0 0 190 670" fill="none" aria-hidden="true">
+  <polygon points="95,8 148,124 42,124"  fill="#1c3826" opacity=".12"/>
+  <polygon points="95,50 160,186 30,186" fill="#1c3826" opacity=".12"/>
+  <polygon points="95,108 176,264 14,264" fill="#1c3826" opacity=".12"/>
+  <rect x="83" y="264" width="24" height="120" fill="#1c3826" opacity=".12"/>
+  <polygon points="34,144 84,242 -16,242" fill="#245438" opacity=".09"/>
+  <polygon points="34,188 90,286 -22,286" fill="#245438" opacity=".09"/>
+  <rect x="22" y="286" width="22" height="88" fill="#245438" opacity=".09"/>
+  <polygon points="156,198 200,288 112,288" fill="#305c3a" opacity=".07"/>
+  <rect x="144" y="288" width="20" height="82" fill="#305c3a" opacity=".07"/>
+</svg>
+<svg class="pine-side pr" width="190" height="670" viewBox="0 0 190 670" fill="none" aria-hidden="true">
+  <polygon points="95,8 148,124 42,124"  fill="#1c3826" opacity=".12"/>
+  <polygon points="95,50 160,186 30,186" fill="#1c3826" opacity=".12"/>
+  <polygon points="95,108 176,264 14,264" fill="#1c3826" opacity=".12"/>
+  <rect x="83" y="264" width="24" height="120" fill="#1c3826" opacity=".12"/>
+  <polygon points="154,184 198,278 110,278" fill="#305c3a" opacity=".09"/>
+  <rect x="142" y="278" width="20" height="88" fill="#305c3a" opacity=".09"/>
+</svg>
+
+<!-- loader -->
+<div class="loader" id="loader">
+  <div class="lring"></div>
+  <div class="ltxt">Đang mở trang...</div>
+</div>
+
+<!-- ══════════════ COVER ══════════════ -->
+<div id="cover">
+  <div class="book-wrap">
+    <div class="book-spine"></div>
+    <div class="book-edge"></div>
+    <div class="book-face" id="bookFace">
+      <div class="ribbon"></div>
+
+      <!-- firefly particles -->
+      <div class="firefly-wrap" id="ffWrap"></div>
+
+      <div class="cov-inner">
+        <div class="cov-badge">✦ &nbsp;Mốc Kỷ Niệm Thứ 5 / 6&nbsp; ✦</div>
+        <div class="cov-emblem">🌲</div>
+        <h1 class="cov-title">NHẬT KÝ ĐÀ LẠT</h1>
+        <p  class="cov-sub">Dấu ấn không phai trong miền ký ức lớp 11L</p>
+        <p  class="cov-quote">
+          Có những miền đất ta chỉ ghé qua một lần trong đời,<br>
+          nhưng lại ở lại rất lâu trong ký ức...<br>
+          Đà Lạt của lớp 11L là một miền như thế.
         </p>
-        <a href="#story" class="btn-explore">
-            <span>Bắt đầu hành trình</span>
-        </a>
+        <button class="open-btn" id="openBtn">📖 &nbsp;Mở Nhật Ký</button>
+      </div>
     </div>
-    <div class="scroll-hint">↓ Cuộn xuống để khám phá</div>
+  </div>
 </div>
 
-<!-- OPENING STORY -->
-<section id="story">
-    <div class="section-container">
-        <div class="paper reveal">
-            <h3 class="section-title">Miền ký ức mở ra</h3>
-            <p class="section-intro">
-                Đà Lạt của lớp 11L là một miền như thế.
-            </p>
-            
-            <div class="story-grid">
-                <div class="story-card reveal">
-                    <div class="story-image">
-                        <img src="images/tongthe.jpg" alt="Đà Lạt toàn cảnh">
-                    </div>
-                    <div class="story-text">
-                        <p>Đó là nơi sương sớm giăng mờ trên những triền đồi, nơi rừng thông thì thầm trong gió, nơi nhịp sống chậm rãi mở ra những khoảng lặng hiếm hoi giữa những ngày học tập vội vã.</p>
-                    </div>
-                </div>
+<!-- ══════════════ DIARY ══════════════ -->
+<div id="diary">
 
-                <div class="story-card reveal">
-                    <div class="story-image">
-                        <img src="images/tapthe.jpg" alt="Tập thể lớp 11L">
-                    </div>
-                    <div class="story-text">
-                        <p>Đà Lạt không chỉ hiện lên trong vẻ đẹp thơ mộng của phố núi, mà còn là không gian của tri thức, của lịch sử, của những giá trị bền bỉ được bồi đắp qua năm tháng.</p>
-                        <p>Và trong một khoảnh khắc rất đẹp của tuổi học trò, lớp 11L đã đặt dấu chân mình lên miền đất ấy – bằng tất cả sự háo hức, trong veo và khát khao khám phá.</p>
-                    </div>
-                </div>
-            </div>
+  <!-- progress dots -->
+  <div class="prog">
+    <div class="pdot on" data-p="1"></div>
+    <div class="pdot" data-p="2"></div>
+    <div class="pdot" data-p="3"></div>
+    <div class="pdot" data-p="4"></div>
+  </div>
+
+  <!-- ══════ PAGE 1 ══════ -->
+  <div class="diary-pg on" id="pg1">
+    <div class="sheet">
+      <div class="ring-holes"><div class="rhole"></div><div class="rhole"></div><div class="rhole"></div></div>
+      <div class="pg-num">trang 01</div>
+      <!-- floating leaves -->
+      <div class="leaf-layer" id="lf1"></div>
+
+      <div class="pg-body">
+        <div class="dclouds">☁️ &nbsp; ☁️ &nbsp;&nbsp;&nbsp; ☁️</div>
+
+        <h2 class="pg-h grad-h">🌿 Chuyến Tham Quan Học Tập Đà Lạt</h2>
+        <p class="pg-intro">Dấu ấn không phai trong miền ký ức lớp 11L</p>
+
+        <div class="spair">
+          <div class="simg"><img src="images/tongthe.jpg" alt="Toàn cảnh Đà Lạt" loading="lazy"></div>
+          <div class="stxt">
+            <p class="lead">Có những miền đất ta chỉ ghé qua một lần trong đời, nhưng lại ở lại rất lâu trong ký ức. Có những chuyến đi tưởng chừng ngắn ngủi, nhưng khi ngoảnh lại, mới chợt nhận ra: đó là một phần tuổi trẻ đã lặng lẽ khép lại.</p>
+            <p>Đà Lạt của lớp 11L là một miền như thế.</p>
+          </div>
         </div>
 
-        <!-- MEANING -->
-        <div class="paper reveal">
-            <h3 class="section-title">🌱 Ý nghĩa của một chuyến đi</h3>
-            <p class="section-intro">
-                Giữa những tiết học nối tiếp nhau, giữa những bài kiểm tra và áp lực vô hình, chuyến đi Đà Lạt đến như một khoảng thở dịu dàng.
-            </p>
-
-            <div class="meaning-grid">
-                <div class="meaning-card reveal">
-                    <div class="meaning-icon">📚</div>
-                    <h4>Tri thức sống động</h4>
-                    <p>Mỗi điểm đến đều là một trang sách sống động. Mỗi bước chân đều mở ra một bài học không nằm trong giáo trình.</p>
-                </div>
-
-                <div class="meaning-card reveal">
-                    <div class="meaning-icon">🌲</div>
-                    <h4>Kết nối thiên nhiên</h4>
-                    <p>Từ thiên nhiên xanh mát đến những công trình mang dấu ấn lịch sử, tất cả giúp chúng tôi hiểu rằng tri thức hiện diện trong từng nhịp sống.</p>
-                </div>
-
-                <div class="meaning-card reveal">
-                    <div class="meaning-icon">💫</div>
-                    <h4>Gắn kết tình bạn</h4>
-                    <p>Qua những giờ sinh hoạt chung, những khoảnh khắc cười đùa vô tư, chúng tôi học cách lắng nghe, thấu hiểu và trân trọng nhau hơn.</p>
-                </div>
-            </div>
+        <div class="spair flip">
+          <div class="simg"><img src="images/tapthe.jpg" alt="Tập thể lớp 11L" loading="lazy"></div>
+          <div class="stxt">
+            <p>Đó là nơi sương sớm giăng mờ trên những triền đồi, nơi rừng thông thì thầm trong gió, nơi nhịp sống chậm rãi mở ra những khoảng lặng hiếm hoi giữa những ngày học tập vội vã.</p>
+            <p>Đà Lạt không chỉ hiện lên trong vẻ đẹp thơ mộng của phố núi, mà còn là không gian của tri thức, của lịch sử, của những giá trị bền bỉ được bồi đắp qua năm tháng.</p>
+            <p>Và trong một khoảnh khắc rất đẹp của tuổi học trò, lớp 11L đã đặt dấu chân mình lên miền đất ấy – bằng tất cả sự háo hức, trong veo và khát khao khám phá.</p>
+          </div>
         </div>
 
-        <!-- JOURNEY -->
-        <div class="paper reveal">
-            <h3 class="section-title">📍 Hành trình ba ngày – Một miền ký ức</h3>
-
-            <div class="journey-tabs">
-                <div class="journey-tab active" data-day="day1">🗓️ Ngày 01</div>
-                <div class="journey-tab" data-day="day2">🗓️ Ngày 02</div>
-                <div class="journey-tab" data-day="day3">🗓️ Ngày 03</div>
-            </div>
-
-            <!-- DAY 1 -->
-            <div id="day1" class="day-content active">
-                <div class="journey-card reveal">
-                    <div class="journey-image">
-                        <img src="images/lenxe.jpg" alt="Lên xe">
-                    </div>
-                    <div class="journey-text">
-                        <h4>Khởi hành – Chạm ngõ cao nguyên</h4>
-                        <p>Sau chặng đường dài từ Bình Dương, lớp 11L bắt đầu hành trình trong sự háo hức và mong chờ. Bữa sáng trên đường đi như tiếp thêm năng lượng cho cả đoàn, mở đầu cho một chuyến đi tràn đầy cảm xúc.</p>
-                    </div>
-                </div>
-
-                <div class="journey-card reveal">
-                    <div class="journey-image">
-                        <img src="images/truongdh.jpg" alt="Trường ĐH Đà Lạt">
-                    </div>
-                    <div class="journey-text">
-                        <h4>Trường Đại học Đà Lạt</h4>
-                        <p>Điểm dừng chân đầu tiên là Trường Đại học Đà Lạt – nơi tri thức và kiến trúc giao hòa, gieo vào lòng chúng tôi niềm kính trọng đối với con đường học vấn.</p>
-                    </div>
-                </div>
-
-                <div class="journey-card reveal">
-                    <div class="journey-image">
-                        <img src="images/khachsan.jpg" alt="Khách sạn">
-                    </div>
-                    <div class="journey-text">
-                        <h4>Nhận phòng & nghỉ ngơi</h4>
-                        <p>Buổi chiều, sau khi nhận phòng, cả lớp nghỉ ngơi, sửa soạn và lưu lại những khoảnh khắc đầu tiên tại nơi lưu trú.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- DAY 2 -->
-            <div id="day2" class="day-content">
-                <div class="journey-card reveal">
-                    <div class="journey-image">
-                        <img src="images/caugo.jpg" alt="Cầu Gỗ">
-                    </div>
-                    <div class="journey-text">
-                        <h4>Săn mây Cầu Gỗ</h4>
-                        <p>Buổi sáng, Cầu Gỗ đón chúng tôi bằng biển mây trắng xóa, mang đến cảm giác như chạm tay vào bầu trời. Một trải nghiệm khó quên giữa thiên nhiên hùng vĩ.</p>
-                    </div>
-                </div>
-
-                <div class="journey-card reveal">
-                    <div class="journey-image">
-                        <img src="images/puppy.jpg" alt="Puppy Farm">
-                    </div>
-                    <div class="journey-text">
-                        <h4>Puppy Farm</h4>
-                        <p>Tại Puppy Farm, tiếng cười hòa cùng ánh nắng và những chú cún nhỏ, đưa chúng tôi trở về với sự hồn nhiên thuần khiết của tuổi thơ.</p>
-                    </div>
-                </div>
-
-                <div class="journey-card reveal">
-                    <div class="journey-image">
-                        <img src="images/quangtruong.jpg" alt="Quảng trường Lâm Viên">
-                    </div>
-                    <div class="journey-text">
-                        <h4>Quảng trường Lâm Viên</h4>
-                        <p>Buổi chiều, lớp tham quan Quảng trường Lâm Viên, cảm nhận nhịp sống trẻ trung và năng động của thành phố cao nguyên.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- DAY 3 -->
-            <div id="day3" class="day-content">
-                <div class="journey-card reveal">
-                    <div class="journey-image">
-                        <img src="images/ansang.jpg" alt="Ăn sáng">
-                    </div>
-                    <div class="journey-text">
-                        <h4>Buổi sáng cuối cùng</h4>
-                        <p>Buổi sáng cuối cùng trôi qua chậm rãi trong sự lưu luyến khó gọi tên. Thu dọn hành lý, chúng tôi chuẩn bị tạm biệt Đà Lạt.</p>
-                    </div>
-                </div>
-
-                <div class="journey-card reveal">
-                    <div class="journey-image">
-                        <img src="images/dinh3.jpg" alt="Dinh Bảo Đại">
-                    </div>
-                    <div class="journey-text">
-                        <h4>Dinh III – Dinh Bảo Đại</h4>
-                        <p>Dinh III – Dinh Bảo Đại khép lại hành trình bằng vẻ đẹp trầm mặc, cổ kính giữa rừng thông xanh mát. Một điểm dừng đầy ý nghĩa lịch sử.</p>
-                    </div>
-                </div>
-
-                <div class="journey-card reveal">
-                    <div class="journey-image">
-                        <img src="images/roidal.jpg" alt="Rời Đà Lạt">
-                    </div>
-                    <div class="journey-text">
-                        <h4>Tạm biệt Đà Lạt</h4>
-                        <p>Khi bánh xe lăn bánh, thành phố dần lùi xa, nhưng ký ức thì ở lại. Đà Lạt sẽ mãi là một phần không thể xóa nhòa trong lòng mỗi người.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="quote-block reveal">
-                <p class="quote-text">
-                    Đó là một phần thanh xuân mang tên 11L.
-                </p>
-            </div>
+        <div class="pg-nav">
+          <button class="nbtn" disabled>← Trang trước</button>
+          <span class="nmid">1 / 4 &nbsp;·&nbsp; Lớp 11L</span>
+          <button class="nbtn cta" onclick="goTo(2)">Trang sau →</button>
         </div>
-
-        <!-- FINAL -->
-        <div class="paper reveal">
-            <h3 class="section-title">🌸 Đà Lạt – Miền ký ức của 11L</h3>
-
-            <div class="final-grid">
-                <div class="final-card reveal">
-                    <div class="final-image">
-                        <img src="images/final.jpg" alt="Tập thể 11L">
-                    </div>
-                    <div class="final-text">
-                        <p>Chuyến tham quan học tập tại Đà Lạt không chỉ mang đến kiến thức và trải nghiệm, mà còn đánh dấu một đoạn đẹp trong hành trình trưởng thành của lớp 11L.</p>
-                        <p>Ở đó, chúng tôi đã cùng nhau học cách sống chậm, học cách lắng nghe, học cách trân trọng hiện tại và học cách giữ gìn những điều nhỏ bé nhưng quý giá.</p>
-                    </div>
-                </div>
-
-                <div class="final-card reveal">
-                    <div class="final-image">
-                        <img src="images/memory.jpg" alt="Kỷ niệm">
-                    </div>
-                    <div class="final-text">
-                        <p>Nhiều năm sau, khi những con đường đời đã rẽ sang nhiều hướng khác nhau, có thể chúng tôi sẽ quên đi vài chi tiết nhỏ, nhưng chắc chắn Đà Lạt vẫn còn ở lại.</p>
-                        <p>Trong những bức ảnh cũ, trong những câu chuyện được kể lại và trong một góc rất sâu của ký ức tuổi học trò.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="quote-block reveal">
-                <p class="quote-text">
-                    Bởi đó không chỉ là một chuyến đi, đó là một phần thanh xuân, đó là miền nhớ mang tên lớp 11L.
-                </p>
-            </div>
-        </div>
+      </div>
     </div>
-</section>
+  </div>
 
-<!-- FOOTER -->
-<footer>
-    <div class="footer-content">
-        <h2 class="footer-title">🌌 Thanh xuân 11L – Đà Lạt 🌌</h2>
-        <p class="footer-subtitle">Nơi ký ức không bao giờ phai</p>
+  <!-- ══════ PAGE 2 ══════ -->
+  <div class="diary-pg" id="pg2">
+    <div class="sheet">
+      <div class="ring-holes"><div class="rhole"></div><div class="rhole"></div><div class="rhole"></div></div>
+      <div class="pg-num">trang 02</div>
+      <div class="pg-body">
+
+        <h2 class="pg-h">🌱 Ý Nghĩa Của Một Chuyến Đi</h2>
+        <p class="pg-intro">Giữa những tiết học nối tiếp nhau, giữa những bài kiểm tra và áp lực vô hình, chuyến đi Đà Lạt đến như một khoảng thở dịu dàng.</p>
+
+        <div class="callout">
+          Mỗi điểm đến đều là một trang sách sống động.<br>
+          Mỗi bước chân đều mở ra một bài học không nằm trong giáo trình.
+        </div>
+
+        <div class="mrow">
+          <div class="mcard">
+            <div class="mico">📚</div>
+            <h4>Tri thức sống động</h4>
+            <p>Từ thiên nhiên xanh mát đến những công trình lịch sử, tri thức không chỉ nằm trong trang vở mà còn hiện diện trong từng nhịp sống của đất nước.</p>
+          </div>
+          <div class="mcard">
+            <div class="mico">🌲</div>
+            <h4>Không gian học thuật</h4>
+            <p>Từ không gian học thuật đến những góc phố bình yên, tất cả giúp chúng tôi hiểu rõ hơn về những giá trị lịch sử và văn hóa của cao nguyên Lâm Viên.</p>
+          </div>
+          <div class="mcard">
+            <div class="mico">💫</div>
+            <h4>Gắn kết tình bạn</h4>
+            <p>Qua những bữa ăn giản dị, những khoảnh khắc cười đùa vô tư, chúng tôi học cách lắng nghe, thấu hiểu và trân trọng nhau hơn.</p>
+          </div>
+        </div>
+
+        <div class="qblock">
+          <p class="qtxt">Quan trọng hơn cả, chuyến đi là sợi dây vô hình kết nối những tâm hồn tuổi mười bảy...</p>
+        </div>
+
+        <div class="pg-nav">
+          <button class="nbtn" onclick="goTo(1)">← Trang trước</button>
+          <span class="nmid">2 / 4 &nbsp;·&nbsp; Lớp 11L</span>
+          <button class="nbtn cta" onclick="goTo(3)">Trang sau →</button>
+        </div>
+      </div>
     </div>
-</footer>
+  </div>
 
-<!-- IMAGE MODAL -->
-<div class="image-modal" id="imageModal">
-    <div class="modal-close">×</div>
-    <img id="modalImg" alt="Ảnh phóng to">
+  <!-- ══════ PAGE 3 ══════ -->
+  <div class="diary-pg" id="pg3">
+    <div class="sheet">
+      <div class="ring-holes"><div class="rhole"></div><div class="rhole"></div><div class="rhole"></div></div>
+      <div class="pg-num">trang 03</div>
+      <!-- floating leaves -->
+      <div class="leaf-layer" id="lf3"></div>
+
+      <div class="pg-body">
+        <h2 class="pg-h grad-h">📍 Hành Trình Ba Ngày – Một Miền Ký Ức</h2>
+
+        <div class="dtabs">
+          <div class="dtab on" data-day="d1">🗓️ Ngày 01</div>
+          <div class="dtab" data-day="d2">🗓️ Ngày 02</div>
+          <div class="dtab" data-day="d3">🗓️ Ngày 03</div>
+        </div>
+
+        <!-- Day 1 -->
+        <div class="dpanel show" id="d1">
+          <div class="awrap">
+            <div class="aarr ap" data-tk="tk1">‹</div>
+            <div class="atrack" id="tk1">
+              <div class="pola wide"><img src="images/lenxe.jpg"    alt="Lên xe"><div class="pcap">🚌 Chuẩn bị lên xe tại trường</div></div>
+              <div class="pola">      <img src="images/truongdh.jpg" alt="ĐH Đà Lạt"><div class="pcap">🏛️ Trường Đại học Đà Lạt</div></div>
+              <div class="pola">      <img src="images/khachsan.jpg" alt="Khách sạn"><div class="pcap">🏨 Nhận phòng khách sạn</div></div>
+            </div>
+            <div class="aarr an" data-tk="tk1">›</div>
+          </div>
+          <div class="dnote">
+            <span class="nlbl">☀️ Khởi hành – Chạm ngõ cao nguyên</span>
+            <p class="ntxt">Sau chặng đường dài từ Bình Dương, lớp 11L bắt đầu hành trình trong sự háo hức và mong chờ. Bữa sáng trên đường đi như tiếp thêm năng lượng cho cả đoàn, mở đầu cho một chuyến đi tràn đầy cảm xúc.</p>
+          </div>
+          <div class="dnote">
+            <span class="nlbl">🏛️ Điểm dừng đầu tiên</span>
+            <p class="ntxt">Trường Đại học Đà Lạt – nơi tri thức và kiến trúc giao hòa, gieo vào lòng chúng tôi niềm kính trọng đối với con đường học vấn. Buổi chiều, sau khi nhận phòng, cả lớp nghỉ ngơi, sửa soạn và lưu lại những khoảnh khắc đầu tiên tại nơi lưu trú.</p>
+          </div>
+        </div>
+
+        <!-- Day 2 -->
+        <div class="dpanel" id="d2">
+          <div class="awrap">
+            <div class="aarr ap" data-tk="tk2">‹</div>
+            <div class="atrack" id="tk2">
+              <div class="pola wide"><img src="images/caugo.jpg"      alt="Cầu Gỗ"><div class="pcap">☁️ Săn mây Cầu Gỗ</div></div>
+              <div class="pola">      <img src="images/puppy.jpg"      alt="Puppy Farm"><div class="pcap">🐕 Puppy Farm</div></div>
+              <div class="pola">      <img src="images/quangtruong.jpg" alt="Lâm Viên"><div class="pcap">🏙️ Quảng trường Lâm Viên</div></div>
+            </div>
+            <div class="aarr an" data-tk="tk2">›</div>
+          </div>
+          <div class="dnote">
+            <span class="nlbl">☁️ Trải nghiệm – Gắn kết – Trưởng thành</span>
+            <p class="ntxt">Buổi sáng, Cầu Gỗ đón chúng tôi bằng biển mây trắng xóa, mang đến cảm giác như chạm tay vào bầu trời. Tại Puppy Farm, tiếng cười hòa cùng ánh nắng và những chú cún nhỏ, đưa chúng tôi trở về với sự hồn nhiên thuần khiết.</p>
+          </div>
+          <div class="dnote">
+            <span class="nlbl">🏙️ Buổi chiều tại Lâm Viên</span>
+            <p class="ntxt">Buổi chiều, lớp tham quan Quảng trường Lâm Viên, cảm nhận nhịp sống trẻ trung và năng động của thành phố cao nguyên xinh đẹp.</p>
+          </div>
+        </div>
+
+        <!-- Day 3 -->
+        <div class="dpanel" id="d3">
+          <div class="awrap">
+            <div class="aarr ap" data-tk="tk3">‹</div>
+            <div class="atrack" id="tk3">
+              <div class="pola">      <img src="images/ansang.jpg" alt="Ăn sáng"><div class="pcap">☕ Ăn sáng tại khách sạn</div></div>
+              <div class="pola wide"><img src="images/dinh3.jpg"   alt="Dinh III"><div class="pcap">🏯 Dinh III – Dinh Bảo Đại</div></div>
+              <div class="pola">      <img src="images/roidal.jpg"  alt="Rời Đà Lạt"><div class="pcap">👋 Lên xe rời Đà Lạt</div></div>
+            </div>
+            <div class="aarr an" data-tk="tk3">›</div>
+          </div>
+          <div class="dnote">
+            <span class="nlbl">🌅 Tạm biệt – Mang theo ký ức</span>
+            <p class="ntxt">Buổi sáng cuối cùng trôi qua chậm rãi trong sự lưu luyến khó gọi tên. Dinh III – Dinh Bảo Đại khép lại hành trình bằng vẻ đẹp trầm mặc, cổ kính giữa rừng thông xanh mát.</p>
+          </div>
+          <div class="dnote">
+            <span class="nlbl">🚌 Hành trình trở về</span>
+            <p class="ntxt">Khi bánh xe lăn bánh, thành phố dần lùi xa, nhưng ký ức thì ở lại. Đó là một phần thanh xuân mang tên 11L.</p>
+          </div>
+        </div>
+
+        <div class="pg-nav">
+          <button class="nbtn" onclick="goTo(2)">← Trang trước</button>
+          <span class="nmid">3 / 4 &nbsp;·&nbsp; Lớp 11L</span>
+          <button class="nbtn cta" onclick="goTo(4)">Trang sau →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════ PAGE 4 ══════ -->
+  <div class="diary-pg" id="pg4">
+    <div class="sheet">
+      <div class="ring-holes"><div class="rhole"></div><div class="rhole"></div><div class="rhole"></div></div>
+      <div class="pg-num">trang 04</div>
+      <div class="pg-body">
+
+        <div class="dclouds">☁️ &nbsp;&nbsp; ☁️ &nbsp;&nbsp;&nbsp;&nbsp; ☁️</div>
+        <h2 class="pg-h">🌸 Đà Lạt – Miền Ký Ức Của 11L</h2>
+
+        <div class="cgrid">
+          <div class="ccard">
+            <div class="ci"><img src="images/final.jpg" alt="Tập thể 11L" loading="lazy"></div>
+            <div class="ct">
+              <p>Chuyến tham quan học tập tại Đà Lạt không chỉ mang đến kiến thức và trải nghiệm, mà còn đánh dấu một đoạn đẹp trong hành trình trưởng thành của lớp 11L.</p>
+              <p>Ở đó, chúng tôi đã cùng nhau học cách sống chậm, học cách lắng nghe, học cách trân trọng hiện tại và học cách giữ gìn những điều nhỏ bé nhưng quý giá.</p>
+            </div>
+          </div>
+          <div class="ccard flip">
+            <div class="ci"><img src="images/memory.jpg" alt="Kỷ niệm" loading="lazy"></div>
+            <div class="ct">
+              <p>Nhiều năm sau, khi những con đường đời đã rẽ sang nhiều hướng khác nhau, có thể chúng tôi sẽ quên đi vài chi tiết nhỏ, nhưng chắc chắn Đà Lạt vẫn còn ở lại.</p>
+              <p>Trong những bức ảnh cũ, trong những câu chuyện được kể lại và trong một góc rất sâu của ký ức tuổi học trò.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="qblock">
+          <p class="qtxt">
+            Bởi đó không chỉ là một chuyến đi,<br>
+            đó là một phần thanh xuân,<br>
+            đó là miền nhớ mang tên lớp 11L 🌲
+          </p>
+        </div>
+
+        <div class="rdiv"><span>🌲</span><span>☁️</span><span>🌿</span></div>
+        <div class="sig">~ Hết ~</div>
+
+        <div class="pg-nav">
+          <button class="nbtn" onclick="goTo(3)">← Trang trước</button>
+          <span class="nmid">4 / 4 &nbsp;·&nbsp; Lớp 11L</span>
+          <button class="nbtn cta" onclick="closeBook()">📕 Đóng sách</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /diary -->
+
+<!-- modal -->
+<div class="imgmodal" id="modal">
+  <div class="mcls" id="mc">×</div>
+  <img id="mi" alt="">
 </div>
+
+<!-- scroll top -->
+<div class="stb" id="stb">↑</div>
 
 <script>
-// PROGRESS BAR
-const progressBar = document.getElementById('progressBar');
+/* ── UTILS ── */
+const $  = id => document.getElementById(id);
+const $$ = s  => document.querySelectorAll(s);
+const loader = $('loader');
+const showL  = () => loader.classList.add('on');
+const hideL  = () => loader.classList.remove('on');
+let cur = 1;
 
-window.addEventListener('scroll', () => {
-    const scrollTop = window.scrollY;
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const scrollPercent = (scrollTop / docHeight) * 100;
-    progressBar.style.transform = `scaleX(${scrollPercent / 100})`;
-});
-
-// TAB SWITCHING WITH SMOOTH TRANSITION
-const tabs = document.querySelectorAll('.journey-tab');
-const dayContents = document.querySelectorAll('.day-content');
-
-tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-        // Remove active class from all tabs and contents
-        tabs.forEach(t => t.classList.remove('active'));
-        dayContents.forEach(c => c.classList.remove('active'));
-        
-        // Add active class to clicked tab
-        tab.classList.add('active');
-        
-        // Show corresponding day content
-        const dayId = tab.getAttribute('data-day');
-        const targetContent = document.getElementById(dayId);
-        targetContent.classList.add('active');
-        
-        // Re-apply reveal animation to cards in the newly shown content
-        setTimeout(() => {
-            const cards = targetContent.querySelectorAll('.journey-card');
-            cards.forEach((card, index) => {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(30px)';
-                setTimeout(() => {
-                    card.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-                    card.style.opacity = '1';
-                    card.style.transform = 'translateY(0)';
-                }, index * 150);
-            });
-        }, 50);
-    });
-});
-
-// IMAGE MODAL
-const modal = document.getElementById('imageModal');
-const modalImg = document.getElementById('modalImg');
-const modalClose = document.querySelector('.modal-close');
-
-document.querySelectorAll('.story-image img, .journey-image img, .final-image img').forEach(img => {
-    img.addEventListener('click', (e) => {
-        e.stopPropagation();
-        modal.classList.add('active');
-        modalImg.src = img.src;
-        modalImg.alt = img.alt;
-        document.body.style.overflow = 'hidden';
-    });
-});
-
-function closeModal() {
-    modal.classList.remove('active');
-    document.body.style.overflow = 'auto';
+/* ══════════════════════════════════════
+   FIREFLY PARTICLES on cover
+══════════════════════════════════════ */
+function buildFireflies() {
+  const wrap = $('ffWrap');
+  const count = 22;
+  for (let i = 0; i < count; i++) {
+    const ff = document.createElement('div');
+    ff.className = 'ff';
+    const sz  = 2.5 + Math.random() * 3.5;
+    const col = Math.random() < 0.55
+      ? `rgba(200,238,160,${.55+Math.random()*.3})`   // yellow-green
+      : `rgba(160,210,240,${.45+Math.random()*.3})`;  // ice blue
+    const glow = col.replace(/[\d.]+\)$/, '0.5)');
+    ff.style.cssText = `
+      width:${sz}px; height:${sz}px;
+      left:${8+Math.random()*84}%; bottom:${5+Math.random()*40}%;
+      background:${col}; box-shadow:0 0 ${sz*2.2}px ${glow};
+      --dx:${(Math.random()-.5)*70}px;
+      --dur:${3.5+Math.random()*4.5}s;
+      --del:${Math.random()*7}s;
+    `;
+    wrap.appendChild(ff);
+  }
 }
 
-modal.addEventListener('click', (e) => {
-    if (e.target === modal || e.target === modalClose) {
-        closeModal();
-    }
+/* ══════════════════════════════════════
+   LEAF PARTICLES on pg1 & pg3
+══════════════════════════════════════ */
+const LEAVES = ['🍃','🌿','🍂','🌱','🍀'];
+function buildLeaves(containerId) {
+  const el = $(containerId);
+  if (!el) return;
+  const count = 10;
+  for (let i = 0; i < count; i++) {
+    const lf = document.createElement('div');
+    lf.className = 'lf';
+    const sz  = 11 + Math.random() * 10;
+    const dur = 5 + Math.random() * 6;
+    const del = Math.random() * 9;
+    lf.textContent = LEAVES[i % LEAVES.length];
+    lf.style.cssText = `
+      left:${Math.random()*95}%; bottom:${Math.random()*18}%;
+      --lsz:${sz}px; --ldur:${dur}s; --ldel:${del}s;
+      --lx:${(Math.random()-.5)*90}px;
+    `;
+    el.appendChild(lf);
+  }
+}
+
+/* ══════════════════════════════════════
+   OPEN / CLOSE
+══════════════════════════════════════ */
+$('openBtn').addEventListener('click', () => {
+  showL();
+  setTimeout(() => {
+    $('cover').style.display = 'none';
+    const d = $('diary');
+    d.style.display = 'block';
+    void d.offsetWidth;
+    d.classList.add('open');
+    goTo(1, false);
+    hideL();
+    window.scrollTo({ top:0, behavior:'smooth' });
+  }, 680);
 });
 
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modal.classList.contains('active')) {
-        closeModal();
-    }
+function closeBook() {
+  showL();
+  setTimeout(() => {
+    $('diary').classList.remove('open');
+    $('diary').style.display = 'none';
+    $('cover').style.display = 'flex';
+    hideL();
+    window.scrollTo({ top:0, behavior:'smooth' });
+  }, 480);
+}
+
+/* ══════════════════════════════════════
+   PAGE NAVIGATION
+══════════════════════════════════════ */
+function goTo(n, animate=true) {
+  if (n < 1 || n > 4) return;
+  showL();
+  setTimeout(() => {
+    $$('.diary-pg').forEach(p => { p.classList.remove('on'); p.style.display='none'; });
+    const pg = $('pg'+n);
+    pg.style.display = 'block';
+    void pg.offsetWidth;
+    if (animate) { pg.classList.add('on'); }
+    else { pg.style.animation='none'; pg.classList.add('on'); setTimeout(()=>pg.style.animation='',50); }
+    cur = n;
+    $$('.pdot').forEach(d => d.classList.toggle('on', +d.dataset.p===n));
+    hideL();
+    window.scrollTo({ top:0, behavior:'smooth' });
+  }, 360);
+}
+
+$$('.pdot').forEach(d => d.addEventListener('click', () => goTo(+d.dataset.p)));
+
+/* ══════════════════════════════════════
+   DAY TABS
+══════════════════════════════════════ */
+document.addEventListener('click', e => {
+  const tab = e.target.closest('.dtab');
+  if (!tab) return;
+  $$('.dtab').forEach(t => t.classList.remove('on'));
+  $$('.dpanel').forEach(p => p.classList.remove('show'));
+  tab.classList.add('on');
+  $(tab.dataset.day).classList.add('show');
 });
 
-// SMOOTH SCROLL
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
-    });
+/* ══════════════════════════════════════
+   ALBUM ARROWS + DRAG SCROLL
+══════════════════════════════════════ */
+document.addEventListener('click', e => {
+  const arr = e.target.closest('.aarr');
+  if (!arr) return;
+  $(arr.dataset.tk).scrollBy({ left: arr.classList.contains('ap') ? -300 : 300, behavior:'smooth' });
 });
 
-// SCROLL REVEAL ANIMATION
-const observerOptions = {
-    threshold: 0.12,
-    rootMargin: '0px 0px -80px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('active');
-            // Unobserve after revealing to improve performance
-            observer.unobserve(entry.target);
-        }
-    });
-}, observerOptions);
-
-// Observe all reveal elements
-document.querySelectorAll('.reveal').forEach(el => {
-    observer.observe(el);
+$$('.atrack').forEach(el => {
+  let dn=false, sx, sl;
+  el.style.cursor='grab';
+  el.addEventListener('mousedown',  e => { dn=true; el.style.cursor='grabbing'; sx=e.pageX-el.offsetLeft; sl=el.scrollLeft; });
+  el.addEventListener('mouseleave', ()  => { dn=false; el.style.cursor='grab'; });
+  el.addEventListener('mouseup',    ()  => { dn=false; el.style.cursor='grab'; });
+  el.addEventListener('mousemove',  e  => { if(!dn) return; e.preventDefault(); el.scrollLeft=sl-(e.pageX-el.offsetLeft-sx)*1.7; });
 });
 
-// PARALLAX EFFECT ON SCROLL (subtle)
+/* ══════════════════════════════════════
+   COVER 3D TILT
+══════════════════════════════════════ */
+const bf = $('bookFace');
+document.addEventListener('mousemove', e => {
+  if ($('cover').style.display==='none') return;
+  bf.style.transform = `rotateX(${-(e.clientY-innerHeight/2)/64}deg) rotateY(${(e.clientX-innerWidth/2)/76}deg)`;
+});
+bf.addEventListener('mouseleave', () => { bf.style.transform=''; });
+
+/* ══════════════════════════════════════
+   IMAGE MODAL
+══════════════════════════════════════ */
+const modal=$('modal'), mi=$('mi');
+function openM(src,alt){mi.src=src;mi.alt=alt;modal.classList.add('open');document.body.style.overflow='hidden';}
+function closeM(){modal.classList.remove('open');document.body.style.overflow='';}
+document.addEventListener('click', e => {
+  const img = e.target.closest('.simg img,.pola img,.ci img');
+  if (img) openM(img.src, img.alt);
+});
+$('mc').addEventListener('click', closeM);
+modal.addEventListener('click', e => { if(e.target===modal) closeM(); });
+
+/* ══════════════════════════════════════
+   KEYBOARD
+══════════════════════════════════════ */
+document.addEventListener('keydown', e => {
+  if (e.key==='Escape') closeM();
+  if ($('diary').style.display!=='block') return;
+  if (e.key==='ArrowRight') goTo(cur+1);
+  if (e.key==='ArrowLeft')  goTo(cur-1);
+});
+
+/* ══════════════════════════════════════
+   SCROLL TOP
+══════════════════════════════════════ */
+const stb = $('stb');
+window.addEventListener('scroll', () => stb.classList.toggle('vis', scrollY>280));
+stb.addEventListener('click', () => window.scrollTo({ top:0, behavior:'smooth' }));
+
+/* ══════════════════════════════════════
+   PARALLAX
+══════════════════════════════════════ */
 window.addEventListener('scroll', () => {
-    const scrolled = window.scrollY;
-    const heroWrapper = document.querySelector('.hero-wrapper');
-    if (heroWrapper && scrolled < window.innerHeight) {
-        heroWrapper.style.transform = `translateY(${scrolled * 0.5}px)`;
-    }
+  const s = scrollY;
+  $$('.cl').forEach((c,i) => { c.style.transform=`translateY(${s*(i%3+1)*.18}px)`; });
 });
 
-// PRELOAD IMAGES
+/* ══════════════════════════════════════
+   SCROLL REVEAL
+══════════════════════════════════════ */
+const revObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.style.opacity='1'; e.target.style.transform='translateY(0)'; }
+  });
+}, { threshold:.08, rootMargin:'0px 0px -40px 0px' });
+
+$$('.spair,.mcard,.ccard,.pola,.dnote,.qblock,.callout').forEach((el,i) => {
+  el.style.opacity='0'; el.style.transform='translateY(28px)';
+  el.style.transition=`opacity .72s ease ${i*.056}s, transform .72s ease ${i*.056}s`;
+  revObs.observe(el);
+});
+
+/* ══════════════════════════════════════
+   PRELOAD & INIT
+══════════════════════════════════════ */
 window.addEventListener('load', () => {
-    const images = document.querySelectorAll('img');
-    images.forEach(img => {
-        if (img.complete) {
-            img.style.opacity = '1';
-        } else {
-            img.addEventListener('load', () => {
-                img.style.opacity = '1';
-            });
-        }
-    });
+  buildFireflies();
+  buildLeaves('lf1');
+  buildLeaves('lf3');
+
+  $$('img').forEach(img => {
+    if (!img.complete) {
+      img.style.opacity='0';
+      img.addEventListener('load',  () => { img.style.transition='opacity .6s'; img.style.opacity='1'; });
+      img.addEventListener('error', () => { img.style.opacity='.3'; });
+    }
+  });
 });
 </script>
-
 </body>
 </html>
