@@ -329,86 +329,100 @@ body::after{
   50%{transform:scale(1.08);opacity:.9;}
 }
 
-/* ═══════ UNIFIED SECTION TITLE - WITH ORIGINAL COLOR ICONS ═══════ */
+/* ── UNIFIED TITLE STYLES WITH WOW EFFECTS ── */
 .section-title{
   font-family:'Playfair Display',serif;
   font-size:4rem;
   font-weight:700;
   text-align:center;
-  margin-bottom:35px;
+  margin-bottom:45px;
   position:relative;
   display:flex;
   align-items:center;
   justify-content:center;
-  gap:15px;
   width:100%;
-  animation:writeIn 1.2s ease-out;
+  animation:writeIn 1.4s cubic-bezier(.4,0,.2,1), titleFloat 6s ease-in-out infinite;
+  filter:drop-shadow(0 5px 15px rgba(30,68,48,.25));
+  transform-style:preserve-3d;
 }
 
-/* Icon keeps original color */
-.section-title .title-icon{
-  font-size:3.5rem;
-  filter:drop-shadow(0 2px 8px rgba(62,114,73,.3)) drop-shadow(0 0 20px rgba(122,170,136,.2));
-  animation:titleFloat 6s ease-in-out infinite, iconPulse 3s ease-in-out infinite;
-}
-
-/* Text has gradient */
+/* Text part with gradient */
 .section-title .title-text{
-  background:linear-gradient(120deg,#1e4430 0%,#2d5a40 25%,#3e7249 50%,#568c62 75%,#7aaa88 100%);
+  background:linear-gradient(118deg,var(--g7) 0%,var(--g5) 45%,var(--forest-dark) 100%);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
   background-clip:text;
-  background-size:200% 100%;
-  animation:titleGradientShift 4s ease-in-out infinite;
-  filter:drop-shadow(0 2px 8px rgba(62,114,73,.3));
-  text-shadow:
-    2px 2px 0 rgba(30,68,48,.15),
-    4px 4px 0 rgba(30,68,48,.1);
+  animation:titleGlowPulse 3.5s ease-in-out infinite;
+}
+
+/* Icon keeps original color - no separate animation */
+.section-title .title-icon{
+  display:inline-block;
+  margin-right:12px;
+  filter:drop-shadow(0 3px 8px rgba(30,68,48,.3));
+  flex-shrink:0;
+}
+
+@keyframes iconBounceTitle{
+  0%,100%{transform:translateY(0) scale(1);}
+  50%{transform:translateY(-8px) scale(1.1);}
+}
+
+@keyframes titleGlowPulse{
+  0%,100%{
+    filter:drop-shadow(0 5px 15px rgba(30,68,48,.25)) brightness(1);
+  }
+  50%{
+    filter:drop-shadow(0 8px 25px rgba(62,114,73,.5)) brightness(1.15);
+  }
 }
 
 @keyframes writeIn{
-  from{opacity:0;transform:translateX(-60px) scale(.95);}
-  to{opacity:1;transform:translateX(0) scale(1);}
-}
-
-@keyframes titleGradientShift{
-  0%,100%{background-position:0% 50%;}
-  50%{background-position:100% 50%;}
-}
-
-@keyframes iconPulse{
-  0%,100%{transform:scale(1);}
-  50%{transform:scale(1.15);}
+  from{opacity:0;transform:translateX(-80px) rotateY(-15deg);}
+  to{opacity:1;transform:translateX(0) rotateY(0);}
 }
 
 @keyframes titleFloat{
   0%,100%{transform:translateY(0);}
-  50%{transform:translateY(-8px);}
+  50%{transform:translateY(-12px);}
 }
 
-/* Decorative line under title */
 .section-title::after{
   content:'';
   position:absolute;
-  bottom:-12px;
+  bottom:-18px;
   left:50%;
   transform:translateX(-50%);
   width:0;
-  height:4px;
-  background:linear-gradient(90deg,transparent,#2d5a40,#3e7249,#568c62,#7aaa88,transparent);
-  animation:lineDraw 2s ease-out forwards, lineShimmer 3s ease-in-out infinite 2s;
-  box-shadow:0 2px 15px rgba(30,68,48,.4);
-  border-radius:2px;
+  height:5px;
+  background:linear-gradient(90deg,transparent,#2d5a40 20%,#3e7249 40%,#568c62 60%,#7aaa88 80%,transparent);
+  animation:lineDraw 2.2s cubic-bezier(.4,0,.2,1) forwards, lineGlow 3.5s ease-in-out infinite;
+  box-shadow:0 3px 20px rgba(30,68,48,.4);
+  border-radius:3px;
 }
 
 @keyframes lineDraw{
-  from{width:0;}
-  to{width:280px;}
+  from{width:0;opacity:0;}
+  to{width:280px;opacity:1;}
 }
 
-@keyframes lineShimmer{
-  0%,100%{box-shadow:0 2px 15px rgba(30,68,48,.4);}
-  50%{box-shadow:0 2px 20px rgba(62,114,73,.7), 0 0 30px rgba(122,170,136,.5);}
+@keyframes lineGlow{
+  0%,100%{
+    box-shadow:0 3px 20px rgba(30,68,48,.4);
+    filter:brightness(1);
+  }
+  50%{
+    box-shadow:0 5px 35px rgba(62,114,73,.8), 0 0 15px rgba(122,170,136,.6);
+    filter:brightness(1.3);
+  }
+}
+
+/* Keep gradient class for consistency */
+.section-title.grad-h{
+  background:linear-gradient(118deg,var(--g7) 0%,var(--g5) 45%,var(--forest-dark) 100%);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
 }
 
 .section-intro{
@@ -854,229 +868,174 @@ body::after{
   border-left-color:#3e7249;
 }
 
-/* ══════════════ BEAUTIFUL REDESIGNED PAGE 4 ══════════════ */
-
-/* Hero image section with overlay text */
-.hero-fullwidth{
-  position:relative;
-  width:100%;
-  height:500px;
-  border-radius:20px;
-  overflow:hidden;
-  margin-bottom:60px;
-  box-shadow:0 20px 60px rgba(30,68,48,.25);
-}
-
-.hero-fullwidth img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  cursor:pointer;
-  transition:transform .6s ease;
-}
-
-.hero-fullwidth:hover img{
-  transform:scale(1.08);
-}
-
-.hero-overlay{
-  position:absolute;
-  inset:0;
-  background:linear-gradient(
-    to bottom,
-    rgba(30,68,48,.75) 0%,
-    rgba(30,68,48,.5) 40%,
-    rgba(30,68,48,.7) 100%
-  );
+/* ── IMPROVED FINAL PAGE LAYOUT ── */
+.cgrid{
   display:flex;
   flex-direction:column;
+  gap:80px;  /* Increased from 36px to 80px for better spacing */
+  margin:50px 0;
+}
+
+.ccard{
+  display:flex;
+  flex-direction:column;
+  gap:40px;  /* Increased internal gap */
+  padding:50px 45px;  /* Increased padding */
+  background:
+    radial-gradient(ellipse at 20% 30%, rgba(174,206,186,.15), transparent 50%),
+    radial-gradient(ellipse at 80% 70%, rgba(122,170,136,.12), transparent 50%),
+    linear-gradient(135deg,rgba(255,255,255,.65),rgba(249,247,240,.55));
+  backdrop-filter:blur(12px);
+  border-radius:24px;  /* More rounded */
+  border:3px solid rgba(62,114,73,.2);
+  box-shadow:
+    0 12px 40px rgba(30,68,48,.15),
+    inset 0 2px 10px rgba(255,255,255,.5);
+  transition:all .6s cubic-bezier(.4,0,.2,1);
+  position:relative;
+  overflow:hidden;
   align-items:center;
-  justify-content:center;
-  padding:60px 80px;
-  text-align:center;
+  transform-style:preserve-3d;
 }
 
-.hero-overlay h2{
-  font-family:'Playfair Display',serif;
-  font-size:4rem;
-  font-weight:800;
-  color:#fff;
-  margin-bottom:25px;
-  text-shadow:0 4px 20px rgba(0,0,0,.5);
-  animation:fadeInUp 1s ease;
+/* Enhanced hover state with 3D effect */
+.ccard::before{
+  content:'';
+  position:absolute;
+  top:-50%;
+  left:-50%;
+  width:200%;
+  height:200%;
+  background:radial-gradient(circle, rgba(122,170,136,.15), transparent 70%);
+  opacity:0;
+  transition:all .6s ease;
+  pointer-events:none;
 }
 
-.hero-overlay p{
-  font-family:'EB Garamond',serif;
-  font-size:2rem;
-  line-height:1.9;
-  color:rgba(255,255,255,.95);
-  max-width:800px;
-  text-shadow:0 2px 10px rgba(0,0,0,.4);
-  animation:fadeInUp 1.2s ease .2s both;
+.ccard:hover::before{
+  opacity:1;
+  animation:cardShimmer 2s ease-in-out infinite;
 }
 
-@keyframes fadeInUp{
-  from{opacity:0;transform:translateY(30px);}
-  to{opacity:1;transform:translateY(0);}
+@keyframes cardShimmer{
+  0%, 100%{transform:translate(-50%, -50%) scale(1);}
+  50%{transform:translate(-45%, -45%) scale(1.1);}
 }
 
-/* Bento box layout */
-.bento-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  grid-template-rows:auto auto;
-  gap:30px;
-  margin-bottom:60px;
+.ccard::after{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  width:0;
+  height:0;
+  border-style:solid;
+  border-width:0;
+  border-color:transparent rgba(62,114,73,.3) transparent transparent;
+  transition:border-width .5s ease, opacity .5s ease;
+  opacity:0;
 }
 
-.bento-large{
-  grid-column:1 / 2;
-  grid-row:1 / 3;
+.ccard:hover::after{
+  border-width:0 80px 80px 0;
+  opacity:1;
 }
 
-.bento-item{
-  background:
-    linear-gradient(135deg, rgba(255,255,255,.9), rgba(249,247,240,.8));
-  border-radius:20px;
+.ccard:hover{
+  transform:translateY(-15px) scale(1.02) rotateX(2deg);
+  box-shadow:
+    0 35px 90px rgba(30,68,48,.25),
+    0 15px 45px rgba(62,114,73,.2),
+    inset 0 2px 15px rgba(255,255,255,.7);
+  border-color:rgba(62,114,73,.4);
+}
+
+.ci{
+  border-radius:16px;
   overflow:hidden;
-  box-shadow:0 10px 40px rgba(30,68,48,.15);
-  transition:all .5s cubic-bezier(.4,0,.2,1);
+  aspect-ratio:3/2;
+  box-shadow:
+    0 12px 35px rgba(30,68,48,.15),
+    0 0 0 10px rgba(255,255,255,.8),
+    0 0 0 12px rgba(62,114,73,.25);
+  border:3px solid rgba(62,114,73,.4);
+  background:var(--beige);
+  max-height:450px;
+  width:85%;  /* Increased from 75% */
+  transition:all .6s ease;
   position:relative;
 }
 
-.bento-item:hover{
-  transform:translateY(-10px);
-  box-shadow:0 20px 60px rgba(30,68,48,.25);
+.ci::before{
+  content:'';
+  position:absolute;
+  inset:-3px;
+  background:linear-gradient(45deg, 
+    transparent 30%, 
+    rgba(122,170,136,.2) 50%, 
+    transparent 70%);
+  opacity:0;
+  transition:opacity .6s ease;
+  pointer-events:none;
 }
 
-.bento-image{
-  width:100%;
-  height:350px;
-  overflow:hidden;
-  position:relative;
+.ci:hover::before{
+  opacity:1;
+  animation:imageShine 2s ease-in-out infinite;
 }
 
-.bento-large .bento-image{
-  height:100%;
+@keyframes imageShine{
+  0%{transform:translateX(-100%) rotate(45deg);}
+  100%{transform:translateX(100%) rotate(45deg);}
 }
 
-.bento-image img{
+.ci img{
   width:100%;
   height:100%;
   object-fit:cover;
-  transition:transform .6s ease;
   cursor:pointer;
+  transition:all .8s cubic-bezier(.4,0,.2,1);
+  filter:saturate(1.05) contrast(1.05);
 }
 
-.bento-item:hover .bento-image img{
-  transform:scale(1.1);
+.ccard:hover .ci{
+  box-shadow:
+    0 18px 50px rgba(30,68,48,.25),
+    0 0 0 10px rgba(255,255,255,.9),
+    0 0 0 12px rgba(62,114,73,.35),
+    0 0 30px rgba(122,170,136,.3);
+  transform:scale(1.03);
 }
 
-.bento-content{
-  padding:35px;
+.ccard:hover .ci img{
+  transform:scale(1.1) rotate(-1deg);
+  filter:saturate(1.2) contrast(1.08);
 }
 
-.bento-content h3{
-  font-family:'Playfair Display',serif;
-  font-size:2rem;
-  color:var(--forest-dark);
-  margin-bottom:15px;
-  font-weight:700;
+.ct{
+  width:100%;
+  max-width:900px;  /* Add max width for better readability */
 }
 
-.bento-content p{
-  font-family:'EB Garamond',serif;
-  font-size:1.5rem;
-  line-height:1.9;
+.ct p{
+  font-size:1.65rem;  /* Increased from 1.5rem */
+  line-height:2.3;  /* Increased line height */
   color:var(--ink-dark);
-}
-
-/* Text-only bento */
-.bento-text{
-  padding:45px;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  background:
-    radial-gradient(ellipse at 30% 30%, rgba(174,206,186,.2), transparent 70%),
-    linear-gradient(135deg, rgba(255,255,255,.95), rgba(249,247,240,.85));
-}
-
-.bento-text h3{
-  font-family:'Playfair Display',serif;
-  font-size:2.2rem;
-  color:var(--forest-dark);
-  margin-bottom:20px;
-  font-weight:700;
-}
-
-.bento-text p{
+  margin-bottom:24px;  /* Increased spacing */
   font-family:'EB Garamond',serif;
-  font-size:1.6rem;
-  line-height:2;
-  color:var(--ink-dark);
-  margin-bottom:15px;
+  font-weight:400;
+  width:100%;
+  text-align:left;
+  transition:all .4s ease;
 }
 
-.bento-text p:last-child{
+.ct p:last-child{
   margin-bottom:0;
 }
 
-/* Final quote card */
-.final-quote-card{
-  background:
-    radial-gradient(ellipse at 50% 50%, rgba(122,170,136,.15), transparent 70%),
-    linear-gradient(135deg, rgba(249,247,240,.98), rgba(255,255,255,.95));
-  border-radius:24px;
-  padding:70px 80px;
-  text-align:center;
-  box-shadow:
-    0 20px 60px rgba(30,68,48,.2),
-    inset 0 2px 20px rgba(255,255,255,.9);
-  border:3px solid rgba(62,114,73,.25);
-  position:relative;
-  overflow:hidden;
-  margin-bottom:40px;
-}
-
-.final-quote-card::before{
-  content:'🌲';
-  position:absolute;
-  top:-20px;
-  left:-20px;
-  font-size:10rem;
-  opacity:.08;
-  transform:rotate(-15deg);
-}
-
-.final-quote-card::after{
-  content:'🌲';
-  position:absolute;
-  bottom:-20px;
-  right:-20px;
-  font-size:10rem;
-  opacity:.08;
-  transform:rotate(15deg);
-}
-
-.final-quote-card p{
-  font-family:'EB Garamond',serif;
-  font-size:2.5rem;
-  line-height:2;
+.ccard:hover .ct p{
+  transform:translateX(8px);
   color:var(--forest-dark);
-  font-style:italic;
-  font-weight:500;
-  position:relative;
-  z-index:1;
-  margin-bottom:30px;
-}
-
-.final-quote-card .signature{
-  font-family:'Dancing Script',cursive;
-  font-size:3rem;
-  color:var(--g5);
-  font-weight:700;
 }
 
 /* ── PAGE NAV ── */
@@ -1154,24 +1113,21 @@ body::after{
 @media(max-width:1200px){
   .meaning-card{width:340px;min-height:340px;padding:50px 45px;}
   .meaning-card p{max-width:250px;font-size:1.25rem;}
-  .bento-grid{gap:25px;}
+  .cgrid{gap:60px;}
+  .ct p{font-size:1.55rem;}
 }
 @media(max-width:1024px){
   .page{padding:70px 70px 120px;}
   .section-title{font-size:3.3rem;}
-  .section-title .title-icon{font-size:3rem;}
   .section-intro{font-size:1.55rem;}
   .story-text{font-size:1.35rem;}
   .meaning-grid{gap:30px;}
   .meaning-card{width:310px;min-height:310px;padding:45px 40px;}
   .meaning-card p{font-size:1.15rem;max-width:230px;}
   .ntxt{font-size:1.4rem;}
+  .cgrid{gap:50px;}
+  .ct p{font-size:1.45rem;}
   .quote-text{font-size:2.2rem;}
-  .bento-grid{grid-template-columns:1fr;grid-template-rows:auto;}
-  .bento-large{grid-column:1;grid-row:1;}
-  .hero-fullwidth{height:400px;}
-  .hero-overlay h2{font-size:3.5rem;}
-  .hero-overlay p{font-size:1.8rem;}
 }
 @media(max-width:768px){
   body{padding:25px 12px;}
@@ -1179,8 +1135,7 @@ body::after{
   .cover-title{font-size:3.5rem;}
   .cover-subtitle{font-size:1.8rem;}
   .page{padding:60px 35px 100px;border-left:40px solid rgba(30,68,48,.08);}
-  .section-title{font-size:3rem;flex-direction:column;gap:10px;}
-  .section-title .title-icon{font-size:2.5rem;}
+  .section-title{font-size:3rem;}
   .section-intro{font-size:1.4rem;}
   .story-card{grid-template-columns:1fr!important;gap:32px;}
   .story-card:nth-child(even) .story-image{order:0;}
@@ -1191,38 +1146,24 @@ body::after{
   .meaning-grid{flex-direction:column;align-items:center;}
   .meaning-card{border-radius:24px;width:100%;max-width:420px;min-height:auto;height:auto;padding:40px 35px;}
   .meaning-card p{max-width:100%;font-size:1.2rem;}
+  .cgrid{gap:40px;}
+  .ci{width:95%;}
+  .ct p{font-size:1.35rem;}
   .ntxt{font-size:1.35rem;}
   .quote-text{font-size:2rem;}
-  .hero-fullwidth{height:350px;}
-  .hero-overlay{padding:40px;}
-  .hero-overlay h2{font-size:2.8rem;}
-  .hero-overlay p{font-size:1.5rem;}
-  .bento-content{padding:25px;}
-  .bento-text{padding:30px;}
-  .final-quote-card{padding:50px 40px;}
-  .final-quote-card p{font-size:2rem;}
 }
 @media(max-width:480px){
   .page{padding:44px 22px 90px;}
   .section-title{font-size:2.4rem;}
-  .section-title .title-icon{font-size:2rem;}
   .section-intro{font-size:1.25rem;}
   .story-text{font-size:1.15rem;}
   .quote-box{padding:36px 26px;}
   .quote-text{font-size:1.8rem;line-height:1.7;}
   .callout{font-size:1.75rem;}
   .sig{font-size:2.5rem;}
+  .cgrid{gap:35px;}
+  .ct p{font-size:1.25rem;line-height:2.1;}
   .ntxt{font-size:1.25rem;}
-  .hero-fullwidth{height:300px;}
-  .hero-overlay{padding:30px;}
-  .hero-overlay h2{font-size:2.2rem;}
-  .hero-overlay p{font-size:1.3rem;}
-  .bento-image{height:250px;}
-  .bento-content h3{font-size:1.7rem;}
-  .bento-content p{font-size:1.3rem;}
-  .final-quote-card{padding:40px 30px;}
-  .final-quote-card p{font-size:1.7rem;}
-  .final-quote-card .signature{font-size:2.5rem;}
 }
 </style>
 </head>
@@ -1458,7 +1399,7 @@ body::after{
       </div>
     </div>
 
-    <!-- ══ PAGE 4 - BEAUTIFUL MAGAZINE LAYOUT ══ -->
+    <!-- ══ PAGE 4 ══ -->
     <div class="page" id="page4" style="display:none;">
       <div class="page-content">
         <div class="dclouds">☁️ &nbsp;&nbsp; ☁️ &nbsp;&nbsp;&nbsp; ☁️</div>
@@ -1467,51 +1408,32 @@ body::after{
           <span class="title-text">Đà Lạt – Miền Ký Ức Của 11L</span>
         </h3>
         
-        <!-- Hero image with text overlay -->
-        <div class="hero-fullwidth">
-          <img src="images/final.jpg" alt="Tập thể 11L" loading="lazy">
-          <div class="hero-overlay">
-            <h2>Một Miền Ký Ức Không Phai</h2>
-            <p>Chuyến tham quan học tập tại Đà Lạt không chỉ mang đến kiến thức và trải nghiệm, mà còn đánh dấu một đoạn đẹp trong hành trình trưởng thành của lớp 11L.</p>
-          </div>
-        </div>
-        
-        <!-- Bento grid layout -->
-        <div class="bento-grid">
-          <!-- Large image with text -->
-          <div class="bento-item bento-large">
-            <div class="bento-image">
-              <img src="images/memory.jpg" alt="Kỷ niệm đẹp" loading="lazy">
+        <div class="cgrid">
+          <div class="ccard">
+            <div class="ci">
+              <img src="images/final.jpg" alt="Tập thể 11L" loading="lazy">
             </div>
-            <div class="bento-content">
-              <h3>Những Khoảnh Khắc Quý Giá</h3>
-              <p>Ở Đà Lạt, chúng tôi đã học cách sống chậm lại, học cách lắng nghe thiên nhiên, lắng nghe chính mình và trân trọng từng khoảnh khắc bên nhau.</p>
+            <div class="ct">
+              <p>Chuyến tham quan học tập tại Đà Lạt không chỉ mang đến kiến thức và trải nghiệm, mà còn đánh dấu một đoạn đẹp trong hành trình trưởng thành của lớp 11L.</p>
+              <p>Ở đó, chúng tôi đã cùng nhau học cách sống chậm, học cách lắng nghe, học cách trân trọng hiện tại và học cách giữ gìn những điều nhỏ bé nhưng quý giá.</p>
             </div>
           </div>
           
-          <!-- Text card -->
-          <div class="bento-item bento-text">
-            <h3>Học Cách Trân Trọng</h3>
-            <p>Mỗi bước chân, mỗi nụ cười, mỗi khoảnh khắc cùng nhau đều là những bài học về tình bạn, về sự gắn kết và về cách trân trọng những điều giản dị.</p>
-          </div>
-          
-          <!-- Small image with caption -->
-          <div class="bento-item">
-            <div class="bento-image">
-              <img src="images/tapthe.jpg" alt="Cùng nhau" loading="lazy">
+          <div class="ccard">
+            <div class="ci">
+              <img src="images/memory.jpg" alt="Kỷ niệm" loading="lazy">
             </div>
-            <div class="bento-content">
-              <h3>Gắn Kết Mãi Mãi</h3>
-              <p>Những con đường đi cùng nhau, những câu chuyện chia sẻ đã làm bền chặt tình bạn tuổi học trò.</p>
+            <div class="ct">
+              <p>Nhiều năm sau, khi những con đường đời đã rẽ sang nhiều hướng khác nhau, có thể chúng tôi sẽ quên đi vài chi tiết nhỏ, nhưng chắc chắn Đà Lạt vẫn còn ở lại.</p>
+              <p>Trong những bức ảnh cũ, trong những câu chuyện được kể lại và trong một góc rất sâu của ký ức tuổi học trò – nơi rừng thông vẫn mãi xanh tươi.</p>
             </div>
           </div>
         </div>
         
-        <!-- Final quote card -->
-        <div class="final-quote-card">
-          <p>Nhiều năm sau, khi những con đường đời đã rẽ sang nhiều hướng khác nhau, Đà Lạt vẫn sẽ còn ở lại – trong những bức ảnh cũ, trong những câu chuyện được kể lại, và trong một góc rất sâu của ký ức tuổi học trò, nơi rừng thông vẫn mãi xanh tươi.</p>
-          <p style="margin-top:30px;font-size:2.3rem;"><strong>Bởi đó không chỉ là một chuyến đi, đó là một phần thanh xuân, đó là miền nhớ mang tên lớp 11L.</strong></p>
-          <p class="signature">~ Lớp 11L ~</p>
+        <div class="quote-box">
+          <p class="quote-text">
+            Bởi đó không chỉ là một chuyến đi, đó là một phần thanh xuân, đó là miền nhớ mang tên lớp 11L 🌲
+          </p>
         </div>
         
         <div class="rdiv"><span>🌲</span><span>☁️</span><span>🌿</span></div>
@@ -1677,7 +1599,7 @@ document.querySelectorAll('.atrack').forEach(album => {
 
 const modal=document.getElementById('imageModal'), modalImg=document.getElementById('modalImg');
 function closeModal(){modal.classList.remove('active');document.body.style.overflow='';}
-document.querySelectorAll('.pola img,.story-image img,.bento-image img,.hero-fullwidth img').forEach(img=>{
+document.querySelectorAll('.pola img,.story-image img,.ci img').forEach(img=>{
   img.addEventListener('click',e=>{e.stopPropagation();modal.classList.add('active');modalImg.src=img.src;modalImg.alt=img.alt;document.body.style.overflow='hidden';});
 });
 document.getElementById('imageModal').addEventListener('click',e=>{if(e.target===modal)closeModal();});
@@ -1714,7 +1636,7 @@ function scrollToTop(){window.scrollTo({top:0,behavior:'smooth'});}
 const rv=new IntersectionObserver(es=>{
   es.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';}});
 },{threshold:.06,rootMargin:'0px 0px -36px 0px'});
-document.querySelectorAll('.story-card,.meaning-card,.pola,.dnote,.quote-box,.callout,.bento-item,.hero-fullwidth,.final-quote-card').forEach((el,i)=>{
+document.querySelectorAll('.story-card,.meaning-card,.pola,.dnote,.quote-box,.callout,.ccard').forEach((el,i)=>{
   el.style.opacity='0';el.style.transform='translateY(28px)';
   el.style.transition=`opacity .72s ease ${i*.054}s,transform .72s ease ${i*.054}s`;
   rv.observe(el);
