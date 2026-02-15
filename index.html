@@ -3,1079 +3,959 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Thư Viện Nhật Ký Tuổi 16 - Hành trình thanh xuân 11L</title>
+<title>Thư Viện Nhật Ký Tuổi 16 – 11L</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Playfair+Display:wght@400;600;700&family=Cormorant+Garamond:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=IM+Fell+English:ital@0;1&family=Dancing+Script:wght@500;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 
 <style>
-:root {
-  --book1: #C4958C; /* 20/10 - Hồng đất */
-  --book2: #8FA9B3; /* 19/11 - Xanh xám */
-  --book3: #B5A394; /* 19/11 (2) - Be nâu */
-  --book4: #D4B896; /* 20/11 - Vàng be */
-  --book5: #A89BA8; /* Giai Điệu - Tím xám */
-  --book6: #8B9E8C; /* Đà Lạt - Xanh lá nhạt */
-}
+  :root {
+    --parchment: #f5ede0;
+    --parchment-dark: #e8d8c0;
+    --wood: #7a4f2d;
+    --wood-light: #a0673a;
+    --wood-dark: #5a3418;
+    --ink: #2c1f0e;
+    --ink-light: #4a3520;
+    --gold: #c9a44e;
+    --gold-light: #e8c97a;
+    --dust: rgba(200, 170, 120, 0.15);
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: 'Cormorant Garamond', serif;
-  min-height: 100vh;
-  overflow-x: hidden;
-  position: relative;
-  
-  /* Background giống ảnh - texture giấy cũ với ánh sáng */
-  background: 
-    radial-gradient(ellipse at 50% 30%, rgba(255, 245, 220, 0.4), transparent 70%),
-    radial-gradient(ellipse at 80% 80%, rgba(200, 180, 150, 0.2), transparent 60%),
-    linear-gradient(135deg, 
-      #d4c5b0 0%, 
-      #c9b89d 20%,
-      #b8a890 40%,
-      #c4b5a0 60%,
-      #d0c1ac 80%,
-      #ddd0bb 100%
-    );
-}
-
-/* Paper texture overlay */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image: 
-    url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='5' /%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
-  opacity: 0.6;
-  pointer-events: none;
-  z-index: 1;
-}
-
-/* Soft vignette effect */
-body::after {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background: radial-gradient(ellipse at center, transparent 20%, rgba(100, 80, 60, 0.3) 100%);
-  pointer-events: none;
-  z-index: 2;
-}
-
-/* Floating snow/dust particles */
-.particles {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 3;
-  overflow: hidden;
-}
-
-.particle {
-  position: absolute;
-  width: 3px;
-  height: 3px;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.9), transparent);
-  border-radius: 50%;
-  animation: particleFall var(--duration) linear infinite;
-  opacity: 0;
-}
-
-@keyframes particleFall {
-  0% {
-    opacity: 0;
-    transform: translateY(-10vh) translateX(0) scale(0.5);
+    --book-pink:   #d4a0a0;
+    --book-navy:   #4a6080;
+    --book-olive:  #8a8a5a;
+    --book-cream:  #c8b070;
+    --book-green:  #5a7a5a;
+    --book-red:    #8a3a3a;
   }
-  10% {
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: #2a1a0a;
+    background-image:
+      radial-gradient(ellipse at 50% 0%, rgba(120,80,30,0.6) 0%, transparent 60%),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    min-height: 100vh;
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px 40px;
+    position: relative;
+    text-align: center;
+  }
+
+  .hero::before {
+    content: "";
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 20%, rgba(180,130,60,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  /* Decorative corner vines */
+  .hero::after {
+    content: "❧";
+    position: absolute;
+    top: 30px; left: 40px;
+    font-size: 48px;
+    color: var(--gold);
+    opacity: 0.35;
+  }
+
+  .corner-vine {
+    position: absolute;
+    top: 28px; right: 38px;
+    font-size: 48px;
+    color: var(--gold);
+    opacity: 0.35;
+    transform: scaleX(-1);
+    font-family: serif;
+  }
+
+  .hero-badge {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .hero-badge::before, .hero-badge::after {
+    content: "";
+    width: 60px; height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold));
+  }
+  .hero-badge::after { background: linear-gradient(to left, transparent, var(--gold)); }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(48px, 9vw, 96px);
+    font-weight: 700;
+    color: var(--parchment);
+    line-height: 1.05;
+    text-shadow: 0 4px 30px rgba(0,0,0,0.5), 0 0 60px rgba(180,130,60,0.2);
+    letter-spacing: -1px;
+  }
+
+  .hero-title span {
+    display: block;
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(22px, 4vw, 42px);
+    font-weight: 500;
+    color: var(--gold-light);
+    text-shadow: 0 2px 20px rgba(0,0,0,0.4);
+    letter-spacing: 2px;
+    margin-top: 6px;
+  }
+
+  .hero-sub {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: clamp(14px, 1.8vw, 17px);
+    color: rgba(245,237,224,0.65);
+    max-width: 540px;
+    line-height: 1.9;
+    margin-top: 22px;
+    margin-bottom: 10px;
+  }
+
+  .hero-divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 28px 0 50px;
+    color: var(--gold);
+    opacity: 0.7;
+    font-size: 18px;
+  }
+  .hero-divider::before, .hero-divider::after {
+    content: "";
+    width: 120px; height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold));
+  }
+  .hero-divider::after { background: linear-gradient(to left, transparent, var(--gold)); }
+
+  /* ─── BOOKSHELF ─── */
+  .library {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+    position: relative;
+  }
+
+  .shelf-label {
+    text-align: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 12px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--gold);
     opacity: 0.8;
+    margin-bottom: 8px;
   }
-  90% {
-    opacity: 0.4;
+
+  .shelf-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin-bottom: 16px;
+    color: var(--gold);
+    font-size: 11px;
+    letter-spacing: 3px;
   }
-  100% {
-    opacity: 0;
-    transform: translateY(110vh) translateX(var(--drift)) scale(1);
+  .shelf-title-row span { color: rgba(245,237,224,0.5); font-style: italic; }
+  .shelf-title-row::before, .shelf-title-row::after {
+    content: "✦";
+    font-size: 9px;
+    opacity: 0.5;
   }
-}
 
-/* Main container */
-.library-scene {
-  position: relative;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 60px 40px;
-  z-index: 10;
-}
-
-/* Header */
-.library-header {
-  text-align: center;
-  margin-bottom: 80px;
-  animation: fadeInDown 1.5s ease both;
-}
-
-.main-title {
-  font-family: 'Dancing Script', cursive;
-  font-size: 5rem;
-  font-weight: 700;
-  color: #6B5D52;
-  margin-bottom: 20px;
-  text-shadow: 
-    2px 2px 4px rgba(0,0,0,0.2),
-    0 0 20px rgba(255,255,255,0.3);
-  letter-spacing: 0.02em;
-  line-height: 1.2;
-}
-
-.subtitle {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.5rem;
-  font-style: italic;
-  color: #8B7E74;
-  opacity: 0.85;
-  letter-spacing: 0.05em;
-}
-
-@keyframes fadeInDown {
-  from {
-    opacity: 0;
-    transform: translateY(-60px);
+  .shelf-wrapper {
+    position: relative;
+    padding: 30px 20px 0;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+
+  /* Shelf wood board */
+  .shelf-board {
+    position: relative;
+    background: linear-gradient(180deg, var(--wood-light) 0%, var(--wood) 40%, var(--wood-dark) 100%);
+    border-radius: 4px;
+    padding: 18px 30px 22px;
+    box-shadow:
+      0 8px 0 var(--wood-dark),
+      0 12px 30px rgba(0,0,0,0.6),
+      inset 0 2px 4px rgba(255,255,255,0.15),
+      inset 0 -2px 6px rgba(0,0,0,0.3);
   }
-}
-
-/* Books container */
-.books-container {
-  position: relative;
-  perspective: 2500px;
-  margin-bottom: 100px;
-  z-index: 5;
-}
-
-.books-shelf {
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  gap: 0;
-  position: relative;
-}
-
-/* Individual book */
-.book {
-  position: relative;
-  width: 160px;
-  height: 480px;
-  cursor: pointer;
-  transform-style: preserve-3d;
-  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-  animation: bookRise 1s ease both;
-  animation-delay: calc(var(--index) * 0.15s);
-  margin: 0 -15px; /* Overlap để tạo hiệu ứng xếp sách */
-}
-
-@keyframes bookRise {
-  from {
-    opacity: 0;
-    transform: translateY(100px) rotateY(-20deg) scale(0.8);
+  .shelf-board::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.2), transparent);
+    border-radius: 4px 4px 0 0;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0) rotateY(var(--rotate-y, 0deg)) scale(1);
-  }
-}
 
-/* Tilt angles for each book */
-.book:nth-child(1) { --rotate-y: -8deg; z-index: 1; }
-.book:nth-child(2) { --rotate-y: -5deg; z-index: 2; }
-.book:nth-child(3) { --rotate-y: -2deg; z-index: 3; }
-.book:nth-child(4) { --rotate-y: 2deg; z-index: 4; }
-.book:nth-child(5) { --rotate-y: 5deg; z-index: 5; }
-.book:nth-child(6) { --rotate-y: 8deg; z-index: 6; }
-
-.book:hover {
-  transform: translateY(-30px) rotateY(0deg) scale(1.1);
-  z-index: 100 !important;
-}
-
-/* Book cover (front) */
-.book-cover {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  background: var(--book-color);
-  border-radius: 0 8px 8px 0;
-  box-shadow: 
-    -8px 0 20px rgba(0,0,0,0.2),
-    0 15px 50px rgba(0,0,0,0.3),
-    inset 0 0 60px rgba(0,0,0,0.15);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 40px 20px;
-  overflow: hidden;
-  border: 1px solid rgba(255,255,255,0.1);
-  transition: all 0.5s ease;
-  transform-style: preserve-3d;
-}
-
-.book:hover .book-cover {
-  box-shadow: 
-    -12px 0 30px rgba(0,0,0,0.25),
-    0 20px 70px rgba(0,0,0,0.4),
-    inset 0 0 80px rgba(255,255,255,0.15),
-    0 0 60px rgba(255,255,255,0.2);
-  filter: brightness(1.15);
-}
-
-/* Book spine (left edge) */
-.book-spine {
-  position: absolute;
-  left: -30px;
-  top: 0;
-  bottom: 0;
-  width: 35px;
-  background: linear-gradient(90deg, 
-    rgba(0,0,0,0.5) 0%,
-    var(--book-color) 20%,
-    var(--book-color) 80%,
-    rgba(0,0,0,0.4) 100%
-  );
-  border-radius: 8px 0 0 8px;
-  box-shadow: 
-    inset 3px 0 10px rgba(0,0,0,0.4),
-    inset -2px 0 8px rgba(255,255,255,0.1);
-  transform-origin: right center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-/* Spine label */
-.spine-label {
-  position: absolute;
-  width: 400px;
-  text-align: center;
-  font-family: 'Playfair Display', serif;
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: rgba(255,255,255,0.95);
-  text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
-  letter-spacing: 0.15em;
-  transform: rotate(-90deg);
-  white-space: nowrap;
-}
-
-/* Bookmark ribbon */
-.bookmark {
-  position: absolute;
-  top: 0;
-  right: 30%;
-  width: 35px;
-  height: 120px;
-  background: linear-gradient(180deg, 
-    rgba(255,255,255,0.9) 0%,
-    rgba(240,235,220,0.85) 100%
-  );
-  clip-path: polygon(0 0, 100% 0, 100% 80%, 50% 100%, 0 80%);
-  box-shadow: 
-    0 5px 15px rgba(0,0,0,0.3),
-    inset 0 1px 3px rgba(255,255,255,0.8);
-  z-index: 10;
-  animation: ribbonSway 5s ease-in-out infinite;
-  animation-delay: calc(var(--index) * 0.2s);
-}
-
-@keyframes ribbonSway {
-  0%, 100% {
-    transform: translateY(0) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-5px) rotate(2deg);
-  }
-}
-
-/* Book icon on cover */
-.book-icon {
-  font-size: 4rem;
-  margin-bottom: 25px;
-  filter: drop-shadow(0 8px 20px rgba(0,0,0,0.4));
-  animation: iconFloat 4s ease-in-out infinite;
-  animation-delay: calc(var(--index) * 0.3s);
-  opacity: 0.9;
-}
-
-@keyframes iconFloat {
-  0%, 100% {
-    transform: translateY(0) scale(1);
-  }
-  50% {
-    transform: translateY(-8px) scale(1.05);
-  }
-}
-
-/* Book title */
-.book-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: rgba(255,255,255,0.95);
-  text-align: center;
-  line-height: 1.5;
-  text-shadow: 
-    2px 2px 6px rgba(0,0,0,0.5),
-    0 0 15px rgba(0,0,0,0.3);
-  letter-spacing: 0.05em;
-  margin-bottom: 12px;
-}
-
-/* Book date/subtitle */
-.book-date {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 0.95rem;
-  color: rgba(255,255,255,0.85);
-  text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
-  font-style: italic;
-  letter-spacing: 0.08em;
-}
-
-/* Decorative emblem on cover */
-.book-emblem {
-  position: absolute;
-  bottom: 50px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 50px;
-  height: 50px;
-  opacity: 0.25;
-  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));
-}
-
-/* Pages effect on right side */
-.book-pages {
-  position: absolute;
-  right: -5px;
-  top: 8px;
-  bottom: 8px;
-  width: 8px;
-  background: 
-    linear-gradient(180deg,
-      #fff 0%,
-      #f8f6f0 20%,
-      #fff 40%,
-      #f5f3ed 60%,
-      #fff 80%,
-      #f8f6f0 100%
-    );
-  box-shadow: 
-    2px 0 10px rgba(0,0,0,0.25),
-    inset -1px 0 2px rgba(0,0,0,0.1);
-  border-radius: 0 4px 4px 0;
-}
-
-/* Timeline section */
-.timeline-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 30px;
-  animation: fadeInUp 1.8s ease 1s both;
-}
-
-/* Timeline labels row */
-.timeline-labels {
-  display: flex;
-  align-items: center;
-  gap: 70px;
-}
-
-.timeline-label {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: #8B7E74;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
-  opacity: 0.7;
-  transition: all 0.3s ease;
-  cursor: pointer;
-  position: relative;
-  padding: 5px 10px;
-}
-
-.timeline-label:hover,
-.timeline-label.active {
-  opacity: 1;
-  color: #6B5D52;
-  transform: scale(1.1);
-}
-
-.timeline-label.active::after {
-  content: '';
-  position: absolute;
-  bottom: -8px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-  height: 2px;
-  background: #6B5D52;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-}
-
-/* Timeline dots row */
-.timeline-dots {
-  display: flex;
-  align-items: center;
-  gap: 40px;
-  position: relative;
-}
-
-/* Connecting line */
-.timeline-dots::before {
-  content: '';
-  position: absolute;
-  left: 35px;
-  right: 35px;
-  top: 50%;
-  height: 2px;
-  background: 
-    repeating-linear-gradient(
+  /* Wood grain texture */
+  .shelf-board::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
       90deg,
-      #8B7E74 0px,
-      #8B7E74 8px,
-      transparent 8px,
-      transparent 16px
+      transparent 0px,
+      transparent 18px,
+      rgba(0,0,0,0.04) 18px,
+      rgba(0,0,0,0.04) 19px
     );
-  opacity: 0.3;
-  z-index: 0;
-}
+    border-radius: 4px;
+    pointer-events: none;
+  }
 
-.timeline-dot {
-  position: relative;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #d4c5b0, #b8a890);
-  border: 3px solid rgba(139, 126, 116, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 
-    0 4px 15px rgba(0,0,0,0.15),
-    inset 0 2px 5px rgba(255,255,255,0.3);
-  z-index: 1;
-}
+  .books-row {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 4px;
+    position: relative;
+    z-index: 1;
+  }
 
-.timeline-dot:hover {
-  transform: scale(1.2);
-  box-shadow: 
-    0 8px 25px rgba(0,0,0,0.25),
-    inset 0 2px 8px rgba(255,255,255,0.4);
-  border-color: #6B5D52;
-}
+  /* ─── INDIVIDUAL BOOK ─── */
+  .book {
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transform-origin: bottom center;
+  }
 
-.timeline-dot.active {
-  background: linear-gradient(135deg, #8B7E74, #6B5D52);
-  border-color: #6B5D52;
-  transform: scale(1.25);
-  box-shadow: 
-    0 10px 30px rgba(0,0,0,0.3),
-    0 0 25px rgba(139, 126, 116, 0.4);
-}
+  .book:hover {
+    transform: translateY(-18px) rotate(-1deg);
+    z-index: 10;
+  }
 
-.timeline-dot span {
-  font-size: 1.6rem;
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
-}
+  .book-inner {
+    position: relative;
+    border-radius: 3px 6px 6px 3px;
+    box-shadow:
+      -4px 0 0 rgba(0,0,0,0.3),
+      4px 0 8px rgba(0,0,0,0.4),
+      0 0 0 1px rgba(0,0,0,0.2),
+      inset -3px 0 10px rgba(0,0,0,0.15);
+  }
 
-@keyframes fadeInUp {
-  from {
+  .book-spine {
+    width: var(--w, 60px);
+    height: var(--h, 200px);
+    background: var(--color);
+    background-image:
+      linear-gradient(
+        105deg,
+        rgba(255,255,255,0.18) 0%,
+        rgba(255,255,255,0.06) 30%,
+        transparent 50%,
+        rgba(0,0,0,0.1) 100%
+      ),
+      var(--texture, none);
+    border-radius: 3px 6px 6px 3px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 6px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .book-spine::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 8px;
+    background: rgba(0,0,0,0.25);
+    border-radius: 3px 0 0 3px;
+  }
+
+  .book-spine::after {
+    content: "";
+    position: absolute;
+    left: 8px; top: 0; bottom: 0;
+    width: 2px;
+    background: rgba(255,255,255,0.12);
+  }
+
+  .book-icon {
+    font-size: 22px;
+    color: rgba(255,255,255,0.8);
+    text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    flex-shrink: 0;
+  }
+
+  .book-date {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 11px;
+    color: rgba(255,255,255,0.9);
+    text-align: center;
+    writing-mode: vertical-lr;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+    letter-spacing: 1.5px;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+    line-height: 1;
+    flex: 1;
+    display: flex;
+    align-items: center;
+  }
+
+  .book-emblem {
+    font-size: 16px;
+    opacity: 0.7;
+    flex-shrink: 0;
+  }
+
+  /* Dust particles on top of books */
+  .book-dust {
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 6px;
+    background: linear-gradient(180deg, transparent, rgba(200,170,120,0.3));
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  /* ─── TIMELINE DOTS ─── */
+  .timeline-strip {
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    padding: 0 10px;
+  }
+
+  .timeline-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    position: relative;
+    cursor: pointer;
+  }
+
+  .timeline-item::before {
+    content: "";
+    position: absolute;
+    top: 9px;
+    left: 0; right: 0;
+    height: 1px;
+    background: rgba(200,160,80,0.35);
+  }
+  .timeline-item:first-child::before { left: 50%; }
+  .timeline-item:last-child::before { right: 50%; }
+
+  .dot {
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    background: var(--book-color);
+    border: 2px solid rgba(255,255,255,0.3);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    position: relative;
+    z-index: 1;
+    transition: transform 0.3s ease;
+  }
+  .timeline-item:hover .dot { transform: scale(1.3); }
+
+  .dot-icon {
+    font-size: 10px;
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .dot-label {
+    margin-top: 8px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 12px;
+    color: rgba(245,237,224,0.6);
+    letter-spacing: 0.5px;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  /* ─── SCROLL SECTION ─── */
+  .section-divider {
+    text-align: center;
+    padding: 90px 20px 30px;
+    color: var(--gold);
+  }
+  .section-divider .ornament {
+    font-size: 28px;
+    opacity: 0.4;
+    letter-spacing: 20px;
+  }
+  .section-divider h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(26px, 4vw, 40px);
+    color: var(--parchment);
+    margin: 14px 0 8px;
+    font-weight: 500;
+  }
+  .section-divider p {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 16px;
+    color: rgba(245,237,224,0.5);
+  }
+
+  /* ─── DIARY CARDS ─── */
+  .diary-section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px 24px 120px;
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+  }
+
+  .diary-entry {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
     opacity: 0;
     transform: translateY(40px);
+    animation: fadeUp 0.8s ease forwards;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 
-/* Book modal */
-.book-modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(212, 197, 176, 0.98);
-  backdrop-filter: blur(30px);
-  z-index: 10000;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  animation: modalFade 0.6s ease;
-}
+  .diary-entry:nth-child(1) { animation-delay: 0.1s; }
+  .diary-entry:nth-child(2) { animation-delay: 0.2s; }
+  .diary-entry:nth-child(3) { animation-delay: 0.3s; }
+  .diary-entry:nth-child(4) { animation-delay: 0.4s; }
+  .diary-entry:nth-child(5) { animation-delay: 0.5s; }
+  .diary-entry:nth-child(6) { animation-delay: 0.6s; }
 
-.book-modal.active {
-  display: flex;
-}
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
 
-@keyframes modalFade {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
+  .diary-entry.reverse { direction: rtl; }
+  .diary-entry.reverse > * { direction: ltr; }
 
-.modal-content {
-  position: relative;
-  width: 92%;
-  max-width: 1400px;
-  height: 92vh;
-  background: white;
-  border-radius: 16px;
-  box-shadow: 
-    0 40px 100px rgba(0,0,0,0.4),
-    0 0 0 1px rgba(139, 126, 116, 0.1);
-  overflow: hidden;
-  animation: pageOpen 0.9s cubic-bezier(0.4, 0, 0.2, 1);
-}
+  /* Page photo side */
+  .diary-photo {
+    position: relative;
+  }
 
-@keyframes pageOpen {
-  0% {
-    transform: perspective(2000px) rotateY(-90deg) scale(0.7);
-    opacity: 0;
+  .photo-frame {
+    position: relative;
+    background: #fff;
+    padding: 14px 14px 40px;
+    box-shadow:
+      0 20px 50px rgba(0,0,0,0.5),
+      0 4px 15px rgba(0,0,0,0.3);
+    transform: rotate(-1.5deg);
+    transition: transform 0.4s ease;
   }
-  100% {
-    transform: perspective(2000px) rotateY(0) scale(1);
-    opacity: 1;
-  }
-}
+  .diary-entry.reverse .photo-frame { transform: rotate(1.5deg); }
+  .photo-frame:hover { transform: rotate(0deg) scale(1.02); }
 
-.modal-close {
-  position: absolute;
-  top: 25px;
-  right: 25px;
-  width: 55px;
-  height: 55px;
-  background: rgba(139, 126, 116, 0.95);
-  border: none;
-  border-radius: 50%;
-  color: white;
-  font-size: 1.8rem;
-  font-weight: 300;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-  z-index: 100;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-}
+  .photo-frame img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    display: block;
+    filter: sepia(15%) saturate(0.9);
+  }
 
-.modal-close:hover {
-  background: #6B5D52;
-  transform: rotate(90deg) scale(1.15);
-  box-shadow: 0 8px 30px rgba(0,0,0,0.4);
-}
+  .photo-caption {
+    position: absolute;
+    bottom: 10px;
+    left: 14px; right: 14px;
+    font-family: 'Dancing Script', cursive;
+    font-size: 14px;
+    color: #555;
+    text-align: center;
+  }
 
-.modal-iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
-}
+  /* Washi tape on photo */
+  .washi {
+    position: absolute;
+    width: 90px;
+    height: 22px;
+    background: rgba(var(--book-color-rgb), 0.55);
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-3deg);
+    backdrop-filter: blur(1px);
+  }
 
-/* Loading indicator */
-.modal-loading {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-}
+  .tape-pink  { background: rgba(200,150,150,0.55); }
+  .tape-navy  { background: rgba(74,96,128,0.55); }
+  .tape-olive { background: rgba(138,138,90,0.55); }
+  .tape-cream { background: rgba(180,158,90,0.55); }
+  .tape-green { background: rgba(90,122,90,0.55); }
+  .tape-red   { background: rgba(138,58,58,0.55); }
 
-.loading-spinner {
-  width: 70px;
-  height: 70px;
-  border: 5px solid rgba(139, 126, 116, 0.2);
-  border-top-color: #8B7E74;
-  border-radius: 50%;
-  animation: spin 1.2s linear infinite;
-}
+  /* Paper clip */
+  .paper-clip {
+    position: absolute;
+    top: -18px;
+    right: 30px;
+    width: 20px;
+    height: 36px;
+    border: 3px solid #999;
+    border-bottom: none;
+    border-radius: 10px;
+    background: transparent;
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    z-index: 5;
+  }
 
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
+  /* Diary text side */
+  .diary-text {
+    padding: 10px 0;
+  }
 
-.loading-text {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.2rem;
-  font-style: italic;
-  color: #8B7E74;
-}
+  .entry-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--book-col, var(--gold));
+    margin-bottom: 12px;
+    opacity: 0.8;
+  }
 
-/* Responsive */
-@media (max-width: 1400px) {
-  .books-shelf {
-    gap: 0;
+  .entry-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(22px, 3vw, 32px);
+    font-weight: 500;
+    color: var(--parchment);
+    line-height: 1.2;
+    margin-bottom: 18px;
   }
-  
-  .book {
-    width: 140px;
-    height: 420px;
-    margin: 0 -18px;
-  }
-}
 
-@media (max-width: 1200px) {
-  .main-title {
-    font-size: 4rem;
+  .entry-body {
+    font-family: 'IM Fell English', serif;
+    font-size: 16px;
+    line-height: 1.85;
+    color: rgba(245,237,224,0.65);
+    font-style: italic;
+    margin-bottom: 24px;
   }
-  
-  .book {
-    width: 130px;
-    height: 400px;
-  }
-  
-  .timeline-labels {
-    gap: 50px;
-  }
-  
-  .timeline-dots {
-    gap: 30px;
-  }
-}
 
-@media (max-width: 1024px) {
-  .books-shelf {
-    flex-wrap: wrap;
-    gap: 20px;
+  .entry-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--book-col, var(--gold));
+    text-decoration: none;
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 3px;
+    opacity: 0.85;
+    transition: opacity 0.3s, gap 0.3s;
   }
-  
-  .book {
-    width: 140px;
-    height: 380px;
-    margin: 0;
-  }
-  
-  .book:nth-child(n) {
-    --rotate-y: 0deg;
-  }
-  
-  .timeline-labels {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px 40px;
-  }
-  
-  .timeline-dots {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  
-  .timeline-dots::before {
-    display: none;
-  }
-}
+  .entry-link:hover { opacity: 1; gap: 14px; }
 
-@media (max-width: 768px) {
-  .library-scene {
-    padding: 40px 20px;
+  .entry-ornament {
+    font-size: 20px;
+    opacity: 0.2;
+    margin-bottom: 10px;
+    color: var(--parchment);
   }
-  
-  .main-title {
-    font-size: 3rem;
-  }
-  
-  .subtitle {
-    font-size: 1.2rem;
-  }
-  
-  .library-header {
-    margin-bottom: 60px;
-  }
-  
-  .books-shelf {
-    gap: 25px;
-  }
-  
-  .book {
-    width: 160px;
-    height: 400px;
-  }
-  
-  .timeline-label {
-    font-size: 1.1rem;
-  }
-  
-  .timeline-dot {
-    width: 45px;
-    height: 45px;
-  }
-}
 
-@media (max-width: 480px) {
-  .main-title {
-    font-size: 2.5rem;
+  /* ─── FOOTER ─── */
+  footer {
+    text-align: center;
+    padding: 50px 20px 60px;
+    border-top: 1px solid rgba(200,160,80,0.15);
   }
-  
-  .subtitle {
-    font-size: 1rem;
+  footer .footer-ornament { font-size: 28px; color: var(--gold); opacity: 0.3; letter-spacing: 16px; }
+  footer p {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: rgba(245,237,224,0.35);
+    margin-top: 14px;
   }
-  
-  .book {
-    width: 140px;
-    height: 360px;
+
+  /* ─── FLOATING DUST MOTES ─── */
+  .dust-mote {
+    position: fixed;
+    border-radius: 50%;
+    background: rgba(220,190,120,0.4);
+    pointer-events: none;
+    animation: float linear infinite;
+    z-index: 0;
   }
-  
-  .book-icon {
-    font-size: 3rem;
+  @keyframes float {
+    0%   { transform: translateY(100vh) translateX(0); opacity: 0; }
+    10%  { opacity: 1; }
+    90%  { opacity: 0.5; }
+    100% { transform: translateY(-100px) translateX(var(--drift)); opacity: 0; }
   }
-  
-  .book-title {
-    font-size: 1rem;
+
+  /* Responsive */
+  @media (max-width: 760px) {
+    .diary-entry { grid-template-columns: 1fr; gap: 30px; }
+    .diary-entry.reverse { direction: ltr; }
+    .book-spine { --h: 160px !important; --w: 46px !important; }
+    .book-date { font-size: 9px; }
   }
-  
-  .timeline-label {
-    font-size: 1rem;
-  }
-  
-  .timeline-dot {
-    width: 40px;
-    height: 40px;
-  }
-  
-  .timeline-dot span {
-    font-size: 1.3rem;
-  }
-}
 </style>
 </head>
 <body>
 
-<!-- Particles effect -->
-<div class="particles" id="particles"></div>
+<!-- Floating dust motes -->
+<div class="dust-mote" style="left:10%;width:3px;height:3px;animation-duration:18s;animation-delay:0s;--drift:40px;"></div>
+<div class="dust-mote" style="left:25%;width:2px;height:2px;animation-duration:24s;animation-delay:3s;--drift:-30px;"></div>
+<div class="dust-mote" style="left:55%;width:4px;height:4px;animation-duration:20s;animation-delay:7s;--drift:20px;"></div>
+<div class="dust-mote" style="left:75%;width:2px;height:2px;animation-duration:22s;animation-delay:1s;--drift:-50px;"></div>
+<div class="dust-mote" style="left:88%;width:3px;height:3px;animation-duration:17s;animation-delay:5s;--drift:30px;"></div>
 
-<!-- Main library scene -->
-<div class="library-scene">
-  
-  <!-- Header -->
-  <header class="library-header">
-    <h1 class="main-title">Thư Viện Nhật Ký Tuổi 16</h1>
-    <p class="subtitle">Thanh xuân là một cuốn nhật ký từ ông bao giờ khép lại...</p>
-  </header>
+<!-- ═══════════ HERO ═══════════ -->
+<section class="hero">
+  <span class="corner-vine">❧</span>
 
-  <!-- Books container -->
-  <div class="books-container">
-    <div class="books-shelf">
-      
-      <!-- Book 1: 20/10 -->
-      <div class="book" style="--index: 0; --book-color: var(--book1);" data-page="2010.html">
-        <div class="bookmark"></div>
-        <div class="book-spine">
-          <div class="spine-label">20/10</div>
+  <div class="hero-badge">Lớp 11L &nbsp;·&nbsp; Năm Học 2024–2025</div>
+
+  <h1 class="hero-title">
+    Thư Viện Nhật Ký Tuổi 16
+    <span>Hành Trình Thanh Xuân</span>
+  </h1>
+
+  <p class="hero-sub">
+    Có những trang ký ức, khi mở ra là thấy cả một khoảng trời.<br>
+    Sáu cuốn nhật ký – sáu mốc không thể nào quên.
+  </p>
+
+  <div class="hero-divider">✦</div>
+
+  <!-- THE BOOKSHELF -->
+  <div class="library">
+    <div class="shelf-title-row"><span>+ Dòng Thời Gian +</span></div>
+
+    <div class="shelf-wrapper">
+      <div class="shelf-board">
+        <div class="books-row">
+
+          <!-- Book 1: 20/10 – pink -->
+          <div class="book" onclick="scrollToEntry('entry-1')" title="20/10 – Ngày Phụ nữ Việt Nam">
+            <div class="book-dust"></div>
+            <div class="book-inner">
+              <div class="book-spine" style="--w:70px;--h:210px;--color:var(--book-pink);">
+                <div class="book-icon">♡</div>
+                <div class="book-date">20/10</div>
+                <div class="book-emblem">♡</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Book 2: 19/11 – navy -->
+          <div class="book" onclick="scrollToEntry('entry-2')" title="19/11 – Ngày Quốc tế Đàn Ông">
+            <div class="book-dust"></div>
+            <div class="book-inner">
+              <div class="book-spine" style="--w:65px;--h:220px;--color:var(--book-navy);">
+                <div class="book-icon">🫖</div>
+                <div class="book-date">19/11</div>
+                <div class="book-emblem">⚑</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Book 3: 20/11 – olive/khaki -->
+          <div class="book" onclick="scrollToEntry('entry-3')" title="20/11 – Ngày Nhà giáo">
+            <div class="book-dust"></div>
+            <div class="book-inner">
+              <div class="book-spine" style="--w:68px;--h:230px;--color:var(--book-olive);">
+                <div class="book-icon">🎓</div>
+                <div class="book-date">20/11</div>
+                <div class="book-emblem">✎</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Book 4: Giai Điệu – cream/gold -->
+          <div class="book" onclick="scrollToEntry('entry-4')" title="Giai Điệu Tuổi Hồng">
+            <div class="book-dust"></div>
+            <div class="book-inner">
+              <div class="book-spine" style="--w:72px;--h:218px;--color:var(--book-cream);">
+                <div class="book-icon">♪</div>
+                <div class="book-date">Giai Điệu</div>
+                <div class="book-emblem">♫</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Book 5: Đà Lạt – forest green -->
+          <div class="book" onclick="scrollToEntry('entry-5')" title="Chuyến tham quan Đà Lạt">
+            <div class="book-dust"></div>
+            <div class="book-inner">
+              <div class="book-spine" style="--w:66px;--h:208px;--color:var(--book-green);">
+                <div class="book-icon">🌲</div>
+                <div class="book-date">Đà Lạt</div>
+                <div class="book-emblem">✿</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Book 6: Giỗ Tổ – burgundy red -->
+          <div class="book" onclick="scrollToEntry('entry-6')" title="Giỗ Tổ Hùng Vương">
+            <div class="book-dust"></div>
+            <div class="book-inner">
+              <div class="book-spine" style="--w:70px;--h:215px;--color:var(--book-red);">
+                <div class="book-icon">🥁</div>
+                <div class="book-date">Giỗ Tổ</div>
+                <div class="book-emblem">✦</div>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /books-row -->
+      </div><!-- /shelf-board -->
+    </div><!-- /shelf-wrapper -->
+
+    <!-- Timeline strip below shelf -->
+    <div class="timeline-strip">
+      <div class="timeline-item">
+        <div class="dot" style="--book-color:var(--book-pink);">
+          <span class="dot-icon">♡</span>
         </div>
-        <div class="book-cover">
-          <div class="book-icon">💐</div>
-          <h3 class="book-title">Ngày<br>Phụ nữ<br>Việt Nam</h3>
-          <p class="book-date">20.10</p>
-          <div class="book-emblem">❤️</div>
-        </div>
-        <div class="book-pages"></div>
+        <div class="dot-label">20/10</div>
       </div>
-
-      <!-- Book 2: 19/11 (first) -->
-      <div class="book" style="--index: 1; --book-color: var(--book2);" data-page="1911.html">
-        <div class="bookmark"></div>
-        <div class="book-spine">
-          <div class="spine-label">19/11</div>
+      <div class="timeline-item">
+        <div class="dot" style="--book-color:var(--book-navy);">
+          <span class="dot-icon">⚑</span>
         </div>
-        <div class="book-cover">
-          <div class="book-icon">🎓</div>
-          <h3 class="book-title">Ngày<br>Quốc tế<br>Đàn Ông</h3>
-          <p class="book-date">19.11</p>
-          <div class="book-emblem">👔</div>
-        </div>
-        <div class="book-pages"></div>
+        <div class="dot-label">19/11</div>
       </div>
-
-      <!-- Book 3: 19/11 (duplicate - adjust if needed) -->
-      <div class="book" style="--index: 2; --book-color: var(--book3);" data-page="1911.html">
-        <div class="bookmark"></div>
-        <div class="book-spine">
-          <div class="spine-label">19/11</div>
+      <div class="timeline-item">
+        <div class="dot" style="--book-color:var(--book-olive);">
+          <span class="dot-icon">✎</span>
         </div>
-        <div class="book-cover">
-          <div class="book-icon">🎩</div>
-          <h3 class="book-title">Ngày<br>Quốc tế<br>Đàn Ông</h3>
-          <p class="book-date">19.11</p>
-          <div class="book-emblem">🎯</div>
-        </div>
-        <div class="book-pages"></div>
+        <div class="dot-label">20/11</div>
       </div>
-
-      <!-- Book 4: 20/11 -->
-      <div class="book" style="--index: 3; --book-color: var(--book4);" data-page="2011.html">
-        <div class="bookmark"></div>
-        <div class="book-spine">
-          <div class="spine-label">20/11</div>
+      <div class="timeline-item">
+        <div class="dot" style="--book-color:var(--book-cream);">
+          <span class="dot-icon">♪</span>
         </div>
-        <div class="book-cover">
-          <div class="book-icon">📚</div>
-          <h3 class="book-title">Ngày<br>Nhà giáo<br>Việt Nam</h3>
-          <p class="book-date">20.11</p>
-          <div class="book-emblem">🍎</div>
-        </div>
-        <div class="book-pages"></div>
+        <div class="dot-label">Giai Điệu</div>
       </div>
-
-      <!-- Book 5: Giai Điệu -->
-      <div class="book" style="--index: 4; --book-color: var(--book5);" data-page="giaidieu.html">
-        <div class="bookmark"></div>
-        <div class="book-spine">
-          <div class="spine-label">GIAI ĐIỆU</div>
+      <div class="timeline-item">
+        <div class="dot" style="--book-color:var(--book-green);">
+          <span class="dot-icon">✿</span>
         </div>
-        <div class="book-cover">
-          <div class="book-icon">🎵</div>
-          <h3 class="book-title">Giai Điệu<br>Tuổi Hồng<br>& Thanh Lịch</h3>
-          <p class="book-date">2024-2025</p>
-          <div class="book-emblem">🎭</div>
-        </div>
-        <div class="book-pages"></div>
+        <div class="dot-label">Đà Lạt</div>
       </div>
-
-      <!-- Book 6: Đà Lạt -->
-      <div class="book" style="--index: 5; --book-color: var(--book6);" data-page="dalat.html">
-        <div class="bookmark"></div>
-        <div class="book-spine">
-          <div class="spine-label">ĐÀ LẠT</div>
+      <div class="timeline-item">
+        <div class="dot" style="--book-color:var(--book-red);">
+          <span class="dot-icon">✦</span>
         </div>
-        <div class="book-cover">
-          <div class="book-icon">🌲</div>
-          <h3 class="book-title">Chuyến<br>Tham quan<br>Đà Lạt</h3>
-          <p class="book-date">3 ngày</p>
-          <div class="book-emblem">🏔️</div>
-        </div>
-        <div class="book-pages"></div>
+        <div class="dot-label">Giỗ Tổ</div>
       </div>
-
     </div>
-  </div>
 
-  <!-- Timeline section -->
-  <div class="timeline-section">
-    <!-- Labels -->
-    <div class="timeline-labels">
-      <div class="timeline-label active" data-index="0">20/10</div>
-      <div class="timeline-label" data-index="1">19/11</div>
-      <div class="timeline-label" data-index="3">20/11</div>
-      <div class="timeline-label" data-index="4">Giai Điệu</div>
-      <div class="timeline-label" data-index="5">Đà Lạt</div>
-      <div class="timeline-label" data-index="6">Giỗ Tổ</div>
-    </div>
-    
-    <!-- Dots -->
-    <div class="timeline-dots">
-      <div class="timeline-dot active" data-index="0"><span>💐</span></div>
-      <div class="timeline-dot" data-index="1"><span>🎓</span></div>
-      <div class="timeline-dot" data-index="3"><span>📚</span></div>
-      <div class="timeline-dot" data-index="4"><span>🎵</span></div>
-      <div class="timeline-dot" data-index="5"><span>🌲</span></div>
-      <div class="timeline-dot" data-index="6"><span>🎋</span></div>
-    </div>
-  </div>
+  </div><!-- /library -->
+</section>
 
+
+<!-- ═══════════ DIARY ENTRIES ═══════════ -->
+<div class="section-divider">
+  <div class="ornament">— ✦ —</div>
+  <h2>Những Trang Nhật Ký</h2>
+  <p>Lật từng trang ký ức cùng 11L</p>
 </div>
 
-<!-- Modal -->
-<div class="book-modal" id="bookModal">
-  <div class="modal-content">
-    <button class="modal-close" id="modalClose">×</button>
-    <div class="modal-loading">
-      <div class="loading-spinner"></div>
-      <div class="loading-text">Đang mở trang...</div>
+<section class="diary-section">
+
+  <!-- Entry 1: 20/10 -->
+  <div class="diary-entry" id="entry-1">
+    <div class="diary-photo">
+      <div class="photo-frame">
+        <div class="washi tape-pink"></div>
+        <div class="paper-clip"></div>
+        <img src="ảnh1.jpg" alt="20/10 - Ngày Phụ nữ Việt Nam">
+        <div class="photo-caption">20 · 10 · 2024</div>
+      </div>
     </div>
-    <iframe class="modal-iframe" id="modalIframe"></iframe>
+    <div class="diary-text">
+      <div class="entry-ornament">♡ ♡ ♡</div>
+      <div class="entry-number" style="--book-col:var(--book-pink)">Nhật Ký · I</div>
+      <h2 class="entry-title">20/10 – Ngày Phụ nữ Việt Nam</h2>
+      <p class="entry-body">
+        Những năm tháng cuối cấp trôi qua rất nhanh, nhưng có những kỉ niệm vẫn ở lại nguyên vẹn trong tim mỗi người. 
+        Ngày Phụ nữ Việt Nam 20/10 năm lớp 11 là một trong những khoảnh khắc như thế – giản dị thôi nhưng đầy ắp yêu thương, 
+        tiếng cười và sự gắn kết của cả tập thể lớp chúng mình.
+      </p>
+      <a href="2010.html" class="entry-link" style="--book-col:var(--book-pink)">Mở trang nhật ký →</a>
+    </div>
   </div>
-</div>
+
+  <!-- Entry 2: 19/11 – reversed -->
+  <div class="diary-entry reverse" id="entry-2">
+    <div class="diary-photo">
+      <div class="photo-frame" style="transform:rotate(1.5deg)">
+        <div class="washi tape-navy"></div>
+        <div class="paper-clip"></div>
+        <img src="19.11 3.jpg" alt="19/11 - Ngày Quốc tế Đàn Ông">
+        <div class="photo-caption">19 · 11 · 2024</div>
+      </div>
+    </div>
+    <div class="diary-text">
+      <div class="entry-ornament">⚑ ⚑ ⚑</div>
+      <div class="entry-number" style="--book-col:var(--book-navy)">Nhật Ký · II</div>
+      <h2 class="entry-title">19/11 – Ngày Quốc tế Đàn Ông</h2>
+      <p class="entry-body">
+        Có những ngày đến rất nhẹ, nhưng khi đi qua rồi mới nhận ra mình đã lưu giữ được thêm một kỷ niệm đẹp. 
+        Những nụ cười, những lời chúc chân thành – tất cả in lại trong cuốn nhật ký tuổi 16 của chúng mình.
+      </p>
+      <a href="1911.html" class="entry-link" style="--book-col:var(--book-navy)">Mở trang nhật ký →</a>
+    </div>
+  </div>
+
+  <!-- Entry 3: 20/11 -->
+  <div class="diary-entry" id="entry-3">
+    <div class="diary-photo">
+      <div class="photo-frame">
+        <div class="washi tape-olive"></div>
+        <div class="paper-clip"></div>
+        <img src="tSuyen.jpg" alt="20/11 - Ngày Nhà giáo">
+        <div class="photo-caption">20 · 11 · 2024</div>
+      </div>
+    </div>
+    <div class="diary-text">
+      <div class="entry-ornament">✎ ✎ ✎</div>
+      <div class="entry-number" style="--book-col:var(--book-olive)">Nhật Ký · III</div>
+      <h2 class="entry-title">20/11 – Ngày Nhà giáo Việt Nam</h2>
+      <p class="entry-body">
+        Thầy cô là những người đã âm thầm gieo từng con chữ, nâng đỡ từng ước mơ và kiên nhẫn dìu dắt chúng em trên 
+        con đường tri thức. Ngày 20/11 là ngày của sự biết ơn, là dịp để học sinh bày tỏ lòng kính trọng đối với 
+        những người đã thắp sáng tương lai cho bao thế hệ.
+      </p>
+      <a href="2011.html" class="entry-link" style="--book-col:var(--book-olive)">Mở trang nhật ký →</a>
+    </div>
+  </div>
+
+  <!-- Entry 4: Giai Điệu – reversed -->
+  <div class="diary-entry reverse" id="entry-4">
+    <div class="diary-photo">
+      <div class="photo-frame" style="transform:rotate(1.5deg)">
+        <div class="washi tape-cream"></div>
+        <div class="paper-clip"></div>
+        <img src="thanhlich3.jpg" alt="Giai Điệu Tuổi Hồng">
+        <div class="photo-caption">Giai Điệu Tuổi Hồng</div>
+      </div>
+    </div>
+    <div class="diary-text">
+      <div class="entry-ornament">♫ ♪ ♫</div>
+      <div class="entry-number" style="--book-col:var(--book-cream)">Nhật Ký · IV</div>
+      <h2 class="entry-title">Giai Điệu Tuổi Hồng & Thanh Lịch</h2>
+      <p class="entry-body">
+        Lớp chúng mình đã cùng nhau tạo nên dấu ấn riêng qua sân chơi lớn đầy ý nghĩa: "Giai Điệu Tuổi Hồng" và 
+        "Hùng Vương Những Mùa Nhớ". Đó là hành trình của sự đoàn kết, sáng tạo và những nỗ lực không ngừng để 
+        mang đến những phần thi tuyệt vời nhất.
+      </p>
+      <a href="giaidieu.html" class="entry-link" style="--book-col:var(--book-cream)">Mở trang nhật ký →</a>
+    </div>
+  </div>
+
+  <!-- Entry 5: Đà Lạt -->
+  <div class="diary-entry" id="entry-5">
+    <div class="diary-photo">
+      <div class="photo-frame">
+        <div class="washi tape-green"></div>
+        <div class="paper-clip"></div>
+        <img src="thanh-pho-da-lat.jpg" alt="Chuyến tham quan Đà Lạt">
+        <div class="photo-caption">Đà Lạt · 2025</div>
+      </div>
+    </div>
+    <div class="diary-text">
+      <div class="entry-ornament">✿ ✿ ✿</div>
+      <div class="entry-number" style="--book-col:var(--book-green)">Nhật Ký · V</div>
+      <h2 class="entry-title">Chuyến Tham Quan Đà Lạt</h2>
+      <p class="entry-body">
+        Không chỉ là một chuyến đi, hành trình Đà Lạt của tập thể lớp 11L là sự kết hợp giữa học tập, trải nghiệm 
+        và gắn kết – nơi những ký ức thanh xuân được lưu giữ trọn vẹn giữa sương mù và thông xanh.
+      </p>
+      <a href="dalat.html" class="entry-link" style="--book-col:var(--book-green)">Mở trang nhật ký →</a>
+    </div>
+  </div>
+
+  <!-- Entry 6: Giỗ Tổ – reversed -->
+  <div class="diary-entry reverse" id="entry-6">
+    <div class="diary-photo">
+      <div class="photo-frame" style="transform:rotate(1.5deg)">
+        <div class="washi tape-red"></div>
+        <div class="paper-clip"></div>
+        <img src="bc4.jpg" alt="Giỗ Tổ Hùng Vương">
+        <div class="photo-caption">Giỗ Tổ Hùng Vương</div>
+      </div>
+    </div>
+    <div class="diary-text">
+      <div class="entry-ornament">✦ ✦ ✦</div>
+      <div class="entry-number" style="--book-col:var(--book-red)">Nhật Ký · VI</div>
+      <h2 class="entry-title">Giỗ Tổ Hùng Vương</h2>
+      <p class="entry-body">
+        Giỗ Tổ hôm ấy là ngày của sự biết ơn công lao dựng nước của Vua Hùng – là ngày đám trẻ 11L nháo nhào 
+        chuẩn bị cho cuộc thi gói bánh chưng, và là ngày đã giữ cho chúng mình những kỉ niệm đẹp đẽ chẳng thể quên.
+      </p>
+      <a href="banhchung.html" class="entry-link" style="--book-col:var(--book-red)">Mở trang nhật ký →</a>
+    </div>
+  </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-ornament">— ✦ ✦ ✦ —</div>
+  <p>Lớp 11L · Năm học 2024–2025 · Những trang nhật ký thanh xuân không thể nào quên</p>
+</footer>
 
 <script>
-// Create floating particles
-function createParticles() {
-  const container = document.getElementById('particles');
-  const particleCount = 40;
-  
-  for (let i = 0; i < particleCount; i++) {
-    const particle = document.createElement('div');
-    particle.className = 'particle';
-    particle.style.left = Math.random() * 100 + '%';
-    particle.style.top = -Math.random() * 10 + '%';
-    particle.style.setProperty('--duration', (12 + Math.random() * 18) + 's');
-    particle.style.setProperty('--drift', (Math.random() * 80 - 40) + 'px');
-    particle.style.animationDelay = Math.random() * 10 + 's';
-    container.appendChild(particle);
+  function scrollToEntry(id) {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
-}
 
-createParticles();
-
-// Refresh particles periodically
-setInterval(() => {
-  const container = document.getElementById('particles');
-  if (container.children.length > 60) {
-    container.removeChild(container.firstChild);
-  }
-  
-  const particle = document.createElement('div');
-  particle.className = 'particle';
-  particle.style.left = Math.random() * 100 + '%';
-  particle.style.top = -5 + '%';
-  particle.style.setProperty('--duration', (12 + Math.random() * 18) + 's');
-  particle.style.setProperty('--drift', (Math.random() * 80 - 40) + 'px');
-  container.appendChild(particle);
-}, 3000);
-
-// Book and timeline interactions
-const books = document.querySelectorAll('.book');
-const timelineLabels = document.querySelectorAll('.timeline-label');
-const timelineDots = document.querySelectorAll('.timeline-dot');
-const modal = document.getElementById('bookModal');
-const modalClose = document.getElementById('modalClose');
-const modalIframe = document.getElementById('modalIframe');
-const modalLoading = document.querySelector('.modal-loading');
-
-// Book click handler
-books.forEach((book, index) => {
-  book.addEventListener('click', () => {
-    const page = book.getAttribute('data-page');
-    openModal(page, index);
+  // Parallax subtle on books
+  document.querySelectorAll('.book').forEach((book, i) => {
+    book.addEventListener('mousemove', (e) => {
+      const r = book.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width - 0.5;
+      const y = (e.clientY - r.top) / r.height - 0.5;
+      book.querySelector('.book-inner').style.transform = 
+        `rotateY(${x * 10}deg) rotateX(${-y * 6}deg)`;
+    });
+    book.addEventListener('mouseleave', () => {
+      book.querySelector('.book-inner').style.transform = '';
+    });
   });
-});
-
-// Timeline label click
-timelineLabels.forEach(label => {
-  label.addEventListener('click', function() {
-    const index = parseInt(this.getAttribute('data-index'));
-    if (books[index]) {
-      books[index].click();
-    }
-    
-    // Update active state
-    timelineLabels.forEach(l => l.classList.remove('active'));
-    this.classList.add('active');
-  });
-});
-
-// Timeline dot click
-timelineDots.forEach(dot => {
-  dot.addEventListener('click', function() {
-    const index = parseInt(this.getAttribute('data-index'));
-    if (books[index]) {
-      books[index].click();
-    }
-    
-    // Update active state
-    timelineDots.forEach(d => d.classList.remove('active'));
-    this.classList.add('active');
-  });
-});
-
-// Open modal function
-function openModal(page, index) {
-  modal.classList.add('active');
-  document.body.style.overflow = 'hidden';
-  modalLoading.style.display = 'flex';
-  modalIframe.style.display = 'none';
-  
-  // Update timeline states
-  timelineDots.forEach((d, i) => {
-    d.classList.toggle('active', i === index);
-  });
-  
-  // Load page
-  setTimeout(() => {
-    modalIframe.src = page;
-    modalIframe.onload = () => {
-      modalLoading.style.display = 'none';
-      modalIframe.style.display = 'block';
-    };
-  }, 500);
-}
-
-// Close modal
-modalClose.addEventListener('click', () => {
-  modal.classList.remove('active');
-  document.body.style.overflow = '';
-  modalIframe.src = '';
-  modalLoading.style.display = 'flex';
-  modalIframe.style.display = 'none';
-});
-
-// Close on backdrop click
-modal.addEventListener('click', (e) => {
-  if (e.target === modal) {
-    modalClose.click();
-  }
-});
-
-// Close on Escape key
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && modal.classList.contains('active')) {
-    modalClose.click();
-  }
-});
-
-// 3D tilt effect on mouse move
-books.forEach(book => {
-  book.addEventListener('mousemove', (e) => {
-    const rect = book.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-    
-    const rotateX = (y - centerY) / 25;
-    const rotateY = (centerX - x) / 25;
-    
-    const currentRotateY = parseFloat(book.style.getPropertyValue('--rotate-y') || 0);
-    
-    book.style.transform = `
-      translateY(-30px) 
-      rotateX(${rotateX}deg) 
-      rotateY(${rotateY}deg) 
-      scale(1.1)
-    `;
-  });
-  
-  book.addEventListener('mouseleave', function() {
-    this.style.transform = '';
-  });
-});
-
-// Smooth page load
-window.addEventListener('load', () => {
-  document.body.style.opacity = '0';
-  setTimeout(() => {
-    document.body.style.transition = 'opacity 1.2s ease';
-    document.body.style.opacity = '1';
-  }, 100);
-});
 </script>
-
 </body>
 </html>
