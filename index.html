@@ -3,1684 +3,984 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nhật Ký Đà Lạt · Lớp 11L</title>
+<title>Thư Viện Ký Ức · Lớp 11L</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Dancing+Script:wght@400;600;700&family=Caveat:wght@400;600;700&family=Lora:ital,wght@0,400;0,600;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600&family=Dancing+Script:wght@500;600&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
 <style>
 :root {
-  --forest-dark:#1e4430; --forest-green:#1a3c28; --leaf-green:#204e34;
-  --mint-light:#2d5a40; --cream:#f9f7f0; --page-white:#fffef9;
-  --ink-dark:#2c3e2c; --gold-accent:#c9a961; --beige:#d4b896;
-  --g9:#162c1e; --g8:#1c3826; --g7:#24482e; --g6:#305c3a;
-  --g5:#3e7249; --g4:#568c62; --g3:#7aaa88; --g2:#aeceba;
+  --cream: #FAF7F2;
+  --mist-blue: #C9DAD3;
+  --dusty-pink: #E8CFC4;
+  --vintage-brown: #8B7E74;
+  --soft-gray: #E5E3DF;
+  --dark-text: #3b332c;
+  --gold-accent: #c9a961;
 }
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;overflow-x:hidden;}
 
-/* Custom Cursor Trail Effect */
-body{cursor:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"><circle cx="10" cy="10" r="8" fill="%233e7249" opacity="0.3"/></svg>') 10 10, auto;}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-body{
-  font-family:'EB Garamond',serif;
-  background:
-    radial-gradient(ellipse at 50% 20%, rgba(62,114,73,.12), transparent 60%),
-    radial-gradient(ellipse at 80% 70%, rgba(30,68,48,.08), transparent 50%),
-    radial-gradient(ellipse at 20% 80%, rgba(45,90,64,.1), transparent 55%),
-    linear-gradient(180deg, #e8f4ed 0%, #d4e8dc 25%, #c5ddd0 50%, #d0e3d8 75%, #ddeee5 100%);
-  min-height:100vh;
-  display:flex;flex-direction:column;align-items:center;
-  padding:40px 20px;
-  position:relative;overflow-x:hidden;
+body {
+  font-family: 'Inter', sans-serif;
+  background: 
+    radial-gradient(ellipse at 30% 30%, rgba(220,210,200,.3), transparent 60%),
+    radial-gradient(ellipse at 70% 70%, rgba(200,190,180,.25), transparent 60%),
+    linear-gradient(135deg, #d8cfc5 0%, #c9bfb5 30%, #b8aea4 60%, #c5bbb1 100%);
+  min-height: 100vh;
+  color: var(--dark-text);
+  overflow-x: hidden;
+  position: relative;
 }
-body::before{
-  content:'';position:fixed;inset:0;
-  background-image:
-    repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(122,170,136,.018) 3px,rgba(122,170,136,.018) 6px),
-    repeating-linear-gradient(90deg,transparent,transparent 3px,rgba(122,170,136,.022) 3px,rgba(122,170,136,.022) 6px),
-    radial-gradient(circle at 15% 25%,rgba(62,114,73,.04),transparent 45%),
-    radial-gradient(circle at 85% 75%,rgba(62,114,73,.04),transparent 45%);
-  opacity:.85;pointer-events:none;z-index:0;
-  animation:paperGrain 12s ease-in-out infinite;
-}
-@keyframes paperGrain{0%,100%{opacity:.85;}50%{opacity:.65;}}
-body::after{
-  content:'';position:fixed;inset:0;
-  background-image:
-    radial-gradient(2px 2px at 12% 18%,rgba(201,169,97,.22),transparent),
-    radial-gradient(1px 1px at 28% 45%,rgba(255,255,255,.12),transparent),
-    radial-gradient(2px 2px at 58% 12%,rgba(201,169,97,.28),transparent),
-    radial-gradient(1px 1px at 78% 68%,rgba(255,255,255,.14),transparent),
-    radial-gradient(1px 1px at 22% 82%,rgba(201,169,97,.20),transparent),
-    radial-gradient(2px 2px at 88% 38%,rgba(255,255,255,.16),transparent),
-    radial-gradient(1px 1px at 45% 55%,rgba(201,169,97,.18),transparent),
-    radial-gradient(2px 2px at 65% 75%,rgba(255,255,255,.12),transparent);
-  animation:particlesDrift 35s linear infinite, particlesTwinkle 4s ease-in-out infinite;
-  pointer-events:none;opacity:.5;z-index:1;
-}
-@keyframes particlesDrift{from{transform:translateY(0) translateX(0);}to{transform:translateY(-90px) translateX(50px);}}
-@keyframes particlesTwinkle{0%,100%{opacity:.5;}50%{opacity:.7;}}
 
-/* Cursor Trail Effect */
-.cursor-trail {
+/* Paper texture overlay - lighter */
+body::before {
+  content: '';
   position: fixed;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(62,114,73,0.6), rgba(122,170,136,0.3));
+  inset: 0;
+  background-image: 
+    repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(139,126,116,.015) 2px, rgba(139,126,116,.015) 4px),
+    repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(139,126,116,.018) 2px, rgba(139,126,116,.018) 4px);
+  opacity: .5;
   pointer-events: none;
-  z-index: 9999;
-  animation: trailFade 0.8s ease-out forwards;
-  box-shadow: 0 0 10px rgba(62,114,73,0.4);
+  z-index: 1;
 }
-@keyframes trailFade {
-  to {
+
+/* Soft center glow instead of corner light */
+body::after {
+  content: '';
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 80%;
+  background: radial-gradient(ellipse, rgba(255,248,235,.6), transparent 70%);
+  pointer-events: none;
+  z-index: 2;
+  animation: centerGlow 10s ease-in-out infinite;
+}
+
+@keyframes centerGlow {
+  0%, 100% { opacity: .6; }
+  50% { opacity: .9; }
+}
+
+/* Floating snow/light particles */
+.dust-particle {
+  position: fixed;
+  width: 4px;
+  height: 4px;
+  background: radial-gradient(circle, rgba(255,255,255,.8), rgba(255,245,230,.4));
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 100;
+  animation: snowFall var(--duration) ease-in-out infinite;
+  animation-delay: var(--delay);
+  opacity: 0;
+  box-shadow: 0 0 8px rgba(255,255,255,.6);
+}
+
+@keyframes snowFall {
+  0% {
     opacity: 0;
-    transform: scale(0.3);
+    transform: translate(0, 0) rotate(0deg);
+  }
+  15% {
+    opacity: .9;
+  }
+  85% {
+    opacity: .5;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--dx), var(--dy)) rotate(360deg);
   }
 }
 
-.book-container{
-  position:relative;max-width:1200px;width:100%;
-  perspective:2000px;z-index:10;
-  animation:containerFadeIn 1.5s cubic-bezier(.4,0,.2,1);
-}
-@keyframes containerFadeIn{
-  from{opacity:0;transform:translateY(60px) scale(.95);}
-  to{opacity:1;transform:translateY(0) scale(1);}
-}
-
-/* ── BOOK COVER ── */
-.book-cover{
-  position:relative;
-  background:
-    repeating-linear-gradient(45deg,rgba(30,68,48,.08),rgba(30,68,48,.08) 3px,transparent 3px,transparent 6px),
-    linear-gradient(135deg,#1e4430 0%,#1a3c28 30%,#204e34 60%,#172e1e 85%,#112218 100%);
-  border-radius:8px;
-  padding:70px 60px;
-  box-shadow:0 30px 80px rgba(0,0,0,.6),inset 0 0 150px rgba(0,0,0,.4),inset 2px 2px 8px rgba(255,255,255,.1),inset -2px -2px 8px rgba(0,0,0,.4);
-  border:8px ridge rgba(30,68,48,.5);
-  margin-bottom:40px;
-  transform-style:preserve-3d;
-  animation:bookEntrance 1.8s cubic-bezier(.4,0,.2,1);
-  overflow:visible;
-  transition:transform .3s cubic-bezier(.4,0,.2,1), box-shadow .3s ease;
-}
-.book-cover:hover{
-  box-shadow:0 35px 90px rgba(0,0,0,.65),inset 0 0 160px rgba(0,0,0,.45),inset 2px 2px 10px rgba(255,255,255,.15),inset -2px -2px 10px rgba(0,0,0,.45);
-}
-@keyframes bookEntrance{
-  0%  {opacity:0;transform:rotateX(-40deg) translateY(-150px) scale(.8);}
-  60% {opacity:1;transform:rotateX(10deg)  translateY(20px)   scale(1.05);}
-  100%{opacity:1;transform:rotateX(0)      translateY(0)      scale(1);}
-}
-.book-cover::before{
-  content:'';position:absolute;left:-15px;top:5%;bottom:5%;width:25px;
-  background:linear-gradient(90deg,rgba(0,0,0,.6),rgba(30,68,48,.4) 30%,transparent);
-  border-radius:4px 0 0 4px;box-shadow:inset 2px 0 5px rgba(0,0,0,.5);
-}
-.book-cover::after{
-  content:'';position:absolute;inset:25px;
-  border:3px double rgba(201,169,97,.6);border-radius:4px;opacity:.8;
-  box-shadow:inset 0 0 50px rgba(201,169,97,.2),0 0 30px rgba(201,169,97,.3),inset 2px 2px 4px rgba(255,255,255,.15),inset -2px -2px 4px rgba(0,0,0,.3);
-  animation:embossGlow 5s ease-in-out infinite;pointer-events:none;
-}
-@keyframes embossGlow{
-  0%,100%{opacity:.8;box-shadow:inset 0 0 50px rgba(201,169,97,.2),0 0 30px rgba(201,169,97,.3);}
-  50%    {opacity:1; box-shadow:inset 0 0 60px rgba(201,169,97,.3),0 0 40px rgba(201,169,97,.5);}
+/* Header section */
+.header {
+  text-align: center;
+  padding: 60px 20px 40px;
+  position: relative;
+  z-index: 10;
+  animation: fadeInDown 1.2s ease;
 }
 
-.ff-wrap{position:absolute;inset:0;pointer-events:none;z-index:1;overflow:hidden;}
-.ff{position:absolute;border-radius:50%;pointer-events:none;
-  animation:ffRise var(--dur) var(--del) ease-in-out infinite;opacity:0;}
-@keyframes ffRise{
-  0%  {opacity:0;transform:translateY(0)     translateX(0)   scale(1);}
-  20% {opacity:.82;}80%{opacity:.38;}
-  100%{opacity:0;transform:translateY(-120px) translateX(var(--dx)) scale(.3);}
-}
-
-.bookmark{
-  position:absolute;top:0;right:12%;width:60px;height:180px;
-  background:linear-gradient(135deg,#2d5a40,#3e7249);
-  clip-path:polygon(0 0,100% 0,100% 75%,50% 100%,0 75%);
-  box-shadow:0 12px 35px rgba(30,68,48,.6),inset 0 2px 0 rgba(255,255,255,.4);
-  z-index:3;animation:bookmarkSway 6s ease-in-out infinite;
-}
-.bookmark::before{content:'🌿';position:absolute;top:20px;left:50%;transform:translateX(-50%);font-size:2rem;animation:leafSpin 8s linear infinite;}
-@keyframes bookmarkSway{0%,100%{transform:rotate(0);}50%{transform:rotate(4deg);}}
-@keyframes leafSpin{from{transform:translateX(-50%) rotate(0);}to{transform:translateX(-50%) rotate(360deg);}}
-
-.cover-content{position:relative;z-index:2;text-align:center;color:var(--cream);}
-
-.cover-badge{
-  display:inline-flex;align-items:center;gap:10px;
-  background:rgba(62,114,73,.14);border:1px solid rgba(62,114,73,.34);
-  color:var(--g2);padding:10px 32px;border-radius:50px;
-  font-size:.95rem;font-family:'Playfair Display',serif;letter-spacing:.20em;
-  margin-bottom:26px;animation:fU 1.2s ease .12s both, badgeShimmer 3s ease-in-out infinite;
-}
-@keyframes badgeShimmer {
-  0%, 100% { box-shadow: 0 0 10px rgba(62,114,73,0.2); }
-  50% { box-shadow: 0 0 20px rgba(122,170,136,0.4); }
-}
-
-.cover-icon{
-  font-size:7rem;margin-bottom:30px;display:inline-block;
-  animation:iconFloat 5s ease-in-out infinite,iconGlow 3s ease-in-out infinite,iconRotate 20s linear infinite,fU 1.2s ease .3s both;
-  filter:drop-shadow(0 15px 40px rgba(62,114,73,.8)) drop-shadow(0 0 60px rgba(201,169,97,.6)) drop-shadow(0 25px 80px rgba(0,0,0,.4));
-}
-@keyframes iconFloat{0%,100%{transform:translateY(0) rotate(-8deg) scale(1);}50%{transform:translateY(-25px) rotate(8deg) scale(1.15);}}
-@keyframes iconGlow{
-  0%,100%{filter:drop-shadow(0 15px 40px rgba(62,114,73,.8)) drop-shadow(0 0 60px rgba(201,169,97,.6));}
-  50%    {filter:drop-shadow(0 20px 60px rgba(62,114,73,1))  drop-shadow(0 0 100px rgba(201,169,97,.9));}
-}
-@keyframes iconRotate{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
-
-.cover-title{
-  font-family:'Playfair Display',serif;font-size:5rem;font-weight:800;
-  margin-bottom:25px;letter-spacing:.08em;
-  text-shadow:0 0 30px rgba(62,114,73,.9),0 6px 20px rgba(0,0,0,.8),0 0 80px rgba(201,169,97,.5),2px 2px 0 rgba(0,0,0,.3);
-  animation:titleShimmer 4s ease-in-out infinite,titleFloat 6s ease-in-out infinite,fU 1.2s ease .48s both;
-}
-@keyframes titleShimmer{
-  0%,100%{text-shadow:0 0 30px rgba(62,114,73,.9),0 6px 20px rgba(0,0,0,.8),0 0 80px rgba(201,169,97,.5);}
-  50%    {text-shadow:0 0 50px rgba(62,114,73,1),0 6px 25px rgba(0,0,0,.9),0 0 100px rgba(201,169,97,.8),0 0 120px rgba(255,255,255,.3);}
-}
-@keyframes titleFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
-
-.cover-subtitle{
-  font-family:'Dancing Script',cursive;font-size:2.3rem;
-  margin-bottom:45px;opacity:.95;
-  text-shadow:0 4px 15px rgba(0,0,0,.7);
-  animation:fU 1.2s ease .66s both;
-}
-.cover-quote{
-  font-size:1.4rem;line-height:2;max-width:750px;margin:0 auto 60px;
-  opacity:.92;font-style:italic;font-family:'Cormorant Garamond',serif;
-  text-shadow:0 2px 10px rgba(0,0,0,.5);
-  animation:fU 1.2s ease .82s both;
-}
-
-.open-book-btn{
-  display:inline-block;padding:20px 55px;
-  background:
-    linear-gradient(135deg,#2d5a40,#3e7249),
-    linear-gradient(45deg,transparent 40%,rgba(255,255,255,.2) 50%,transparent 60%);
-  background-size:100% 100%,200% 200%;
-  color:#fff;text-decoration:none;font-weight:700;font-size:1.3rem;border-radius:50px;
-  box-shadow:0 12px 35px rgba(30,68,48,.6),inset 0 2px 0 rgba(255,255,255,.5),0 0 40px rgba(62,114,73,.4);
-  transition:all .3s cubic-bezier(.4,0,.2,1);
-  animation:fU 1.2s ease 1s both,btnPulse 3s ease-in-out infinite,btnShimmer 4s linear infinite;
-  font-family:'Playfair Display',serif;letter-spacing:.06em;
-  border:3px solid rgba(62,114,73,.6);position:relative;overflow:hidden;cursor:pointer;
-  transform-style:preserve-3d;
-}
-.open-book-btn:hover{
-  transform:translateY(-8px) scale(1.1);
-  box-shadow:0 20px 60px rgba(30,68,48,.8),0 0 60px rgba(62,114,73,.9),0 0 100px rgba(201,169,97,.6);
-  letter-spacing:.08em;
-}
-@keyframes btnShimmer{0%{background-position:0% 0%,0% 0%;}100%{background-position:0% 0%,200% 200%;}}
-.open-book-btn::before{content:'';position:absolute;top:50%;left:50%;width:0;height:0;
-  background:radial-gradient(circle,rgba(255,255,255,.6),transparent 70%);
-  border-radius:50%;transform:translate(-50%,-50%);transition:width .7s,height .7s;}
-.open-book-btn:hover::before{width:400px;height:400px;}
-.open-book-btn::after{
-  content:'';position:absolute;inset:-3px;
-  background:linear-gradient(45deg,transparent,rgba(255,255,255,.5),transparent);
-  border-radius:50px;opacity:0;animation:borderShine 3s linear infinite;
-}
-@keyframes borderShine{
-  0%  {transform:translateX(-100%) rotate(45deg);opacity:0;}
-  50% {opacity:1;}
-  100%{transform:translateX(100%) rotate(45deg);opacity:0;}
-}
-
-@keyframes btnPulse{
-  0%,100%{box-shadow:0 12px 35px rgba(30,68,48,.6),inset 0 2px 0 rgba(255,255,255,.5),0 0 40px rgba(62,114,73,.4);}
-  50%    {box-shadow:0 15px 45px rgba(30,68,48,.8),inset 0 2px 0 rgba(255,255,255,.7),0 0 60px rgba(62,114,73,.7);}
-}
-@keyframes fU{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
-.open-book-btn span{position:relative;z-index:1;}
-
-/* ── BOOK PAGES ── */
-.book-pages{
-  position:relative;
-  background:linear-gradient(135deg,#f9f7f0 0%,#f5f2ea 50%,#ede8dc 100%);
-  border-radius:12px;
-  box-shadow:0 25px 70px rgba(30,68,48,.35),inset 0 0 120px rgba(249,247,240,.6);
-  overflow:hidden;
-  animation:bookPagesOpen 1s cubic-bezier(.4,0,.2,1);
-}
-@keyframes bookPagesOpen{
-  from{opacity:0;transform:perspective(1000px) rotateY(-15deg) scale(.95);}
-  to{opacity:1;transform:perspective(1000px) rotateY(0) scale(1);}
-}
-
-/* ── PAGE ── */
-.page{
-  background:
-    repeating-linear-gradient(0deg,transparent,transparent 31px,rgba(201,169,97,.06) 31px,rgba(201,169,97,.06) 32px),
-    linear-gradient(135deg,#f9f7f0 0%,#f5ebe0 50%,#ede8dc 100%);
-  padding:90px 110px 120px;
-  min-height:700px;
-  position:relative;
-  border-left:70px solid rgba(30,68,48,.08);
-  animation:pageTurn 1s cubic-bezier(.4,0,.2,1);
-  transform-origin:left center;
-  box-shadow:inset 0 0 100px rgba(30,68,48,.05);
-}
-@keyframes pageTurn{
-  0%  {transform:perspective(2000px) rotateY(-100deg);opacity:0;filter:blur(10px);}
-  60% {transform:perspective(2000px) rotateY(10deg);  opacity:1;filter:blur(0);}
-  100%{transform:perspective(2000px) rotateY(0);      opacity:1;filter:blur(0);}
-}
-.page::before{
-  content:'';position:absolute;inset:0;
-  background-image:
-    radial-gradient(ellipse at 15% 20%,rgba(62,114,73,.08),transparent 35%),
-    radial-gradient(ellipse at 85% 80%,rgba(30,68,48,.06),transparent 40%),
-    radial-gradient(circle at 50% 10%,rgba(201,169,97,.08),transparent 30%),
-    radial-gradient(circle at 30% 70%,rgba(62,114,73,.05),transparent 25%);
-  pointer-events:none;animation:agingSpots 15s ease-in-out infinite;
-}
-@keyframes agingSpots{0%,100%{opacity:.6;}50%{opacity:.8;}}
-.page::after{
-  content:'';position:absolute;left:30px;top:50%;transform:translateY(-50%);
-  width:12px;height:85%;
-  background:
-    radial-gradient(circle,rgba(30,68,48,.25) 40%,rgba(0,0,0,.08) 40%,transparent 45%),
-    radial-gradient(circle,rgba(30,68,48,.25) 40%,rgba(0,0,0,.08) 40%,transparent 45%),
-    radial-gradient(circle,rgba(30,68,48,.25) 40%,rgba(0,0,0,.08) 40%,transparent 45%);
-  background-size:12px 12px;
-  background-position:0 0,0 50%,0 100%;
-  background-repeat:no-repeat;
-  filter:drop-shadow(1px 1px 2px rgba(0,0,0,.2));
-}
-
-.leaf-layer{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:1;}
-.lf{position:absolute;font-size:var(--lsz);pointer-events:none;
-  animation:lfDrift var(--ldur) var(--ldel) ease-in-out infinite;opacity:0;}
-@keyframes floatSlow{
-  0%,100%{transform:translateY(0) rotate(0deg);opacity:.15;}
-  50%{transform:translateY(-30px) rotate(10deg);opacity:.25;}
-}
-@keyframes lfDrift{
-  0%  {opacity:0;transform:translateY(20px) translateX(0) rotate(0deg) scale(1);}
-  18% {opacity:.52;}82%{opacity:.25;}
-  100%{opacity:0;transform:translateY(-140px) translateX(var(--lx)) rotate(200deg) scale(.3);}
-}
-
-.page-content{position:relative;z-index:1;}
-
-.page-number{
-  position:absolute;bottom:35px;right:55px;
-  font-family:'Caveat',cursive;font-size:1.8rem;
-  color:var(--g5);
-  background:rgba(249,247,240,.6);
-  padding:8px 20px;border-radius:50px;
-  border:2px solid rgba(62,114,73,.25);
-  box-shadow:0 4px 12px rgba(30,68,48,.15);
-  animation:pageNumPulse 3s ease-in-out infinite;
-  z-index:100;
-}
-@keyframes pageNumPulse{
-  0%,100%{transform:scale(1);opacity:.6;}
-  50%{transform:scale(1.08);opacity:.9;}
-}
-
-/* ── UNIFIED TITLE STYLES WITH WOW EFFECTS ── */
-.section-title{
-  font-family:'Playfair Display',serif;
-  font-size:4rem;
-  font-weight:700;
-  text-align:center;
-  margin-bottom:45px;
-  position:relative;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  width:100%;
-  animation:writeIn 1.4s cubic-bezier(.4,0,.2,1), titleFloat 6s ease-in-out infinite;
-  filter:drop-shadow(0 5px 15px rgba(30,68,48,.25));
-  transform-style:preserve-3d;
-}
-
-/* Text part with gradient */
-.section-title .title-text{
-  background:linear-gradient(118deg,var(--g7) 0%,var(--g5) 45%,var(--forest-dark) 100%);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  background-clip:text;
-  animation:titleGlowPulse 3.5s ease-in-out infinite;
-}
-
-/* Icon keeps original color - no separate animation */
-.section-title .title-icon{
-  display:inline-block;
-  margin-right:12px;
-  filter:drop-shadow(0 3px 8px rgba(30,68,48,.3));
-  flex-shrink:0;
-}
-
-@keyframes iconBounceTitle{
-  0%,100%{transform:translateY(0) scale(1);}
-  50%{transform:translateY(-8px) scale(1.1);}
-}
-
-@keyframes titleGlowPulse{
-  0%,100%{
-    filter:drop-shadow(0 5px 15px rgba(30,68,48,.25)) brightness(1);
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
   }
-  50%{
-    filter:drop-shadow(0 8px 25px rgba(62,114,73,.5)) brightness(1.15);
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-@keyframes writeIn{
-  from{opacity:0;transform:translateX(-80px) rotateY(-15deg);}
-  to{opacity:1;transform:translateX(0) rotateY(0);}
+.header-title {
+  font-family: 'Dancing Script', cursive;
+  font-size: 4rem;
+  color: rgba(80, 70, 60, .85);
+  margin-bottom: 15px;
+  text-shadow: 2px 2px 8px rgba(0,0,0,.15);
+  font-weight: 600;
+  letter-spacing: .02em;
 }
 
-@keyframes titleFloat{
-  0%,100%{transform:translateY(0);}
-  50%{transform:translateY(-12px);}
+.header-subtitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  color: rgba(100, 90, 80, .75);
+  margin-bottom: 20px;
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: .05em;
 }
 
-.section-title::after{
-  content:'';
-  position:absolute;
-  bottom:-18px;
-  left:50%;
-  transform:translateX(-50%);
-  width:0;
-  height:5px;
-  background:linear-gradient(90deg,transparent,#2d5a40 20%,#3e7249 40%,#568c62 60%,#7aaa88 80%,transparent);
-  animation:lineDraw 2.2s cubic-bezier(.4,0,.2,1) forwards, lineGlow 3.5s ease-in-out infinite;
-  box-shadow:0 3px 20px rgba(30,68,48,.4);
-  border-radius:3px;
+.header-quote {
+  font-size: 1.1rem;
+  color: var(--vintage-brown);
+  font-style: italic;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.8;
+  opacity: .85;
 }
 
-@keyframes lineDraw{
-  from{width:0;opacity:0;}
-  to{width:280px;opacity:1;}
+/* Main library container */
+.library {
+  max-width: 1400px;
+  margin: 60px auto;
+  padding: 0 40px;
+  position: relative;
+  z-index: 10;
 }
 
-@keyframes lineGlow{
-  0%,100%{
-    box-shadow:0 3px 20px rgba(30,68,48,.4);
-    filter:brightness(1);
+/* Books shelf - books standing side by side */
+.books-shelf {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 15px;
+  perspective: 2000px;
+  padding: 60px 20px 80px;
+  position: relative;
+}
+
+/* Individual book - tall standing style */
+.book {
+  width: 160px;
+  height: 380px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform .5s cubic-bezier(.4,0,.2,1);
+  cursor: pointer;
+  animation: bookRise 1.2s ease backwards;
+  animation-delay: calc(var(--index) * .12s);
+  filter: drop-shadow(0 20px 40px rgba(0,0,0,.3));
+}
+
+@keyframes bookRise {
+  from {
+    opacity: 0;
+    transform: translateY(80px) scale(.9);
   }
-  50%{
-    box-shadow:0 5px 35px rgba(62,114,73,.8), 0 0 15px rgba(122,170,136,.6);
-    filter:brightness(1.3);
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
 }
 
-/* Keep gradient class for consistency */
-.section-title.grad-h{
-  background:linear-gradient(118deg,var(--g7) 0%,var(--g5) 45%,var(--forest-dark) 100%);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  background-clip:text;
+.book:hover {
+  transform: translateY(-20px) rotateY(-5deg) scale(1.05);
+  filter: drop-shadow(0 30px 60px rgba(0,0,0,.4));
 }
 
-.section-intro{
-  text-align:center;max-width:950px;margin:0 auto 60px;
-  font-size:1.75rem;line-height:2.2;color:var(--forest-green);font-style:italic;
-  font-family:'EB Garamond',serif;animation:fU 1s ease .5s both;
-  font-weight:400;
+/* Book cover - fabric texture look */
+.book-cover {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  box-shadow: 
+    -6px 0 15px rgba(0,0,0,.2),
+    -12px 0 30px rgba(0,0,0,.15),
+    inset 2px 0 6px rgba(0,0,0,.15),
+    inset -2px 0 6px rgba(255,255,255,.1);
+  border-radius: 0 3px 3px 0;
+  overflow: hidden;
+  background: linear-gradient(90deg, 
+    rgba(0,0,0,.12) 0%,
+    transparent 2%,
+    transparent 100%);
 }
 
-/* ── STORY CARDS ── */
-.story-grid{display:grid;gap:48px;margin-top:60px;}
-.story-card{
-  display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;
-  padding:40px;
-  background:
-    repeating-linear-gradient(90deg,transparent,transparent 2px,rgba(30,68,48,.04) 2px,rgba(30,68,48,.04) 4px),
-    linear-gradient(135deg,rgba(249,247,240,.8),rgba(255,254,249,.6));
-  border-radius:16px;transition:all .6s cubic-bezier(.4,0,.2,1);
-  border:2px solid rgba(30,68,48,.3);position:relative;overflow:hidden;
-  box-shadow:0 8px 32px rgba(30,68,48,.12);
-  transform-style:preserve-3d;
-}
-.story-card::after{
-  content:'';position:absolute;inset:0;
-  background:radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(122,170,136,.1), transparent 50%);
-  opacity:0;transition:opacity .4s ease;pointer-events:none;
-}
-.story-card:hover::after{opacity:1;}
-.story-card:nth-child(even) .story-image{order:2;}
-.story-card:nth-child(even) .story-text{order:1;}
-.story-card:hover{
-  transform:translateY(-12px) rotate(.3deg) scale(1.02);
-  box-shadow:0 25px 70px rgba(30,68,48,.2),0 10px 30px rgba(62,114,73,.15);
-  border-color:rgba(62,114,73,.5);
-}
-.story-image{
-  position:relative;border-radius:8px;overflow:hidden;aspect-ratio:4/3;
-  box-shadow:0 8px 32px rgba(30,68,48,.25),inset 0 0 0 8px rgba(250,246,240,.8),inset 0 0 0 10px rgba(30,68,48,.3);
-  border:3px solid var(--beige);
-  transition:all .5s ease;
+/* Book spine (left side) - narrower */
+.book-spine {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 28px;
+  background: linear-gradient(180deg, 
+    rgba(0,0,0,.25) 0%,
+    rgba(0,0,0,.12) 50%,
+    rgba(0,0,0,.25) 100%);
+  transform: translateZ(14px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 20px 4px;
+  z-index: 2;
+  box-shadow: inset 2px 0 4px rgba(0,0,0,.3);
 }
 
-.story-card:hover .story-image {
-  box-shadow:0 12px 40px rgba(30,68,48,.35),inset 0 0 0 8px rgba(250,246,240,.9),inset 0 0 0 10px rgba(62,114,73,.4);
+.spine-text {
+  writing-mode: vertical-rl;
+  font-family: 'Playfair Display', serif;
+  font-size: .7rem;
+  color: rgba(255,255,255,.9);
+  text-shadow: 1px 1px 2px rgba(0,0,0,.4);
+  letter-spacing: .15em;
+  font-weight: 500;
 }
 
-.story-image .stamp {
+.spine-icon {
+  font-size: 1.1rem;
+  filter: drop-shadow(0 2px 3px rgba(0,0,0,.3));
+  opacity: .85;
+}
+
+/* Book front - with subtle fabric texture */
+.book-front {
+  position: absolute;
+  inset: 0;
+  padding: 35px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--book-color);
+  border-radius: 0 3px 3px 0;
+  position: relative;
+}
+
+/* Fabric texture overlay */
+.book-front::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    repeating-linear-gradient(0deg, transparent, transparent 1px, rgba(0,0,0,.02) 1px, rgba(0,0,0,.02) 2px),
+    repeating-linear-gradient(90deg, transparent, transparent 1px, rgba(0,0,0,.02) 1px, rgba(0,0,0,.02) 2px);
+  opacity: .6;
+  pointer-events: none;
+  border-radius: 0 3px 3px 0;
+}
+
+/* Inner border frame */
+.book-front::after {
+  content: '';
+  position: absolute;
+  inset: 18px;
+  border: 1.5px solid rgba(255,255,255,.25);
+  border-radius: 2px;
+  pointer-events: none;
+  box-shadow: 
+    0 0 0 1px rgba(0,0,0,.1),
+    inset 0 0 20px rgba(255,255,255,.1);
+}
+
+.book-icon {
+  font-size: 3rem;
+  text-align: center;
+  filter: drop-shadow(0 3px 6px rgba(0,0,0,.25));
+  margin-bottom: auto;
+  padding-top: 30px;
+  opacity: .4;
+  position: relative;
+  z-index: 2;
+}
+
+.book-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: rgba(255,255,255,.9);
+  text-align: center;
+  line-height: 1.5;
+  text-shadow: 1px 1px 3px rgba(0,0,0,.3);
+  margin-bottom: 8px;
+  position: relative;
+  z-index: 2;
+  letter-spacing: .02em;
+}
+
+.book-date {
+  font-family: 'Courier Prime', monospace;
+  font-size: .75rem;
+  color: rgba(255,255,255,.75);
+  text-align: center;
+  letter-spacing: .08em;
+  position: relative;
+  z-index: 2;
+}
+
+/* Book colors - softer pastel tones matching image */
+.book:nth-child(1) { 
+  --book-color: linear-gradient(135deg, #c9a8a0 0%, #b89890 50%, #a88880 100%); 
+}
+.book:nth-child(2) { 
+  --book-color: linear-gradient(135deg, #a8b8c4 0%, #98a8b4 50%, #8898a4 100%); 
+}
+.book:nth-child(3) { 
+  --book-color: linear-gradient(135deg, #b8b09c 0%, #a8a08c 50%, #98907c 100%); 
+}
+.book:nth-child(4) { 
+  --book-color: linear-gradient(135deg, #c4b49c 0%, #b4a48c 50%, #a4947c 100%); 
+}
+.book:nth-child(5) { 
+  --book-color: linear-gradient(135deg, #b4a4b8 0%, #a494a8 50%, #948498 100%); 
+}
+.book:nth-child(6) { 
+  --book-color: linear-gradient(135deg, #a8b4a8 0%, #98a498 50%, #889488 100%); 
+}
+
+/* Pages effect on right side */
+.book-pages {
+  position: absolute;
+  right: -8px;
+  top: 5px;
+  bottom: 5px;
+  width: 8px;
+  background: 
+    repeating-linear-gradient(
+      0deg,
+      #f5f3ef 0px,
+      #e8e6e2 1px,
+      #f5f3ef 2px
+    );
+  border-radius: 0 2px 2px 0;
+  box-shadow: 
+    2px 0 4px rgba(0,0,0,.15),
+    inset -1px 0 2px rgba(0,0,0,.1);
+  transform: translateZ(-2px);
+}
+
+/* Timeline at bottom */
+.timeline {
+  max-width: 1200px;
+  margin: 20px auto 80px;
+  padding: 0 60px;
+  position: relative;
+  z-index: 10;
+}
+
+.timeline-line {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(120,110,100,.4) 10%,
+    rgba(120,110,100,.4) 90%,
+    transparent 100%
+  );
+  position: relative;
+  margin: 30px 0;
+}
+
+.timeline-dots {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  top: -10px;
+}
+
+.timeline-dot {
+  width: 18px;
+  height: 18px;
+  background: rgba(200,190,180,.6);
+  border: 2px solid rgba(120,110,100,.5);
+  border-radius: 50%;
+  position: relative;
+  cursor: pointer;
+  transition: all .3s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,.2);
+}
+
+.timeline-dot:hover {
+  transform: scale(1.3);
+  background: rgba(180,170,160,.8);
+  box-shadow: 0 4px 12px rgba(0,0,0,.3);
+}
+
+.timeline-dot::after {
+  content: attr(data-month);
   position: absolute;
   top: 28px;
-  right: 28px;
-  width: 70px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: .8rem;
+  color: rgba(100,90,80,.7);
+  white-space: nowrap;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+}
+
+/* Decorative elements */
+.decoration {
+  position: fixed;
+  opacity: .15;
+  pointer-events: none;
+  z-index: 4;
+}
+
+.decoration.paperclip-1 {
+  top: 15%;
+  left: 5%;
+  width: 40px;
+  height: 80px;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 48"><path d="M6 8 Q2 8 2 12 L2 36 Q2 40 6 40 L18 40 Q22 40 22 36 L22 12 Q22 8 18 8" fill="none" stroke="%238B7E74" stroke-width="2"/></svg>') center/contain no-repeat;
+  transform: rotate(-15deg);
+}
+
+.decoration.paperclip-2 {
+  bottom: 20%;
+  right: 8%;
+  width: 35px;
   height: 70px;
-  background: linear-gradient(142deg, #d44e36, #c44536, #b83d2d);
-  border: 4px dashed rgba(255,255,255,0.75);
-  border-radius: 7px;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 48"><path d="M6 8 Q2 8 2 12 L2 36 Q2 40 6 40 L18 40 Q22 40 22 36 L22 12 Q22 8 18 8" fill="none" stroke="%238B7E74" stroke-width="2"/></svg>') center/contain no-repeat;
+  transform: rotate(25deg);
+}
+
+.decoration.leaf-1 {
+  top: 25%;
+  right: 12%;
+  font-size: 4rem;
+  opacity: .08;
+  transform: rotate(-20deg);
+  animation: leafSway 6s ease-in-out infinite;
+}
+
+.decoration.leaf-2 {
+  bottom: 15%;
+  left: 10%;
+  font-size: 3.5rem;
+  opacity: .08;
+  transform: rotate(35deg);
+  animation: leafSway 7s ease-in-out infinite reverse;
+}
+
+@keyframes leafSway {
+  0%, 100% { transform: rotate(-20deg) translateY(0); }
+  50% { transform: rotate(-15deg) translateY(-10px); }
+}
+
+/* Modal overlay when book opens */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(250,247,242,.95);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn .5s ease;
+}
+
+.modal-overlay.active {
+  display: flex;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Book page flip effect */
+.book-page {
+  max-width: 900px;
+  width: 90%;
+  height: 80vh;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 
+    0 40px 100px rgba(0,0,0,.3),
+    0 0 0 1px rgba(139,126,116,.2);
+  padding: 60px;
+  overflow-y: auto;
+  position: relative;
+  animation: pageFlip .8s cubic-bezier(.4,0,.2,1);
+}
+
+@keyframes pageFlip {
+  0% {
+    opacity: 0;
+    transform: rotateY(-90deg) scale(.8);
+  }
+  100% {
+    opacity: 1;
+    transform: rotateY(0deg) scale(1);
+  }
+}
+
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  background: var(--vintage-brown);
+  border: none;
+  border-radius: 50%;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2.2rem;
-  transform: rotate(18deg);
-  box-shadow: 0 5px 15px rgba(196,69,54,0.5);
-  z-index: 5;
-  animation: stampBounce 6s ease-in-out infinite;
-  transition: all .4s ease;
+  transition: all .3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,.2);
 }
 
-.story-card:hover .stamp {
-  transform: rotate(22deg) scale(1.1);
-  box-shadow: 0 8px 20px rgba(196,69,54,0.7);
+.close-btn:hover {
+  background: var(--dark-text);
+  transform: rotate(90deg);
 }
 
-@keyframes stampBounce {
-  0%, 100% { 
-    transform: rotate(18deg) scale(1);
-    box-shadow: 0 5px 15px rgba(196,69,54,0.5);
+/* Loading animation */
+.loading {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2000;
+  display: none;
+}
+
+.loading.active {
+  display: block;
+}
+
+.loading-page {
+  width: 60px;
+  height: 80px;
+  background: white;
+  border-radius: 3px;
+  box-shadow: 0 4px 12px rgba(0,0,0,.2);
+  position: relative;
+  animation: pageTurn 1s ease-in-out infinite;
+}
+
+@keyframes pageTurn {
+  0%, 100% {
+    transform: rotateY(0deg);
   }
-  50% { 
-    transform: rotate(16deg) scale(1.1);
-    box-shadow: 0 7px 22px rgba(196,69,54,0.7);
-  }
-}
-.story-image img{
-  width:100%;height:100%;object-fit:cover;
-  transition:all .8s cubic-bezier(.4,0,.2,1);
-  filter:sepia(.05) contrast(1.05) brightness(1);
-  cursor:pointer;
-}
-.story-card:hover .story-image img{
-  transform:scale(1.12) rotate(-1deg);
-  filter:sepia(.12) contrast(1.1) brightness(1.05);
-}
-.story-text{font-size:1.5rem;line-height:2.1;color:var(--ink-dark);font-family:'EB Garamond',serif;font-weight:400;}
-.story-text p{margin-bottom:18px;font-family:'EB Garamond',serif;transition:transform .3s ease;}
-.story-card:hover .story-text p{transform:translateX(5px);}
-.story-text p:last-child{margin-bottom:0;}
-.story-text .lead{font-size:1.65rem;font-style:italic;font-family:'EB Garamond',serif;color:var(--ink-dark);margin-bottom:22px;line-height:2.1;font-weight:400;}
-
-/* ── POLAROID PHOTOS ── */
-.photo-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:50px;margin:60px 0;}
-.polaroid{
-  background:#fff;padding:18px 18px 70px;
-  box-shadow:0 12px 35px rgba(30,68,48,.3);
-  transform:rotate(-3deg);
-  transition:all .6s cubic-bezier(.4,0,.2,1);
-  cursor:pointer;
-  animation:photoAppear 1s ease-out;
-  position:relative;
-  transform-style:preserve-3d;
-}
-@keyframes photoAppear{from{opacity:0;transform:rotate(-15deg) scale(.7);}to{opacity:1;transform:rotate(-3deg) scale(1);}}
-.polaroid:nth-child(even){transform:rotate(3deg);}
-.polaroid:hover{
-  transform:rotate(0) scale(1.1) translateY(-18px)!important;
-  box-shadow:0 30px 70px rgba(30,68,48,.45),0 0 40px rgba(122,170,136,.2);
-  z-index:10;
-}
-.polaroid img{width:100%;height:270px;object-fit:cover;display:block;filter:sepia(.05) contrast(1.05);transition:filter .6s;cursor:pointer;}
-.polaroid:hover img{filter:sepia(.12) contrast(1.1);}
-.polaroid-caption{
-  margin-top:18px;text-align:center;font-family:'Caveat',cursive;
-  font-size:1.4rem;color:var(--forest-green);
-  position:absolute;bottom:18px;left:0;right:0;font-weight:600;
-}
-.polaroid::before{
-  content:'';position:absolute;top:-12px;left:50%;transform:translateX(-50%);
-  width:90px;height:28px;
-  background:repeating-linear-gradient(45deg,rgba(30,68,48,.5),rgba(30,68,48,.5) 5px,rgba(255,255,255,.3) 5px,rgba(255,255,255,.3) 10px);
-  border:1px solid rgba(30,68,48,.2);box-shadow:0 3px 8px rgba(0,0,0,.15);opacity:.8;
-}
-.img-text-overlay{
-  position:absolute;top:0;left:0;right:0;bottom:70px;
-  background:linear-gradient(to bottom,rgba(30,68,48,.88),rgba(30,68,48,.75));
-  opacity:0;display:flex;align-items:center;justify-content:center;padding:20px;
-  transition:opacity .5s ease;pointer-events:none;
-}
-.polaroid:hover .img-text-overlay{opacity:1;}
-.img-text-content{
-  color:#fff;text-align:center;font-family:'EB Garamond',serif;font-size:1.15rem;
-  line-height:1.7;font-style:italic;transform:translateY(20px);transition:transform .5s ease;
-  text-shadow:0 2px 8px rgba(0,0,0,.3);
-}
-.polaroid:hover .img-text-content{transform:translateY(0);}
-
-/* ── JOURNEY TABS ── */
-.journey-tabs{display:flex;gap:14px;justify-content:center;margin-bottom:36px;flex-wrap:wrap;}
-.journey-tab{
-  padding:16px 40px;background:rgba(255,255,255,.65);color:var(--ink-dark);
-  border:2px solid rgba(62,114,73,.25);border-radius:50px;
-  font-family:'Playfair Display',serif;font-weight:600;font-size:1.15rem;
-  cursor:pointer;position:relative;overflow:hidden;
-  backdrop-filter:blur(10px);
-  box-shadow:0 2px 10px rgba(14,30,20,.07);
-  transition:all .4s cubic-bezier(.4,0,.2,1);
-  transform-style:preserve-3d;
-}
-.journey-tab::after{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(45deg,transparent,rgba(122,170,136,.20),transparent);
-  transform:translateX(-100%);transition:transform .55s;
-}
-.journey-tab:hover::after{transform:translateX(100%);}
-.journey-tab:hover{
-  border-color:var(--g5);
-  transform:translateY(-5px) scale(1.05);
-  box-shadow:0 8px 20px rgba(14,30,20,.12);
-}
-.journey-tab.active{
-  background:linear-gradient(130deg,var(--g7),var(--g5));color:#fff;border-color:transparent;
-  box-shadow:0 12px 32px rgba(30,68,48,.40),0 0 28px rgba(62,114,73,.22);
-  animation:tabPl 3s ease-in-out infinite;
-}
-@keyframes tabPl{
-  0%,100%{box-shadow:0 12px 32px rgba(30,68,48,.40),0 0 28px rgba(62,114,73,.22);}
-  50%    {box-shadow:0 12px 40px rgba(30,68,48,.62),0 0 42px rgba(62,114,73,.42);}
-}
-.day-content{display:none;}
-.day-content.active{display:block;animation:pageFade .8s ease;}
-@keyframes pageFade{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
-
-/* ── ALBUM ── */
-.awrap{position:relative;margin-bottom:32px;}
-.atrack{
-  display:flex;gap:26px;overflow-x:auto;padding:20px 14px 36px;
-  scroll-snap-type:x mandatory;scrollbar-width:thin;
-  scrollbar-color:rgba(62,114,73,.36) transparent;cursor:grab;
-  scroll-behavior:smooth;
-}
-.atrack:active{cursor:grabbing;}
-.atrack::-webkit-scrollbar{height:5px;}
-.atrack::-webkit-scrollbar-thumb{background:rgba(62,114,73,.34);border-radius:3px;}
-.aarr{
-  position:absolute;top:50%;transform:translateY(-58%);
-  width:44px;height:44px;background:rgba(255,255,255,.88);
-  border:2px solid rgba(62,114,73,.28);border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  font-size:1.2rem;color:var(--g7);cursor:pointer;z-index:9;
-  box-shadow:0 2px 10px rgba(14,30,20,.07);backdrop-filter:blur(10px);user-select:none;transition:all .3s;
-}
-.aarr:hover{background:rgba(174,206,186,.30);border-color:rgba(62,114,73,.54);transform:translateY(-58%) scale(1.12);}
-.aarr.ap{left:4px;}.aarr.an{right:4px;}
-
-/* polaroid in album */
-.pola{
-  flex:0 0 auto;background:#fff;padding:18px 18px 64px;
-  box-shadow:0 10px 32px rgba(14,30,20,.15),0 0 0 .5px rgba(0,0,0,.05);
-  border-radius:3px;cursor:pointer;position:relative;
-  transition:all .50s cubic-bezier(.16,.84,.44,1);scroll-snap-align:start;
-}
-.pola::before{content:'';position:absolute;top:-10px;left:50%;
-  transform:translateX(-50%) rotate(-1.5deg);
-  width:78px;height:22px;background:rgba(174,206,186,.70);
-  border:1px solid rgba(122,170,136,.48);border-radius:2px;box-shadow:0 1px 6px rgba(0,0,0,.07);}
-.pola:nth-child(1){transform:rotate(-2.2deg);}
-.pola:nth-child(2){transform:rotate( 1.9deg);}
-.pola:nth-child(3){transform:rotate(-1.6deg);}
-.pola:nth-child(4){transform:rotate( 2.4deg);}
-.pola:hover{transform:rotate(0) scale(1.08) translateY(-14px)!important;
-  box-shadow:0 24px 60px rgba(14,30,20,.26),0 0 0 3px rgba(62,114,73,.32);z-index:20;}
-.pola img{width:300px;height:240px;object-fit:cover;display:block;border-radius:2px;
-  filter:saturate(1.05) contrast(1.03);transition:filter .5s;}
-.pola.wide img{width:300px;height:240px;}
-.pola:hover img{filter:saturate(1.18) contrast(1.06);}
-.pcap{position:absolute;bottom:16px;left:0;right:0;text-align:center;
-  font-family:'Dancing Script',cursive;font-size:1.2rem;color:var(--g7);padding:0 12px;font-weight:600;}
-
-/* diary note */
-.dnote{
-  padding:32px 40px;
-  background:linear-gradient(135deg,rgba(174,206,186,.28),rgba(178,222,192,.20));
-  border-left:5px solid var(--g5);border-radius:0 16px 16px 0;
-  margin-bottom:18px;position:relative;overflow:hidden;transition:all .42s ease;
-}
-.dnote::before{content:'✦';position:absolute;left:-12px;top:16px;
-  font-size:1.2rem;color:var(--g5);animation:stTw 3.2s ease-in-out infinite;}
-@keyframes stTw{0%,100%{opacity:.40;transform:scale(1) rotate(0);}50%{opacity:1;transform:scale(1.6) rotate(28deg);}}
-.dnote:hover{transform:translateX(10px);border-left-color:var(--g6);
-  box-shadow:0 8px 24px rgba(30,68,48,.15);}
-.nlbl{font-family:'Dancing Script',cursive;font-size:1.4rem;color:var(--g6);margin-bottom:12px;display:block;font-weight:600;}
-.ntxt{font-size:1.55rem;line-height:2.1;color:var(--ink-dark);font-family:'EB Garamond',serif;font-weight:400;}
-
-/* ── MEANING CARDS ── */
-.meaning-grid{
-  display:flex;
-  justify-content:center;
-  align-items:stretch;
-  gap:40px;
-  margin:60px 0;
-  flex-wrap:wrap;
-}
-
-.meaning-card{
-  background:
-    radial-gradient(ellipse at 30% 20%, rgba(174,206,186,.25), transparent 60%),
-    radial-gradient(ellipse at 70% 80%, rgba(122,170,136,.2), transparent 60%),
-    linear-gradient(135deg, rgba(249,247,240,.98) 0%, rgba(240,245,242,.95) 50%, rgba(232,240,236,.92) 100%);
-  padding:55px 50px;
-  border-radius:50%;
-  text-align:center;
-  border:5px solid rgba(62,114,73,.35);
-  box-shadow:
-    0 15px 45px rgba(30,68,48,.18),
-    0 8px 20px rgba(62,114,73,.12),
-    inset 0 2px 15px rgba(255,255,255,.6),
-    inset 0 -2px 15px rgba(122,170,136,.15);
-  transition:all .6s cubic-bezier(.4,0,.2,1);
-  animation:cardFlip 1s ease;
-
-  width:380px;
-  min-height:380px;
-  height:auto;
-
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  position:relative;
-  overflow:hidden;
-}
-
-.meaning-card::before{
-  content:'';
-  position:absolute;
-  top:50%;
-  left:50%;
-  width:200%;
-  height:200%;
-  transform:translate(-50%, -50%);
-  background:
-    radial-gradient(circle at 50% 50%, transparent 30%, rgba(122,170,136,.15) 35%, transparent 40%),
-    conic-gradient(
-      from 0deg at 50% 50%,
-      #568c62 0deg,
-      #7aaa88 30deg,
-      #aeceba 60deg,
-      #568c62 90deg,
-      #7aaa88 120deg,
-      #aeceba 150deg,
-      #568c62 180deg,
-      #7aaa88 210deg,
-      #aeceba 240deg,
-      #568c62 270deg,
-      #7aaa88 300deg,
-      #aeceba 330deg,
-      #568c62 360deg
-    );
-  border-radius:50%;
-  z-index:-1;
-  opacity:0;
-  animation:rotateBorder 10s linear infinite;
-  transition:opacity .5s ease;
-  filter:blur(6px);
-}
-.meaning-card:hover::before{ 
-  opacity:.7;
-  box-shadow:0 0 50px rgba(122,170,136,.5);
-}
-
-@keyframes rotateBorder{
-  from{transform:translate(-50%, -50%) rotate(0deg);}
-  to{transform:translate(-50%, -50%) rotate(360deg);}
-}
-
-.meaning-card:hover{
-  transform:translateY(-16px) scale(1.05);
-  box-shadow:
-    0 35px 80px rgba(30,68,48,.25),
-    0 15px 40px rgba(62,114,73,.2),
-    0 0 60px rgba(122,170,136,.25),
-    inset 0 2px 20px rgba(255,255,255,.8),
-    inset 0 -2px 20px rgba(122,170,136,.25);
-  border-color:rgba(86,140,98,.65);
-}
-
-@keyframes cardFlip{
-  from{opacity:0;transform:rotateY(-100deg) scale(.8);}
-  to{opacity:1;transform:rotateY(0) scale(1);}
-}
-
-.meaning-icon{
-  font-size:5rem;
-  margin-bottom:22px;
-  display:inline-block;
-  animation:iconBounce 3s ease-in-out infinite;
-  filter:drop-shadow(0 6px 15px rgba(30,68,48,.3));
-  position:relative;
-  z-index:2;
-  flex-shrink:0;
-}
-.meaning-card:hover .meaning-icon{ 
-  animation:iconSpinFloat 1.5s ease-in-out infinite;
-  filter:drop-shadow(0 10px 25px rgba(62,114,73,.6));
-}
-
-.meaning-card:nth-child(2) .meaning-icon{ animation-delay:.5s; }
-.meaning-card:nth-child(3) .meaning-icon{ animation-delay:1s; }
-
-@keyframes iconBounce{
-  0%,100%{transform:translateY(0) scale(1);}
-  50%{transform:translateY(-14px) scale(1.05);}
-}
-
-@keyframes iconSpinFloat{
-  0%,100%{
-    transform:rotate(0deg) scale(1) translateY(0);
-  }
-  25%{
-    transform:rotate(10deg) scale(1.1) translateY(-8px);
-  }
-  50%{
-    transform:rotate(0deg) scale(1.15) translateY(-12px);
-  }
-  75%{
-    transform:rotate(-10deg) scale(1.1) translateY(-8px);
+  50% {
+    transform: rotateY(180deg);
   }
 }
 
-.meaning-card h4{
-  font-family:'Playfair Display',serif;
-  font-size:1.9rem;
-  color:var(--forest-dark);
-  margin-bottom:16px;
-  font-weight:800;
-  position:relative;
-  z-index:2;
-  line-height:1.3;
-  text-shadow:0 2px 8px rgba(30,68,48,.1);
-  transition:all .3s ease;
+/* Responsive */
+@media (max-width: 1200px) {
+  .books-shelf {
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 40px 20px 60px;
+  }
+  
+  .book {
+    width: 140px;
+    height: 340px;
+  }
 }
 
-.meaning-card:hover h4{
-  color:var(--forest-green);
-  text-shadow:0 3px 12px rgba(30,68,48,.2);
-  transform:scale(1.05);
+@media (max-width: 768px) {
+  .header-title {
+    font-size: 3rem;
+  }
+  
+  .header-subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .books-shelf {
+    gap: 15px;
+    padding: 30px 15px 50px;
+  }
+  
+  .book {
+    width: 110px;
+    height: 300px;
+  }
+  
+  .book-title {
+    font-size: .95rem;
+  }
+  
+  .book-icon {
+    font-size: 2.5rem;
+  }
+  
+  .timeline {
+    padding: 0 20px;
+  }
+  
+  .timeline-dot::after {
+    font-size: .7rem;
+  }
 }
 
-.meaning-card p{
-  font-size:1.35rem;
-  line-height:1.95;
-  color:var(--ink-dark);
-  position:relative;
-  z-index:2;
-  font-family:'EB Garamond',serif;
-  font-weight:400;
-  max-width:280px;
-  transition:all .3s ease;
+@media (max-width: 480px) {
+  .books-shelf {
+    gap: 12px;
+  }
+  
+  .book {
+    width: 90px;
+    height: 260px;
+  }
+  
+  .book-title {
+    font-size: .85rem;
+    line-height: 1.3;
+  }
+  
+  .book-icon {
+    font-size: 2rem;
+    padding-top: 20px;
+  }
+  
+  .book-date {
+    font-size: .65rem;
+  }
+  
+  .book-page {
+    padding: 40px 25px;
+  }
+  
+  .timeline-dots {
+    gap: 8px;
+  }
+  
+  .timeline-dot {
+    width: 14px;
+    height: 14px;
+  }
 }
 
-.meaning-card:hover p{
-  transform:scale(1.02);
+/* Smooth scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
 }
 
-/* ── QUOTE BOX ── */
-.quote-box{
-  background:linear-gradient(135deg,rgba(249,247,240,.9),rgba(249,247,240,.7));
-  border-left:6px solid #2d5a40;border-right:6px solid #3e7249;
-  padding:50px 60px;margin:60px 0;position:relative;
-  animation:quoteReveal 1.2s ease;
-  border-radius:8px;
-  box-shadow:0 8px 25px rgba(30,68,48,.15);
-  transition:all .5s cubic-bezier(.4,0,.2,1);
-}
-.quote-box:hover{
-  box-shadow:0 12px 35px rgba(30,68,48,.2);
-  transform:translateY(-4px);
-}
-@keyframes quoteReveal{
-  from{opacity:0;transform:scale(.92) translateY(30px);}
-  to{opacity:1;transform:scale(1) translateY(0);}
-}
-.quote-box::before{content:'"';position:absolute;top:-30px;left:30px;font-size:10rem;line-height:1;font-family:'Playfair Display',serif;color:#3e7249;opacity:.3;}
-.quote-text{font-family:'EB Garamond',serif;font-size:2.4rem;color:var(--forest-dark);line-height:1.9;text-align:center;position:relative;z-index:1;font-style:italic;font-weight:400;}
-
-.callout{
-  padding:26px 38px;margin:32px auto;max-width:920px;
-  background:rgba(62,114,73,.18);border-left:6px solid #2d5a40;border-radius:0 14px 14px 0;
-  font-family:'EB Garamond',serif;font-size:2.1rem;line-height:2;
-  color:var(--forest-dark);font-style:italic;font-weight:400;
-  transition:all .4s ease;
-}
-.callout:hover{
-  transform:translateX(8px);
-  box-shadow:0 6px 20px rgba(30,68,48,.15);
-  border-left-color:#3e7249;
+::-webkit-scrollbar-track {
+  background: var(--soft-gray);
 }
 
-/* ── IMPROVED FINAL PAGE LAYOUT ── */
-.cgrid{
-  display:flex;
-  flex-direction:column;
-  gap:80px;  /* Increased from 36px to 80px for better spacing */
-  margin:50px 0;
+::-webkit-scrollbar-thumb {
+  background: var(--vintage-brown);
+  border-radius: 4px;
 }
 
-.ccard{
-  display:flex;
-  flex-direction:column;
-  gap:40px;  /* Increased internal gap */
-  padding:50px 45px;  /* Increased padding */
-  background:
-    radial-gradient(ellipse at 20% 30%, rgba(174,206,186,.15), transparent 50%),
-    radial-gradient(ellipse at 80% 70%, rgba(122,170,136,.12), transparent 50%),
-    linear-gradient(135deg,rgba(255,255,255,.65),rgba(249,247,240,.55));
-  backdrop-filter:blur(12px);
-  border-radius:24px;  /* More rounded */
-  border:3px solid rgba(62,114,73,.2);
-  box-shadow:
-    0 12px 40px rgba(30,68,48,.15),
-    inset 0 2px 10px rgba(255,255,255,.5);
-  transition:all .6s cubic-bezier(.4,0,.2,1);
-  position:relative;
-  overflow:hidden;
-  align-items:center;
-  transform-style:preserve-3d;
-}
-
-/* Enhanced hover state with 3D effect */
-.ccard::before{
-  content:'';
-  position:absolute;
-  top:-50%;
-  left:-50%;
-  width:200%;
-  height:200%;
-  background:radial-gradient(circle, rgba(122,170,136,.15), transparent 70%);
-  opacity:0;
-  transition:all .6s ease;
-  pointer-events:none;
-}
-
-.ccard:hover::before{
-  opacity:1;
-  animation:cardShimmer 2s ease-in-out infinite;
-}
-
-@keyframes cardShimmer{
-  0%, 100%{transform:translate(-50%, -50%) scale(1);}
-  50%{transform:translate(-45%, -45%) scale(1.1);}
-}
-
-.ccard::after{
-  content:'';
-  position:absolute;
-  top:0;
-  right:0;
-  width:0;
-  height:0;
-  border-style:solid;
-  border-width:0;
-  border-color:transparent rgba(62,114,73,.3) transparent transparent;
-  transition:border-width .5s ease, opacity .5s ease;
-  opacity:0;
-}
-
-.ccard:hover::after{
-  border-width:0 80px 80px 0;
-  opacity:1;
-}
-
-.ccard:hover{
-  transform:translateY(-15px) scale(1.02) rotateX(2deg);
-  box-shadow:
-    0 35px 90px rgba(30,68,48,.25),
-    0 15px 45px rgba(62,114,73,.2),
-    inset 0 2px 15px rgba(255,255,255,.7);
-  border-color:rgba(62,114,73,.4);
-}
-
-.ci{
-  border-radius:16px;
-  overflow:hidden;
-  aspect-ratio:3/2;
-  box-shadow:
-    0 12px 35px rgba(30,68,48,.15),
-    0 0 0 10px rgba(255,255,255,.8),
-    0 0 0 12px rgba(62,114,73,.25);
-  border:3px solid rgba(62,114,73,.4);
-  background:var(--beige);
-  max-height:450px;
-  width:85%;  /* Increased from 75% */
-  transition:all .6s ease;
-  position:relative;
-}
-
-.ci::before{
-  content:'';
-  position:absolute;
-  inset:-3px;
-  background:linear-gradient(45deg, 
-    transparent 30%, 
-    rgba(122,170,136,.2) 50%, 
-    transparent 70%);
-  opacity:0;
-  transition:opacity .6s ease;
-  pointer-events:none;
-}
-
-.ci:hover::before{
-  opacity:1;
-  animation:imageShine 2s ease-in-out infinite;
-}
-
-@keyframes imageShine{
-  0%{transform:translateX(-100%) rotate(45deg);}
-  100%{transform:translateX(100%) rotate(45deg);}
-}
-
-.ci img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  cursor:pointer;
-  transition:all .8s cubic-bezier(.4,0,.2,1);
-  filter:saturate(1.05) contrast(1.05);
-}
-
-.ccard:hover .ci{
-  box-shadow:
-    0 18px 50px rgba(30,68,48,.25),
-    0 0 0 10px rgba(255,255,255,.9),
-    0 0 0 12px rgba(62,114,73,.35),
-    0 0 30px rgba(122,170,136,.3);
-  transform:scale(1.03);
-}
-
-.ccard:hover .ci img{
-  transform:scale(1.1) rotate(-1deg);
-  filter:saturate(1.2) contrast(1.08);
-}
-
-.ct{
-  width:100%;
-  max-width:900px;  /* Add max width for better readability */
-}
-
-.ct p{
-  font-size:1.65rem;  /* Increased from 1.5rem */
-  line-height:2.3;  /* Increased line height */
-  color:var(--ink-dark);
-  margin-bottom:24px;  /* Increased spacing */
-  font-family:'EB Garamond',serif;
-  font-weight:400;
-  width:100%;
-  text-align:left;
-  transition:all .4s ease;
-}
-
-.ct p:last-child{
-  margin-bottom:0;
-}
-
-.ccard:hover .ct p{
-  transform:translateX(8px);
-  color:var(--forest-dark);
-}
-
-/* ── PAGE NAV ── */
-.page-nav{display:flex;justify-content:space-between;align-items:center;margin-top:70px;padding-top:45px;border-top:3px solid rgba(30,68,48,.3);position:relative;z-index:100;}
-.nav-btn{
-  padding:14px 35px;background:linear-gradient(135deg,#2d5a40,#3e7249);
-  color:#fff;font-weight:700;border-radius:50px;
-  box-shadow:0 6px 18px rgba(30,68,48,.5);transition:all .4s ease;
-  font-family:'Playfair Display',serif;border:2px solid rgba(62,114,73,.6);cursor:pointer;
-  position:relative;overflow:hidden;z-index:100;
-}
-.nav-btn::before{content:'';position:absolute;top:50%;left:50%;width:0;height:0;
-  background:radial-gradient(circle,rgba(255,255,255,.6),transparent 70%);
-  border-radius:50%;transform:translate(-50%,-50%);transition:width .7s,height .7s;}
-.nav-btn:hover::before{width:400px;height:400px;}
-.nav-btn:hover{transform:translateY(-4px);box-shadow:0 10px 25px rgba(30,68,48,.7);}
-.nav-btn.disabled{opacity:.3;pointer-events:none;}
-
-.prog{display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:20px;}
-.pdot{width:9px;height:9px;border-radius:50%;cursor:pointer;background:rgba(30,68,48,.22);border:1.5px solid rgba(30,68,48,.30);transition:all .32s;}
-.pdot.on{width:30px;border-radius:5px;background:linear-gradient(90deg,#2d5a40,#3e7249);border-color:transparent;box-shadow:0 2px 10px rgba(30,68,48,.30);}
-.pdot:hover:not(.on){background:rgba(30,68,48,.40);transform:scale(1.3);}
-
-.rdiv{display:flex;align-items:center;gap:18px;margin:44px 0;opacity:.28;}
-.rdiv::before,.rdiv::after{content:'';flex:1;height:2px;background:linear-gradient(90deg,transparent,#2d5a40,transparent);}
-.sig{text-align:center;font-family:'Dancing Script',cursive;font-size:3rem;color:var(--forest-green);opacity:.7;margin:8px 0 44px;}
-.dclouds{text-align:center;font-size:1.6rem;letter-spacing:22px;opacity:.26;margin:14px 0;animation:dcWv 8s ease-in-out infinite;}
-@keyframes dcWv{0%,100%{transform:translateY(0);opacity:.24;}50%{transform:translateY(-7px);opacity:.44;}}
-
-/* ── MODAL ── */
-.image-modal{
-  position:fixed;inset:0;background:rgba(30,68,48,.96);backdrop-filter:blur(15px);
-  display:flex;align-items:center;justify-content:center;
-  opacity:0;pointer-events:none;transition:opacity .5s;z-index:1000;
-}
-.image-modal.active{opacity:1;pointer-events:auto;}
-.image-modal img{
-  max-width:92%;max-height:92%;
-  box-shadow:0 35px 90px rgba(0,0,0,.8),0 0 0 18px #fff,0 0 0 20px rgba(62,114,73,.6);
-  animation:modalZoom .6s cubic-bezier(.4,0,.2,1);border-radius:8px;
-}
-@keyframes modalZoom{from{opacity:0;transform:scale(.6) rotate(-8deg);}to{opacity:1;transform:scale(1) rotate(0);}}
-.modal-close{
-  position:absolute;top:35px;right:35px;width:55px;height:55px;
-  background:rgba(255,255,255,.25);border:3px solid rgba(62,114,73,.8);
-  border-radius:50%;display:flex;align-items:center;justify-content:center;
-  font-size:2rem;color:#fff;cursor:pointer;transition:all .4s;backdrop-filter:blur(10px);z-index:1001;
-}
-.modal-close:hover{background:rgba(62,114,73,.6);transform:rotate(90deg) scale(1.15);}
-
-.scroll-top{
-  position:fixed;bottom:45px;right:45px;width:65px;height:65px;
-  background:linear-gradient(135deg,#2d5a40,#3e7249);
-  border:3px solid #fff;border-radius:50%;display:flex;align-items:center;justify-content:center;
-  font-size:2rem;cursor:pointer;box-shadow:0 12px 35px rgba(30,68,48,.6);
-  transition:all .4s;z-index:100;opacity:0;pointer-events:none;color:#fff;
-}
-.scroll-top.visible{opacity:1;pointer-events:auto;animation:scrollTopBounce 2s ease-in-out infinite;}
-@keyframes scrollTopBounce{
-  0%,100%{transform:translateY(0);}
-  50%{transform:translateY(-8px);}
-}
-.scroll-top:hover{transform:translateY(-8px) scale(1.12);box-shadow:0 18px 50px rgba(30,68,48,.8);}
-
-.loading-spinner{
-  position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);
-  width:90px;height:90px;border:6px solid rgba(62,114,73,.2);border-top-color:#2d5a40;
-  border-radius:50%;animation:spinnerRotate 1.2s linear infinite;z-index:10000;display:none;
-}
-.loading-spinner.active{display:block;}
-.loading-spinner::after{content:'🌿';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:2rem;}
-@keyframes spinnerRotate{to{transform:translate(-50%,-50%) rotate(360deg);}}
-
-/* ── RESPONSIVE ── */
-@media(max-width:1200px){
-  .meaning-card{width:340px;min-height:340px;padding:50px 45px;}
-  .meaning-card p{max-width:250px;font-size:1.25rem;}
-  .cgrid{gap:60px;}
-  .ct p{font-size:1.55rem;}
-}
-@media(max-width:1024px){
-  .page{padding:70px 70px 120px;}
-  .section-title{font-size:3.3rem;}
-  .section-intro{font-size:1.55rem;}
-  .story-text{font-size:1.35rem;}
-  .meaning-grid{gap:30px;}
-  .meaning-card{width:310px;min-height:310px;padding:45px 40px;}
-  .meaning-card p{font-size:1.15rem;max-width:230px;}
-  .ntxt{font-size:1.4rem;}
-  .cgrid{gap:50px;}
-  .ct p{font-size:1.45rem;}
-  .quote-text{font-size:2.2rem;}
-}
-@media(max-width:768px){
-  body{padding:25px 12px;}
-  .book-cover{padding:50px 35px;border:6px solid rgba(30,68,48,.4);}
-  .cover-title{font-size:3.5rem;}
-  .cover-subtitle{font-size:1.8rem;}
-  .page{padding:60px 35px 100px;border-left:40px solid rgba(30,68,48,.08);}
-  .section-title{font-size:3rem;}
-  .section-intro{font-size:1.4rem;}
-  .story-card{grid-template-columns:1fr!important;gap:32px;}
-  .story-card:nth-child(even) .story-image{order:0;}
-  .story-text{font-size:1.25rem;}
-  .photo-grid{grid-template-columns:1fr;}
-  .journey-tabs{flex-direction:column;}
-  .journey-tab{width:100%;}
-  .meaning-grid{flex-direction:column;align-items:center;}
-  .meaning-card{border-radius:24px;width:100%;max-width:420px;min-height:auto;height:auto;padding:40px 35px;}
-  .meaning-card p{max-width:100%;font-size:1.2rem;}
-  .cgrid{gap:40px;}
-  .ci{width:95%;}
-  .ct p{font-size:1.35rem;}
-  .ntxt{font-size:1.35rem;}
-  .quote-text{font-size:2rem;}
-}
-@media(max-width:480px){
-  .page{padding:44px 22px 90px;}
-  .section-title{font-size:2.4rem;}
-  .section-intro{font-size:1.25rem;}
-  .story-text{font-size:1.15rem;}
-  .quote-box{padding:36px 26px;}
-  .quote-text{font-size:1.8rem;line-height:1.7;}
-  .callout{font-size:1.75rem;}
-  .sig{font-size:2.5rem;}
-  .cgrid{gap:35px;}
-  .ct p{font-size:1.25rem;line-height:2.1;}
-  .ntxt{font-size:1.25rem;}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--dark-text);
 }
 </style>
 </head>
 <body>
 
-<div class="loading-spinner" id="loadingSpinner"></div>
+<!-- Dust particles -->
+<div class="dust-particle" style="left: 10%; top: 20%; --duration: 12s; --delay: 0s; --dx: 100px; --dy: -200px;"></div>
+<div class="dust-particle" style="left: 85%; top: 15%; --duration: 15s; --delay: 2s; --dx: -80px; --dy: -250px;"></div>
+<div class="dust-particle" style="left: 25%; top: 70%; --duration: 13s; --delay: 4s; --dx: 120px; --dy: -180px;"></div>
+<div class="dust-particle" style="left: 70%; top: 60%; --duration: 14s; --delay: 1s; --dx: -90px; --dy: -220px;"></div>
+<div class="dust-particle" style="left: 45%; top: 30%; --duration: 11s; --delay: 3s; --dx: 60px; --dy: -190px;"></div>
+<div class="dust-particle" style="left: 55%; top: 80%; --duration: 16s; --delay: 5s; --dx: -110px; --dy: -240px;"></div>
+<div class="dust-particle" style="left: 15%; top: 50%; --duration: 12s; --delay: 2.5s; --dx: 130px; --dy: -170px;"></div>
+<div class="dust-particle" style="left: 90%; top: 45%; --duration: 14s; --delay: 4.5s; --dx: -70px; --dy: -210px;"></div>
 
-<div class="book-container" id="bookContainer">
+<!-- Decorative elements -->
+<div class="decoration paperclip-1"></div>
+<div class="decoration paperclip-2"></div>
+<div class="decoration leaf-1">🍃</div>
+<div class="decoration leaf-2">🌿</div>
 
-  <!-- ══ COVER ══ -->
-  <div class="book-cover" id="bookCover">
-    <div class="bookmark"></div>
-    <div class="ff-wrap" id="ffWrap"></div>
-    <div class="cover-content">
-      <div class="cover-badge">✦ &nbsp;Mốc Kỷ Niệm Thứ 5 / 6&nbsp; ✦</div>
-      <div class="cover-icon">🌲</div>
-      <h1 class="cover-title">NHẬT KÝ ĐÀ LẠT</h1>
-      <h2 class="cover-subtitle">Dấu ấn không phai trong miền ký ức lớp 11L</h2>
-      <p class="cover-quote">
-        Có những miền đất ta chỉ ghé qua một lần trong đời,<br>
-        nhưng lại ở lại rất lâu trong ký ức...<br>
-        Đà Lạt của lớp 11L là một miền như thế.
-      </p>
-      <a href="#" class="open-book-btn" id="openBookBtn">
-        <span>🍃 &nbsp;Mở Nhật Ký&nbsp; 🍃</span>
-      </a>
+<!-- Header -->
+<header class="header">
+  <h1 class="header-title">Thư Viện Nhật Ký Tuổi 16</h1>
+  <h2 class="header-subtitle">Thanh xuân là một cuốn nhật ký rẻ ong bao giờ khép lại...</h2>
+</header>
+
+<!-- Library -->
+<main class="library">
+  <div class="books-shelf">
+    
+    <!-- Book 1: 20/10 -->
+    <div class="book" style="--index: 0" onclick="openBook('2010.html')">
+      <div class="book-cover">
+        <div class="book-spine">
+          <span class="spine-icon">🌹</span>
+          <span class="spine-text">20/10</span>
+        </div>
+        <div class="book-front">
+          <div class="book-icon">🌹</div>
+          <div>
+            <h3 class="book-title">Ngày Phụ Nữ Việt Nam</h3>
+            <p class="book-date">20.10.2024</p>
+          </div>
+        </div>
+        <div class="book-pages"></div>
+      </div>
+    </div>
+    
+    <!-- Book 2: 19/11 -->
+    <div class="book" style="--index: 1" onclick="openBook('1911.html')">
+      <div class="book-cover">
+        <div class="book-spine">
+          <span class="spine-icon">👔</span>
+          <span class="spine-text">19/11</span>
+        </div>
+        <div class="book-front">
+          <div class="book-icon">👔</div>
+          <div>
+            <h3 class="book-title">Ngày Quốc Tế Đàn Ông</h3>
+            <p class="book-date">19.11.2024</p>
+          </div>
+        </div>
+        <div class="book-pages"></div>
+      </div>
+    </div>
+    
+    <!-- Book 3: 20/11 -->
+    <div class="book" style="--index: 2" onclick="openBook('2011.html')">
+      <div class="book-cover">
+        <div class="book-spine">
+          <span class="spine-icon">📚</span>
+          <span class="spine-text">20/11</span>
+        </div>
+        <div class="book-front">
+          <div class="book-icon">📚</div>
+          <div>
+            <h3 class="book-title">Ngày Nhà Giáo Việt Nam</h3>
+            <p class="book-date">20.11.2024</p>
+          </div>
+        </div>
+        <div class="book-pages"></div>
+      </div>
+    </div>
+    
+    <!-- Book 4: Giai điệu -->
+    <div class="book" style="--index: 3" onclick="openBook('giaidieu.html')">
+      <div class="book-cover">
+        <div class="book-spine">
+          <span class="spine-icon">🎭</span>
+          <span class="spine-text">Giai điệu</span>
+        </div>
+        <div class="book-front">
+          <div class="book-icon">🎭</div>
+          <div>
+            <h3 class="book-title">Giai Điệu & Thanh Lịch</h3>
+            <p class="book-date">2024-2025</p>
+          </div>
+        </div>
+        <div class="book-pages"></div>
+      </div>
+    </div>
+    
+    <!-- Book 5: Đà Lạt -->
+    <div class="book" style="--index: 4" onclick="openBook('dalat.html')">
+      <div class="book-cover">
+        <div class="book-spine">
+          <span class="spine-icon">🌲</span>
+          <span class="spine-text">Đà Lạt</span>
+        </div>
+        <div class="book-front">
+          <div class="book-icon">🌲</div>
+          <div>
+            <h3 class="book-title">Chuyến Đi Đà Lạt</h3>
+            <p class="book-date">12.2024</p>
+          </div>
+        </div>
+        <div class="book-pages"></div>
+      </div>
+    </div>
+    
+    <!-- Book 6: Giỗ Tổ -->
+    <div class="book" style="--index: 5" onclick="openBook('banhchung.html')">
+      <div class="book-cover">
+        <div class="book-spine">
+          <span class="spine-icon">🎋</span>
+          <span class="spine-text">Giỗ Tổ</span>
+        </div>
+        <div class="book-front">
+          <div class="book-icon">🎋</div>
+          <div>
+            <h3 class="book-title">Giỗ Tổ Hùng Vương</h3>
+            <p class="book-date">04.2025</p>
+          </div>
+        </div>
+        <div class="book-pages"></div>
+      </div>
+    </div>
+    
+  </div>
+</main>
+
+<!-- Timeline -->
+<section class="timeline">
+  <div class="timeline-line">
+    <div class="timeline-dots">
+      <div class="timeline-dot" data-month="Tháng 10"></div>
+      <div class="timeline-dot" data-month="Tháng 11"></div>
+      <div class="timeline-dot" data-month="Tháng 12"></div>
+      <div class="timeline-dot" data-month="Tháng 1"></div>
+      <div class="timeline-dot" data-month="Tháng 2"></div>
+      <div class="timeline-dot" data-month="Tháng 4"></div>
     </div>
   </div>
+</section>
 
-  <!-- ══ PAGES ══ -->
-  <div class="book-pages" id="bookPages" style="display:none;">
-
-    <div class="prog" style="padding-top:24px;">
-      <div class="pdot on" data-p="1"></div>
-      <div class="pdot" data-p="2"></div>
-      <div class="pdot" data-p="3"></div>
-      <div class="pdot" data-p="4"></div>
-    </div>
-
-    <!-- ══ PAGE 1 ══ -->
-    <div class="page" id="page1">
-      <div class="leaf-layer" id="lf1"></div>
-      <div class="page-content">
-        <div class="dclouds">☁️ &nbsp;&nbsp; ☁️ &nbsp;&nbsp;&nbsp;&nbsp; ☁️</div>
-        <h3 class="section-title">
-          <span class="title-icon">🌿</span>
-          <span class="title-text">Miền Ký Ức Mở Ra</span>
-        </h3>
-        <p class="section-intro">
-          Có những miền đất ta chỉ ghé qua một lần trong đời, nhưng lại ở lại rất lâu trong ký ức.<br>
-          Đà Lạt của lớp 11L là một miền như thế.
-        </p>
-        
-        <div class="story-grid">
-          <div class="story-card">
-            <div class="story-image">
-              <div class="stamp">🏔️</div>
-              <img src="images/tongthe.jpg" alt="Toàn cảnh Đà Lạt" loading="lazy">
-            </div>
-            <div class="story-text">
-              <p>Đó là nơi sương sớm giăng mờ trên những triền đồi, nơi rừng thông thì thầm trong gió, nơi nhịp sống chậm rãi mở ra những khoảng lặng hiếm hoi giữa những ngày học tập vội vã.</p>
-            </div>
-          </div>
-          
-          <div class="story-card">
-            <div class="story-image">
-              <div class="stamp">👥</div>
-              <img src="images/tapthe.jpg" alt="Tập thể lớp 11L" loading="lazy">
-            </div>
-            <div class="story-text" style="max-width:480px;">
-              <p>Đà Lạt không chỉ hiện lên trong vẻ đẹp thơ mộng của phố núi, mà còn là không gian của tri thức, của lịch sử, của những giá trị bền bỉ được bồi đắp qua năm tháng.</p>
-              <p>Và trong một khoảnh khắc rất đẹp của tuổi học trò, lớp 11L đã đặt dấu chân mình lên miền đất ấy – bằng tất cả sự háo hức, trong veo và khát khao khám phá.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="page-number">~ Trang 1 ~</div>
-      <div class="page-nav">
-        <div class="nav-btn disabled">← Trang trước</div>
-        <div class="nav-btn" onclick="turnPage(2)">Trang sau →</div>
-      </div>
-    </div>
-
-    <!-- ══ PAGE 2 ══ -->
-    <div class="page" id="page2" style="display:none;">
-      <div class="page-content">
-        <h3 class="section-title">
-          <span class="title-icon">🌱</span>
-          <span class="title-text">Ý Nghĩa Của Một Chuyến Đi</span>
-        </h3>
-        <p class="section-intro">Giữa những tiết học nối tiếp nhau, giữa những bài kiểm tra và áp lực vô hình, chuyến đi Đà Lạt đến như một khoảng thở dịu dàng.</p>
-
-        <div class="callout">
-          Mỗi điểm đến đều là một trang sách sống động.<br>
-          Mỗi bước chân đều mở ra một bài học không nằm trong giáo trình.
-        </div>
-
-        <div class="meaning-grid">
-          <div class="meaning-card">
-            <div class="meaning-icon">📚</div>
-            <h4>Tri thức sống động</h4>
-            <p>Từ thiên nhiên xanh mát đến những công trình lịch sử, tri thức không chỉ nằm trong trang vở mà còn hiện diện trong từng nhịp sống của đất nước.</p>
-          </div>
-          <div class="meaning-card">
-            <div class="meaning-icon">🌲</div>
-            <h4>Không gian thiên nhiên</h4>
-            <p>Từ không gian học thuật đến những góc phố bình yên, tất cả giúp chúng tôi hiểu rõ hơn về những giá trị lịch sử và văn hóa của cao nguyên Lâm Viên.</p>
-          </div>
-          <div class="meaning-card">
-            <div class="meaning-icon">💫</div>
-            <h4>Gắn kết tình bạn</h4>
-            <p>Qua những bữa ăn giản dị, những khoảnh khắc cười đùa vô tư, chúng tôi học cách lắng nghe, thấu hiểu và trân trọng nhau hơn.</p>
-          </div>
-        </div>
-
-        <div class="quote-box">
-          <p class="quote-text">
-            Quan trọng hơn cả, chuyến đi là sợi dây vô hình kết nối những tâm hồn tuổi mười bảy...
-          </p>
-        </div>
-      </div>
-      <div class="page-number">~ Trang 2 ~</div>
-      <div class="page-nav">
-        <div class="nav-btn" onclick="turnPage(1)">← Trang trước</div>
-        <div class="nav-btn" onclick="turnPage(3)">Trang sau →</div>
-      </div>
-    </div>
-
-    <!-- ══ PAGE 3 ══ -->
-    <div class="page" id="page3" style="display:none;">
-      <div class="leaf-layer" id="lf3"></div>
-      <div class="page-content">
-        <h3 class="section-title">
-          <span class="title-icon">📍</span>
-          <span class="title-text">Hành Trình Ba Ngày – Một Miền Ký Ức</span>
-        </h3>
-        
-        <div class="journey-tabs">
-          <div class="journey-tab active" data-day="day1">🗓️ Ngày 01</div>
-          <div class="journey-tab" data-day="day2">🗓️ Ngày 02</div>
-          <div class="journey-tab" data-day="day3">🗓️ Ngày 03</div>
-        </div>
-        
-        <!-- Day 1 -->
-        <div id="day1" class="day-content active">
-          <div class="awrap">
-            <div class="aarr ap" data-album="album1">‹</div>
-            <div class="atrack" id="album1">
-              <div class="pola wide">
-                <img src="images/lenxe.jpg" alt="Lên xe">
-                <div class="pcap">🚌 Khởi hành từ Bình Dương</div>
-              </div>
-              <div class="pola">
-                <img src="images/truongdh.jpg" alt="Trường ĐH Đà Lạt">
-                <div class="pcap">🏛️ ĐH Đà Lạt</div>
-              </div>
-              <div class="pola">
-                <img src="images/khachsan.jpg" alt="Khách sạn">
-                <div class="pcap">🏨 Nhận phòng</div>
-              </div>
-            </div>
-            <div class="aarr an" data-album="album1">›</div>
-          </div>
-          
-          <div class="dnote">
-            <span class="nlbl">☀️ Ngày đầu tiên — Khởi hành</span>
-            <p class="ntxt">Sau chặng đường dài từ Bình Dương, lớp 11L bắt đầu hành trình trong sự háo hức và mong chờ. Điểm dừng chân đầu tiên là Trường Đại học Đà Lạt – nơi tri thức và kiến trúc giao hòa, gieo vào lòng chúng tôi niềm kính trọng đối với con đường học vấn.</p>
-          </div>
-        </div>
-        
-        <!-- Day 2 -->
-        <div id="day2" class="day-content">
-          <div class="awrap">
-            <div class="aarr ap" data-album="album2">‹</div>
-            <div class="atrack" id="album2">
-              <div class="pola wide">
-                <img src="images/caugo.jpg" alt="Cầu Gỗ">
-                <div class="pcap">☁️ Biển mây Cầu Gỗ</div>
-              </div>
-              <div class="pola">
-                <img src="images/puppy.jpg" alt="Puppy Farm">
-                <div class="pcap">🐕 Puppy Farm</div>
-              </div>
-              <div class="pola">
-                <img src="images/quangtruong.jpg" alt="Quảng trường">
-                <div class="pcap">🏙️ Lâm Viên</div>
-              </div>
-            </div>
-            <div class="aarr an" data-album="album2">›</div>
-          </div>
-          
-          <div class="dnote">
-            <span class="nlbl">☁️ Ngày thứ hai — Trải nghiệm</span>
-            <p class="ntxt">Buổi sáng, Cầu Gỗ đón chúng tôi bằng biển mây trắng xóa, mang đến cảm giác như chạm tay vào bầu trời. Tại Puppy Farm, tiếng cười hòa cùng ánh nắng và những chú cún nhỏ, đưa chúng tôi trở về với sự hồn nhiên thuần khiết.</p>
-          </div>
-        </div>
-        
-        <!-- Day 3 -->
-        <div id="day3" class="day-content">
-          <div class="awrap">
-            <div class="aarr ap" data-album="album3">‹</div>
-            <div class="atrack" id="album3">
-              <div class="pola">
-                <img src="images/ansang.jpg" alt="Ăn sáng">
-                <div class="pcap">☕ Bữa sáng cuối</div>
-              </div>
-              <div class="pola wide">
-                <img src="images/dinh3.jpg" alt="Dinh Bảo Đại">
-                <div class="pcap">🏯 Dinh III</div>
-              </div>
-              <div class="pola">
-                <img src="images/roidal.jpg" alt="Rời Đà Lạt">
-                <div class="pcap">👋 Tạm biệt!</div>
-              </div>
-            </div>
-            <div class="aarr an" data-album="album3">›</div>
-          </div>
-          
-          <div class="dnote">
-            <span class="nlbl">🌅 Ngày cuối — Tạm biệt</span>
-            <p class="ntxt">Buổi sáng cuối cùng trôi qua chậm rãi trong sự lưu luyến khó gọi tên. Dinh III – Dinh Bảo Đại khép lại hành trình bằng vẻ đẹp trầm mặc, cổ kính giữa rừng thông xanh mát. Khi bánh xe lăn bánh, thành phố dần lùi xa, nhưng ký ức thì ở lại.</p>
-          </div>
-        </div>
-        
-        <div class="quote-box">
-          <p class="quote-text">Đó là một phần thanh xuân mang tên 11L...</p>
-        </div>
-      </div>
-      <div class="page-number">~ Trang 3 ~</div>
-      <div class="page-nav">
-        <div class="nav-btn" onclick="turnPage(2)">← Trang trước</div>
-        <div class="nav-btn" onclick="turnPage(4)">Trang sau →</div>
-      </div>
-    </div>
-
-    <!-- ══ PAGE 4 ══ -->
-    <div class="page" id="page4" style="display:none;">
-      <div class="page-content">
-        <div class="dclouds">☁️ &nbsp;&nbsp; ☁️ &nbsp;&nbsp;&nbsp; ☁️</div>
-        <h3 class="section-title">
-          <span class="title-icon">🌸</span>
-          <span class="title-text">Đà Lạt – Miền Ký Ức Của 11L</span>
-        </h3>
-        
-        <div class="cgrid">
-          <div class="ccard">
-            <div class="ci">
-              <img src="images/final.jpg" alt="Tập thể 11L" loading="lazy">
-            </div>
-            <div class="ct">
-              <p>Chuyến tham quan học tập tại Đà Lạt không chỉ mang đến kiến thức và trải nghiệm, mà còn đánh dấu một đoạn đẹp trong hành trình trưởng thành của lớp 11L.</p>
-              <p>Ở đó, chúng tôi đã cùng nhau học cách sống chậm, học cách lắng nghe, học cách trân trọng hiện tại và học cách giữ gìn những điều nhỏ bé nhưng quý giá.</p>
-            </div>
-          </div>
-          
-          <div class="ccard">
-            <div class="ci">
-              <img src="images/memory.jpg" alt="Kỷ niệm" loading="lazy">
-            </div>
-            <div class="ct">
-              <p>Nhiều năm sau, khi những con đường đời đã rẽ sang nhiều hướng khác nhau, có thể chúng tôi sẽ quên đi vài chi tiết nhỏ, nhưng chắc chắn Đà Lạt vẫn còn ở lại.</p>
-              <p>Trong những bức ảnh cũ, trong những câu chuyện được kể lại và trong một góc rất sâu của ký ức tuổi học trò – nơi rừng thông vẫn mãi xanh tươi.</p>
-            </div>
-          </div>
-        </div>
-        
-        <div class="quote-box">
-          <p class="quote-text">
-            Bởi đó không chỉ là một chuyến đi, đó là một phần thanh xuân, đó là miền nhớ mang tên lớp 11L 🌲
-          </p>
-        </div>
-        
-        <div class="rdiv"><span>🌲</span><span>☁️</span><span>🌿</span></div>
-        <div class="sig">🌲 ~ Hết ~ 🌲</div>
-      </div>
-      <div class="page-number">~ Trang 4 ~</div>
-      <div class="page-nav">
-        <div class="nav-btn" onclick="turnPage(3)">← Trang trước</div>
-        <div class="nav-btn" onclick="closePage()">🍃 Đóng sách</div>
-      </div>
-    </div>
-
-  </div><!-- /book-pages -->
-</div><!-- /book-container -->
-
-<div class="image-modal" id="imageModal">
-  <div class="modal-close" onclick="closeModal()">×</div>
-  <img id="modalImg" alt="">
+<!-- Modal overlay -->
+<div class="modal-overlay" id="modalOverlay">
+  <button class="close-btn" onclick="closeModal()">×</button>
+  <div class="book-page" id="bookPage">
+    <!-- Content will be loaded here -->
+  </div>
 </div>
-<div class="scroll-top" id="scrollTop" onclick="scrollToTop()">↑</div>
+
+<!-- Loading animation -->
+<div class="loading" id="loading">
+  <div class="loading-page"></div>
+</div>
 
 <script>
-let currentPage = 1;
-
-// Cursor trail effect
-document.addEventListener('mousemove', (e) => {
-  if (Math.random() > 0.85) {
-    const trail = document.createElement('div');
-    trail.className = 'cursor-trail';
-    trail.style.left = e.pageX + 'px';
-    trail.style.top = e.pageY + 'px';
-    document.body.appendChild(trail);
-    setTimeout(() => trail.remove(), 800);
-  }
-});
-
-function buildFireflies(){
-  const w=document.getElementById('ffWrap');
-  for(let i=0;i<24;i++){
-    const f=document.createElement('div'); f.className='ff';
-    const sz=2+Math.random()*4;
-    const col=Math.random()<.55?`rgba(62,114,73,${.55+Math.random()*.3})`:`rgba(142,200,230,${.45+Math.random()*.3})`;
-    f.style.cssText=`width:${sz}px;height:${sz}px;left:${8+Math.random()*84}%;bottom:${5+Math.random()*42}%;background:${col};box-shadow:0 0 ${sz*2.4}px ${col};--dx:${(Math.random()-.5)*75}px;--dur:${3.5+Math.random()*4.5}s;--del:${Math.random()*7}s;`;
-    w.appendChild(f);
-  }
-}
-
-const LEAVES=['🍃','🌿','🍂','🌱','🍀'];
-function buildLeaves(id){
-  const el=document.getElementById(id); if(!el)return;
-  for(let i=0;i<10;i++){
-    const l=document.createElement('div'); l.className='lf';
-    const sz=11+Math.random()*10,dur=5+Math.random()*6,del=Math.random()*9;
-    l.textContent=LEAVES[i%LEAVES.length];
-    l.style.cssText=`left:${Math.random()*95}%;bottom:${Math.random()*18}%;--lsz:${sz}px;--ldur:${dur}s;--ldel:${del}s;--lx:${(Math.random()-.5)*90}px;`;
-    el.appendChild(l);
-  }
-}
-
-function syncDots(n){
-  document.querySelectorAll('.pdot').forEach(d=>d.classList.toggle('on',+d.dataset.p===n));
-}
-document.querySelectorAll('.pdot').forEach(d=>d.addEventListener('click',()=>turnPage(+d.dataset.p)));
-
-// Fixed button handler - no debouncing needed, just check state
-document.getElementById('openBookBtn').addEventListener('click', function(e) {
-  e.preventDefault();
-  e.stopPropagation();
+// Open book function
+function openBook(url) {
+  const modal = document.getElementById('modalOverlay');
+  const loading = document.getElementById('loading');
   
-  // Check if already processing
-  if (this.dataset.processing === 'true') return;
+  // Show loading
+  loading.classList.add('active');
   
-  // Mark as processing
-  this.dataset.processing = 'true';
-  
-  // Show spinner immediately
-  document.getElementById('loadingSpinner').classList.add('active');
-  
-  // Short delay for smooth transition
+  // Simulate page loading
   setTimeout(() => {
-    document.getElementById('bookCover').style.display = 'none';
-    document.getElementById('bookPages').style.display = 'block';
-    document.getElementById('page1').style.display = 'block';
-    document.getElementById('loadingSpinner').classList.remove('active');
-    currentPage = 1;
-    syncDots(1);
+    loading.classList.remove('active');
+    modal.classList.add('active');
     
-    // Reset processing state
-    this.dataset.processing = 'false';
-    
-    window.scrollTo({top: 0, behavior: 'smooth'});
-  }, 400);
-});
-
-function turnPage(n){
-  if(n<1||n>4||currentPage===n) return;
-  document.getElementById('loadingSpinner').classList.add('active');
-  setTimeout(()=>{
-    document.getElementById('page'+currentPage).style.display='none';
-    document.getElementById('page'+n).style.display='block';
-    currentPage=n; syncDots(n);
-    document.getElementById('loadingSpinner').classList.remove('active');
-    window.scrollTo({top:0,behavior:'smooth'});
-  },400);
+    // In real implementation, load actual content
+    window.location.href = url;
+  }, 800);
 }
 
-function closePage(){
-  document.getElementById('loadingSpinner').classList.add('active');
-  setTimeout(()=>{
-    document.getElementById('bookPages').style.display='none';
-    document.getElementById('bookCover').style.display='block';
-    document.getElementById('page'+currentPage).style.display='none';
-    document.getElementById('loadingSpinner').classList.remove('active');
-    window.scrollTo({top:0,behavior:'smooth'});
-  },400);
+// Close modal
+function closeModal() {
+  const modal = document.getElementById('modalOverlay');
+  modal.classList.remove('active');
 }
 
-document.querySelectorAll('.journey-tab').forEach(tab=>{
-  tab.addEventListener('click',()=>{
-    document.querySelectorAll('.journey-tab').forEach(t=>t.classList.remove('active'));
-    document.querySelectorAll('.day-content').forEach(c=>c.classList.remove('active'));
-    tab.classList.add('active');
-    document.getElementById(tab.dataset.day).classList.add('active');
+// Close on ESC key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    closeModal();
+  }
+});
+
+// Close on background click
+document.getElementById('modalOverlay').addEventListener('click', (e) => {
+  if (e.target.id === 'modalOverlay') {
+    closeModal();
+  }
+});
+
+// 3D tilt effect for books on mouse move
+document.querySelectorAll('.book').forEach(book => {
+  book.addEventListener('mousemove', (e) => {
+    const rect = book.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    
+    const rotateX = (y - centerY) / 10;
+    const rotateY = (centerX - x) / 10;
+    
+    book.style.transform = `
+      translateY(-15px) 
+      rotateX(${rotateX}deg) 
+      rotateY(${rotateY}deg) 
+      scale(1.05)
+    `;
+  });
+  
+  book.addEventListener('mouseleave', () => {
+    book.style.transform = '';
   });
 });
 
-document.addEventListener('click', e => {
-  const arrow = e.target.closest('.aarr');
-  if (!arrow) return;
-  const album = document.getElementById(arrow.dataset.album);
-  const scrollAmount = arrow.classList.contains('ap') ? -380 : 380;
-  album.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+// Parallax effect for decorations
+document.addEventListener('mousemove', (e) => {
+  const decorations = document.querySelectorAll('.decoration');
+  const mouseX = e.clientX / window.innerWidth;
+  const mouseY = e.clientY / window.innerHeight;
+  
+  decorations.forEach((decoration, index) => {
+    const speed = (index + 1) * 0.5;
+    const x = (mouseX - 0.5) * speed * 20;
+    const y = (mouseY - 0.5) * speed * 20;
+    
+    decoration.style.transform = `translate(${x}px, ${y}px) rotate(${decoration.style.transform.match(/rotate\([^)]+\)/)?.[0] || '0deg'})`;
+  });
 });
 
-document.querySelectorAll('.atrack').forEach(album => {
-  let isDown = false, startX, scrollLeft;
-  
-  album.addEventListener('mousedown', e => {
-    isDown = true;
-    album.style.cursor = 'grabbing';
-    startX = e.pageX - album.offsetLeft;
-    scrollLeft = album.scrollLeft;
-  });
-  
-  album.addEventListener('mouseleave', () => {
-    isDown = false;
-    album.style.cursor = 'grab';
-  });
-  
-  album.addEventListener('mouseup', () => {
-    isDown = false;
-    album.style.cursor = 'grab';
-  });
-  
-  album.addEventListener('mousemove', e => {
-    if (!isDown) return;
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
     e.preventDefault();
-    const x = e.pageX - album.offsetLeft;
-    const walk = (x - startX) * 2.8;
-    album.scrollLeft = scrollLeft - walk;
-  });
-});
-
-const modal=document.getElementById('imageModal'), modalImg=document.getElementById('modalImg');
-function closeModal(){modal.classList.remove('active');document.body.style.overflow='';}
-document.querySelectorAll('.pola img,.story-image img,.ci img').forEach(img=>{
-  img.addEventListener('click',e=>{e.stopPropagation();modal.classList.add('active');modalImg.src=img.src;modalImg.alt=img.alt;document.body.style.overflow='hidden';});
-});
-document.getElementById('imageModal').addEventListener('click',e=>{if(e.target===modal)closeModal();});
-
-document.addEventListener('keydown',e=>{
-  if(e.key==='Escape')closeModal();
-  if(document.getElementById('bookPages').style.display!=='block')return;
-  if(e.key==='ArrowRight'&&currentPage<4)turnPage(currentPage+1);
-  if(e.key==='ArrowLeft' &&currentPage>1)turnPage(currentPage-1);
-});
-
-window.addEventListener('mousemove',e=>{
-  const c=document.getElementById('bookCover'); if(c.style.display==='none')return;
-  const x=(window.innerWidth/2-e.pageX)/40, y=(window.innerHeight/2-e.pageY)/40;
-  c.style.transform=`perspective(1000px) rotateY(${x}deg) rotateX(${y}deg)`;
-});
-document.getElementById('bookCover').addEventListener('mouseleave',function(){this.style.transform='perspective(1000px) rotateY(0) rotateX(0)';});
-
-// Enhanced story card mouse tracking
-document.querySelectorAll('.story-card').forEach(card => {
-  card.addEventListener('mousemove', e => {
-    const rect = card.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width) * 100;
-    const y = ((e.clientY - rect.top) / rect.height) * 100;
-    card.style.setProperty('--mouse-x', x + '%');
-    card.style.setProperty('--mouse-y', y + '%');
-  });
-});
-
-const scrollTopBtn=document.getElementById('scrollTop');
-window.addEventListener('scroll',()=>scrollTopBtn.classList.toggle('visible',window.scrollY>400));
-function scrollToTop(){window.scrollTo({top:0,behavior:'smooth'});}
-
-const rv=new IntersectionObserver(es=>{
-  es.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';}});
-},{threshold:.06,rootMargin:'0px 0px -36px 0px'});
-document.querySelectorAll('.story-card,.meaning-card,.pola,.dnote,.quote-box,.callout,.ccard').forEach((el,i)=>{
-  el.style.opacity='0';el.style.transform='translateY(28px)';
-  el.style.transition=`opacity .72s ease ${i*.054}s,transform .72s ease ${i*.054}s`;
-  rv.observe(el);
-});
-
-window.addEventListener('load',()=>{
-  buildFireflies(); buildLeaves('lf1'); buildLeaves('lf3');
-  document.querySelectorAll('img').forEach(img=>{
-    if(!img.complete){img.style.opacity='0';
-      img.addEventListener('load',()=>{img.style.transition='opacity .6s';img.style.opacity='1';});
-      img.addEventListener('error',()=>{img.style.opacity='.3';});
-    }
-  });
-  
-  // Smooth parallax scrolling
-  let ticking = false;
-  window.addEventListener('scroll', () => {
-    if (!ticking) {
-      window.requestAnimationFrame(() => {
-        const scrolled = window.pageYOffset;
-        const parallaxElements = document.querySelectorAll('.story-card, .meaning-card, .polaroid');
-        parallaxElements.forEach((el, index) => {
-          const speed = 0.3 + (index % 3) * 0.08;
-          const yPos = -(scrolled * speed / 100);
-          el.style.transform = `translateY(${yPos}px)`;
-        });
-        ticking = false;
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
       });
-      ticking = true;
     }
   });
-  
-  // Animated progress dots
-  const dots = document.querySelectorAll('.pdot');
-  setInterval(() => {
-    dots.forEach(dot => {
-      if(dot.classList.contains('on')) {
-        dot.style.transform = 'scale(1.15)';
-        setTimeout(() => dot.style.transform = 'scale(1)', 300);
-      }
-    });
-  }, 3000);
 });
 
+// Add intersection observer for animation on scroll
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+    }
+  });
+}, observerOptions);
+
+document.querySelectorAll('.book, .timeline').forEach(el => {
+  observer.observe(el);
+});
+
+// Console easter egg
+console.log(`
+  📚 Thư Viện Ký Ức - Lớp 11L
+  ✨ Made with love and memories
+  🌟 "Những năm tháng không thể quay lại..."
+`);
 </script>
+
 </body>
 </html>
