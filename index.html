@@ -9,9 +9,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
-html, body { width:100%; height:100%; overflow:hidden; }
+html, body { width:100%; height:100%; overflow-x:hidden; overflow-y: auto; }
 
-/* ─── BACKGROUND: warm sandy parchment like in photo ─── */
+/* ─── BACKGROUND ─── */
 body {
   font-family: 'Lora', serif;
   background: #c8a87a;
@@ -22,48 +22,25 @@ body {
   overflow: hidden;
 }
 
-/* Multi-layer background matching the photo exactly */
 .bg {
   position: fixed; inset: 0;
   background:
-    /* top-center light bloom */
     radial-gradient(ellipse 70% 55% at 50% -5%, rgba(255,235,180,0.55) 0%, transparent 65%),
-    /* right-side sunlight angle */
     radial-gradient(ellipse 45% 60% at 95% 15%, rgba(255,220,140,0.35) 0%, transparent 60%),
-    /* left bokeh glow */
     radial-gradient(ellipse 35% 50% at 5% 40%, rgba(200,175,120,0.25) 0%, transparent 55%),
-    /* center falloff */
     radial-gradient(ellipse 80% 70% at 50% 40%, rgba(210,170,110,0.15) 0%, transparent 70%),
-    /* bottom dark */
     radial-gradient(ellipse 100% 40% at 50% 110%, rgba(100,65,30,0.4) 0%, transparent 55%),
-    /* base parchment sand color */
     linear-gradient(170deg, #d4b07a 0%, #c09060 30%, #b07848 55%, #c8a060 75%, #b89050 100%);
   z-index: 0;
 }
 
-/* Paper noise grain texture - ENHANCED */
 .grain {
   position: fixed; inset: 0;
   opacity: 0.08;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23f)'/%3E%3C/svg%3E");
   z-index: 1; pointer-events: none;
-  animation: grainShift 8s steps(10) infinite;
 }
 
-@keyframes grainShift {
-  0%, 100% { transform: translate(0, 0); }
-  10% { transform: translate(-5%, -10%); }
-  20% { transform: translate(-15%, 5%); }
-  30% { transform: translate(7%, -25%); }
-  40% { transform: translate(-5%, 25%); }
-  50% { transform: translate(15%, 10%); }
-  60% { transform: translate(15%, -15%); }
-  70% { transform: translate(-10%, 15%); }
-  80% { transform: translate(3%, 35%); }
-  90% { transform: translate(-25%, 10%); }
-}
-
-/* Vignette edges */
 .vignette {
   position: fixed; inset: 0;
   box-shadow:
@@ -72,33 +49,30 @@ body {
   z-index: 2; pointer-events: none;
 }
 
-/* Floating sparkle dust canvas */
 canvas#sparkle {
   position: fixed; inset: 0;
   z-index: 3; pointer-events: none;
 }
 
-/* NEW: Light flare effect */
 .light-flare {
   position: fixed;
-  top: -10%;
+  top: 10%;
   right: 15%;
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, rgba(255,245,200,0.15) 0%, transparent 70%);
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(255,240,200,0.12) 0%, transparent 60%);
   border-radius: 50%;
-  filter: blur(60px);
+  filter: blur(50px);
+  animation: flareMove 8s ease-in-out infinite;
   z-index: 1;
   pointer-events: none;
-  animation: flareMove 15s ease-in-out infinite;
 }
 
 @keyframes flareMove {
-  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.3; }
-  50% { transform: translate(-50px, 30px) scale(1.2); opacity: 0.5; }
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.5; }
+  50% { transform: translate(-30px, 20px) scale(1.15); opacity: 0.7; }
 }
 
-/* Decorative foliage corners (SVG inline) */
 .foliage {
   position: fixed;
   z-index: 4; pointer-events: none;
@@ -106,13 +80,103 @@ canvas#sparkle {
 }
 .foliage.top-right {
   top: -10px; right: -10px;
-  width: 180px;
+  width: 140px;
   transform: rotate(0deg);
 }
 .foliage.top-left {
   top: -10px; left: -10px;
-  width: 160px;
+  width: 120px;
   transform: scaleX(-1);
+}
+
+/* ─── SIDE WOOD TAGS ─── */
+.side-tags {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  z-index: 20;
+}
+.side-tags.left  { left: 0; }
+.side-tags.right { right: 0; }
+
+.wood-tag {
+  position: relative;
+  width: 65px;
+  padding: 10px 8px 10px;
+  background: linear-gradient(160deg, #b89050 0%, #9a6c30 40%, #7a5020 80%, #604018 100%);
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow:
+    3px 3px 14px rgba(0,0,0,0.45),
+    inset 1px 0 2px rgba(255,255,255,0.18),
+    inset -1px 0 3px rgba(0,0,0,0.25);
+  transition: transform 0.22s cubic-bezier(.34,1.5,.64,1), box-shadow 0.22s;
+  overflow: hidden;
+}
+.side-tags.right .wood-tag {
+  border-radius: 5px 0 0 5px;
+  box-shadow: -3px 3px 14px rgba(0,0,0,0.45), inset 1px 0 2px rgba(255,255,255,0.18);
+}
+
+.wood-tag::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(92deg, transparent 0, transparent 6px, rgba(0,0,0,0.05) 6px, rgba(0,0,0,0.05) 7px);
+}
+
+.wood-tag-rope {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 12px;
+  background: linear-gradient(180deg, rgba(100,70,40,0.6), rgba(100,70,40,0.3));
+  box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+.wood-tag::after {
+  content: "";
+  position: absolute;
+  top: 5px; left: 50%;
+  transform: translateX(-50%);
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #d0a060, #5a3010);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.6);
+}
+
+.wood-tag-text {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(255,238,200,0.92);
+  text-align: center;
+  line-height: 1.2;
+  letter-spacing: 0.5px;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+  padding-top: 8px;
+  position: relative; z-index: 1;
+}
+
+.wood-tag-dot {
+  display: block;
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  margin: 5px auto 0;
+  box-shadow: 0 0 6px currentColor;
+  position: relative; z-index: 1;
+}
+
+.side-tags.left  .wood-tag:hover { transform: translateX(5px); }
+.side-tags.right .wood-tag:hover { transform: translateX(-5px); }
+.wood-tag:hover {
+  box-shadow: 5px 4px 20px rgba(0,0,0,0.55), inset 1px 0 2px rgba(255,255,255,0.22), 0 0 12px rgba(220,170,80,0.35);
 }
 
 /* ─── MAIN SCENE ─── */
@@ -126,94 +190,15 @@ canvas#sparkle {
   align-items: center;
   justify-content: center;
   gap: 0;
+  padding: 15px 20px;
+  overflow-y: auto;
 }
 
-/* ─── SIDE WOOD TAGS - ENHANCED ─── */
-.side-tags {
-  position: fixed;
-  top: 50%;
-  transform: translateY(-50%);
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  z-index: 20;
-}
-.side-tags.left  { left: 0; }
-.side-tags.right { right: 0; }
-
-.wood-tag {
-  position: relative;
-  width: 80px;
-  padding: 14px 10px 12px;
-  background: linear-gradient(160deg, #b89050 0%, #9a6838 40%, #754c20 80%, #603810 100%);
-  border-radius: 0 8px 8px 0;
-  cursor: pointer;
-  text-decoration: none;
-  box-shadow:
-    3px 3px 14px rgba(0,0,0,0.55),
-    inset 1px 0 2px rgba(255,255,255,0.15),
-    inset -1px 0 3px rgba(0,0,0,0.35),
-    0 6px 12px rgba(0,0,0,0.25);
-  transition: transform 0.22s cubic-bezier(.34,1.5,.64,1), box-shadow 0.22s;
-  overflow: hidden;
-}
-.side-tags.right .wood-tag {
-  border-radius: 8px 0 0 8px;
-  box-shadow: -3px 3px 14px rgba(0,0,0,0.55), inset 1px 0 2px rgba(255,255,255,0.15), 0 6px 12px rgba(0,0,0,0.25);
-}
-
-/* Wood grain lines */
-.wood-tag::before {
-  content: "";
-  position: absolute; inset: 0;
-  background: repeating-linear-gradient(92deg, transparent 0, transparent 6px, rgba(0,0,0,0.05) 6px, rgba(0,0,0,0.05) 7px);
-}
-
-/* Rope/string hanging effect */
-.wood-tag::after {
-  content: "";
-  position: absolute;
-  top: -10px; left: 50%;
-  transform: translateX(-50%);
-  width: 2px; height: 20px;
-  background: linear-gradient(180deg, rgba(100,70,40,0.7), rgba(120,80,45,0.9));
-  box-shadow: 0 2px 4px rgba(0,0,0,0.4);
-}
-
-.wood-tag-text {
-  display: block;
-  font-family: 'Playfair Display', serif;
-  font-size: 14.5px;
-  font-weight: 600;
-  color: rgba(255,238,200,0.92);
-  text-align: center;
-  line-height: 1.3;
-  letter-spacing: 0.5px;
-  text-shadow: 0 1px 4px rgba(0,0,0,0.6);
-  padding-top: 10px;
-  position: relative; z-index: 1;
-}
-
-.wood-tag-dot {
-  display: block;
-  width: 11px; height: 11px;
-  border-radius: 50%;
-  margin: 6px auto 0;
-  box-shadow: 0 0 6px currentColor;
-  position: relative; z-index: 1;
-}
-
-.side-tags.left  .wood-tag:hover { transform: translateX(8px) scale(1.03); }
-.side-tags.right .wood-tag:hover { transform: translateX(-8px) scale(1.03); }
-.wood-tag:hover {
-  box-shadow: 5px 4px 20px rgba(0,0,0,0.65), inset 1px 0 2px rgba(255,255,255,0.25), 0 0 16px rgba(220,170,80,0.45);
-}
-
-/* ─── HEADER - ENHANCED ─── */
+/* ─── HEADER ─── */
 .header {
   text-align: center;
   padding: 0 20px;
-  margin-bottom: 18px;
+  margin-bottom: 20px;
   animation: fadeDown 1s ease 0.1s both;
 }
 
@@ -226,17 +211,17 @@ canvas#sparkle {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
-  margin-bottom: 10px;
+  gap: 10px;
+  margin-bottom: 8px;
 }
 .h-top-line .rule {
-  width: 65px; height: 1px;
+  width: 50px; height: 1px;
   background: linear-gradient(90deg, transparent, rgba(80,50,20,0.5));
 }
 .h-top-line .rule.r { background: linear-gradient(90deg, rgba(80,50,20,0.5), transparent); }
 .h-top-line span {
   font-family: 'Lora', serif;
-  font-size: 15px;
+  font-size: 13px;
   font-weight: 600;
   letter-spacing: 2px;
   color: rgba(60,35,12,0.8);
@@ -244,33 +229,33 @@ canvas#sparkle {
 
 .h-title {
   font-family: 'Dancing Script', cursive;
-  font-size: clamp(58px, 9.5vw, 95px);
+  font-size: clamp(42px, 8vw, 65px);
   font-weight: 700;
   color: #2c1a08;
   line-height: 0.95;
   letter-spacing: -1px;
   text-shadow:
-    1px 3px 8px rgba(100,60,20,0.25),
     0 2px 6px rgba(0,0,0,0.15),
+    1px 3px 8px rgba(100,60,20,0.25),
     0 1px 0 rgba(255,255,255,0.15);
 }
 
 .h-divider {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   justify-content: center;
-  margin: 12px 0;
+  margin: 10px 0;
 }
 .h-divider .d-rule {
-  width: 60px; height: 1px;
+  width: 45px; height: 1px;
   background: rgba(100,65,25,0.45);
 }
 .h-divider span {
   font-family: 'Playfair Display', serif;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 600;
-  letter-spacing: 5.5px;
+  letter-spacing: 4px;
   color: rgba(80,50,18,0.75);
   text-transform: uppercase;
 }
@@ -278,23 +263,26 @@ canvas#sparkle {
 .h-quote {
   font-family: 'Lora', serif;
   font-style: italic;
-  font-size: clamp(15px, 2vw, 18px);
+  font-size: clamp(13px, 2vw, 15px);
   font-weight: 500;
-  color: rgba(50,28,8,0.85);
-  line-height: 1.7;
-  margin-top: 10px;
-  padding: 12px 20px;
-  background: rgba(255,250,240,0.25);
-  border-radius: 8px;
+  color: rgba(45,25,8,0.85);
+  line-height: 1.6;
+  margin-top: 8px;
+  padding: 10px 20px;
+  background: rgba(255,250,240,0.15);
   backdrop-filter: blur(8px);
+  border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  max-width: 550px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* ─── BOOKS SHELF CONTAINER ─── */
 .shelf-container {
   position: relative;
   animation: fadeUp 1s ease 0.35s both;
-  width: min(850px, 84vw);
+  width: min(700px, 84vw);
 }
 
 @keyframes fadeUp {
@@ -307,17 +295,16 @@ canvas#sparkle {
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  gap: 4px;
+  gap: 3px;
   padding: 0 8px;
   position: relative;
 }
 
-/* ── Individual book - ENHANCED HOVER ── */
 .book {
   position: relative;
   cursor: pointer;
   flex: 1;
-  max-width: 120px;
+  max-width: 95px;
   transform-origin: bottom center;
   transition: transform 0.32s cubic-bezier(.34,1.5,.64,1);
   animation: bookRise 0.8s ease both;
@@ -342,29 +329,26 @@ canvas#sparkle {
 }
 
 .book:hover { 
-  transform: translateY(-22px) scale(1.02);
-  z-index: 50;
+  transform: translateY(-6px) scale(1.02); 
 }
 .book:hover .book-spine { 
   box-shadow: 
-    -5px 0 rgba(0,0,0,0.32), 
-    0 0 45px var(--glow,rgba(200,150,100,0.7)), 
-    6px 15px 35px rgba(0,0,0,0.55),
-    inset 0 0 30px rgba(255,255,255,0.08);
-  filter: brightness(1.12);
+    -5px 0 rgba(0,0,0,0.28), 
+    0 0 35px var(--glow,rgba(200,150,100,0.6)), 
+    0 12px 25px rgba(0,0,0,0.35),
+    inset -2px 2px 20px rgba(255,255,255,0.15);
+  filter: brightness(1.08); 
 }
 .book:hover .book-glow  { opacity: 1; }
 
-/* Spine – the main book face */
 .book-spine {
   position: relative;
   width: 100%;
-  /* heights differ per book for realistic look */
-  height: var(--h, 210px);
+  height: var(--h, 165px);
   background: var(--col);
   border-radius: 2px 5px 5px 2px;
   overflow: hidden;
-  transition: box-shadow 0.32s ease, filter 0.25s ease, transform 0.25s ease;
+  transition: box-shadow 0.32s ease, filter 0.25s ease, transform 0.32s ease;
   box-shadow:
     -5px 0 rgba(0,0,0,0.26),
     4px 8px 22px rgba(0,0,0,0.45),
@@ -372,19 +356,16 @@ canvas#sparkle {
     inset 0 0 0 0.5px rgba(0,0,0,0.15);
 }
 
-/* Leather texture */
 .book-spine::before {
   content:"";
   position:absolute; inset:0;
   background:
-    /* worn highlight sheen */
     linear-gradient(112deg,
       rgba(255,255,255,0.28) 0%,
       rgba(255,255,255,0.08) 25%,
       transparent 45%,
       rgba(0,0,0,0.08) 75%,
       rgba(0,0,0,0.18) 100%),
-    /* horizontal leather grain */
     repeating-linear-gradient(
       180deg,
       transparent 0px, transparent 5px,
@@ -393,24 +374,21 @@ canvas#sparkle {
   z-index:1;
 }
 
-/* Left spine shadow (binding) */
 .book-spine::after {
   content:"";
   position:absolute;
-  left:0; top:0; bottom:0; width:12px;
+  left:0; top:0; bottom:0; width:10px;
   background: linear-gradient(90deg, rgba(0,0,0,0.32) 0%, rgba(0,0,0,0.08) 60%, transparent 100%);
   z-index:2;
 }
 
-/* Top highlight strip */
 .spine-top-light {
   position:absolute;
-  top:0; left:12px; right:0; height:3px;
+  top:0; left:10px; right:0; height:2px;
   background: linear-gradient(90deg, rgba(255,255,255,0.4), rgba(255,255,255,0.1) 60%, transparent);
   z-index:3;
 }
 
-/* Worn edges / corner scuffs */
 .spine-wear {
   position:absolute; inset:0;
   background:
@@ -420,114 +398,106 @@ canvas#sparkle {
   z-index:2;
 }
 
-/* Book content layout */
 .spine-inner {
   position:absolute; inset:0;
   display:flex;
   flex-direction:column;
   align-items:center;
   justify-content:space-between;
-  padding: 20px 8px 16px;
+  padding: 14px 6px 12px;
   z-index:4;
 }
 
-/* Date text at top of spine */
 .spine-date {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(11px, 1.2vw, 14px);
+  font-size: clamp(10px, 1.2vw, 12px);
   font-weight: 600;
   color: rgba(255,240,200,0.92);
-  letter-spacing: 1.2px;
+  letter-spacing: 1px;
   text-shadow: 0 1px 6px rgba(0,0,0,0.55), 0 0 12px rgba(0,0,0,0.3);
   text-align: center;
-  line-height: 1.25;
+  line-height: 1.2;
 }
 
-/* Center icon / embossed symbol - ENHANCED */
 .spine-icon {
-  font-size: clamp(26px, 3.2vw, 34px);
-  text-shadow: 
-    0 2px 10px rgba(0,0,0,0.5),
-    0 0 20px rgba(255,255,255,0.3);
+  font-size: clamp(22px, 3vw, 28px);
+  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
   filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4));
   flex: 1;
   display: flex;
   align-items: center;
   animation: floatIcon 3s ease-in-out infinite;
-  transition: transform 0.3s ease, filter 0.3s ease;
-}
-
-.book:hover .spine-icon {
-  transform: translateY(-4px) scale(1.1);
-  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.5)) drop-shadow(0 0 12px rgba(255,255,255,0.5));
+  transition: transform 0.3s ease;
 }
 
 @keyframes floatIcon {
   0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-8px); }
+  50% { transform: translateY(-6px); }
 }
 
-/* Bottom embossed stamp text */
+@keyframes floatIconHover {
+  0%, 100% { transform: translateY(0px) scale(1.3); }
+  50% { transform: translateY(-6px) scale(1.3); }
+}
+
+.book:hover .spine-icon {
+  animation: floatIconHover 3s ease-in-out infinite;
+}
+
 .spine-stamp {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(10px, 1.1vw, 13px);
+  font-size: clamp(9px, 1.1vw, 11px);
   font-weight: 600;
   color: rgba(255,235,185,0.85);
-  letter-spacing: 1px;
+  letter-spacing: 0.8px;
   text-shadow: 0 1px 5px rgba(0,0,0,0.6);
   text-align: center;
-  line-height: 1.3;
+  line-height: 1.2;
 }
 
-/* Horizontal decorative lines on spine */
 .spine-line-top, .spine-line-bot {
   position: absolute;
-  left: 13px; right: 5px;
+  left: 11px; right: 4px;
   height: 1px;
   background: linear-gradient(90deg, rgba(255,220,150,0.35), rgba(255,220,150,0.1));
   z-index: 3;
 }
-.spine-line-top { top: 52px; }
-.spine-line-bot { bottom: 52px; }
+.spine-line-top { top: 40px; }
+.spine-line-bot { bottom: 40px; }
 
-/* Glow ring on hover - ENHANCED */
 .book-glow {
-  position:absolute; inset:-4px;
+  position:absolute; inset:-3px;
   border-radius:4px 7px 7px 4px;
-  box-shadow: 
-    0 0 35px 8px var(--glow,rgba(200,160,80,0.65)),
-    0 0 60px 12px var(--glow,rgba(200,160,80,0.35));
+  box-shadow: 0 0 28px 6px var(--glow,rgba(200,160,80,0.55));
   opacity:0;
   pointer-events:none;
   transition: opacity 0.3s ease;
   z-index:10;
 }
 
-/* Drop shadow under book */
 .book-shadow {
   position:absolute;
-  bottom:-6px; left:5%; right:5%;
-  height:8px;
+  bottom:-5px; left:5%; right:5%;
+  height:6px;
   background: radial-gradient(ellipse, rgba(0,0,0,0.38) 0%, transparent 70%);
   border-radius:50%;
   pointer-events:none;
   transition: all 0.3s ease;
 }
 .book:hover .book-shadow { 
-  transform: scaleX(1.4); 
+  transform: scaleX(1.3); 
   opacity:0.6;
-  height: 10px;
-  filter: blur(4px);
+  bottom: -8px;
 }
 
-/* ─── WOOD SHELF - ENHANCED 3D ─── */
+/* ─── WOOD SHELF ─── */
 .shelf {
   position: relative;
   width: 100%;
 }
 
 .shelf-top {
-  height: 22px;
+  height: 18px;
   background: linear-gradient(180deg,
     #d4a060 0%,
     #b87c3a 20%,
@@ -539,10 +509,8 @@ canvas#sparkle {
   box-shadow:
     0 -2px 6px rgba(0,0,0,0.2),
     inset 0 3px 5px rgba(255,255,255,0.18),
-    inset 0 -1px 3px rgba(0,0,0,0.3),
-    0 4px 8px rgba(0,0,0,0.15);
+    inset 0 -1px 3px rgba(0,0,0,0.3);
 }
-/* Shelf wood grain */
 .shelf-top::before {
   content:"";
   position:absolute; inset:0;
@@ -552,11 +520,10 @@ canvas#sparkle {
   );
   border-radius: inherit;
 }
-/* Shelf edge highlight */
 .shelf-top::after {
   content:"";
   position:absolute;
-  top:0; left:0; right:0; height:3px;
+  top:0; left:0; right:0; height:2px;
   background: linear-gradient(90deg,
     rgba(255,255,255,0.05) 0%,
     rgba(255,255,255,0.22) 30%,
@@ -568,51 +535,57 @@ canvas#sparkle {
 }
 
 .shelf-face {
-  height: 16px;
-  background: linear-gradient(180deg, 
-    #5a3010 0%, 
-    #3a1c08 40%,
-    #2a1006 70%, 
-    #1a0804 100%
-  );
+  height: 12px;
+  background: linear-gradient(180deg, #5a3010 0%, #3a1c08 60%, #2a1006 100%);
   border-radius: 0 0 4px 4px;
-  box-shadow: 
-    0 8px 20px rgba(0,0,0,0.65),
-    inset 0 -2px 4px rgba(0,0,0,0.4);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.55);
+  position: relative;
 }
 
-/* Shelf cast shadow on wall behind - ENHANCED */
+.shelf-face::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, 
+    rgba(255,255,255,0.08) 0%, 
+    transparent 40%, 
+    rgba(0,0,0,0.2) 100%
+  );
+  border-radius: inherit;
+}
+
 .shelf-wall-shadow {
   position: absolute;
-  bottom: -25px; left: -5%; right: -5%;
-  height: 28px;
-  background: radial-gradient(ellipse 65% 100% at 50% 0%, rgba(0,0,0,0.35), transparent);
+  bottom: -16px; left: -5%; right: -5%;
+  height: 22px;
+  background: radial-gradient(ellipse 60% 100% at 50% 0%, rgba(0,0,0,0.35), transparent);
   border-radius: 0 0 50% 50%;
   pointer-events: none;
-  filter: blur(3px);
 }
 
-/* ─── TIMELINE - ENHANCED WITH TOOLTIPS ─── */
+/* ─── TIMELINE ─── */
 .timeline {
-  margin-top: 26px;
+  margin-top: 25px;
   text-align: center;
   animation: fadeUp 1s ease 0.7s both;
+  position: relative;
+  z-index: 15;
 }
 
 .tl-title {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   justify-content: center;
   font-family: 'Lora', serif;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 600;
   color: rgba(55,30,8,0.75);
-  letter-spacing: 3px;
-  margin-bottom: 14px;
+  letter-spacing: 2.5px;
+  margin-bottom: 12px;
 }
 .tl-title::before, .tl-title::after {
-  content:""; width:65px; height:1px;
+  content:""; width:50px; height:1px;
   background: rgba(55,30,8,0.3);
 }
 
@@ -621,16 +594,15 @@ canvas#sparkle {
   align-items: flex-start;
   justify-content: center;
   gap: 0;
-  width: min(820px, 88vw);
+  width: min(680px, 88vw);
   margin: 0 auto;
   position: relative;
 }
 
-/* Timeline connector */
 .tl-row::before {
   content:"";
   position:absolute;
-  top:19px; left:calc(100%/12); right:calc(100%/12);
+  top:16px; left:calc(100%/12); right:calc(100%/12);
   height:1.5px;
   background: linear-gradient(90deg,
     #c8989a, #5a7090 20%, #888550 40%, #c0a055 60%, #587060 80%, #904040
@@ -643,30 +615,55 @@ canvas#sparkle {
   display:flex;
   flex-direction:column;
   align-items:center;
-  gap:8px;
+  gap:6px;
   flex:1;
   cursor:pointer;
   position:relative; z-index:1;
 }
 
-/* Tooltip */
+.tl-lbl {
+  font-family: 'Playfair Display', serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(55,30,8,0.7);
+  letter-spacing: 0.5px;
+  text-align: center;
+  white-space: nowrap;
+  transition: color 0.2s;
+}
+
+.tl-dot {
+  width: 32px; height: 32px;
+  border-radius:50%;
+  background: var(--c);
+  display:flex; align-items:center; justify-content:center;
+  font-size: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.25), 0 0 0 2px rgba(210,180,120,0.7);
+  transition: transform 0.25s cubic-bezier(.34,1.6,.64,1), box-shadow 0.25s;
+}
+.tl-item:hover .tl-dot {
+  transform: scale(1.1);
+  box-shadow: 0 3px 14px rgba(0,0,0,0.35), 0 0 0 3px rgba(230,200,140,0.9), 0 0 14px var(--c);
+}
+.tl-item:hover .tl-lbl { color: rgba(40,20,4,0.95); font-weight:700; }
+
 .tl-tooltip {
   position: absolute;
   bottom: 100%;
   left: 50%;
-  transform: translateX(-50%) translateY(-10px);
-  background: rgba(50,30,10,0.95);
-  color: rgba(255,240,220,0.95);
-  padding: 8px 14px;
+  transform: translateX(-50%) translateY(-8px);
+  background: rgba(40,25,10,0.95);
+  color: rgba(255,245,220,0.95);
+  padding: 6px 12px;
   border-radius: 6px;
   font-family: 'Lora', serif;
-  font-size: 13px;
+  font-size: 11px;
   font-weight: 500;
   white-space: nowrap;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease, transform 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
   z-index: 100;
 }
 
@@ -676,56 +673,19 @@ canvas#sparkle {
   top: 100%;
   left: 50%;
   transform: translateX(-50%);
-  border: 6px solid transparent;
-  border-top-color: rgba(50,30,10,0.95);
+  border: 5px solid transparent;
+  border-top-color: rgba(40,25,10,0.95);
 }
 
 .tl-item:hover .tl-tooltip {
   opacity: 1;
-  transform: translateX(-50%) translateY(-15px);
+  transform: translateX(-50%) translateY(-10px);
 }
 
-.tl-lbl {
-  font-family: 'Playfair Display', serif;
-  font-size: 15px;
-  font-weight: 600;
-  color: rgba(55,30,8,0.7);
-  letter-spacing: 0.6px;
-  text-align: center;
-  white-space: nowrap;
-  transition: color 0.2s, transform 0.2s;
-}
-
-.tl-dot {
-  width: 38px; height: 38px;
-  border-radius:50%;
-  background: var(--c);
-  display:flex; align-items:center; justify-content:center;
-  font-size: 18px;
-  box-shadow: 
-    0 2px 8px rgba(0,0,0,0.25), 
-    0 0 0 2.5px rgba(210,180,120,0.7);
-  transition: all 0.3s cubic-bezier(.34,1.6,.64,1);
-}
-.tl-item:hover .tl-dot {
-  transform: scale(1.35);
-  box-shadow: 
-    0 4px 16px rgba(0,0,0,0.4), 
-    0 0 0 3px rgba(230,200,140,0.95), 
-    0 0 20px var(--c),
-    0 0 35px rgba(255,255,255,0.3);
-}
-.tl-item:hover .tl-lbl { 
-  color: rgba(40,20,4,0.95); 
-  font-weight:700;
-  transform: translateY(-2px);
-}
-
-/* Bottom sparkle diamond */
 .diamond {
   position: fixed;
-  bottom: 24px; right: 30px;
-  font-size: 24px;
+  bottom: 18px; right: 24px;
+  font-size: 20px;
   color: rgba(255,245,200,0.7);
   text-shadow: 0 0 14px rgba(255,240,180,0.8), 0 0 30px rgba(255,200,80,0.4);
   animation: twinkle 2.5s ease-in-out infinite;
@@ -750,9 +710,9 @@ canvas#sparkle {
 .modal-overlay.open { opacity:1; pointer-events:all; }
 
 .modal-book {
-  width: min(88vw, 660px);
+  width: min(88vw, 600px);
   display:grid;
-  grid-template-columns: 75px 1fr;
+  grid-template-columns: 65px 1fr;
   border-radius: 2px 10px 10px 2px;
   overflow:hidden;
   box-shadow: -10px 0 rgba(0,0,0,0.32), 0 36px 100px rgba(0,0,0,0.7);
@@ -768,7 +728,7 @@ canvas#sparkle {
   background: var(--mc, #c8989a);
   display:flex; flex-direction:column;
   align-items:center; justify-content:center;
-  padding: 20px 8px;
+  padding: 18px 8px;
   position: relative;
   overflow:hidden;
 }
@@ -777,85 +737,83 @@ canvas#sparkle {
   position:absolute; inset:0;
   background: linear-gradient(112deg, rgba(255,255,255,0.22) 0%, transparent 45%, rgba(0,0,0,0.14) 100%);
 }
-.ms-icon  { font-size:38px; z-index:1; margin-bottom:14px; }
+.ms-icon  { font-size:32px; z-index:1; margin-bottom:12px; }
 .ms-label {
-  font-family:'Playfair Display',serif; font-size:14px; font-weight:600;
+  font-family:'Playfair Display',serif; font-size:13px; font-weight:600;
   color:rgba(255,242,210,0.95); writing-mode:vertical-rl;
-  transform:rotate(180deg); letter-spacing:2.5px;
+  transform:rotate(180deg); letter-spacing:2px;
   text-shadow:0 1px 5px rgba(0,0,0,0.6); z-index:1; text-align:center;
 }
 
 .modal-page {
   background: linear-gradient(170deg, #f5ead0 0%, #ede0c0 100%);
-  padding: 38px 36px 30px;
+  padding: 32px 30px 26px;
   position:relative; overflow:hidden;
 }
-/* Ruled lines */
 .modal-page::before {
   content:"";
   position:absolute; inset:0;
   background: repeating-linear-gradient(180deg,
-    transparent 0, transparent 27px,
-    rgba(150,110,50,0.1) 27px, rgba(150,110,50,0.1) 28px
+    transparent 0, transparent 24px,
+    rgba(150,110,50,0.1) 24px, rgba(150,110,50,0.1) 25px
   );
   pointer-events:none;
 }
-/* Red margin line */
 .modal-page::after {
   content:"";
   position:absolute;
-  top:0; left:60px; bottom:0; width:1px;
+  top:0; left:50px; bottom:0; width:1px;
   background: rgba(160,60,40,0.18);
 }
 .m-close {
-  position:absolute; top:14px; right:16px;
-  width:28px; height:28px;
+  position:absolute; top:12px; right:14px;
+  width:26px; height:26px;
   border:none; border-radius:50%;
   background: rgba(80,50,20,0.12);
-  cursor:pointer; font-size:14px; color:#5a3810;
+  cursor:pointer; font-size:13px; color:#5a3810;
   display:flex; align-items:center; justify-content:center;
   transition: background 0.2s, transform 0.2s; z-index:5;
 }
 .m-close:hover { background:rgba(80,50,20,0.22); transform:rotate(90deg); }
 .m-num  {
   font-family:'Playfair Display',serif; 
-  font-size: 13px; 
+  font-size: 12px; 
   font-weight: 600;
-  letter-spacing:4px;
+  letter-spacing:3.5px;
   text-transform:uppercase; 
   color:var(--mc); 
-  margin-bottom:10px; 
+  margin-bottom:8px; 
   position:relative; 
   z-index:1;
 }
 .m-title {
   font-family:'Lora',serif; 
-  font-size:clamp(22px, 3.2vw, 29px);
+  font-size:clamp(20px, 3vw, 25px);
   font-weight:600; 
   color:#2c1a08; 
   line-height:1.3;
-  margin-bottom:16px; 
+  margin-bottom:14px; 
   position:relative; 
   z-index:1;
 }
 .m-body  {
   font-family:'Lora',serif; 
   font-style:normal;
-  font-size: 18px; 
-  line-height:1.85; 
+  font-size: 16px; 
+  line-height:1.75; 
   color:#5a3810;
-  margin-bottom:26px; 
+  margin-bottom:22px; 
   position:relative; 
   z-index:1;
 }
 .m-link {
   display:inline-flex; 
   align-items:center; 
-  gap:8px;
+  gap:7px;
   font-family:'Playfair Display',serif; 
-  font-size:13px; 
+  font-size:12px; 
   font-weight: 600;
-  letter-spacing:2px;
+  letter-spacing:1.8px;
   text-transform:uppercase; 
   color:var(--mc);
   text-decoration:none; 
@@ -866,13 +824,13 @@ canvas#sparkle {
   transition: gap 0.3s, opacity 0.3s; 
   opacity:0.85;
 }
-.m-link:hover { gap:14px; opacity:1; }
+.m-link:hover { gap:12px; opacity:1; }
 .m-fold {
   position:absolute; bottom:0; right:0;
   width:0; height:0;
-  border:32px solid transparent;
-  border-bottom:32px solid rgba(150,115,60,0.2);
-  border-right:32px solid rgba(150,115,60,0.2);
+  border:28px solid transparent;
+  border-bottom:28px solid rgba(150,115,60,0.2);
+  border-right:28px solid rgba(150,115,60,0.2);
 }
 
 /* ─── RESPONSIVE ─── */
@@ -881,14 +839,15 @@ canvas#sparkle {
   .shelf-container { width: 96vw; }
 }
 @media (max-width:520px) {
-  .book-spine { min-height:150px !important; }
-  .h-title    { font-size:48px; }
-  .h-top-line span { font-size: 13px; }
-  .h-quote { font-size: 14px; }
-  .modal-book { grid-template-columns:55px 1fr; }
-  .modal-page { padding:28px 20px 24px; }
-  .m-body { font-size: 16px; line-height: 1.75; }
-  .tl-tooltip { font-size: 11px; padding: 6px 10px; }
+  .book-spine { min-height:130px !important; }
+  .h-title    { font-size:38px; }
+  .h-top-line span { font-size: 11px; }
+  .h-quote { font-size: 12px; padding: 8px 14px; }
+  .modal-book { grid-template-columns:50px 1fr; }
+  .modal-page { padding:24px 18px 20px; }
+  .m-body { font-size: 14px; line-height: 1.65; }
+  .tl-lbl { font-size: 11px; }
+  .tl-dot { width: 28px; height: 28px; font-size: 14px; }
 }
 </style>
 </head>
@@ -915,14 +874,17 @@ canvas#sparkle {
 <!-- Side tags LEFT -->
 <nav class="side-tags left">
   <a class="wood-tag" href="#" onclick="openModal(0);return false;">
+    <div class="wood-tag-rope"></div>
     <span class="wood-tag-text">20<br>/10</span>
     <span class="wood-tag-dot" style="background:#c8989a;color:#c8989a"></span>
   </a>
   <a class="wood-tag" href="#" onclick="openModal(1);return false;">
+    <div class="wood-tag-rope"></div>
     <span class="wood-tag-text">19/11</span>
     <span class="wood-tag-dot" style="background:#5a7090"></span>
   </a>
   <a class="wood-tag" href="#" onclick="openModal(2);return false;">
+    <div class="wood-tag-rope"></div>
     <span class="wood-tag-text">20<br>/11</span>
     <span class="wood-tag-dot" style="background:#a68250"></span>
   </a>
@@ -930,15 +892,18 @@ canvas#sparkle {
 
 <!-- Side tags RIGHT -->
 <nav class="side-tags right" style="align-items:flex-end">
-  <a class="wood-tag" href="#" onclick="openModal(3);return false;" style="border-radius:8px 0 0 8px">
+  <a class="wood-tag" href="#" onclick="openModal(3);return false;" style="border-radius:5px 0 0 5px">
+    <div class="wood-tag-rope"></div>
     <span class="wood-tag-text">Giai<br>Điệu</span>
     <span class="wood-tag-dot" style="background:#9d8ab5"></span>
   </a>
-  <a class="wood-tag" href="#" onclick="openModal(4);return false;" style="border-radius:8px 0 0 8px">
+  <a class="wood-tag" href="#" onclick="openModal(4);return false;" style="border-radius:5px 0 0 5px">
+    <div class="wood-tag-rope"></div>
     <span class="wood-tag-text">Đà<br>Lạt</span>
     <span class="wood-tag-dot" style="background:#587060"></span>
   </a>
-  <a class="wood-tag" href="#" onclick="openModal(5);return false;" style="border-radius:8px 0 0 8px">
+  <a class="wood-tag" href="#" onclick="openModal(5);return false;" style="border-radius:5px 0 0 5px">
+    <div class="wood-tag-rope"></div>
     <span class="wood-tag-text">Giỗ<br>Tổ</span>
     <span class="wood-tag-dot" style="background:#904040"></span>
   </a>
@@ -971,10 +936,10 @@ canvas#sparkle {
 
     <div class="books" id="booksRow">
 
-      <!-- BOOK 1: 20/10 – DUSTY PINK -->
+      <!-- BOOK 1: 20/10 -->
       <div class="book" onclick="openModal(0)"
            style="--glow:rgba(200,150,152,0.7)">
-        <div class="book-spine" style="--col:#bf8e90; --h:var(--bh1,205px)">
+        <div class="book-spine" style="--col:#bf8e90; --h:var(--bh1,165px)">
           <div class="spine-top-light"></div>
           <div class="spine-wear"></div>
           <div class="spine-line-top"></div>
@@ -989,10 +954,10 @@ canvas#sparkle {
         <div class="book-shadow"></div>
       </div>
 
-      <!-- BOOK 2: 19/11 – DEEP NAVY BLUE -->
+      <!-- BOOK 2: 19/11 -->
       <div class="book" onclick="openModal(1)"
            style="--glow:rgba(80,105,140,0.7)">
-        <div class="book-spine" style="--col:#4a607e; --h:var(--bh2,232px)">
+        <div class="book-spine" style="--col:#4a607e; --h:var(--bh2,185px)">
           <div class="spine-top-light"></div>
           <div class="spine-wear"></div>
           <div class="spine-line-top"></div>
@@ -1007,10 +972,10 @@ canvas#sparkle {
         <div class="book-shadow"></div>
       </div>
 
-      <!-- BOOK 3: 20/11 – BROWN-YELLOW -->
+      <!-- BOOK 3: 20/11 -->
       <div class="book" onclick="openModal(2)"
            style="--glow:rgba(160,130,70,0.7)">
-        <div class="book-spine" style="--col:#a68250; --h:var(--bh3,246px)">
+        <div class="book-spine" style="--col:#a68250; --h:var(--bh3,195px)">
           <div class="spine-top-light"></div>
           <div class="spine-wear"></div>
           <div class="spine-line-top"></div>
@@ -1025,10 +990,10 @@ canvas#sparkle {
         <div class="book-shadow"></div>
       </div>
 
-      <!-- BOOK 4: Giai Điệu – PASTEL PURPLE -->
+      <!-- BOOK 4: Giai Điệu -->
       <div class="book" onclick="openModal(3)"
            style="--glow:rgba(160,140,180,0.7)">
-        <div class="book-spine" style="--col:#9d8ab5; --h:var(--bh4,235px)">
+        <div class="book-spine" style="--col:#9d8ab5; --h:var(--bh4,188px)">
           <div class="spine-top-light"></div>
           <div class="spine-wear"></div>
           <div class="spine-line-top"></div>
@@ -1043,10 +1008,10 @@ canvas#sparkle {
         <div class="book-shadow"></div>
       </div>
 
-      <!-- BOOK 5: Đà Lạt – FOREST GREEN -->
+      <!-- BOOK 5: Đà Lạt -->
       <div class="book" onclick="openModal(4)"
            style="--glow:rgba(80,108,85,0.7)">
-        <div class="book-spine" style="--col:#4e6855; --h:var(--bh5,224px)">
+        <div class="book-spine" style="--col:#4e6855; --h:var(--bh5,180px)">
           <div class="spine-top-light"></div>
           <div class="spine-wear"></div>
           <div class="spine-line-top"></div>
@@ -1061,10 +1026,10 @@ canvas#sparkle {
         <div class="book-shadow"></div>
       </div>
 
-      <!-- BOOK 6: Giỗ Tổ – DEEP BURGUNDY RED -->
+      <!-- BOOK 6: Giỗ Tổ -->
       <div class="book" onclick="openModal(5)"
            style="--glow:rgba(140,55,55,0.7)">
-        <div class="book-spine" style="--col:#823838; --h:var(--bh6,216px)">
+        <div class="book-spine" style="--col:#823838; --h:var(--bh6,173px)">
           <div class="spine-top-light"></div>
           <div class="spine-wear"></div>
           <div class="spine-line-top"></div>
@@ -1151,7 +1116,7 @@ canvas#sparkle {
 </div>
 
 <script>
-/* ── SPARKLE DUST PARTICLES - ENHANCED ── */
+/* ── SPARKLE DUST PARTICLES ── */
 (function(){
   const cv = document.getElementById('sparkle');
   const cx = cv.getContext('2d');
@@ -1159,59 +1124,42 @@ canvas#sparkle {
   const resize = () => { W = cv.width = innerWidth; H = cv.height = innerHeight; };
   addEventListener('resize', resize); resize();
 
-  const N = 90; // Increased particle count
+  const N = 60;
   const pts = Array.from({length:N}, () => ({
-    x: Math.random()*W, y: Math.random()*H,
-    vx:(Math.random()-.5)*.2, vy:-(Math.random()*.35+.08),
-    r: Math.random()*2+.4,
-    a: Math.random()*.5+.1,
-    life:Math.random()*500, max:Math.random()*480+200,
-    bright: Math.random()>.5,   /* more brighter sparkles */
-    twinkle: Math.random()>0.7  /* some twinkle effect */
+    x: Math.random()*1000, y: Math.random()*700,
+    vx:(Math.random()-.5)*.15, vy:-(Math.random()*.28+.07),
+    r: Math.random()*1.6+.3,
+    a: Math.random()*.45+.08,
+    life:Math.random()*500, max:Math.random()*460+180,
+    bright: Math.random()>.55
   }));
 
   function frame(){
     cx.clearRect(0,0,W,H);
     for(const p of pts){
-      p.x += p.vx + Math.sin(p.life*.012)*.2;
+      p.x += p.vx + Math.sin(p.life*.011)*.18;
       p.y += p.vy;
       p.life++;
-      const f = p.life<70 ? p.life/70 : p.life>p.max-70 ? (p.max-p.life)/70 : 1;
-      let alpha = p.a*f;
-      
-      // Twinkle effect
-      if(p.twinkle){
-        alpha *= (Math.sin(p.life*0.08)+1)*0.5;
-      }
-      
+      const f = p.life<60 ? p.life/60 : p.life>p.max-60 ? (p.max-p.life)/60 : 1;
+      const alpha = p.a*f;
       if(p.bright && f>.5){
-        /* star cross sparkle - more pronounced */
         cx.save();
-        cx.globalAlpha = alpha*.9;
-        cx.strokeStyle = `rgba(255,245,190,${alpha})`;
-        cx.lineWidth = .7;
+        cx.globalAlpha = alpha*.8;
+        cx.strokeStyle = `rgba(255,240,180,${alpha})`;
+        cx.lineWidth = .5;
         cx.beginPath();
-        cx.moveTo(p.x-p.r*3.5, p.y); cx.lineTo(p.x+p.r*3.5, p.y);
-        cx.moveTo(p.x, p.y-p.r*3.5); cx.lineTo(p.x, p.y+p.r*3.5);
+        cx.moveTo(p.x-p.r*3, p.y); cx.lineTo(p.x+p.r*3, p.y);
+        cx.moveTo(p.x, p.y-p.r*3); cx.lineTo(p.x, p.y+p.r*3);
         cx.stroke();
         cx.restore();
       }
       cx.beginPath();
       cx.arc(p.x, p.y, p.r, 0, Math.PI*2);
-      cx.fillStyle = `rgba(255,235,165,${alpha})`;
+      cx.fillStyle = `rgba(255,232,155,${alpha})`;
       cx.fill();
-      
-      // Glow halo for bright particles
-      if(p.bright && f>.6){
-        cx.beginPath();
-        cx.arc(p.x, p.y, p.r*2, 0, Math.PI*2);
-        cx.fillStyle = `rgba(255,245,200,${alpha*0.2})`;
-        cx.fill();
-      }
-      
       if(p.life>=p.max || p.y<-10 || p.x<-10 || p.x>W+10){
-        p.x=Math.random()*W; p.y=H+10;
-        p.life=0; p.max=Math.random()*480+200;
+        p.x=Math.random()*W; p.y=H+8;
+        p.life=0; p.max=Math.random()*460+180;
       }
     }
     requestAnimationFrame(frame);
@@ -1219,8 +1167,8 @@ canvas#sparkle {
   frame();
 })();
 
-/* ── BOOK HEIGHTS (varied, matching photo) ── */
-const bh = [205,232,246,235,224,216];
+/* ── BOOK HEIGHTS ── */
+const bh = [165,185,195,188,180,173];
 document.querySelectorAll('.book-spine').forEach((s,i)=>{
   s.style.height = bh[i]+'px';
 });
