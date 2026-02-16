@@ -6,7 +6,7 @@
 <title>Ngày Phụ Nữ Việt Nam – Mốc Kỷ Niệm Lớp 11L</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Dancing+Script:wght@400;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Dancing+Script:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
   --rose-deep:    #c97b8c;
@@ -46,29 +46,13 @@ body {
   overflow-x:hidden;
 }
 
-/* Paper texture */
+/* Paper texture - Static */
 body::before {
   content:'';
   position:fixed; inset:0;
   background-image:
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
   pointer-events:none; z-index:0; opacity:.5;
-}
-
-/* Floating petals */
-.petal-layer { position:fixed; inset:0; pointer-events:none; z-index:0; overflow:hidden; }
-.petal {
-  position:absolute;
-  font-size: var(--sz);
-  animation: petalFall var(--dur) var(--del) ease-in-out infinite;
-  opacity:0;
-  will-change: transform, opacity;
-}
-@keyframes petalFall {
-  0%   { opacity:0; transform: translateY(-30px) translateX(0) rotate(0deg) scale(1); }
-  15%  { opacity:.65; }
-  85%  { opacity:.3; }
-  100% { opacity:0; transform: translateY(130px) translateX(var(--dx)) rotate(300deg) scale(.4); }
 }
 
 /* LINE RULE decoration */
@@ -85,7 +69,37 @@ body::before {
 }
 .line-rule span { color:var(--rose-mid); font-size:1.2rem; }
 
-/* ── BOOK COVER ── */
+/* Breadcrumb */
+.breadcrumb {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  padding: 10px 28px;
+  border-radius: 30px;
+  border: 2px solid rgba(232,164,180,0.4);
+  font-family: 'Dancing Script', cursive;
+  font-size: 1rem;
+  color: var(--rose-deep);
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s;
+  box-shadow: 0 4px 20px rgba(200,100,130,0.2);
+}
+
+.breadcrumb.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.breadcrumb-icon {
+  margin-right: 8px;
+}
+
+/* ── BOOK COVER (Deep rose elegant style) ── */
 .book-cover {
   position:relative;
   max-width:960px;
@@ -130,13 +144,7 @@ body::before {
   box-shadow:
     inset 0 0 50px rgba(255,160,190,.15),
     0 0 30px rgba(232,164,180,.25);
-  animation: coverGlow 5s ease-in-out infinite;
   pointer-events:none;
-}
-
-@keyframes coverGlow {
-  0%,100% { opacity:.75; }
-  50%      { opacity:1; box-shadow:inset 0 0 70px rgba(255,160,190,.3), 0 0 50px rgba(232,164,180,.4); }
 }
 
 /* Floral corner decoration */
@@ -144,19 +152,13 @@ body::before {
   position:absolute;
   font-size:3.2rem;
   opacity:.6;
-  animation: floralFloat 6s ease-in-out infinite;
   pointer-events:none;
   filter:drop-shadow(0 3px 8px rgba(255,150,180,.5));
 }
-.floral-corner.tl { top:30px; left:36px; animation-delay:0s; }
-.floral-corner.tr { top:30px; right:36px; transform:scaleX(-1); animation-delay:1.5s; }
-.floral-corner.bl { bottom:30px; left:36px; transform:scaleY(-1); animation-delay:3s; }
-.floral-corner.br { bottom:30px; right:36px; transform:scale(-1); animation-delay:4.5s; }
-
-@keyframes floralFloat {
-  0%,100% { transform:var(--fc-t, none) translateY(0) rotate(-5deg) scale(1); opacity:.55; }
-  50%      { transform:var(--fc-t, none) translateY(-8px) rotate(5deg) scale(1.1); opacity:.8; }
-}
+.floral-corner.tl { top:30px; left:36px; }
+.floral-corner.tr { top:30px; right:36px; transform:scaleX(-1); }
+.floral-corner.bl { bottom:30px; left:36px; transform:scaleY(-1); }
+.floral-corner.br { bottom:30px; right:36px; transform:scale(-1); }
 
 .cover-content { position:relative; z-index:2; text-align:center; color:#fff; }
 
@@ -187,18 +189,7 @@ body::before {
 .cover-icon {
   font-size:6rem;
   display:inline-block;
-  animation: iconFloat 5s ease-in-out infinite, iconGlow 3.5s ease-in-out infinite;
   filter: drop-shadow(0 12px 30px rgba(255,120,160,.7)) drop-shadow(0 0 60px rgba(255,180,200,.5));
-}
-
-@keyframes iconFloat {
-  0%,100% { transform:translateY(0) rotate(-5deg) scale(1); }
-  50%      { transform:translateY(-18px) rotate(5deg) scale(1.12); }
-}
-
-@keyframes iconGlow {
-  0%,100% { filter:drop-shadow(0 12px 30px rgba(255,120,160,.7)) drop-shadow(0 0 60px rgba(255,180,200,.5)); }
-  50%      { filter:drop-shadow(0 18px 50px rgba(255,120,160,1)) drop-shadow(0 0 100px rgba(255,200,220,.9)); }
 }
 
 .cover-title {
@@ -208,13 +199,8 @@ body::before {
     0 0 40px rgba(255,180,200,.7),
     0 6px 20px rgba(0,0,0,.7),
     2px 2px 0 rgba(0,0,0,.25);
-  animation: fadeUp 1.2s ease .55s both, titleShimmer 4s ease-in-out infinite;
+  animation: fadeUp 1.2s ease .55s both;
   line-height:1.15;
-}
-
-@keyframes titleShimmer {
-  0%,100% { text-shadow:0 0 40px rgba(255,180,200,.7),0 6px 20px rgba(0,0,0,.7); }
-  50%      { text-shadow:0 0 60px rgba(255,200,210,1),0 8px 25px rgba(0,0,0,.8),0 0 100px rgba(255,210,220,.6); }
 }
 
 .cover-subtitle {
@@ -240,7 +226,7 @@ body::before {
     inset 0 2px 0 rgba(255,255,255,.45),
     0 0 40px rgba(232,133,154,.4);
   transition:all .35s cubic-bezier(.4,0,.2,1);
-  animation: fadeUp 1.2s ease 1s both, btnPulse 3s ease-in-out infinite;
+  animation: fadeUp 1.2s ease 1s both;
   font-family:'Playfair Display',serif; letter-spacing:.07em;
   border:2.5px solid rgba(255,180,200,.55); cursor:pointer;
   position:relative; overflow:hidden;
@@ -257,11 +243,6 @@ body::before {
 .open-btn:focus {
   outline:3px solid rgba(255,180,200,.8);
   outline-offset:4px;
-}
-
-@keyframes btnPulse {
-  0%,100% { box-shadow:0 12px 35px rgba(200,80,110,.55),inset 0 2px 0 rgba(255,255,255,.45),0 0 40px rgba(232,133,154,.4); }
-  50%      { box-shadow:0 15px 45px rgba(200,80,110,.75),inset 0 2px 0 rgba(255,255,255,.6),0 0 60px rgba(232,133,154,.65); }
 }
 
 .open-btn::before {
@@ -294,6 +275,28 @@ body::before {
   from { opacity:0; transform:perspective(1000px) rotateY(-12deg) scale(.96); }
   to   { opacity:1; transform:perspective(1000px) rotateY(0) scale(1); }
 }
+
+/* Progress dots */
+.prog {
+  display:flex; align-items:center; justify-content:center; gap:12px;
+  margin-bottom:18px; padding-top:22px;
+}
+
+.pdot {
+  width:9px; height:9px; border-radius:50%; cursor:pointer;
+  background:rgba(200,100,130,.22); border:1.5px solid rgba(200,100,130,.3);
+  transition:all .32s;
+}
+
+.pdot.on {
+  width:28px; border-radius:5px;
+  background:linear-gradient(90deg, #e8859a, #c97b8c);
+  border-color:transparent;
+  box-shadow:0 2px 10px rgba(200,100,130,.3);
+}
+
+.pdot:hover:not(.on) { background:rgba(200,100,130,.42); transform:scale(1.3); }
+.pdot:focus { outline:2px solid rgba(200,100,130,.6); outline-offset:3px; }
 
 /* ── PAGE ── */
 .page {
@@ -357,12 +360,7 @@ body::before {
   padding:7px 20px; border-radius:50px;
   border:1.5px solid rgba(232,164,180,.4);
   box-shadow:0 3px 12px rgba(200,100,130,.12);
-  animation:pageNumPulse 3s ease-in-out infinite;
   z-index:100;
-}
-@keyframes pageNumPulse {
-  0%,100% { transform:scale(1); opacity:.65; }
-  50%      { transform:scale(1.06); opacity:.95; }
 }
 
 /* ── SECTION TITLE ── */
@@ -376,12 +374,6 @@ body::before {
 .section-title .title-text {
   background:linear-gradient(118deg, #9c4d6b 0%, #c97b8c 45%, #a05070 100%);
   -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
-  animation:titlePulse 3.5s ease-in-out infinite;
-}
-
-@keyframes titlePulse {
-  0%,100% { filter:brightness(1) drop-shadow(0 3px 10px rgba(160,80,110,.2)); }
-  50%      { filter:brightness(1.15) drop-shadow(0 6px 20px rgba(200,100,140,.5)); }
 }
 
 .section-title .title-icon { display:inline-block; margin-right:10px; }
@@ -396,14 +388,10 @@ body::before {
   width:0; height:4px;
   background:linear-gradient(90deg, transparent, #e8a4b4 20%, #c97b8c 50%, #e8a4b4 80%, transparent);
   border-radius:2px;
-  animation:lineDraw 2s cubic-bezier(.4,0,.2,1) forwards, lineGlow 3.5s ease-in-out infinite;
+  animation:lineDraw 2s cubic-bezier(.4,0,.2,1) forwards;
 }
 
 @keyframes lineDraw { from{width:0;opacity:0;} to{width:260px;opacity:1;} }
-@keyframes lineGlow {
-  0%,100% { box-shadow:0 3px 15px rgba(200,100,130,.3); }
-  50%      { box-shadow:0 5px 30px rgba(232,133,154,.7), 0 0 12px rgba(245,205,215,.6); }
-}
 
 /* Section intro */
 .section-intro {
@@ -413,136 +401,171 @@ body::before {
   font-weight:400;
 }
 
-/* ── STORY CARDS ── */
-.story-grid { display:grid; gap:44px; margin-top:55px; }
-
-.story-card {
-  display:grid; grid-template-columns:1fr 1fr; gap:46px; align-items:center;
-  padding:38px 36px;
+/* ── IMAGE CARDS (Modern rounded style) ── */
+.image-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  padding: 50px 45px;
   background:
-    repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(232,164,180,.03) 2px, rgba(232,164,180,.03) 4px),
+    radial-gradient(ellipse at 20% 30%, rgba(245,205,215,.25), transparent 50%),
+    radial-gradient(ellipse at 80% 70%, rgba(174,196,180,.15), transparent 50%),
     linear-gradient(145deg, rgba(255,240,244,.9), rgba(255,250,252,.75));
-  border-radius:24px;
-  border:2px solid rgba(232,164,180,.35);
-  box-shadow:0 8px 30px rgba(200,100,130,.1);
-  position:relative; overflow:hidden;
-  transition:all .6s cubic-bezier(.4,0,.2,1);
-  will-change:transform;
-}
-
-/* Sticker decoration on cards */
-.story-card::before {
-  content: attr(data-sticker);
-  position:absolute; top:-10px; right:22px;
-  font-size:2.6rem;
-  animation:stickerWiggle 4s ease-in-out infinite;
-  filter:drop-shadow(0 3px 8px rgba(200,100,130,.3));
-  z-index:5;
-}
-
-@keyframes stickerWiggle {
-  0%,100% { transform:rotate(-8deg) scale(1); }
-  50%      { transform:rotate(6deg) scale(1.12); }
-}
-
-.story-card:hover {
-  transform:translateY(-10px) rotate(.2deg) scale(1.015);
-  box-shadow:0 22px 60px rgba(200,100,130,.2), 0 8px 25px rgba(232,164,180,.15);
-  border-color:rgba(200,100,130,.55);
-}
-
-.story-card:nth-child(even) .story-image { order:2; }
-.story-card:nth-child(even) .story-text  { order:1; }
-
-/* Frame-in-frame photo */
-.story-image {
-  position:relative; border-radius:20px; overflow:hidden; aspect-ratio:4/3;
+  backdrop-filter: blur(12px);
+  border-radius: 30px;
+  border: 2px solid rgba(232,164,180,.35);
   box-shadow:
-    0 8px 30px rgba(200,100,130,.22),
-    inset 0 0 0 8px rgba(255,240,244,.9),
-    inset 0 0 0 10px rgba(200,100,130,.25);
-  border:3px solid rgba(245,205,215,.8);
-  transition:all .5s ease;
+    0 12px 40px rgba(200,100,130,.15),
+    inset 0 2px 10px rgba(255,255,255,0.6);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 60px;
+  transform-style: preserve-3d;
 }
 
-.story-image img {
-  width:100%; height:100%; object-fit:cover;
-  transition:all .8s cubic-bezier(.4,0,.2,1);
-  filter:sepia(.04) contrast(1.05) brightness(1) saturate(1.05);
-  cursor:pointer;
-  background:linear-gradient(135deg, #f5e0e8 0%, #ead4de 100%);
+.image-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow:
+    0 30px 80px rgba(200,100,130,.25),
+    0 15px 45px rgba(232,164,180,.2),
+    inset 0 2px 15px rgba(255, 255, 255, 0.8);
+  border-color: rgba(200,100,130,.5);
 }
 
-.story-card:hover .story-image img {
-  transform:scale(1.1) rotate(-.8deg);
-  filter:sepia(.1) contrast(1.08) brightness(1.04) saturate(1.1);
+.image-frame {
+  border-radius: 24px;
+  overflow: hidden;
+  aspect-ratio: 4/3;
+  box-shadow:
+    0 12px 35px rgba(200,100,130,.2),
+    0 0 0 12px rgba(255, 255, 255, 0.9),
+    0 0 0 14px rgba(232,164,180,.3);
+  border: 3px solid rgba(245,205,215,.8);
+  background: linear-gradient(135deg, #f5e0e8, #ead4de);
+  max-height: 500px;
+  width: 90%;
+  transition: all 0.6s ease;
+  position: relative;
 }
 
-/* Ribbon stamp on images */
-.img-ribbon {
-  position:absolute; top:18px; left:-8px;
-  background:linear-gradient(135deg, #e8859a, #c97b8c);
-  color:#fff; padding:6px 18px 6px 22px;
-  font-family:'Dancing Script',cursive; font-size:1.05rem; font-weight:700;
-  border-radius:0 20px 20px 0;
-  box-shadow:0 4px 14px rgba(200,100,130,.45);
-  z-index:5;
-  clip-path:polygon(8px 0%, 100% 0%, 100% 100%, 8px 100%, 0% 50%);
-  animation:ribbonShine 4s ease-in-out infinite;
+/* Decorative stickers on modern cards */
+.sticker {
+  position: absolute;
+  font-size: 2.8rem;
+  z-index: 5;
+  filter: drop-shadow(0 4px 10px rgba(200,100,130,0.4));
+  pointer-events: none;
 }
 
-@keyframes ribbonShine {
-  0%,100% { box-shadow:0 4px 14px rgba(200,100,130,.45); }
-  50%      { box-shadow:0 6px 22px rgba(200,100,130,.7); }
+.sticker-1 {
+  top: -15px;
+  right: -15px;
 }
 
-.story-text {
-  font-size:1.45rem; line-height:2.1; color:var(--ink);
-  font-family:'Lora',serif; font-weight:400;
+.sticker-2 {
+  bottom: -15px;
+  left: -15px;
 }
 
-.story-text p { margin-bottom:16px; transition:transform .3s ease; }
-.story-card:hover .story-text p { transform:translateX(5px); }
-.story-text p:last-child { margin-bottom:0; }
-
-.story-text .lead {
-  font-size:1.6rem; font-style:italic; color:var(--rose-deep);
-  margin-bottom:20px; line-height:2.1; font-weight:500;
+.image-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  cursor: pointer;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: sepia(0.04) contrast(1.05) brightness(1) saturate(1.05);
 }
 
-/* ── VIDEO SECTION ── */
-.video-section {
-  margin:55px 0;
-  padding:40px 36px;
+.image-frame img.loading {
+  filter: blur(20px);
+}
+
+.image-frame img.loaded {
+  filter: sepia(0.04) contrast(1.05) brightness(1) saturate(1.05);
+}
+
+.image-card:hover .image-frame {
+  box-shadow:
+    0 18px 50px rgba(200,100,130,0.3),
+    0 0 0 12px rgba(255, 255, 255, 1),
+    0 0 0 14px rgba(232,164,180,0.4),
+    0 0 30px rgba(245,205,215,0.3);
+  transform: scale(1.03);
+}
+
+.image-card:hover .image-frame img {
+  transform: scale(1.08);
+  filter: sepia(0.1) contrast(1.08) brightness(1.04) saturate(1.1);
+}
+
+.image-caption {
+  width: 100%;
+  max-width: 900px;
+  text-align: center;
+}
+
+.image-caption p {
+  font-size: 1.55rem;
+  line-height: 2.2;
+  color: var(--ink);
+  font-family: 'Lora', serif;
+  font-weight: 400;
+  margin-bottom: 15px;
+  transition: all 0.4s ease;
+}
+
+.image-caption p:last-child {
+  margin-bottom: 0;
+}
+
+.image-card:hover .image-caption p {
+  color: var(--rose-deep);
+  transform: scale(1.02);
+}
+
+/* ── VIDEO CARD ── */
+.video-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  padding: 50px 45px;
   background:
-    radial-gradient(ellipse at 30% 30%, rgba(245,205,215,.35), transparent 60%),
+    radial-gradient(ellipse at 20% 30%, rgba(245,205,215,.35), transparent 60%),
     linear-gradient(145deg, rgba(255,240,244,.85), rgba(255,248,252,.7));
-  border-radius:24px;
-  border:2px solid rgba(232,164,180,.35);
-  box-shadow:0 8px 30px rgba(200,100,130,.1);
-  text-align:center;
-  animation:fadeUp 1s ease .4s both;
-  position:relative;
-  overflow:hidden;
+  backdrop-filter: blur(12px);
+  border-radius: 30px;
+  border: 2px solid rgba(232,164,180,0.35);
+  box-shadow:
+    0 12px 40px rgba(200,100,130,0.15),
+    inset 0 2px 10px rgba(255, 255, 255, 0.6);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  margin: 60px 0;
 }
 
-.video-section::before {
+.video-card::before {
   content:'🎵';
   position:absolute; top:20px; left:24px;
   font-size:2rem; opacity:.4;
-  animation:musicFloat 5s ease-in-out infinite;
 }
 
-.video-section::after {
+.video-card::after {
   content:'🎶';
   position:absolute; bottom:20px; right:24px;
   font-size:2rem; opacity:.4;
-  animation:musicFloat 5s ease-in-out 2.5s infinite;
 }
 
-@keyframes musicFloat {
-  0%,100% { transform:translateY(0) rotate(-5deg); opacity:.4; }
-  50%      { transform:translateY(-10px) rotate(5deg); opacity:.6; }
+.video-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow:
+    0 30px 80px rgba(200,100,130,0.25),
+    0 15px 45px rgba(232,164,180,0.2),
+    inset 0 2px 15px rgba(255, 255, 255, 0.8);
+  border-color: rgba(200,100,130,0.5);
 }
 
 .video-label {
@@ -552,33 +575,50 @@ body::before {
 }
 
 .video-wrapper {
-  position:relative; width:100%; aspect-ratio:16/9;
-  border-radius:16px; overflow:hidden;
+  width: 90%;
+  max-width: 800px;
+  aspect-ratio: 16/9;
+  border-radius: 20px;
+  overflow: hidden;
   box-shadow:
     0 12px 40px rgba(200,100,130,.25),
-    0 0 0 8px rgba(255,240,244,.9),
-    0 0 0 10px rgba(200,100,130,.2);
-  border:3px solid rgba(245,205,215,.9);
-  max-width:680px; margin:0 auto;
+    0 0 0 10px rgba(255,240,244,.9),
+    0 0 0 12px rgba(200,100,130,.2);
+  border: 3px solid rgba(245,205,215,.9);
+  position: relative;
+  transition: all 0.6s ease;
   background:linear-gradient(135deg, #f5e0e8, #ead4de);
-  transition:all .5s ease;
 }
 
-.video-wrapper:hover {
+.video-card:hover .video-wrapper {
   box-shadow:
     0 18px 55px rgba(200,100,130,.4),
-    0 0 0 8px rgba(255,240,244,1),
-    0 0 0 10px rgba(200,100,130,.35);
-  transform:translateY(-4px);
+    0 0 0 10px rgba(255,240,244,1),
+    0 0 0 12px rgba(200,100,130,.35);
+  transform: scale(1.02);
 }
 
 .video-wrapper iframe {
-  width:100%; height:100%; border:none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
 }
 
-.video-note {
-  margin-top:18px; font-family:'Lora',serif; font-style:italic;
-  font-size:1.3rem; color:var(--ink-light);
+.video-description {
+  width: 100%;
+  max-width: 900px;
+  text-align: center;
+}
+
+.video-description p {
+  font-size: 1.55rem;
+  line-height: 2.2;
+  color: var(--ink);
+  font-family: 'Lora', serif;
+  font-weight: 400;
 }
 
 /* ── QUOTE BOX ── */
@@ -632,6 +672,17 @@ body::before {
   box-shadow:0 6px 18px rgba(200,100,130,.15);
 }
 
+.handwrite {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2.4rem;
+  color: var(--rose-deep);
+  text-align: center;
+  margin: 60px auto;
+  max-width: 900px;
+  line-height: 1.8;
+  animation: fadeUp 1s ease 0.5s both;
+}
+
 /* ── PAGE NAV ── */
 .page-nav {
   display:flex; justify-content:space-between; align-items:center;
@@ -671,28 +722,6 @@ body::before {
 }
 .nav-btn:hover::before { width:350px; height:350px; }
 
-/* Progress dots */
-.prog {
-  display:flex; align-items:center; justify-content:center; gap:12px;
-  margin-bottom:18px; padding-top:22px;
-}
-
-.pdot {
-  width:9px; height:9px; border-radius:50%; cursor:pointer;
-  background:rgba(200,100,130,.22); border:1.5px solid rgba(200,100,130,.3);
-  transition:all .32s;
-}
-
-.pdot.on {
-  width:28px; border-radius:5px;
-  background:linear-gradient(90deg, #e8859a, #c97b8c);
-  border-color:transparent;
-  box-shadow:0 2px 10px rgba(200,100,130,.3);
-}
-
-.pdot:hover:not(.on) { background:rgba(200,100,130,.42); transform:scale(1.3); }
-.pdot:focus { outline:2px solid rgba(200,100,130,.6); outline-offset:3px; }
-
 /* Decorative divider */
 .rdiv {
   display:flex; align-items:center; gap:16px;
@@ -713,11 +742,6 @@ body::before {
 .hearts-deco {
   text-align:center; font-size:1.5rem; letter-spacing:18px;
   opacity:.3; margin:12px 0;
-  animation:heartsWave 7s ease-in-out infinite;
-}
-@keyframes heartsWave {
-  0%,100% { transform:translateY(0); opacity:.28; }
-  50%      { transform:translateY(-6px); opacity:.45; }
 }
 
 /* ── IMAGE MODAL ── */
@@ -764,11 +788,7 @@ body::before {
   transition:all .4s; z-index:100;
   opacity:0; pointer-events:none; color:#fff;
 }
-.scroll-top.visible { opacity:1; pointer-events:auto; animation:scrollBounce 2s ease-in-out infinite; }
-@keyframes scrollBounce {
-  0%,100% { transform:translateY(0); }
-  50%      { transform:translateY(-8px); }
-}
+.scroll-top.visible { opacity:1; pointer-events:auto; }
 .scroll-top:hover { transform:translateY(-8px) scale(1.12); box-shadow:0 16px 45px rgba(200,100,130,.75); }
 .scroll-top:focus { outline:3px solid rgba(255,180,200,.8); outline-offset:4px; }
 
@@ -816,24 +836,23 @@ body::before {
   .page { padding:55px 28px 95px; border-left:36px solid rgba(232,164,180,.1); }
   .section-title { font-size:2.3rem; }
   .section-intro { font-size:1.3rem; }
-  .story-card { grid-template-columns:1fr !important; gap:28px; }
-  .story-card:nth-child(even) .story-image { order:0; }
-  .story-text { font-size:1.25rem; }
+  .image-caption p, .video-description p { font-size:1.4rem; }
   .quote-text { font-size:1.7rem; }
   .callout { font-size:1.6rem; }
-  .video-label { font-size:1.5rem; }
+  .handwrite { font-size:2rem; }
 }
 
 @media (max-width:480px) {
   .page { padding:42px 18px 85px; }
   .section-title { font-size:1.9rem; }
   .section-intro { font-size:1.15rem; }
-  .story-text { font-size:1.1rem; }
   .quote-text { font-size:1.5rem; line-height:1.75; }
   .quote-box { padding:32px 22px; }
   .callout { font-size:1.4rem; }
   .cover-title { font-size:2.4rem; }
   .sig { font-size:2.3rem; }
+  .image-caption p, .video-description p { font-size:1.25rem; line-height:2; }
+  .handwrite { font-size:1.8rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -847,18 +866,23 @@ body::before {
 </head>
 <body>
 
-<div class="petal-layer" id="petalLayer"></div>
 <div class="progress-bar-container" id="progressBarContainer">
   <div class="progress-bar" id="progressBar"></div>
 </div>
+
+<div class="breadcrumb" id="breadcrumb">
+  <span class="breadcrumb-icon">🌸</span>
+  <span id="breadcrumbText">Bìa sách</span>
+</div>
+
 <div class="loading-spinner" id="loadingSpinner"></div>
 
 <div class="book-cover" id="bookCover">
   <!-- Floral corners -->
-  <div class="floral-corner tl" style="--fc-t:none">🌸</div>
-  <div class="floral-corner tr" style="--fc-t:scaleX(-1)">🌸</div>
-  <div class="floral-corner bl" style="--fc-t:scaleY(-1)">🌺</div>
-  <div class="floral-corner br" style="--fc-t:scale(-1)">🌺</div>
+  <div class="floral-corner tl">🌸</div>
+  <div class="floral-corner tr">🌸</div>
+  <div class="floral-corner bl">🌺</div>
+  <div class="floral-corner br">🌺</div>
 
   <div class="cover-content">
     <div class="cover-badge">✦ &nbsp;Mốc Kỷ Niệm Thứ 1 / 6&nbsp; ✦</div>
@@ -902,29 +926,23 @@ body::before {
         Những năm tháng cuối cấp trôi qua rất nhanh, nhưng có những kỉ niệm vẫn ở lại nguyên vẹn trong tim mỗi người. Ngày Phụ nữ Việt Nam 20/10 năm lớp 11 là một trong những khoảnh khắc như thế.
       </p>
 
-      <div class="story-grid">
-        <article class="story-card" data-sticker="🌸">
-          <div class="story-image">
-            <div class="img-ribbon">🌷 Lớp 11L</div>
-            <img src="ảnh1.jpg" alt="Cả lớp tặng quà cho cô giáo trong ngày 20/10" loading="lazy">
-          </div>
-          <div class="story-text">
-            <p class="lead">Giản dị thôi nhưng đầy ắp yêu thương, tiếng cười và sự gắn kết của cả tập thể lớp chúng mình.</p>
-            <p>Trong không khí ấm áp của buổi lễ, cả lớp đã cùng nhau gửi tặng những món quà nhỏ đến hai cô giáo – những người luôn tận tâm dạy dỗ và đồng hành cùng chúng mình trên chặng đường học tập.</p>
-          </div>
-        </article>
+      <blockquote class="quote-box">
+        <p class="quote-text">
+          Giản dị thôi nhưng đầy ắp yêu thương, tiếng cười và sự gắn kết của cả tập thể lớp chúng mình...
+        </p>
+      </blockquote>
 
-        <article class="story-card" data-sticker="💕">
-          <div class="story-image">
-            <div class="img-ribbon">📸 Kỷ niệm</div>
-            <img src="ảnh2.jpg" alt="Những nụ cười rạng rỡ và ánh mắt trìu mến của thầy trò" loading="lazy">
-          </div>
-          <div class="story-text">
-            <p class="lead">Bức ảnh ghi lại khoảnh khắc cả lớp đứng bên cô, chứa đựng sự kính trọng, biết ơn và niềm vui rất đỗi thân thương.</p>
-            <p>Không chỉ là một tấm hình kỉ niệm – đó là những giây phút bình dị nhưng đáng quý. Để sau này khi nhìn lại, chúng mình vẫn có thể cảm nhận được hơi ấm của tình thầy trò năm ấy.</p>
-          </div>
-        </article>
-      </div>
+      <article class="image-card">
+        <figure class="image-frame">
+          <span class="sticker sticker-1" aria-hidden="true">🌷</span>
+          <img src="ảnh1.jpg" alt="Cả lớp tặng quà cho cô giáo trong ngày 20/10" loading="lazy">
+          <span class="sticker sticker-2" aria-hidden="true">💐</span>
+        </figure>
+        <figcaption class="image-caption">
+          <p>Trong không khí ấm áp của buổi lễ, cả lớp đã cùng nhau gửi tặng những món quà nhỏ đến hai cô giáo – những người luôn tận tâm dạy dỗ và đồng hành cùng chúng mình trên chặng đường học tập.</p>
+          <p>Bức ảnh ghi lại khoảnh khắc cả lớp đứng bên cô, chứa đựng sự kính trọng, biết ơn và niềm vui rất đỗi thân thương.</p>
+        </figcaption>
+      </article>
 
     </div>
     <div class="page-number" aria-label="Trang 1">~ Trang 1 ~</div>
@@ -940,37 +958,26 @@ body::before {
       <div class="hearts-deco" aria-hidden="true">💌 &nbsp; 🌺 &nbsp; 💌</div>
 
       <h3 class="section-title">
-        <span class="title-icon" aria-hidden="true">🎶</span>
-        <span class="title-text">Bất Ngờ Từ Trái Tim</span>
+        <span class="title-icon" aria-hidden="true">📸</span>
+        <span class="title-text">Khoảnh Khắc Đáng Nhớ</span>
       </h3>
 
-      <p class="section-intro">
-        Bất ngờ lớn nhất của ngày 20/10 có lẽ đến từ các bạn nam trong lớp – một video hát được chuẩn bị đầy bí mật, vụng về nhưng vô cùng đáng yêu.
-      </p>
+      <article class="image-card">
+        <figure class="image-frame">
+          <span class="sticker sticker-1" aria-hidden="true">🎀</span>
+          <img src="ảnh2.jpg" alt="Những nụ cười rạng rỡ và ánh mắt trìu mến của thầy trò" loading="lazy">
+          <span class="sticker sticker-2" aria-hidden="true">🌺</span>
+        </figure>
+        <figcaption class="image-caption">
+          <p>Không chỉ là một tấm hình kỉ niệm, đây còn lưu giữ những nụ cười rạng rỡ và ánh mắt trìu mến của thầy trò trong ngày đặc biệt ấy.</p>
+          <p>Đó là những giây phút bình dị nhưng đáng quý, để sau này khi nhìn lại, chúng mình vẫn có thể cảm nhận được hơi ấm của tình thầy trò năm ấy.</p>
+        </figcaption>
+      </article>
 
       <div class="callout">
-        Vụng về nhưng chân thành – đôi khi đó mới chính là điều chạm đến trái tim nhất.
+        Mỗi nụ cười, mỗi ánh mắt đều là một mảnh ghép nhỏ tạo nên bức tranh tình cảm của lớp 11L...
       </div>
 
-      <div class="video-section">
-        <span class="video-label">🎵 Video surprise từ các bạn nam 🎵</span>
-        <div class="video-wrapper">
-          <iframe
-            src="https://www.youtube.com/embed/rcOQhyqasBg"
-            title="Video kỷ niệm ngày 20/10 lớp 11L"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen>
-          </iframe>
-        </div>
-        <p class="video-note">Mang đến nhiều tiếng cười và cả những cảm xúc khó quên... 💕</p>
-      </div>
-
-      <blockquote class="quote-box">
-        <p class="quote-text">
-          Đó là khoảnh khắc mà cả lớp nhớ mãi, không phải vì hoàn hảo, mà vì nó rất thật và rất chúng mình.
-        </p>
-      </blockquote>
     </div>
     <div class="page-number" aria-label="Trang 2">~ Trang 2 ~</div>
     <nav class="page-nav" aria-label="Điều hướng giữa các trang">
@@ -986,29 +993,40 @@ body::before {
       <div class="hearts-deco" aria-hidden="true">🌸 &nbsp; 💕 &nbsp; 🌸</div>
 
       <h3 class="section-title">
-        <span class="title-icon" aria-hidden="true">💌</span>
-        <span class="title-text">Mãi Mãi Trong Tim</span>
+        <span class="title-icon" aria-hidden="true">🎶</span>
+        <span class="title-text">Món Quà Đặc Biệt</span>
       </h3>
 
       <p class="section-intro">
-        Thời gian rồi sẽ đưa chúng mình rời xa mái trường, nhưng những kỉ niệm như ngày 20/10 năm lớp 11 sẽ mãi là một phần đẹp đẽ của thanh xuân.
+        Bất ngờ lớn nhất của ngày 20/10 có lẽ đến từ các bạn nam trong lớp – một video hát được chuẩn bị đầy bí mật, vụng về nhưng vô cùng đáng yêu.
       </p>
+
+      <article class="video-card">
+        <span class="video-label">🎵 Video surprise từ các bạn nam 🎵</span>
+        <div class="video-wrapper">
+          <iframe
+            src="https://www.youtube.com/embed/rcOQhyqasBg"
+            title="Video kỷ niệm ngày 20/10 lớp 11L"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+        <div class="video-description">
+          <p>Mang đến nhiều tiếng cười và cả những cảm xúc khó quên... 💕</p>
+        </div>
+      </article>
 
       <blockquote class="quote-box">
         <p class="quote-text">
-          Thời gian rồi sẽ đưa chúng mình rời xa mái trường, nhưng những kỉ niệm như ngày 20/10 năm lớp 11 sẽ mãi là một phần đẹp đẽ của thanh xuân. 🌸
+          Thời gian rồi sẽ đưa chúng mình rời xa mái trường, nhưng những kỉ niệm như ngày 20/10 năm lớp 11 sẽ mãi là một phần đẹp đẽ của thanh xuân.
         </p>
       </blockquote>
 
-      <div class="story-grid" style="margin-top:0;">
-        <article class="story-card" data-sticker="🌺" style="grid-template-columns:1fr;">
-          <div class="story-text" style="text-align:center; max-width:700px; margin:0 auto; font-size:1.55rem; line-height:2.15;">
-            <p class="lead">Mốc kỷ niệm này không phải là khoảnh khắc hoành tráng, không phải là sự kiện lớn lao...</p>
-            <p>Nhưng chính sự giản dị, chân thành và ấm áp của nó lại làm cho nó trở nên không thể nào quên. Một ngày 20/10, cả lớp 11L đã cùng nhau tạo nên một kỷ niệm nhỏ bé nhưng đẹp đẽ vô cùng.</p>
-            <p>Và dù thời gian có trôi qua, dù con đường mỗi người có dẫn đến những nơi khác nhau – hơi ấm của ngày ấy vẫn sẽ luôn ở lại.</p>
-          </div>
-        </article>
-      </div>
+      <p class="handwrite">
+        Cảm ơn những khoảnh khắc tuyệt vời bên nhau...<br>
+        Cảm ơn tình thầy trò, tình bạn của 11L! 🌸💕
+      </p>
 
       <div class="rdiv" aria-hidden="true"><span>🌸</span><span>💕</span><span>🌸</span></div>
       <div class="sig" aria-label="Kết thúc trang nhật ký">🌷 ~ Ngày 20 tháng 10, Lớp 11L ~ 🌷</div>
@@ -1031,23 +1049,6 @@ body::before {
 let currentPage = 1;
 let touchStartX = 0, touchEndX = 0;
 
-// ── Petals ──
-const PETALS = ['🌸','🌺','🌷','💮','🌼'];
-function buildPetals() {
-  const layer = document.getElementById('petalLayer');
-  for (let i = 0; i < 20; i++) {
-    const p = document.createElement('div');
-    p.className = 'petal';
-    const sz = 1.2 + Math.random() * 1.8;
-    const dur = 6 + Math.random() * 7;
-    const del = Math.random() * 10;
-    const dx = (Math.random() - .5) * 90;
-    p.textContent = PETALS[i % PETALS.length];
-    p.style.cssText = `left:${Math.random()*95}%;top:${Math.random()*80}%;--sz:${sz}rem;--dur:${dur}s;--del:${del}s;--dx:${dx}px;`;
-    layer.appendChild(p);
-  }
-}
-
 // ── Progress bar ──
 function animateProgressBar(duration) {
   const container = document.getElementById('progressBarContainer');
@@ -1066,6 +1067,25 @@ function animateProgressBar(duration) {
       }, 200);
     }
   }, duration / 50);
+}
+
+// Update breadcrumb
+function updateBreadcrumb(isOpen, pageNum) {
+  const breadcrumb = document.getElementById('breadcrumb');
+  const breadcrumbText = document.getElementById('breadcrumbText');
+  
+  if (!isOpen) {
+    breadcrumbText.textContent = 'Bìa sách';
+    breadcrumb.classList.remove('visible');
+  } else {
+    const titles = [
+      'Ngày Của Yêu Thương',
+      'Khoảnh Khắc Đáng Nhớ',
+      'Món Quà Đặc Biệt'
+    ];
+    breadcrumbText.textContent = `Trang ${pageNum}: ${titles[pageNum - 1]}`;
+    breadcrumb.classList.add('visible');
+  }
 }
 
 // ── Dots ──
@@ -1098,6 +1118,7 @@ document.getElementById('openBookBtn').addEventListener('click', function(e) {
     document.getElementById('loadingSpinner').classList.remove('active');
     currentPage = 1;
     syncDots(1);
+    updateBreadcrumb(true, 1);
     this.dataset.processing = 'false';
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, 400);
@@ -1113,6 +1134,7 @@ function turnPage(n) {
     document.getElementById('page' + n).style.display = 'block';
     currentPage = n;
     syncDots(n);
+    updateBreadcrumb(true, n);
     document.getElementById('loadingSpinner').classList.remove('active');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, 400);
@@ -1126,6 +1148,7 @@ function closePage() {
     document.getElementById('bookCover').style.display = 'block';
     document.getElementById('page' + currentPage).style.display = 'none';
     document.getElementById('loadingSpinner').classList.remove('active');
+    updateBreadcrumb(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, 400);
 }
@@ -1173,7 +1196,7 @@ function closeModal() {
   modalImg.removeAttribute('src');
 }
 
-document.querySelectorAll('.story-image img, .ci img').forEach(img => {
+document.querySelectorAll('.image-frame img').forEach(img => {
   img.addEventListener('click', e => {
     e.stopPropagation();
     modal.classList.add('active');
@@ -1203,36 +1226,41 @@ const rv = new IntersectionObserver(es => {
   });
 }, { threshold:.06, rootMargin:'0px 0px -30px 0px' });
 
-document.querySelectorAll('.story-card,.quote-box,.callout,.video-section').forEach((el, i) => {
+document.querySelectorAll('.image-card,.video-card,.quote-box,.callout').forEach((el, i) => {
   el.style.opacity = '0';
   el.style.transform = 'translateY(26px)';
   el.style.transition = `opacity .7s ease ${i * .08}s, transform .7s ease ${i * .08}s`;
   rv.observe(el);
 });
 
+// Progressive image loading
+function loadImage(img) {
+  return new Promise((resolve, reject) => {
+    const tempImg = new Image();
+    tempImg.onload = () => {
+      img.src = tempImg.src;
+      img.classList.remove('loading');
+      img.classList.add('loaded');
+      resolve();
+    };
+    tempImg.onerror = reject;
+    tempImg.src = img.getAttribute('src');
+  });
+}
+
 // ── Init ──
 window.addEventListener('load', () => {
-  buildPetals();
-
   // Progressive img load
   document.querySelectorAll('img[src]').forEach(img => {
     if (!img.complete) {
+      img.classList.add('loading');
       img.style.opacity = '0';
-      img.addEventListener('load', () => {
+      loadImage(img).then(() => {
         img.style.transition = 'opacity .6s';
         img.style.opacity = '1';
-      });
-      img.addEventListener('error', () => { img.style.opacity = '.3'; });
+      }).catch(() => { img.style.opacity = '.3'; });
     }
   });
-
-  // Dot pulse animation
-  setInterval(() => {
-    document.querySelectorAll('.pdot.on').forEach(dot => {
-      dot.style.transform = 'scale(1.18)';
-      setTimeout(() => dot.style.transform = 'scale(1)', 300);
-    });
-  }, 3000);
 });
 </script>
 </body>
